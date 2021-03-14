@@ -1,0 +1,97 @@
+.component {
+    display: inline-block;
+    line-height: 100%;
+    vertical-align: middle;
+    padding: $component-pad-vertical $component-pad-horizontal;
+    // background-color: white;
+
+    &__input {
+        font-family: inherit;
+        width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
+        line-height: 6rem;
+        // border-radius: 5rem;
+
+        // background-color: orangered;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid;
+        border-color: var(--color-white);
+        border-radius: 1rem;
+        text-align: center;
+        font-size: 4rem;
+        // width: 75%;
+        color: var(--color-white);
+
+        @include respond(_360-400) {
+            border-width: .5px;
+        }
+
+        &--hundreed {
+            font-size: 3.5rem;
+
+            @include respond(_480-520) {
+                font-size: 2.8rem;
+            }
+
+            // @include respond(_320-360) {
+            //     font-size: 2rem;
+            // }
+
+        }
+
+        &[type="number"] {
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        &[type="number"]::-webkit-inner-spin-button,
+        &[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        &:invalid {
+            color: var(--color-red);
+            // border-right: 2px solid var(--color__accent);
+        }
+
+        // &:focus,
+        &:not(:placeholder-shown),
+        &:-webkit-autofill {
+            border-color: transparent;
+        }
+
+        &-box {
+            width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
+            // padding: 0 1rem;
+        }
+    }
+
+    &__score {
+        display: block;
+        text-align: center;
+        padding: 0.6rem 0;
+        // background-color: darkblue;
+    }
+
+    &__icon {
+        // margin-right: -0.5rem;
+        line-height: 100%;
+        width: 1rem;
+        height: 1rem;
+
+        @include respond(_360-400) {
+            width: .5rem;
+            height: .5rem;
+        }
+
+        &:not(:last-child) {
+            margin-right: .25rem;
+
+            @include respond(_360-400) {
+                margin-right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+/////////////////////////////////////////////////////////
+//GENERAL SETTINGS FOR A DARK-MODE TOGGLER INPUT
+.add-subtract-toggle {
+    // &__box {
+    //     display: flex;
+    //     flex-direction: row;
+    //     justify-content: center;
+    //     align-items: center;
+    // }
+
+    &__input {
+        position: relative;
+        top: .5rem;
+
+        -webkit-appearance: none;
+        appearance: none;
+        width: 4.4rem;
+        height: 2.4rem;
+        border-radius: 1.5rem;
+        background: transparent;
+        cursor: pointer;
+
+        border: 0.2rem solid var(--color-white);
+
+        @include transition(0.4s);
+
+        &::before {
+            width: 1.6rem;
+            height: 1.6rem;
+            border-radius: 50%;
+            content: "";
+            position: absolute;
+            top: .2rem;
+            left: 7%;
+
+            @include transition(0.4s);
+
+            background-color: var(--color-white);
+        }
+
+        // &:checked {
+        //     // background-color: yellowgreen;
+        // }
+
+        &:checked::before {
+            left: 55%;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
