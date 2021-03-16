@@ -7,7 +7,7 @@
     background-color: var(--color-background);
     // margin-bottom: 1rem;
 
-    width: 80vw;
+    width: 85vw;
     margin: 0 auto 1rem;
     max-height: 30vh;
 
@@ -27,14 +27,22 @@
   &__control {
     display: inline-block;
     position: relative;
-    margin: 0 2rem;
+    margin: 0 1.3rem;
 
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-white);
     // border: 2px solid var(--color-white);
     // border-radius: .5rem;
     background-color: var(--color-background);
+
+    &-btn {
+      padding: 0 1rem;
+      // font-family: inherit;
+      font-size: 2rem;
+      font-weight: bold;
+      // line-height: 1.5;
+    }
   }
 
   &__label {
@@ -47,7 +55,7 @@
     display: inline-block;
     // width: 10rem;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-white);
     border: 2px solid var(--color-white);
@@ -61,7 +69,7 @@
   }
 
   &__option {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-white);
     border: 2px solid var(--color-white);
@@ -76,7 +84,7 @@
     border-radius: .5rem;
     text-align: center;
     font-family: inherit;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-white);
 
@@ -105,11 +113,12 @@
     // // height: 3rem;
     // // width: 10rem;
     // // margin-top: 1rem;
-    // padding: 0 3rem;
-    // font-family: inherit;
-    // font-size: 2.2rem;
-    // font-weight: bold;
-    // line-height: 1.5;
+    padding: 0 3rem;
+    font-family: inherit;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.5;
+
     // color: var(--color-white);
     // border: 2px solid var(--color-white);
     // border-radius: .5rem;

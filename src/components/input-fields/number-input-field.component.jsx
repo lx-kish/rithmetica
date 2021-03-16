@@ -76,12 +76,14 @@ const NumberInputField = (props) => {
 			type="number"
 			pattern="[0-9]*"
 			inputMode="numeric"
+			name={props.name || ""}
 			className={props.className}
 			placeholder=" "
 			min={parseInt(props.min)}
 			max={parseInt(props.max)}
 			step="1"
 			onKeyDown={(event) => handleKeyDown(event)}
+			onChange={props.onChange}
 			title=""
 		/>
 	);

@@ -15,10 +15,13 @@ import AdditionSubtraction from './pages/addition-subtraction/addition-subtracti
 const Routes = () => {
 	return (
 		<Switch>
-			<Route path="/multiplay-react" exact component={MultiplicationTab} />
+			{/* <Route path="/" exact component={MultiplicationTab} /> */}
+			<Route path="/rithmetica" exact component={MultiplicationTab} />
 			{/* <Route exact path="/" render={() => <Redirect to="/multiplication-tab" />} /> */}
-			<Route path="/multiplay-react/multiplication-tab" exact component={MultiplicationTab} />
-			<Route path="/multiplay-react/addition-subtraction" exact component={AdditionSubtraction} />
+			{/* <Route path="/multiplication-tab" exact component={MultiplicationTab} />
+			<Route path="/addition-subtraction" exact component={AdditionSubtraction} /> */}
+			<Route path="/rithmetica/multiplication-tab" exact component={MultiplicationTab} />
+			<Route path="/rithmetica/addition-subtraction" exact component={AdditionSubtraction} />
 		</Switch>
 	);
 };

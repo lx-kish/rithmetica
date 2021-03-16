@@ -16,45 +16,40 @@ const randomInteger = require('../randoms/random-integer-in-a-range');
 /**
  * 
  */
-module.exports = (problemType, numberOfOperands = 2, numberOfProblems) => {
+module.exports = (operation, numberOfAddends, quantity) => {
   try {
-    console.log(
-      '%c arguments of addition-problem-generator ===> ',
-      'color: orangered; font-weight: bold;',
-      problemType,
-      numberOfOperands,
-      numberOfProblems
-    );
+
     let problems = [];
 
     let problem;
-    for (let k = 0; k < numberOfProblems; k++) {
+
+    for (let k = 0; k < quantity; k++) {
 
       problem = [];
 
-      switch (problemType) {
-        case 'up-to-10':
+      switch (operation) {
+        case 'addition':
           /**
-           * 1. Generate sum with limits min=0+numberOfOperands, max=10
-           * 2. Loop with length <numberOfOperands>-1
+           * 1. Generate sum with limits min=0+numberOfAddends, max=10
+           * 2. Loop with length <numberOfAddends>-1
            * 3. Generate addend with limits min=0, max=sum-problemsTotal
            * 4. Push addend into problems array
            */
 
-          const sum = randomInteger(0 + parseInt(numberOfOperands), 10);
+          const result = randomInteger(0 + parseInt(numberOfAddends), 10);
 
           const addends = [];
           let problemSum = 0;
 
-          for (let i = 0; i < numberOfOperands - 1; i++) {
+          for (let i = 0; i < numberOfAddends - 1; i++) {
 
-            // console.log(sum, problemSum, problem.length);
-            addends.push(randomInteger(0, parseInt(sum) - parseInt(problemSum)));
+            // console.log(result, problemSum, problem.length);
+            addends.push(randomInteger(0, parseInt(result) - parseInt(problemSum)));
             // Calculating the sum
             let j = addends.length;
             while (j--) problemSum += parseInt(addends[j])
           }
-          addends.push(parseInt(sum) - parseInt(problemSum));
+          addends.push(parseInt(result) - parseInt(problemSum));
 
           // console.log('%c sum from addition problem generator ===> ', 'color: orange; font-weight: bold;', sum)
           // console.log('%c generated numbers from "addition problem generator" ===> ', 'color: orangered; font-weight: bold;', addends);
@@ -73,7 +68,7 @@ module.exports = (problemType, numberOfOperands = 2, numberOfProblems) => {
 
           problem.push({
             type: 'input',
-            value: sum
+            value: result
           });
 
           console.log('%c problem "up-to-10" from "addition problem generator" ===> ', 'color: green; font-weight: bold;', problem);
@@ -99,7 +94,7 @@ module.exports = (problemType, numberOfOperands = 2, numberOfProblems) => {
     // let maxValue = 0;
     // let minValue = 0;
     // // const problem = "Math.floor(Math.random() * (max - min + 1)) + min";
-    // for (let i = 0; i < numberOfOperands - 1; i++) {
+    // for (let i = 0; i < numberOfAddends - 1; i++) {
 
     //   maxValue = Math.max(parseInt(maxSum), parseInt(problem));
     //   minValue = Math.max(parseInt(maxSum), parseInt(problem));
