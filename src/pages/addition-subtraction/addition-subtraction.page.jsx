@@ -24,7 +24,7 @@ const AdditionSubtraction = (props) => {
 		problemSettings: [
 			{
 				operation: 'addition',
-				type: 'up-to-10',
+				type: 'up to 10',
 				missing: 'result',
 				numberOfOperands: 2,
 				quantity: 8

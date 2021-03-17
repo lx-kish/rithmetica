@@ -5,17 +5,18 @@ const additionProblemGenerator = require('./problem-generators/addition-problem-
  */
 module.exports = (problemDescriptions) => {
   try {
-    console.log(
-      '%c arguments of problem-controller ===> ',
-      'color: orangered; font-weight: bold;',
-      problemDescriptions
-    );
+    // console.log(
+    //   '%c arguments of problem-controller ===> ',
+    //   'color: orangered; font-weight: bold;',
+    //   problemDescriptions
+    // );
     const problems = [];
     problemDescriptions.forEach(type => {
       problems.push(...additionProblemGenerator(
         // type.operation,
         type.type,
         type.numberOfOperands,
+        type.missing,
         type.quantity
       ))
     });

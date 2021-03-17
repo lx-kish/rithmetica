@@ -1,5 +1,6 @@
 module.exports = [
   'result',
   'first',
-  'last'
+  'last',
+  'random'
 ];
