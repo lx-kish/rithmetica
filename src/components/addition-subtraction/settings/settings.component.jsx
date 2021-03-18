@@ -8,7 +8,6 @@ import types from '../types';
 import formats from '../missing';
 
 const ProblemSettings = (props) => {
-
 	const [ fullState, setFullState ] = React.useState({
 		problemSettings: [
 			{
@@ -23,14 +22,14 @@ const ProblemSettings = (props) => {
 
 	const insertSettings = (i) => (e) => {
 		const newProblemSettings = [
-			...fullState.problemSettings.slice(0, i+1),
+			...fullState.problemSettings.slice(0, i + 1),
 			{
 				operation: '',
 				type: '',
 				missing: '',
 				quantity: 0
 			},
-			...fullState.problemSettings.slice(i+1)
+			...fullState.problemSettings.slice(i + 1)
 		];
 
 		console.log(
@@ -186,13 +185,22 @@ const ProblemSettings = (props) => {
 								onChange={setStateOnChange(index)}
 							/>
 						</div>
-						<input type="button" value="+" className="btn settings__control-btn" onClick={insertSettings(index)} />
-						<input
-							type="button"
-							value="&times;"
-							className="btn settings__control-btn"
-							onClick={deleteSettings(index)}
-						/>
+						<div className="settings__control">
+							<input
+								type="button"
+								value="+"
+								className="btn settings__control-btn"
+								onClick={insertSettings(index)}
+								title="add line"
+							/>
+							<input
+								type="button"
+								value="&times;"
+								className="btn settings__control-btn"
+								onClick={deleteSettings(index)}
+								title="remove line"
+							/>
+						</div>
 					</div>
 				))}
 			</React.Fragment>
@@ -227,7 +235,7 @@ const ProblemSettings = (props) => {
 				</label>
 				<hr className="header__hr" />
 				{showCollapsible()}
-				<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate}/>
+				<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />
 
 				<hr className="header__hr" />
 			</div>

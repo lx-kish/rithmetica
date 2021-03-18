@@ -5,8 +5,10 @@ import Sign from '../../sign/sign.component';
 import NumberInputField from '../../input-fields/number-input-field.component';
 // import content from '../../../table.content';
 
-const Problem = (props) => {
+// const areEqual = (prevProps, nextProps) => true;
 
+// const Problem = React.memo((props) => {
+const Problem = (props) => {
 
 	// const renderNumber = (number) => {
 	// 	return (
@@ -86,6 +88,7 @@ const Problem = (props) => {
 		</div>
 		// </>
 	);
+// }, areEqual);
 };
 
 export default Problem;

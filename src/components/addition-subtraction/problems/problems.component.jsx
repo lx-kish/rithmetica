@@ -2,15 +2,10 @@ import React from 'react';
 
 import Problem from '../problem/problem.component';
 
+// const areEqual = (prevProps, nextProps) => true;
+
+// const Problems = React.memo((props) => {
 const Problems = (props) => {
-	// /**
-	//  * Single state hook useState for all the state properties
-	//  */
-	// const [fullState, setFullState] = React.useState({
-	//     sticky: 0,
-	//     display: false,
-	//     subtract: false,
-	// });
 
 	// /**
 	//  * Returns mathematical sign for addition or subtraction
@@ -65,6 +60,7 @@ const Problems = (props) => {
 	));
 
 	return <div className="problems">{getContent}</div>;
+// }, areEqual);
 };
 
 export default Problems;

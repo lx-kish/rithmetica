@@ -15,6 +15,6 @@ const useTraceUpdate = (props) => {
     prev.current = props;
   });
 };
-console.log('%c inside useTraceUpdate', 'font-size: bold; color: red;')
+// console.log('%c inside useTraceUpdate', 'font-size: bold; color: red;')
 
 export default useTraceUpdate;

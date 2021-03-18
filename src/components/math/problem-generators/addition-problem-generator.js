@@ -33,7 +33,7 @@ module.exports = (problemType, numberOfOperands = 2, missing, numberOfProblems) 
       problem = [];
 
       switch (problemType) {
-        case 'up to 10':
+        case 'up to ten':
           /**
            * 1. Generate sum with limits min=0+numberOfOperands, max=10
            * 2. Loop with length <numberOfOperands>-1
