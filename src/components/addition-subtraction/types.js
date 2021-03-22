@@ -2,7 +2,8 @@ module.exports = [
   'up to ten',
   'single digit operands',
   'double and single digit',
-  'operations with tens',
+  'double digit and tens',
   'double digit operands',
+  'double digit tidying up',
   'tens withing thousand',
 ];

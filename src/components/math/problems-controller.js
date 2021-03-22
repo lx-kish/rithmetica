@@ -1,4 +1,4 @@
-const problemsBuilder = require('./problem-processing/problems-builder');
+const problemsFactory = require('./problem-processing/problems-factory');
 
 /**
  * 
@@ -14,7 +14,7 @@ module.exports = (problemDescriptions) => {
 
     problemDescriptions.forEach(type => {
 
-      problems.push(...problemsBuilder(
+      problems.push(...problemsFactory(
         type.type,
         type.operation,
         type.numberOfOperands,
@@ -24,7 +24,7 @@ module.exports = (problemDescriptions) => {
 
     });
 
-    console.log('%c problems from problem-controller ===> ', 'color: yellowgreen; font-weight: bold;', problems, ' time stamp ===> ', new Date / 1e3 | 0);
+    console.log('%c problems from problem-controller ===> ', 'color: yellowgreen; font-weight: bold;', problems, ' time stamp ===> ', new Date() / 1e3 | 0);
     return problems;
   }
   catch (e) {

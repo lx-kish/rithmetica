@@ -1,6 +1,9 @@
 const upToTen = require('../operands-generators/up-to-ten');
 const singleDigitOperands = require('../operands-generators/single-digit-operands');
 const doubleAndSingleDigits = require('../operands-generators/double-and-single-digits');
+const doubleDigitAndTens = require('../operands-generators/double-digit-and-tens');
+const doubleDigitOperands = require('../operands-generators/double-digit-operands');
+const doubleDigitTidyngUp = require('../operands-generators/double-digit-tidying-up');
 
 /**
  * 
@@ -25,11 +28,14 @@ module.exports = (type) => {
       case 'double and single digit':
         processor = doubleAndSingleDigits;
         break;
-      case 'operations with tens':
-        processor = upToTen;
+      case 'double digit and tens':
+        processor = doubleDigitAndTens;
         break;
       case 'double digit operands':
-        processor = upToTen;
+        processor = doubleDigitOperands;
+        break;
+      case 'double digit tidying up':
+        processor = doubleDigitTidyngUp;
         break;
       case 'tens withing thousand':
         processor = upToTen;

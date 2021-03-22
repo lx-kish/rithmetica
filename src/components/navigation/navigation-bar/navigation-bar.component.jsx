@@ -1,7 +1,5 @@
 import React from 'react';
 
-import useClickOutside from '../../../utils/use-click-outside/useClickOutside';
-
 import BurgerIcon from '../burger icon/icon-burger.component';
 import SlideBar from '../slide bar/slide-bar.component';
 
@@ -16,23 +14,9 @@ const NavigationBar = (props) => {
 
 	const [ open, setOpen ] = React.useState(false);
 
-	const menuRef = React.useRef();
-
-	// useClickOutside(menuRef, setOpen(false));
-
-	// const setOpen = () => {
-	// 	setOpen(!open);
-	// };
-
-	// const hideSliderMenu = () => {
-	// 	setFullState({
-	// 		...fullState,
-	// 		open: false
-	// 	});
-	// };
-
 	return (
-		<div className="navigation" ref={menuRef}>
+		<div className="navigation">
+			<div className={`navigation__bg${open ? ' is-active' : ''}`} onClick={() => setOpen(false)}></div>
 			<BurgerIcon open={open} setOpen={() => setOpen(!open)} />
 			<SlideBar open={open} links={siteMenu} hideSliderMenu={() => setOpen(false)} />
 		</div>

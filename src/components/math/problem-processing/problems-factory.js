@@ -1,5 +1,5 @@
 const getInputPosition = require('./get-input-position');
-const getOperandsGenerator = require('./get-operands-generator');
+const operandsFactory = require('./operands-factory');
 
 /**
  * 
@@ -14,7 +14,7 @@ module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
     //   numberOfProblems
     // );
 
-    const processor = getOperandsGenerator(type);
+    const processor = operandsFactory(type);
 
     let problems = [];
 
@@ -63,12 +63,12 @@ module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
         });
       }
 
-      console.log(`%c ${operation} problem from "up-to-10" ===> `, 'color: blue; font-weight: bold;', problem);
+      console.log(`%c ${operation} problem from "problems-builder" ===> `, 'color: blue; font-weight: bold;', problem);
 
       problems.push(problem);
     }
 
-    console.log('%c problems from "up-to-10" ===> ', 'color: orange; font-weight: bold;', problems);
+    console.log('%c problems from "problems-builder" ===> ', 'color: orange; font-weight: bold;', problems);
 
     return problems;
   }

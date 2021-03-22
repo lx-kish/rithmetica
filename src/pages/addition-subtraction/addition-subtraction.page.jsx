@@ -9,7 +9,7 @@ import Settings from '../../components/addition-subtraction/settings/settings.co
 import Problems from '../../components/addition-subtraction/problems/problems.component';
 import Footer from '../../components/footer/footer.component';
 
-import problemController from '../../components/math/problem-controller';
+import problemController from '../../components/math/problems-controller';
 
 import useTraceUpdate from '../../utils/state-update-tracer/state-update-tracer';
 
@@ -19,7 +19,7 @@ const AdditionSubtraction = (props) => {
 	 * 
 	 * PROBLEM PARAMETRES: 
 	 * operation: <addition>, <subtraction>
-	 * missing: <result>, <missingFirst>, <missingLast>
+	 * missing: <result>, <missingFirst>, <missingLast>, <random>
 	 * type: <up-to-10>, ...
 	 * numberOfOperands: <Number>
 	 * quantity: <Number>
@@ -44,6 +44,13 @@ const AdditionSubtraction = (props) => {
 	// 	fullState.problemSettings
 	// );
 
+	/**
+	 * 
+	 * @param {Object} settings - passing parameter from the settings component
+	 * 
+	 * For details see: 
+	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
+	 */
 	const getSettings = (settings) => {
 
 		setFullState({

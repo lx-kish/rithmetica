@@ -71,21 +71,34 @@ const NumberInputField = (props) => {
 		}
 	};
 
+	/**
+	 * To ensure that the implicit browser state and state of children is reset,
+	 * you can add a key attribute to the root-level component returned by render;
+	 * when it changes, that component will be thrown away and created from scratch.
+	 * 
+	 * For more details see:
+	 * https://stackoverflow.com/questions/37946229/how-do-i-reset-the-defaultvalue-for-a-react-input
+	 * 
+	 * https://stackoverflow.com/a/21750576/275501
+	 */
+
 	return (
-		<input
-			type="number"
-			pattern="[0-9]*"
-			inputMode="numeric"
-			name={props.name || ""}
-			className={props.className}
-			placeholder=" "
-			min={parseInt(props.min)}
-			max={parseInt(props.max)}
-			step="1"
-			onKeyDown={(event) => handleKeyDown(event)}
-			onChange={props.onChange}
-			title=""
-		/>
+		<span key={props.index || props.max}>
+			<input
+				type="number"
+				pattern="[0-9]*"
+				inputMode="numeric"
+				name={props.name || ''}
+				className={props.className}
+				placeholder=" "
+				min={parseInt(props.min)}
+				max={parseInt(props.max)}
+				step="1"
+				onKeyDown={(event) => handleKeyDown(event)}
+				onChange={props.onChange}
+				title=""
+			/>
+		</span>
 	);
 };
 

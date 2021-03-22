@@ -1,12 +1,12 @@
 module.exports = [
   {
     name: 'Multiplication table',
-    link: '/rithmetica/multiplay-react',
+    link: '/rithmetica/multiplication-tab',
     // link: '/multiplay-react/multiplication-tab',
     className: ''
   },
   {
-    name: 'Addition/Subtraction',
+    name: 'Addition and Subtraction',
     link: '/rithmetica/addition-subtraction',
     // link: '/multiplay-react/addition-subtraction',
     className: ''

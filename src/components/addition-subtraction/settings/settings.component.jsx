@@ -82,6 +82,10 @@ const ProblemSettings = (props) => {
 		// );
 	};
 
+	/**
+	 * Passing data to the parent component. For more details see:
+	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
+	 */
 	const generate = () => {
 		props.sendData(fullState.problemSettings);
 	};
@@ -176,7 +180,16 @@ const ProblemSettings = (props) => {
 							<label htmlFor="settings-quantity" className="settings__label">
 								Qty:
 							</label>
+							{/* <input */}
 							<NumberInputField
+								// step="1"
+								// title=""
+								// placeholder=" "
+								// type="number"
+								// pattern="[0-9]*"
+								// inputMode="numeric"
+								index
+
 								name="quantity"
 								min="1"
 								max="100"
