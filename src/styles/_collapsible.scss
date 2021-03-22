@@ -5,6 +5,11 @@
 
     transition: all 0.4s ease-in;
 
+    &--settings {
+        max-width: 78vw;
+        margin: 0 auto;
+    }
+
     &__title {
         display: inline-block;
     }

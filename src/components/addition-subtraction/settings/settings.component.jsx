@@ -87,7 +87,16 @@ const ProblemSettings = (props) => {
 	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
 	 */
 	const generate = () => {
-		props.sendData(fullState.problemSettings);
+
+		//Validation of problemSettings
+		const validProblemSettings = fullState.problemSettings.filter(setting => 
+			setting.operation &&
+			setting.type &&
+			setting.missing &&
+			setting.quantity);
+
+		props.sendData(validProblemSettings);
+		// props.sendData(fullState.problemSettings);
 	};
 
 	const renderSettings = () => {
@@ -227,7 +236,7 @@ const ProblemSettings = (props) => {
 
 	return (
 		<React.Fragment>
-			<div className="collapsible">
+			<div className="collapsible collapsible--settings">
 				<h3 className="collapsible__title header__title--small">Settings</h3>
 				<input
 					type="checkbox"

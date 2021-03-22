@@ -2,15 +2,16 @@
 
   &__settings-group {
     color: var(--color-white);
-    border: 2px solid var(--color-white);
-    border-radius: .5rem;
+    // border: 2px solid var(--color-white);
+    // border-radius: .5rem;
     background-color: var(--color-background);
     // margin-bottom: 1rem;
 
     // display: inline-block;
-    width: 85vw;
+    min-width: 50vw;
+    // width: 85vw;
     margin: 0 auto 1rem;
-    max-height: 30vh;
+    // max-height: 30vh;
 
     display: flex;
     flex-direction: column;
@@ -19,13 +20,19 @@
   }
 
   &__line {
-    margin: .5rem 0;
+    margin: .5rem;
+    // margin: .5rem 0;
 
     display: flex;
+
+    padding: .5rem;
+    border: 2px solid var(--color-white);
+    border-radius: .5rem;
   }
 
   &__control {
-    display: inline-block;
+    display: flex;
+    // display: inline-block;
     position: relative;
     margin: 0 1.3rem;
 
@@ -39,10 +46,12 @@
     &-btn {
       padding: 0 .6rem;
       // font-family: inherit;
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 2.1rem;
+      // font-weight: bold;
       // line-height: 1.5;
       margin-left: .2rem;
+
+      border-radius: 50%;
     }
   }
 
