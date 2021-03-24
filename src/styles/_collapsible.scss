@@ -8,6 +8,18 @@
     &--settings {
         max-width: 78vw;
         margin: 0 auto;
+
+        @include respond(_920-960) {
+            max-width: 82vw;
+        }
+        
+        @include respond(_600-640) {
+            max-width: 90vw;
+        }
+
+        @include respond(_440-480) {
+            max-width: 95vw;
+        }
     }
 
     &__title {

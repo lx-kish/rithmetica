@@ -87,13 +87,10 @@ const ProblemSettings = (props) => {
 	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
 	 */
 	const generate = () => {
-
 		//Validation of problemSettings
-		const validProblemSettings = fullState.problemSettings.filter(setting => 
-			setting.operation &&
-			setting.type &&
-			setting.missing &&
-			setting.quantity);
+		const validProblemSettings = fullState.problemSettings.filter(
+			(setting) => setting.operation && setting.type && setting.missing && setting.quantity
+		);
 
 		props.sendData(validProblemSettings);
 		// props.sendData(fullState.problemSettings);
@@ -103,111 +100,114 @@ const ProblemSettings = (props) => {
 		return (
 			<React.Fragment>
 				{fullState.problemSettings.map((setting, index) => (
-					<div className="settings__line" key={index}>
-						<div className="settings__control">
-							<label htmlFor="settings-operation" className="settings__label">
-								Operation:
-							</label>
-							<select
-								name="operation"
-								id="settings-operation"
-								className="settings__select"
-								value={setting.operation}
-								onChange={setStateOnChange(index)}
-							>
-								<option defaultValue value>
-									-- select --
-								</option>
-								{operations.map((operation, i) => {
-									// console.log('%c operation from operations.map of settings ===> ', 'color: orangered; font-weight: bold;', operation === setting.operation, i);
-									return (
+					<div className="settings__setting" key={index}>
+						<div className="settings__row--mobile">
+							<div className="settings__control">
+								<label htmlFor="settings-operation" className="settings__label">
+									Operation:
+								</label>
+								<select
+									name="operation"
+									id="settings-operation"
+									className="settings__select"
+									value={setting.operation}
+									onChange={setStateOnChange(index)}
+								>
+									<option defaultValue value>
+										-- select --
+									</option>
+									{operations.map((operation, i) => {
+										// console.log('%c operation from operations.map of settings ===> ', 'color: orangered; font-weight: bold;', operation === setting.operation, i);
+										return (
+											<option
+												key={operation}
+												value={operation}
+												className="settings__option"
+												// {...(operation === setting.operation ? '' : 'default')}
+											>
+												{operation}
+											</option>
+										);
+									})}
+								</select>
+							</div>
+							<div className="settings__control">
+								<label htmlFor="settings-type" className="settings__label">
+									Type:
+								</label>
+								<select
+									name="type"
+									id="settings-type"
+									className="settings__select"
+									value={setting.type}
+									onChange={setStateOnChange(index)}
+								>
+									<option defaultValue value>
+										-- select --
+									</option>
+									{types.map((type, i) => (
 										<option
-											key={operation}
-											value={operation}
+											key={i}
+											value={type}
 											className="settings__option"
-											// {...(operation === setting.operation ? '' : 'default')}
+											// {...(type === setting.type ? '' : 'defaultValue')}
 										>
-											{operation}
+											{type}
 										</option>
-									);
-								})}
-							</select>
+									))}
+								</select>
+							</div>
 						</div>
-						<div className="settings__control">
-							<label htmlFor="settings-type" className="settings__label">
-								Type:
-							</label>
-							<select
-								name="type"
-								id="settings-type"
-								className="settings__select"
-								value={setting.type}
-								onChange={setStateOnChange(index)}
-							>
-								<option defaultValue value>
-									-- select --
-								</option>
-								{types.map((type, i) => (
-									<option
-										key={i}
-										value={type}
-										className="settings__option"
-										// {...(type === setting.type ? '' : 'defaultValue')}
-									>
-										{type}
+						<div className="settings__row--mobile">
+							<div className="settings__control">
+								<label htmlFor="settings-missing" className="settings__label">
+									Missing:
+								</label>
+								<select
+									name="missing"
+									id="settings-missing"
+									className="settings__select"
+									value={setting.missing}
+									onChange={setStateOnChange(index)}
+								>
+									<option defaultValue value>
+										-- select --
 									</option>
-								))}
-							</select>
+									{formats.map((missing, i) => (
+										<option
+											key={i}
+											value={missing}
+											className="settings__option"
+											// {...(missing === setting.missing ? '' : 'defaultValue')}
+										>
+											{missing}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="settings__control">
+								<label htmlFor="settings-quantity" className="settings__label">
+									Qty:
+								</label>
+								{/* <input */}
+								<NumberInputField
+									// step="1"
+									// title=""
+									// placeholder=" "
+									// type="number"
+									// pattern="[0-9]*"
+									// inputMode="numeric"
+									index
+									name="quantity"
+									min="1"
+									max="100"
+									className="settings__input"
+									value={setting.quantity}
+									onChange={setStateOnChange(index)}
+								/>
+							</div>
 						</div>
-						<div className="settings__control">
-							<label htmlFor="settings-missing" className="settings__label">
-								Missing:
-							</label>
-							<select
-								name="missing"
-								id="settings-missing"
-								className="settings__select"
-								value={setting.missing}
-								onChange={setStateOnChange(index)}
-							>
-								<option defaultValue value>
-									-- select --
-								</option>
-								{formats.map((missing, i) => (
-									<option
-										key={i}
-										value={missing}
-										className="settings__option"
-										// {...(missing === setting.missing ? '' : 'defaultValue')}
-									>
-										{missing}
-									</option>
-								))}
-							</select>
-						</div>
-						<div className="settings__control">
-							<label htmlFor="settings-quantity" className="settings__label">
-								Qty:
-							</label>
-							{/* <input */}
-							<NumberInputField
-								// step="1"
-								// title=""
-								// placeholder=" "
-								// type="number"
-								// pattern="[0-9]*"
-								// inputMode="numeric"
-								index
-
-								name="quantity"
-								min="1"
-								max="100"
-								className="settings__input"
-								value={setting.quantity}
-								onChange={setStateOnChange(index)}
-							/>
-						</div>
-						<div className="settings__control">
+						<div className="settings__control settings__control--btns">
 							<input
 								type="button"
 								value="+"
@@ -242,10 +242,7 @@ const ProblemSettings = (props) => {
 					type="checkbox"
 					className="collapsible__btn"
 					id="collapsible-toggle"
-					// checked={display}
 					checked={fullState.display}
-					// onChange={() =>
-					// 	setDisplay(!display	)}
 					onChange={() =>
 						setFullState({
 							...fullState,
@@ -255,6 +252,16 @@ const ProblemSettings = (props) => {
 				<label htmlFor="collapsible-toggle" className="collapsible__icon-box">
 					<IconChevronDown className="collapsible__icon" />
 				</label>
+				{/* <div
+					className="collapsible__icon-box"
+					onClick={() =>
+						setFullState({
+							...fullState,
+							display: !fullState.display
+						})}
+				>
+					<IconChevronDown className="collapsible__icon" />
+				</div> */}
 				<hr className="header__hr" />
 				{showCollapsible()}
 				<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />

@@ -16,10 +16,10 @@
     display: flex;
     flex-direction: column;
 
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 
-  &__line {
+  &__setting {
     margin: .5rem;
     // margin: .5rem 0;
 
@@ -28,6 +28,24 @@
     padding: .5rem;
     border: 2px solid var(--color-white);
     border-radius: .5rem;
+               
+    @include respond(_640-680) {
+      flex-direction: column;
+      border-radius: 1.5rem;
+    }
+               
+    @include respond(_400-440) {
+      flex-direction: column;
+      border-radius: 1.5rem;
+    }
+  }
+
+  &__row--mobile {
+    display: flex;
+    @include respond(_640-680) {
+      // flex-direction: column;
+      order: 2;
+    }
   }
 
   &__control {
@@ -42,9 +60,23 @@
     // border: 2px solid var(--color-white);
     // border-radius: .5rem;
     background-color: var(--color-background);
+            
+    @include respond(_640-680) {
+      flex-direction: column;
+      order: 2;
+    }
+    
+    &--btns {
+      @include respond(_640-680) {
+        flex-direction: row;
+        align-self: flex-end;
+        order: 1;
+      }
+    }
 
     &-btn {
-      padding: 0 .6rem;
+      padding: 0 .7rem;
+      // padding: 0 .6rem;
       // font-family: inherit;
       font-size: 2.1rem;
       // font-weight: bold;
@@ -52,6 +84,8 @@
       margin-left: .2rem;
 
       border-radius: 50%;
+
+      width: fit-content;
     }
   }
 
@@ -59,6 +93,11 @@
     // font-size: 1.5rem;
     // font-weight: bold;
     margin-right: 1rem;
+
+    @include respond(_600-640) {
+      align-self: flex-start;
+      font-size: .5rem;
+    }
   }
 
   &__select {
@@ -100,6 +139,7 @@
 
     @include respond(_360-400) {
       border-width: .5px;
+      width: 100%;
     }
 
     &[type="number"] {

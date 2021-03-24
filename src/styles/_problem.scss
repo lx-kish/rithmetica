@@ -13,6 +13,22 @@
   
   margin: auto 1rem;
   font-size: 5rem;
+
+  @include respond(_600-640) {
+    font-size: 8rem;
+  }
+
+  @include respond(_400-440) {
+    font-size: 10rem;
+  }
+  
+  @include respond(_320-360) {
+    font-size: 12rem;
+  }
+  
+  // @include respond(_0-320) {
+  //   font-size: 15rem;
+  // }
   
   &__main {
     color: var(--color-white);
@@ -31,6 +47,10 @@
     display: flex;
     // align-items: flex-end;
     justify-content: space-around;
+
+    @include respond(_600-640) {
+      flex-direction: column;
+    }
   }
 
   &__sign {
