@@ -9,14 +9,15 @@ import formats from '../missing';
 
 const ProblemSettings = (props) => {
 	const [ fullState, setFullState ] = React.useState({
-		problemSettings: [
-			{
-				operation: '',
-				type: '',
-				missing: '',
-				quantity: 0
-			}
-		],
+		problemSettings: props.settings,
+		// problemSettings: [
+		// 	{
+		// 		operation: '',
+		// 		type: '',
+		// 		missing: '',
+		// 		quantity: 0
+		// 	}
+		// ],
 		display: false
 	});
 
@@ -157,8 +158,6 @@ const ProblemSettings = (props) => {
 									))}
 								</select>
 							</div>
-						</div>
-						<div className="settings__row--mobile">
 							<div className="settings__control">
 								<label htmlFor="settings-missing" className="settings__label">
 									Missing:
@@ -185,6 +184,8 @@ const ProblemSettings = (props) => {
 									))}
 								</select>
 							</div>
+						</div>
+						<div className="settings__row--mobile">
 							<div className="settings__control">
 								<label htmlFor="settings-quantity" className="settings__label">
 									Qty:
@@ -206,22 +207,22 @@ const ProblemSettings = (props) => {
 									onChange={setStateOnChange(index)}
 								/>
 							</div>
-						</div>
-						<div className="settings__control settings__control--btns">
-							<input
-								type="button"
-								value="+"
-								className="btn settings__control-btn"
-								onClick={insertSettings(index)}
-								title="add line"
-							/>
-							<input
-								type="button"
-								value="&times;"
-								className="btn settings__control-btn"
-								onClick={deleteSettings(index)}
-								title="remove line"
-							/>
+							<div className="settings__control settings__control--btns">
+								<input
+									type="button"
+									value="+"
+									className="btn settings__control-btn"
+									onClick={insertSettings(index)}
+									title="add line"
+								/>
+								<input
+									type="button"
+									value="&times;"
+									className="btn settings__control-btn"
+									onClick={deleteSettings(index)}
+									title="remove line"
+								/>
+							</div>
 						</div>
 					</div>
 				))}

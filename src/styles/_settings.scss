@@ -5,9 +5,7 @@
     // border: 2px solid var(--color-white);
     // border-radius: .5rem;
     background-color: var(--color-background);
-    // margin-bottom: 1rem;
 
-    // display: inline-block;
     min-width: 50vw;
     // width: 85vw;
     margin: 0 auto 1rem;
@@ -17,11 +15,15 @@
     flex-direction: column;
 
     // overflow-y: auto;
+                   
+    @include respond(_640-680) {
+      margin: 0 auto 3rem;
+    }
   }
 
   &__setting {
-    margin: .5rem;
-    // margin: .5rem 0;
+    margin: .5rem 0;
+    // margin: .5rem;
 
     display: flex;
 
@@ -30,40 +32,48 @@
     border-radius: .5rem;
                
     @include respond(_640-680) {
-      flex-direction: column;
+      // flex-direction: column;
       border-radius: 1.5rem;
-    }
-               
-    @include respond(_400-440) {
-      flex-direction: column;
-      border-radius: 1.5rem;
+      padding: 2rem;
+      justify-content: space-between;
+
+      margin: 1.5rem 0;
     }
   }
 
   &__row--mobile {
     display: flex;
+    justify-content: space-between;
+    // justify-content: space-evenly;
+
     @include respond(_640-680) {
-      // flex-direction: column;
+      flex-direction: column;
       order: 2;
+
+      &:first-child {
+        width: 75%;
+      }
+      &:last-child {
+        justify-content: space-between;
+      }
     }
   }
 
   &__control {
     display: flex;
-    // display: inline-block;
     position: relative;
     margin: 0 1.3rem;
 
     font-size: 1.3rem;
     font-weight: bold;
     color: var(--color-white);
-    // border: 2px solid var(--color-white);
-    // border-radius: .5rem;
     background-color: var(--color-background);
             
     @include respond(_640-680) {
       flex-direction: column;
       order: 2;
+      margin: 0;
+
     }
     
     &--btns {
@@ -71,32 +81,50 @@
         flex-direction: row;
         align-self: flex-end;
         order: 1;
+        width: fit-content;
       }
     }
 
     &-btn {
       padding: 0 .7rem;
-      // padding: 0 .6rem;
-      // font-family: inherit;
+
       font-size: 2.1rem;
-      // font-weight: bold;
-      // line-height: 1.5;
-      margin-left: .2rem;
 
       border-radius: 50%;
 
       width: fit-content;
+
+      @include respond(_640-680) {
+        padding: 0 1.3rem;
+        font-size: 4.5rem;
+      }
+
+      @include respond(_400-440) {
+        padding: 0 1.8rem;
+        font-size: 7rem;
+      }
+
+      &:last-child {
+
+        margin-left: .2rem;
+
+        @include respond(_640-680) {
+          margin-left: 2rem;
+        }
+  
+        @include respond(_400-440) {
+          margin-left: 3rem;
+        }
+      }
     }
   }
 
   &__label {
-    // font-size: 1.5rem;
-    // font-weight: bold;
     margin-right: 1rem;
 
-    @include respond(_600-640) {
+    @include respond(_640-680) {
       align-self: flex-start;
-      font-size: .5rem;
+      font-size: 2rem;
     }
   }
 
@@ -111,6 +139,15 @@
     border-radius: .5rem;
     background-color: var(--color-background);
 
+    @include respond(_640-680) {
+      font-size: 3.5rem;
+      // font-size: 2.5rem;
+    }
+  
+    @include respond(_400-440) {
+      font-size: 4rem;
+    }
+
     &:active,
     &:focus {
       outline: none;
@@ -124,6 +161,14 @@
     border: 2px solid var(--color-white);
     border-radius: .5rem;
     background-color: var(--color-background);
+
+    @include respond(_640-680) {
+      font-size: 3.5rem;
+    }
+      
+    @include respond(_400-440) {
+      font-size: 4rem;
+    }
   }
 
   &__input {
@@ -137,9 +182,10 @@
     font-weight: bold;
     color: var(--color-white);
 
-    @include respond(_360-400) {
-      border-width: .5px;
+    @include respond(_640-680) {
       width: 100%;
+      font-size: 5rem;
+      // font-size: 2.5rem;
     }
 
     &[type="number"] {
@@ -154,30 +200,19 @@
     }
   }
 
-  &__btn-group {
-
-  }
-
   &__go-btn {
-    // display: inline-block;
-    // // height: 3rem;
-    // // width: 10rem;
-    // // margin-top: 1rem;
     padding: 0 3rem;
     font-family: inherit;
     font-size: 2rem;
     font-weight: bold;
     line-height: 1.5;
 
-    // color: var(--color-white);
-    // border: 2px solid var(--color-white);
-    // border-radius: .5rem;
-    // background-color: var(--color-background);
-    // cursor: pointer;
+    @include respond(_640-680) {
+      width: 75%;
+      font-size: 5rem;
+      border-radius: 1.5rem;
 
-    // &:active,
-    // &:focus {
-    //   outline: none;
-    // }
+      line-height: 2;
+    }
   }
 }

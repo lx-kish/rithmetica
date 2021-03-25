@@ -89,6 +89,7 @@ const NumberInputField = (props) => {
 				pattern="[0-9]*"
 				inputMode="numeric"
 				name={props.name || ''}
+				defaultValue={props.value || ''}
 				className={props.className}
 				placeholder=" "
 				min={parseInt(props.min)}

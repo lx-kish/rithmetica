@@ -11,6 +11,8 @@ import Footer from '../../components/footer/footer.component';
 
 import problemController from '../../components/math/problems-controller';
 
+import initialProblemSettings from './initial-problem-settings';
+
 import useTraceUpdate from '../../utils/state-update-tracer/state-update-tracer';
 
 const AdditionSubtraction = (props) => {
@@ -26,15 +28,16 @@ const AdditionSubtraction = (props) => {
    */
 
 	const [ fullState, setFullState ] = React.useState({
-		problemSettings: [
-			{
-				operation: 'addition',
-				type: 'up to ten',
-				missing: 'result',
-				numberOfOperands: 2,
-				quantity: 8
-			}
-		],
+		problemSettings: initialProblemSettings,
+		// problemSettings: [
+		// 	{
+		// 		operation: 'addition',
+		// 		type: 'up to ten',
+		// 		missing: 'result',
+		// 		numberOfOperands: 2,
+		// 		quantity: 8
+		// 	}
+		// ],
 		colsPerRow: 2
 	});
 
@@ -68,7 +71,7 @@ const AdditionSubtraction = (props) => {
 			<NavigationBar />
 			<Header />
 			<main className="problem__main">
-				<Settings sendData={getSettings} />
+				<Settings sendData={getSettings} settings={fullState.problemSettings}/>
 				<Problems problems={problemController(fullState.problemSettings)} columns={fullState.colsPerRow} />
 			</main>
 			<Footer />

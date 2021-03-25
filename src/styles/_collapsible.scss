@@ -42,6 +42,11 @@
     &__icon {
         height: 4rem;
         width: 4rem;
+        
+        @include respond(_640-680) {
+            height: 12rem;
+            width: 12rem;
+        }
 
         &-box {
             display: inline-block;
@@ -54,6 +59,12 @@
             cursor: pointer;
 
             transition: all 0.4s ease;
+
+                    
+            @include respond(_640-680) {
+                height: 7rem;
+                width: 7rem;
+            }
         }
     }
 
