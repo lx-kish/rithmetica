@@ -1,5 +1,22 @@
 .settings {
 
+  max-width: 78vw;
+  margin: 0 auto;
+  
+  text-align: center;
+
+  @include respond(_920-960) {
+      max-width: 82vw;
+  }
+  
+  @include respond(_600-640) {
+      max-width: 90vw;
+  }
+
+  @include respond(_440-480) {
+      max-width: 95vw;
+  }
+
   &__settings-group {
     color: var(--color-white);
     // border: 2px solid var(--color-white);
@@ -8,17 +25,22 @@
 
     min-width: 50vw;
     // width: 85vw;
-    margin: 0 auto 1rem;
+
     // max-height: 30vh;
 
     display: flex;
     flex-direction: column;
 
     // overflow-y: auto;
-                   
-    @include respond(_640-680) {
-      margin: 0 auto 3rem;
-    }
+
+
+    // &:not(:last-child) {
+    //   margin: 0 auto 1rem;
+                         
+    //   @include respond(_640-680) {
+    //     margin: 0 auto;
+    //   }
+    // }
   }
 
   &__setting {
@@ -95,8 +117,8 @@
       width: fit-content;
 
       @include respond(_640-680) {
-        padding: 0 1.3rem;
-        font-size: 4.5rem;
+        padding: 0 1.5rem;
+        font-size: 5.5rem;
       }
 
       @include respond(_400-440) {
@@ -207,12 +229,16 @@
     font-weight: bold;
     line-height: 1.5;
 
+    margin: .5rem auto;
+    
     @include respond(_640-680) {
       width: 75%;
       font-size: 5rem;
       border-radius: 1.5rem;
-
+      
       line-height: 2;
+
+      margin: 3rem auto;
     }
   }
 }

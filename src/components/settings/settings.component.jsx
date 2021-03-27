@@ -1,25 +1,16 @@
 import React from 'react';
 
-import Collapsible from '../../collapsible/collapsible.component';
-import IconChevronDown from '../../icons-svg/icon-chevron-down.component';
-import NumberInputField from '../../input-fields/number-input-field.component';
+import Collapsible from '../collapsible/collapsible.component';
+import IconChevronDown from '../icons-svg/icon-chevron-down.component';
+import NumberInputField from '../input-fields/number-input-field.component';
 
-import operations from '../operations';
-import types from '../types';
-import formats from '../missing';
+import operations from '../addition-subtraction/operations';
+import types from '../addition-subtraction/types';
+import formats from '../addition-subtraction/missing';
 
 const ProblemSettings = (props) => {
 	const [ fullState, setFullState ] = React.useState({
-		problemSettings: props.settings,
-		// problemSettings: [
-		// 	{
-		// 		operation: '',
-		// 		type: '',
-		// 		missing: '',
-		// 		quantity: 0
-		// 	}
-		// ],
-		display: false
+		problemSettings: props.settings
 	});
 
 	const insertSettings = (i) => (e) => {
@@ -98,9 +89,9 @@ const ProblemSettings = (props) => {
 		// props.sendData(fullState.problemSettings);
 	};
 
-	const renderSettings = () => {
+	const collapsibleContent = () => {
 		return (
-			<React.Fragment>
+			<div className="settings__settings-group">
 				{fullState.problemSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
 						<div className="settings__row--mobile">
@@ -227,82 +218,16 @@ const ProblemSettings = (props) => {
 						</div>
 					</div>
 				))}
-			</React.Fragment>
+			</div>
 		);
 	};
 
-	const showCollapsible = () => {
-		// return display ? <div className="settings__settings-group">{renderSettings()}</div> : null;
-		return fullState.display ? <div className="settings__settings-group">{renderSettings()}</div> : null;
-	};
-
 	return (
-		<React.Fragment>
-			<div className="collapsible collapsible--settings">
-				<h3 className="collapsible__title header__title--small">Settings</h3>
-				<input
-					type="checkbox"
-					className="collapsible__btn"
-					id="collapsible-toggle"
-					checked={fullState.display}
-					onChange={() =>
-						setFullState({
-							...fullState,
-							display: !fullState.display
-						})}
-				/>
-				<label htmlFor="collapsible-toggle" className="collapsible__icon-box">
-					<IconChevronDown className="collapsible__icon" />
-				</label>
-				{/* <div
-					className="collapsible__icon-box"
-					onClick={() =>
-						setFullState({
-							...fullState,
-							display: !fullState.display
-						})}
-				>
-					<IconChevronDown className="collapsible__icon" />
-				</div> */}
-				<hr className="header__hr" />
-				{showCollapsible()}
-				<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />
-
-				<hr className="header__hr" />
-			</div>
-			<Collapsible
-				title={`New collapsible component`}
-				id={`newId`}
-				content={
-					<div className="settings__control">
-						<label htmlFor="settings-type" className="settings__label">
-							Type:
-						</label>
-						<select
-							name="type"
-							id="settings-type"
-							className="settings__select"
-							value={''}
-							onChange={''}
-						>
-							<option defaultValue value>
-								-- select --
-							</option>
-							{types.map((type, i) => (
-								<option
-									key={i}
-									value={type}
-									className="settings__option"
-									// {...(type === setting.type ? '' : 'defaultValue')}
-								>
-									{type}
-								</option>
-							))}
-						</select>
-					</div>
-				}
-			/>
-		</React.Fragment>
+		<div className="settings">
+			<Collapsible title={`Settings`} id={`settings`} content={collapsibleContent()} />
+			<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />
+			<hr className="header__hr" />
+		</div>
 	);
 };
 
