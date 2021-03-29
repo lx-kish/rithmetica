@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Collapsible from '../collapsible/collapsible.component';
-import IconChevronDown from '../icons-svg/icon-chevron-down.component';
 import NumberInputField from '../input-fields/number-input-field.component';
 
 import operations from '../addition-subtraction/operations';
@@ -112,12 +111,7 @@ const ProblemSettings = (props) => {
 									{operations.map((operation, i) => {
 										// console.log('%c operation from operations.map of settings ===> ', 'color: orangered; font-weight: bold;', operation === setting.operation, i);
 										return (
-											<option
-												key={operation}
-												value={operation}
-												className="settings__option"
-												// {...(operation === setting.operation ? '' : 'default')}
-											>
+											<option key={operation} value={operation} className="settings__option">
 												{operation}
 											</option>
 										);
@@ -224,7 +218,13 @@ const ProblemSettings = (props) => {
 
 	return (
 		<div className="settings">
-			<Collapsible title={`Settings`} id={`settings`} content={collapsibleContent()} />
+			<Collapsible
+				title={`Settings`}
+				id={`settings`}
+				content={collapsibleContent()}
+				titleClassName={`collapsible__title--level-one`}
+				borderBottom={true}
+			/>
 			<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />
 			<hr className="header__hr" />
 		</div>

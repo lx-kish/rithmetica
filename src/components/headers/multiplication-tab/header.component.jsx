@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Collapsible from '../../collapsible/collapsible.component';
+import HowMultitabWorks from '../../descriptions/multiplication-table/how-multitab-works.component';
 
 import Toggler from '../../toggler/toggler.component';
 
@@ -31,41 +32,23 @@ const content = {
 };
 
 const Header = (props) => {
-
 	const collapsibleContent = () => {
-		return (
-			<div className="collapsible__part">
-				<p className="header__description">
-					{props.subtract ? (
-						`- Subtract the amount of dots under the field from the number from the left.`
-					) : (
-						`- Add the amount of dots under the field to the number from the left.`
-					)}
-					<br />
-					- Write an answer at the field above.<br />
-					- Right answer colors <b>white</b>.<br />
-					- Wrong answer colors{' '}
-					<span className="three">
-						<b>red</b>
-					</span>.<br />
-					- Move to the next field and repeate.
-				</p>
-			</div>
-		);
+		return <HowMultitabWorks />;
 	};
 
 	return (
 		<header className="header">
 			<h1 className="header__title">Multiplication table</h1>
 			<h3 className="header__title--small">learn multiplication using addition and subtraction</h3>
-            <hr className="header__hr" />
+			<hr className="header__hr" />
 			<Collapsible
-				title={`How to use`}
+				title={`How it works`}
 				id={`multitable-usage`}
 				content={collapsibleContent()}
+				titleClassName={`collapsible__title--level-one`}
+				borderBottom={true}
 				// collapsibleClassName={`collapsible--settings`}
 			/>
-			{/* <hr className="header__hr" /> */}
 			<Toggler
 				{...content.togglerAddSubtract}
 				checked={props.subtract}
