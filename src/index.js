@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
-// import { BrowserRouter } from 'react-router-dom';
+// import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import './index.scss';
 
@@ -12,11 +12,11 @@ import Routes from './routes';
 ReactDOM.render(
   <React.StrictMode>
 
-    <HashRouter>
-    {/* <BrowserRouter> */}
+    {/* <HashRouter> */}
+    <BrowserRouter>
       <Routes />
-    </HashRouter>
-    {/* </BrowserRouter> */}
+    {/* </HashRouter> */}
+    </BrowserRouter>
     {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
