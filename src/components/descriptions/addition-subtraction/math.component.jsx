@@ -64,10 +64,10 @@ const Math = (props) => {
 				<br />
 				<b>Equal Additions Strategy</b>
 				<br />
-				The equal additions strategy based on the fact, that if we add the same number to both minuend and subtrahend,
-				the difference between them will remain the same. So, we need just add number to round to the nearest tenth one
-				of the operand, and add the same number to the other operand. Then it will be far easyer to find the difference
-				between them. For example: 44 - 18; add 2 to both numbers: 46 - 20 = 26.<br />
+				The equal additions strategy based on the fact, that increasing both minuend and subtrahend by the same number
+				does not change the difference between them. So, we need just add number to round to the nearest tenth one of
+				the operand, and add the same number to the other operand. Then it will be far easyer to find the difference
+				between them. For example: 44 - 18; add 2 to both numbers: (44 + 2) - (18 + 2) = 46 - 20 = 26.<br />
 			</p>
 		</div>
 	);
