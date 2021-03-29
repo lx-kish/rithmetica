@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/rithmetica/static/css/main.9ee447a9.chunk.css",
+    "main.js": "/rithmetica/static/js/main.0558c7f9.chunk.js",
+    "main.js.map": "/rithmetica/static/js/main.0558c7f9.chunk.js.map",
+    "runtime-main.js": "/rithmetica/static/js/runtime-main.9fb88564.js",
+    "runtime-main.js.map": "/rithmetica/static/js/runtime-main.9fb88564.js.map",
+    "static/js/2.3d19d702.chunk.js": "/rithmetica/static/js/2.3d19d702.chunk.js",
+    "static/js/2.3d19d702.chunk.js.map": "/rithmetica/static/js/2.3d19d702.chunk.js.map",
+    "index.html": "/rithmetica/index.html",
+    "precache-manifest.123b85acc5c6b28e761d21dd0fd2b39c.js": "/rithmetica/precache-manifest.123b85acc5c6b28e761d21dd0fd2b39c.js",
+    "service-worker.js": "/rithmetica/service-worker.js",
+    "static/css/main.9ee447a9.chunk.css.map": "/rithmetica/static/css/main.9ee447a9.chunk.css.map",
+    "static/js/2.3d19d702.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.3d19d702.chunk.js.LICENSE.txt",
+    "static/media/shcema-big-screen-arrows.png": "/rithmetica/static/media/shcema-big-screen-arrows.f92264ab.png",
+    "static/media/shcema-small-screen-arrows.png": "/rithmetica/static/media/shcema-small-screen-arrows.356deef3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9fb88564.js",
+    "static/js/2.3d19d702.chunk.js",
+    "static/css/main.9ee447a9.chunk.css",
+    "static/js/main.0558c7f9.chunk.js"
+  ]
+}
