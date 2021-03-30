@@ -13,7 +13,8 @@ ReactDOM.render(
   <React.StrictMode>
 
     {/* <HashRouter> */}
-    <BrowserRouter>
+    <BrowserRouter >
+    {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
       <Routes />
     {/* </HashRouter> */}
     </BrowserRouter>
