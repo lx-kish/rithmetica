@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "aa89b491c510a0ef6849d5a597699e66",
+    "revision": "9e1616ad683528d77b4f7d4f28aa40ba",
     "url": "/rithmetica/index.html"
   },
   {
-    "revision": "c72db964f0fef1f56192",
+    "revision": "ea3b5b88dbb05f9b057b",
     "url": "/rithmetica/static/css/main.9ee447a9.chunk.css"
   },
   {
-    "revision": "c303276e92e56cc2a5ff",
-    "url": "/rithmetica/static/js/2.3d19d702.chunk.js"
+    "revision": "04dbb44f379b7fd7e4ef",
+    "url": "/rithmetica/static/js/2.454c1ce1.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/rithmetica/static/js/2.3d19d702.chunk.js.LICENSE.txt"
+    "url": "/rithmetica/static/js/2.454c1ce1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c72db964f0fef1f56192",
-    "url": "/rithmetica/static/js/main.f7c42e87.chunk.js"
+    "revision": "ea3b5b88dbb05f9b057b",
+    "url": "/rithmetica/static/js/main.799ad1af.chunk.js"
   },
   {
     "revision": "150d3e4eb9a55edad056",
