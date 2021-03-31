@@ -1,11 +1,10 @@
 import randomInteger from '../randoms/get-random-integer-in-a-range';
-// const randomInteger = require('../randoms/get-random-integer-in-a-range');
 
 /**
  * 
  */
 const getInputPosition = (numberOfOperands, missing) => {
-// module.exports = (numberOfOperands, missing) => {
+
   try {
 
     // console.log(

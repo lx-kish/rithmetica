@@ -11,13 +11,11 @@ import AdditionSubtraction from './pages/addition-subtraction/addition-subtracti
 /**
  * router adapted for github pages, see detailed eplanations at:
  * https://stackoverflow.com/questions/57883297/deploying-reactjs-website-on-github-pages-with-routing-results-in-404-error-on-r
+ * https://github.com/facebook/create-react-app/issues/1765
  */
 const Routes = () => {
 	return (
 		<Switch>
-			{/* <Route path="/rithmetica" exact component={MultiplicationTab} />
-			<Route path="/rithmetica/multiplication-tab" exact component={MultiplicationTab} />
-			<Route path="/rithmetica/addition-subtraction" exact component={AdditionSubtraction} /> */}
 			<Route path="/" exact component={MultiplicationTab} />
 			<Route path="/multiplication-tab" exact component={MultiplicationTab} />
 			<Route path="/addition-subtraction" exact component={AdditionSubtraction} />

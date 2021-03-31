@@ -1,13 +1,11 @@
 import getInputPosition from './get-input-position';
 import operandsFactory from './operands-factory';
-// const getInputPosition = require('./get-input-position');
-// const operandsFactory = require('./operands-factory');
 
 /**
  * 
  */
 const problemsFactory = (type, operation, numberOfOperands = 2, missing, quantity) => {
-// module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
+
   try {
     // console.log(
     //   '%c arguments of addition-problem-generator ===> ',
@@ -34,23 +32,6 @@ const problemsFactory = (type, operation, numberOfOperands = 2, missing, quantit
 
       // 7. Formatting the problem with the defined operands and operator.
       for (let i = 0; i < operands.length; i++) {
-
-        // console.log(
-        //   "(missing === 'result' && i === operands.length) || input === i ===> ",
-        //   (missing === 'result' && i === operands.length) || input === i,
-        //   " missing =",
-        //   missing,
-        //   " i =",
-        //   i,
-        //   " input =",
-        //   input,
-        //   " operands.length =",
-        //   operands.length, 
-        //   " operands[i] =",
-        //   operands[i],
-        //   " operands =",
-        //   operands
-        // );
 
         if (i > 0) {
           problem.push({

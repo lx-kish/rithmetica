@@ -7,18 +7,11 @@ import './index.scss';
 
 import Routes from './routes';
 
-// import App from './App';
-
 ReactDOM.render(
   <React.StrictMode>
-
-    {/* <HashRouter> */}
-    {/* <BrowserRouter > */}
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes />
-    {/* </HashRouter> */}
     </BrowserRouter>
-    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

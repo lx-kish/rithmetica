@@ -11,7 +11,7 @@
  * Using Math.round() will give you a non-uniform distribution!
  */
 const getRandomIntegerInARange = (incomeMin, incomeMax) => {
-// module.exports = (incomeMin, incomeMax) => {
+
   try {
     const min = Math.ceil(parseInt(incomeMin));
     const max = Math.floor(parseInt(incomeMax));

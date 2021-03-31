@@ -1,11 +1,10 @@
 import problemsFactory  from './problem-processing/problems-factory';
-// const problemsFactory = require('./problem-processing/problems-factory');
 
 /**
  * 
  */
  const problemsController = (problemDescriptions) => {
-// module.exports = (problemDescriptions) => {
+
   try {
     // console.log(
     //   '%c arguments of problem-controller ===> ',

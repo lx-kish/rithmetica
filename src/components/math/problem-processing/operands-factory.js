@@ -4,18 +4,12 @@ import doubleAndSingleDigits from '../operands-generators/double-and-single-digi
 import doubleDigitAndTens from '../operands-generators/double-digit-and-tens';
 import doubleDigitOperands from '../operands-generators/double-digit-operands';
 import doubleDigitTidyngUp from '../operands-generators/double-digit-tidying-up';
-// const upToTen = require('../operands-generators/up-to-ten');
-// const singleDigitOperands = require('../operands-generators/single-digit-operands');
-// const doubleAndSingleDigits = require('../operands-generators/double-and-single-digits');
-// const doubleDigitAndTens = require('../operands-generators/double-digit-and-tens');
-// const doubleDigitOperands = require('../operands-generators/double-digit-operands');
-// const doubleDigitTidyngUp = require('../operands-generators/double-digit-tidying-up');
 
 /**
  * 
  */
 const operandsFactory = (type) => {
-// module.exports = (type) => {
+
   try {
     // console.log(
     //   '%c arguments of problem-controller ===> ',

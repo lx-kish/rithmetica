@@ -1,11 +1,10 @@
 import randomInteger from '../randoms/get-random-integer-in-a-range';
-// const randomInteger = require('../randoms/get-random-integer-in-a-range');
 
 /**
  * 
  */
 const singleDigitOperands = (operation, numberOfOperands) => {
-// module.exports = (operation, numberOfOperands) => {
+
   try {
     // console.log(
     //   '%c arguments of addition-problem-generator ===> ',
