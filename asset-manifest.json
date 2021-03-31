@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/rithmetica/static/css/main.9ee447a9.chunk.css",
-    "main.js": "/rithmetica/static/js/main.799ad1af.chunk.js",
-    "main.js.map": "/rithmetica/static/js/main.799ad1af.chunk.js.map",
+    "main.js": "/rithmetica/static/js/main.e2928d0c.chunk.js",
+    "main.js.map": "/rithmetica/static/js/main.e2928d0c.chunk.js.map",
     "runtime-main.js": "/rithmetica/static/js/runtime-main.9fb88564.js",
     "runtime-main.js.map": "/rithmetica/static/js/runtime-main.9fb88564.js.map",
     "static/js/2.454c1ce1.chunk.js": "/rithmetica/static/js/2.454c1ce1.chunk.js",
     "static/js/2.454c1ce1.chunk.js.map": "/rithmetica/static/js/2.454c1ce1.chunk.js.map",
     "index.html": "/rithmetica/index.html",
-    "precache-manifest.955016e5e5782751cedb73608513999b.js": "/rithmetica/precache-manifest.955016e5e5782751cedb73608513999b.js",
+    "precache-manifest.0ea4e0209ccb043b32fac895a5d27203.js": "/rithmetica/precache-manifest.0ea4e0209ccb043b32fac895a5d27203.js",
     "service-worker.js": "/rithmetica/service-worker.js",
     "static/css/main.9ee447a9.chunk.css.map": "/rithmetica/static/css/main.9ee447a9.chunk.css.map",
     "static/js/2.454c1ce1.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.454c1ce1.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.9fb88564.js",
     "static/js/2.454c1ce1.chunk.js",
     "static/css/main.9ee447a9.chunk.css",
-    "static/js/main.799ad1af.chunk.js"
+    "static/js/main.e2928d0c.chunk.js"
   ]
 }
