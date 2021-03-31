@@ -1,9 +1,11 @@
-const randomInteger = require('../randoms/get-random-integer-in-a-range');
+import randomInteger from '../randoms/get-random-integer-in-a-range';
+// const randomInteger = require('../randoms/get-random-integer-in-a-range');
 
 /**
  * 
  */
-module.exports = (numberOfOperands, missing) => {
+const getInputPosition = (numberOfOperands, missing) => {
+// module.exports = (numberOfOperands, missing) => {
   try {
 
     // console.log(
@@ -33,4 +35,6 @@ module.exports = (numberOfOperands, missing) => {
   catch (e) {
     throw new Error(e);
   }
-}
+};
+
+export default getInputPosition;

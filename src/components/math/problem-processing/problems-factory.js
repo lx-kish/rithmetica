@@ -1,10 +1,13 @@
-const getInputPosition = require('./get-input-position');
-const operandsFactory = require('./operands-factory');
+import getInputPosition from './get-input-position';
+import operandsFactory from './operands-factory';
+// const getInputPosition = require('./get-input-position');
+// const operandsFactory = require('./operands-factory');
 
 /**
  * 
  */
-module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
+const problemsFactory = (type, operation, numberOfOperands = 2, missing, quantity) => {
+// module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
   try {
     // console.log(
     //   '%c arguments of addition-problem-generator ===> ',
@@ -75,4 +78,6 @@ module.exports = (type, operation, numberOfOperands = 2, missing, quantity) => {
   catch (e) {
     throw new Error(e);
   }
-}
+};
+
+export default problemsFactory;

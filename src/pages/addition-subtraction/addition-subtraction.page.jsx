@@ -9,7 +9,8 @@ import Settings from '../../components/settings/settings.component';
 import Problems from '../../components/addition-subtraction/problems/problems.component';
 import Footer from '../../components/footer/footer.component';
 
-import * as problemController from '../../components/math/problems-controller';
+import problemController from '../../components/math/problems-controller';
+// import * as problemController from '../../components/math/problems-controller';
 
 import initialProblemSettings from './initial-problem-settings';
 

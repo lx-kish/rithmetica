@@ -10,7 +10,8 @@
  * lower than max if max isn't an integer).
  * Using Math.round() will give you a non-uniform distribution!
  */
-module.exports = (incomeMin, incomeMax) => {
+const getRandomIntegerInARange = (incomeMin, incomeMax) => {
+// module.exports = (incomeMin, incomeMax) => {
   try {
     const min = Math.ceil(parseInt(incomeMin));
     const max = Math.floor(parseInt(incomeMax));
@@ -22,4 +23,6 @@ module.exports = (incomeMin, incomeMax) => {
   catch (e) {
     throw new Error(e);
   }
-}
+};
+
+export default getRandomIntegerInARange;

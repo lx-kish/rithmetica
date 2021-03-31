@@ -1,9 +1,11 @@
-const problemsFactory = require('./problem-processing/problems-factory');
+import problemsFactory  from './problem-processing/problems-factory';
+// const problemsFactory = require('./problem-processing/problems-factory');
 
 /**
  * 
  */
-module.exports = (problemDescriptions) => {
+ const problemsController = (problemDescriptions) => {
+// module.exports = (problemDescriptions) => {
   try {
     // console.log(
     //   '%c arguments of problem-controller ===> ',
@@ -30,4 +32,6 @@ module.exports = (problemDescriptions) => {
   catch (e) {
     throw new Error(e);
   }
-}
+};
+
+export default problemsController;
