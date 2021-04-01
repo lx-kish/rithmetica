@@ -26,10 +26,11 @@ const HowAdditionSubtractionWorks = (props) => {
 				<img className="description__image" srcSet={`${schemaBigScreen} 1x`} alt="Full Logo" />
 			</picture>
 			<p className="description__paragraph description__paragraph--level-two">
-				The Settings part contains one or multiple settings sections, which assign the specific details for the
-				problems. Each setting section provides options to set operation (addition or subtraction), missing operand
-				(first operand, second one, result or random - alltogether in arbitrary sequence), quantity of problems needed
-				to be generated, and type of problems.<br />
+				The Settings part contains one or multiple settings selections, which assign the specific details for the
+				problems generating. Each setting selection provides option to set operation (addition or subtraction), missing
+				operand (first operand, second one, result or random - alltogether in arbitrary sequence), possible problem type
+				(described further), and quantity of problems needed to be generated. If one of the selections is not selected, or
+				the quantity field remains empty or equal 0, the line of settings just skipping during problems generating.<br />
 				<br />
 				All the possible problem types are described below:<br />
 				<br />

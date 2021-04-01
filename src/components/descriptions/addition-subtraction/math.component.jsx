@@ -4,8 +4,7 @@ const Math = (props) => {
 	return (
 		<div className="description">
 			<p className="description__paragraph description__paragraph--level-two">
-				Below there are several addition and subtraction strategies for mental math performance, some of which are
-				described below:<br />
+				Below there are several strategies for performing mental addition and subtraction:<br />
 				<br />
 				<b>Addition</b>
 				<br />

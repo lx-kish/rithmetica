@@ -30,15 +30,6 @@ const AdditionSubtraction = (props) => {
 
 	const [ fullState, setFullState ] = React.useState({
 		problemSettings: initialProblemSettings,
-		// problemSettings: [
-		// 	{
-		// 		operation: 'addition',
-		// 		type: 'up to ten',
-		// 		missing: 'result',
-		// 		numberOfOperands: 2,
-		// 		quantity: 8
-		// 	}
-		// ],
 		colsPerRow: 2
 	});
 
