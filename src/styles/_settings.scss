@@ -117,6 +117,10 @@
 
       width: fit-content;
 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
       @include respond(_640-680) {
         padding: 0 1.5rem;
         font-size: 5.5rem;
@@ -144,7 +148,7 @@
 
   &__label {
     margin-right: 1rem;
-    
+
     display: flex;
     align-items: center;
 
@@ -164,6 +168,10 @@
     border: 2px solid var(--color-white);
     border-radius: .5rem;
     background-color: var(--color-background);
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     @include respond(_640-680) {
       font-size: 3.5rem;
