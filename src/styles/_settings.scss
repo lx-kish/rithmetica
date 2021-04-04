@@ -242,6 +242,10 @@
     line-height: 1.5;
 
     margin: .5rem auto;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     
     @include respond(_640-680) {
       width: 75%;
