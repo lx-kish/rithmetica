@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/rithmetica/static/css/main.eb394592.chunk.css",
+    "main.css": "/rithmetica/static/css/main.58b81704.chunk.css",
     "main.js": "/rithmetica/static/js/main.05a25264.chunk.js",
     "main.js.map": "/rithmetica/static/js/main.05a25264.chunk.js.map",
     "runtime-main.js": "/rithmetica/static/js/runtime-main.9fb88564.js",
@@ -8,9 +8,9 @@
     "static/js/2.454c1ce1.chunk.js": "/rithmetica/static/js/2.454c1ce1.chunk.js",
     "static/js/2.454c1ce1.chunk.js.map": "/rithmetica/static/js/2.454c1ce1.chunk.js.map",
     "index.html": "/rithmetica/index.html",
-    "precache-manifest.fa11e14e1fd93e4ca9dd032fea4b90aa.js": "/rithmetica/precache-manifest.fa11e14e1fd93e4ca9dd032fea4b90aa.js",
+    "precache-manifest.dca43307853d1c2e1713acf6c4a770db.js": "/rithmetica/precache-manifest.dca43307853d1c2e1713acf6c4a770db.js",
     "service-worker.js": "/rithmetica/service-worker.js",
-    "static/css/main.eb394592.chunk.css.map": "/rithmetica/static/css/main.eb394592.chunk.css.map",
+    "static/css/main.58b81704.chunk.css.map": "/rithmetica/static/css/main.58b81704.chunk.css.map",
     "static/js/2.454c1ce1.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.454c1ce1.chunk.js.LICENSE.txt",
     "static/media/shcema-big-screen-arrows.png": "/rithmetica/static/media/shcema-big-screen-arrows.f92264ab.png",
     "static/media/shcema-small-screen-arrows.png": "/rithmetica/static/media/shcema-small-screen-arrows.356deef3.png"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.9fb88564.js",
     "static/js/2.454c1ce1.chunk.js",
-    "static/css/main.eb394592.chunk.css",
+    "static/css/main.58b81704.chunk.css",
     "static/js/main.05a25264.chunk.js"
   ]
 }
