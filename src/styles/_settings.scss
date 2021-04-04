@@ -48,6 +48,7 @@
     // margin: .5rem;
 
     display: flex;
+    justify-content: space-evenly;
 
     padding: .5rem;
     border: 2px solid var(--color-white);
@@ -143,6 +144,9 @@
 
   &__label {
     margin-right: 1rem;
+    
+    display: flex;
+    align-items: center;
 
     @include respond(_640-680) {
       align-self: flex-start;
