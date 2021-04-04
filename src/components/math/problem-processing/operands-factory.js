@@ -1,9 +1,9 @@
 import upToTen from '../operands-generators/up-to-ten';
 import singleDigitOperands from '../operands-generators/single-digit-operands';
-import doubleAndSingleDigits from '../operands-generators/double-and-single-digits';
-import doubleDigitAndTens from '../operands-generators/double-digit-and-tens';
-import doubleDigitOperands from '../operands-generators/double-digit-operands';
-import doubleDigitTidyngUp from '../operands-generators/double-digit-tidying-up';
+import twoAndSingleDigits from '../operands-generators/two-and-single-digits';
+import twoDigitAndTens from '../operands-generators/two-digit-and-tens';
+import twoDigitOperands from '../operands-generators/two-digit-operands';
+import twoDigitTidyngUp from '../operands-generators/two-digit-tidying-up';
 
 /**
  * 
@@ -27,16 +27,16 @@ const operandsFactory = (type) => {
         processor = singleDigitOperands;
         break;
       case 'two- and single- digit':
-        processor = doubleAndSingleDigits;
+        processor = twoAndSingleDigits;
         break;
       case 'two-digit and tens':
-        processor = doubleDigitAndTens;
+        processor = twoDigitAndTens;
         break;
       case 'two-digit operands':
-        processor = doubleDigitOperands;
+        processor = twoDigitOperands;
         break;
       case 'two-digit tidying up':
-        processor = doubleDigitTidyngUp;
+        processor = twoDigitTidyngUp;
         break;
       // case 'tens withing thousand':
       //   processor = upToTen;

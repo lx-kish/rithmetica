@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Collapsible from '../../collapsible/collapsible.component';
+// import CountingOn from './addition-strategies/counting-on.component';
+
 const Math = (props) => {
 	return (
 		<div className="description">
@@ -11,11 +14,14 @@ const Math = (props) => {
 				<br />
 				<b>Counting On</b>
 				<br />
-				Counting On is a beginning mental math strategy. Counting on means that you start with the biggest number in an
-				equation, and then count up. For example, in the equation 5 + 3, you start with the "5" in the head, and then
-				count up, "6, 7, 8." This is important to start count from "5", but not like, "1, 2, 3, 4, 5…..6, 7, 8." It also
-				allowes to understand the commutative property of addition, where if an equation looks like this: "2 + 6," it
-				still should start with the bigger number (in this case, 6) and count up: "7, 8."<br />
+				Counting On is a beginning mental math strategy. First, find the biggest number in an equation. Then count up
+				until adding the lowest number. For example, in the equation<br />
+				4 + 3<br />
+				start with the "4" in the head, and then count up, "5, 6, 7." This is important to start count from "4", but not
+				like, "1, 2, 3, 4...5, 6, 7." It also introduces the commutative property of addition, which says that changing
+				the order of addends does not change the sum. So if an equation looks like this<br />
+				2 + 6<br />
+				it still should start with the bigger number (in this case, 6) and count up: "7, 8."<br />
 				<br />
 				<b>Make a Ten</b>
 				<br />
@@ -63,7 +69,7 @@ const Math = (props) => {
 				<br />
 				<b>Equal Additions Strategy</b>
 				<br />
-				The equal additions strategy based on the fact, that increasing both minuend and subtrahend by the same number
+				Equal Additions Strategy based on the fact, that increasing both minuend and subtrahend by the same number
 				does not change the difference between them. So, we need just add number to round to the nearest tenth one of
 				the operand, and add the same number to the other operand. Then it will be far easyer to find the difference
 				between them. For example: 44 - 18; add 2 to both numbers: (44 + 2) - (18 + 2) = 46 - 20 = 26.<br />

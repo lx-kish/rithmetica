@@ -131,6 +131,11 @@
         font-size: 7rem;
       }
 
+      @include respond(_0-320) {
+        padding: 0 2.2rem;
+        font-size: 8rem;
+      }
+
       &:last-child {
 
         margin-left: .2rem;

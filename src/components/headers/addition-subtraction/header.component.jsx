@@ -19,20 +19,20 @@ const Header = (props) => {
 				<Collapsible
 					title={`Math Basics`}
 					id={`math`}
-					collapsibleClassName={``}
-					titleClassName={`collapsible__title--level-two`}
-					iconBoxClassName={``}
-					iconClassName={``}
+					collapsibleClassName={`collapsible`}
+					titleClassName={`collapsible__title collapsible__title--level-two`}
+					iconBoxClassName={`collapsible__icon-box`}
+					iconClassName={`collapsible__icon`}
 					content={<Math />}
 					borderBottom={true}
 				/>
 				<Collapsible
 					title={`How it works`}
 					id={`how-it-works`}
-					collapsibleClassName={``}
-					titleClassName={`collapsible__title--level-two`}
-					iconBoxClassName={``}
-					iconClassName={``}
+					collapsibleClassName={`collapsible`}
+					titleClassName={`collapsible__title collapsible__title--level-two`}
+					iconBoxClassName={`collapsible__icon-box`}
+					iconClassName={`collapsible__icon`}
 					content={<HowAdditionSubtractionWorks />}
 					borderBottom={true}
 				/>
@@ -49,7 +49,11 @@ const Header = (props) => {
 				title={`About`}
 				id={`about`}
 				content={collapsibleContent()}
-                titleClassName={`collapsible__title--level-one`}
+                collapsibleClassName={`collapsible`}
+                titleClassName={`collapsible__title collapsible__title--level-one`}
+                iconBoxClassName={`collapsible__icon-box`}
+                iconClassName={`collapsible__icon`}
+                // titleClassName={`collapsible__title--level-one`}
 				// collapsibleClassName={`collapsible--settings`}
 			/>
 		</header>

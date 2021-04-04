@@ -45,7 +45,10 @@ const Header = (props) => {
 				title={`How it works`}
 				id={`multitable-usage`}
 				content={collapsibleContent()}
-				titleClassName={`collapsible__title--level-one`}
+				collapsibleClassName={`collapsible`}
+				titleClassName={`collapsible__title collapsible__title--level-one`}
+				iconBoxClassName={`collapsible__icon-box`}
+				iconClassName={`collapsible__icon`}
 				borderBottom={true}
 				// collapsibleClassName={`collapsible--settings`}
 			/>
