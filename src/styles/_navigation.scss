@@ -49,6 +49,11 @@
     width: 10rem;
     margin: 5rem 0 0 5rem;
   }
+          
+  @include respond(_0-320) {
+    width: 12rem;
+    margin: 5rem 0 0 5rem;
+  }
 
   &.is-active .line:nth-child(2) {
     opacity: 0;
@@ -158,12 +163,8 @@
     height: 0.8rem;
   }
 
-  @include respond(_320-360) {
-    height: 1rem;
-  }
-
   @include respond(_0-320) {
-    height: 1.2rem;
+    height: 0.9rem;
   }
 
   &:nth-child(2) {
@@ -195,7 +196,11 @@
     }
     
     @include respond(_320-360) {
-      margin: 1.8rem auto;
+      margin: 1.9rem auto;
+    }
+
+    @include respond(_0-320) {
+      margin: 2.2rem auto;
     }
   }
 }

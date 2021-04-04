@@ -26,21 +26,21 @@ const operandsFactory = (type) => {
       case 'single digit operands':
         processor = singleDigitOperands;
         break;
-      case 'double and single digit':
+      case 'two- and single- digit':
         processor = doubleAndSingleDigits;
         break;
-      case 'double digit and tens':
+      case 'two-digit and tens':
         processor = doubleDigitAndTens;
         break;
-      case 'double digit operands':
+      case 'two-digit operands':
         processor = doubleDigitOperands;
         break;
-      case 'double digit tidying up':
+      case 'two-digit tidying up':
         processor = doubleDigitTidyngUp;
         break;
-      case 'tens withing thousand':
-        processor = upToTen;
-        break;
+      // case 'tens withing thousand':
+      //   processor = upToTen;
+      //   break;
       default:
         break;
     }
