@@ -18,9 +18,9 @@ const Collapsible = (props) => {
 	};
 
 	return (
-		<div className={`collapsible ${props?.collapsibleClassName}`}>
+		<div className={props?.collapsibleClassName}>
 			{/* <hr className="header__hr" /> */}
-			<h3 className={`collapsible__title ${props?.titleClassName}`}>{props.title}</h3>
+			<h3 className={props?.titleClassName}>{props.title}</h3>
 			<input
 				type="checkbox"
 				className="collapsible__btn"
@@ -28,8 +28,8 @@ const Collapsible = (props) => {
 				checked={display}
 				onChange={() => setDisplay(!display)}
 			/>
-			<label htmlFor={props.id} className={`collapsible__icon-box ${props?.iconBoxClassName}`}>
-				<IconChevronDown className={`collapsible__icon ${props?.iconClassName}`} />
+			<label htmlFor={props.id} className={props?.iconBoxClassName}>
+				<IconChevronDown className={props?.iconClassName} />
 			</label>
 			<hr className="header__hr" />
 			{showCollapsible()}

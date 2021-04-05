@@ -17,10 +17,10 @@
     &--level-two {
       padding: 1rem 10rem;
       
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 300;
       @include respond(_640-680) {
-        font-size: 3.8rem;
+        font-size: 3.2rem;
       }
     }
   }

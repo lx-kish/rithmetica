@@ -17,14 +17,19 @@ const Header = (props) => {
 				</div>
 				<hr className="header__hr" />
 				<Collapsible
-					title={`Math Basics`}
+					title={`Math Theory`}
 					id={`math`}
 					collapsibleClassName={`collapsible`}
 					titleClassName={`collapsible__title collapsible__title--level-two`}
 					iconBoxClassName={`collapsible__icon-box`}
 					iconClassName={`collapsible__icon`}
-					content={<Math />}
-					borderBottom={true}
+					content={
+						<Math
+							className="description"
+							paragraphClassName="description__paragraph description__paragraph--level-two"
+						/>
+					}
+					borderBottom={false}
 				/>
 				<Collapsible
 					title={`How it works`}
@@ -49,11 +54,11 @@ const Header = (props) => {
 				title={`About`}
 				id={`about`}
 				content={collapsibleContent()}
-                collapsibleClassName={`collapsible`}
-                titleClassName={`collapsible__title collapsible__title--level-one`}
-                iconBoxClassName={`collapsible__icon-box`}
-                iconClassName={`collapsible__icon`}
-                // titleClassName={`collapsible__title--level-one`}
+				collapsibleClassName={`collapsible`}
+				titleClassName={`collapsible__title collapsible__title--level-one`}
+				iconBoxClassName={`collapsible__icon-box`}
+				iconClassName={`collapsible__icon`}
+				// titleClassName={`collapsible__title--level-one`}
 				// collapsibleClassName={`collapsible--settings`}
 			/>
 		</header>

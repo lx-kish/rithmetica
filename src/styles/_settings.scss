@@ -174,15 +174,17 @@
     border-radius: .5rem;
     background-color: var(--color-background);
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat transparent;
-
     @include respond(_640-680) {
       font-size: 3.5rem;
       // font-size: 2.5rem;
-    }
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      // background: url(../components/icons-svg/icon-chevron-down.svg) 96% / 20% #fff no-repeat transparent;
+      // background: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat transparent;
+      // background-image: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat transparent;
+      }
   
     @include respond(_400-440) {
       font-size: 4rem;

@@ -2,8 +2,8 @@ import React from 'react';
 
 const TwoDigitOperands = (props) => {
 	return (
-		<div className="description">
-			<p className={`description__paragraph description__paragraph--level-two ${props.className}`}>
+		<div className={props.className}>
+			<p className={props.paragraphClassName}>
 				Compensation involves adding more than you need and then subtracting the extra off that you have added. This
 				strategy is useful for adding numbers that are close to a multiple of 10, such as numbers that end in 1 or 2, or
 				8 or 9. The number to be added is rounded to a multiple of 10 plus or minus a small number. For example, adding
