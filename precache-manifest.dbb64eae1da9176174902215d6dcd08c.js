@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8abdf7b4e9c53cf9e063cb478a2157fb",
+    "revision": "e3a1e1ba999e53257ba2b693d9cedc5b",
     "url": "/rithmetica/index.html"
   },
   {
-    "revision": "1ee7974676cbbcdb6a60",
-    "url": "/rithmetica/static/css/main.f47c697d.chunk.css"
+    "revision": "7e708c0dadaecceaafa0",
+    "url": "/rithmetica/static/css/main.55cc4118.chunk.css"
   },
   {
-    "revision": "9f72c12f6a418160a780",
-    "url": "/rithmetica/static/js/2.daaebc18.chunk.js"
+    "revision": "169e6a7a9625d9c1ba2b",
+    "url": "/rithmetica/static/js/2.9e4050a8.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/rithmetica/static/js/2.daaebc18.chunk.js.LICENSE.txt"
+    "url": "/rithmetica/static/js/2.9e4050a8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1ee7974676cbbcdb6a60",
-    "url": "/rithmetica/static/js/main.96663e06.chunk.js"
+    "revision": "7e708c0dadaecceaafa0",
+    "url": "/rithmetica/static/js/main.e9d16953.chunk.js"
   },
   {
     "revision": "150d3e4eb9a55edad056",
