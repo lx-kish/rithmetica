@@ -82,7 +82,6 @@ const ProblemSettings = (props) => {
 
 	const setStateOnOperationChange = (i) => (e) => {
 		const newProblemSettings = [ ...fullState.problemSettings ];
-		// const value = e.target.value === 'true' ? '' : e.target.value;
 		newProblemSettings[i]['operation'] = e.target.value;
 		setFullState({
 			...fullState,
@@ -122,7 +121,7 @@ const ProblemSettings = (props) => {
 				{fullState.problemSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
 						<div className="settings__row--mobile">
-							<div className="settings__control">
+							<div className="settings__control settings__control--radio">
 								<input
 									type="radio"
 									id={`addition-${index}`}
@@ -131,7 +130,7 @@ const ProblemSettings = (props) => {
 									value="addition"
 									className="settings__input"
 									onChange={setStateOnOperationChange(index)}
-									checked={setting.operation === "addition"}
+									checked={setting.operation === 'addition'}
 								/>
 								<label htmlFor={`addition-${index}`}>addition</label>
 								<input
@@ -142,7 +141,7 @@ const ProblemSettings = (props) => {
 									value="subtraction"
 									className="settings__input"
 									onChange={setStateOnOperationChange(index)}
-									checked={setting.operation === "subtraction"}
+									checked={setting.operation === 'subtraction'}
 								/>
 								<label htmlFor={`subtraction-${index}`}>subtraction</label>
 
