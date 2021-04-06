@@ -2,9 +2,9 @@
 
   &__paragraph {
     text-align: justify;
+    padding: 1rem 10rem;
     
     &--level-one {
-      padding: 1rem 10rem;
 
       font-size: 2rem;
       font-weight: 300;
@@ -15,7 +15,24 @@
     }
 
     &--level-two {
-      padding: 1rem 10rem;
+      
+      font-size: 1.5rem;
+      font-weight: 300;
+      @include respond(_640-680) {
+        font-size: 3.2rem;
+      }
+    }
+
+    &--level-three {
+      
+      font-size: 1.5rem;
+      font-weight: 300;
+      @include respond(_640-680) {
+        font-size: 3.2rem;
+      }
+    }
+
+    &--level-four {
       
       font-size: 1.5rem;
       font-weight: 300;

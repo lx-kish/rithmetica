@@ -39,7 +39,7 @@ const Header = (props) => {
 					iconBoxClassName={`collapsible__icon-box`}
 					iconClassName={`collapsible__icon`}
 					content={<HowAdditionSubtractionWorks />}
-					borderBottom={true}
+					borderBottom={false}
 				/>
 			</React.Fragment>
 		);
@@ -53,13 +53,12 @@ const Header = (props) => {
 			<Collapsible
 				title={`About`}
 				id={`about`}
-				content={collapsibleContent()}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-one`}
 				iconBoxClassName={`collapsible__icon-box`}
 				iconClassName={`collapsible__icon`}
-				// titleClassName={`collapsible__title--level-one`}
-				// collapsibleClassName={`collapsible--settings`}
+				content={collapsibleContent()}
+				borderBottom={false}
 			/>
 		</header>
 	);

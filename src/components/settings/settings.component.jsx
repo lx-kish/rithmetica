@@ -16,7 +16,7 @@ const ProblemSettings = (props) => {
 		const newProblemSettings = [
 			...fullState.problemSettings.slice(0, i + 1),
 			{
-				operation: '',
+				operation: 'addition',
 				type: '',
 				missing: '',
 				quantity: 0
@@ -24,13 +24,13 @@ const ProblemSettings = (props) => {
 			...fullState.problemSettings.slice(i + 1)
 		];
 
-		console.log(
-			'%c fullState.problemSettings after addSetting of settings ===> ',
-			'color: orangered; font-weight: bold;',
-			i,
-			e.target.tagName,
-			fullState.problemSettings
-		);
+		// console.log(
+		// 	'%c fullState.problemSettings after addSetting of settings ===> ',
+		// 	'color: orangered; font-weight: bold;',
+		// 	i,
+		// 	e.target.tagName,
+		// 	fullState.problemSettings
+		// );
 
 		setFullState({
 			...fullState,
@@ -58,7 +58,9 @@ const ProblemSettings = (props) => {
 	const setStateOnChange = (i) => (e) => {
 		const newProblemSettings = [ ...fullState.problemSettings ];
 		const value = e.target.value === 'true' ? '' : e.target.value;
+		// const fieldName = e.target.name.indexOf('opeartion') ? 'opeartion' : e.target.name;
 		// const value = e.target.tagName === 'SELECT' ? (e.target.value === 'true' ? '' : e.target.value) : e.target.value;
+		// newProblemSettings[i][fieldName] = value;
 		newProblemSettings[i][e.target.name] = value;
 		setFullState({
 			...fullState,
@@ -69,7 +71,33 @@ const ProblemSettings = (props) => {
 		// 	'%c operation from select tag of settings ===> ',
 		// 	'color: orangered; font-weight: bold;',
 		// 	i,
-		// 	e.target.tagName,
+		// 	e.target.type,
+		// 	e.target.id,
+		// 	e.target.name,
+		// 	e.target.checked,
+		// 	newProblemSettings[i][e.target.name],
+		// 	fullState.problemSettings
+		// );
+	};
+
+	const setStateOnOperationChange = (i) => (e) => {
+		const newProblemSettings = [ ...fullState.problemSettings ];
+		// const value = e.target.value === 'true' ? '' : e.target.value;
+		newProblemSettings[i]['operation'] = e.target.value;
+		setFullState({
+			...fullState,
+			problemSettings: newProblemSettings
+		});
+
+		// console.log(
+		// 	'%c operation from select tag of settings ===> ',
+		// 	'color: orangered; font-weight: bold;',
+		// 	i,
+		// 	e.target.type,
+		// 	e.target.id,
+		// 	e.target.name,
+		// 	e.target.checked,
+		// 	newProblemSettings[i][e.target.name],
 		// 	fullState.problemSettings
 		// );
 	};
@@ -95,7 +123,30 @@ const ProblemSettings = (props) => {
 					<div className="settings__setting" key={index}>
 						<div className="settings__row--mobile">
 							<div className="settings__control">
-								<label htmlFor="settings-operation" className="settings__label">
+								<input
+									type="radio"
+									id={`addition-${index}`}
+									name={`operation-${index}`}
+									// name="operation"
+									value="addition"
+									className="settings__input"
+									onChange={setStateOnOperationChange(index)}
+									checked={setting.operation === "addition"}
+								/>
+								<label htmlFor={`addition-${index}`}>addition</label>
+								<input
+									type="radio"
+									id={`subtraction-${index}`}
+									name={`operation-${index}`}
+									// name="operation"
+									value="subtraction"
+									className="settings__input"
+									onChange={setStateOnOperationChange(index)}
+									checked={setting.operation === "subtraction"}
+								/>
+								<label htmlFor={`subtraction-${index}`}>subtraction</label>
+
+								{/* <label htmlFor="settings-operation" className="settings__label">
 									Operation:
 								</label>
 								<select
@@ -116,7 +167,29 @@ const ProblemSettings = (props) => {
 											</option>
 										);
 									})}
-								</select>
+								</select> */}
+								{/* <label htmlFor="settings-operation" className="settings__label">
+									Operation:
+								</label>
+								<select
+									name="operation"
+									id="settings-operation"
+									className="settings__select"
+									value={setting.operation}
+									onChange={setStateOnChange(index)}
+								>
+									<option defaultValue value>
+										-- select --
+									</option>
+									{operations.map((operation, i) => {
+										// console.log('%c operation from operations.map of settings ===> ', 'color: orangered; font-weight: bold;', operation === setting.operation, i);
+										return (
+											<option key={operation} value={operation} className="settings__option">
+												{operation}
+											</option>
+										);
+									})}
+								</select> */}
 							</div>
 							<div className="settings__control">
 								<label htmlFor="settings-type" className="settings__label">

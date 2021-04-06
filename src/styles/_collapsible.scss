@@ -24,21 +24,39 @@
 
     &__title {
         display: inline-block;
-
         
         &--level-one {
-            font-size: 2.5rem;
+            font-size: 3.2rem;
+            // font-size: 2.5rem;
 
             @include respond(_640-680) {
-                font-size: 4rem;
+                font-size: 5rem;
+                // font-size: 4rem;
             }
         }
         
         &--level-two {
+            font-size: 2.5rem;
+
+            @include respond(_640-680) {
+                font-size: 4rem;
+                // font-size: 3.2rem;
+            }
+        }
+        
+        &--level-three {
             font-size: 2rem;
 
             @include respond(_640-680) {
                 font-size: 3.2rem;
+            }
+        }
+        
+        &--level-four {
+            font-size: 1.6rem;
+
+            @include respond(_640-680) {
+                font-size: 2.7rem;
             }
         }
     }
