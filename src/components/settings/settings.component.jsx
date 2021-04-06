@@ -82,7 +82,7 @@ const ProblemSettings = (props) => {
 
 	const setStateOnRadioChange = (i) => (e) => {
 		const newProblemSettings = [ ...fullState.problemSettings ];
-		const fieldName = e.target.name.indexOf('opeartion') >= 0 ? 'opeartion' : 'missing';
+		const fieldName = e.target.name.indexOf('operation') >= 0 ? 'operation' : 'missing';
 		newProblemSettings[i][fieldName] = e.target.value;
 		setFullState({
 			...fullState,
@@ -95,9 +95,10 @@ const ProblemSettings = (props) => {
 		// 	i,
 		// 	e.target.type,
 		// 	e.target.id,
+		// 	e.target.name,
 		// 	e.target.name.indexOf('opeartion'),
 		// 	e.target.checked,
-		// 	newProblemSettings[i][e.target.name],
+		// 	newProblemSettings[i][fieldName],
 		// 	fullState.problemSettings
 		// );
 	};

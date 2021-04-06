@@ -90,7 +90,7 @@
 
       &:not(:first-child) {
         @include respond(_640-680) {
-          margin-top: 3rem;
+          margin-top: 4rem;
         }  
       }
     }
@@ -251,7 +251,7 @@
         background-color: transparent;
         outline: none;
         border: 2px solid var(--color-white);
-        border-radius: .5rem;
+        // border-radius: .5rem;
         text-align: center;
         font-family: inherit;
         font-size: 1.3rem;
@@ -279,8 +279,6 @@
         color: var(--color-background);
       }
     }
-
-
   }
 
   &__go-btn {
