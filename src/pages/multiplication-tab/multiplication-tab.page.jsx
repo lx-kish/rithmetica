@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useClickOutside from '../../utils/use-click-outside/useClickOutside';
+// import useClickOutside from '../../utils/use-click-outside/useClickOutside';
 
 import Header from '../../components/headers/multiplication-tab/header.component';
 import Footer from '../../components/footer/footer.component';

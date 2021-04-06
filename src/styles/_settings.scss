@@ -83,8 +83,15 @@
     }
 
     &--radio {
+
       @include respond(_640-680) {
         flex-direction: row;
+      }
+
+      &:not(:first-child) {
+        @include respond(_640-680) {
+          margin-top: 3rem;
+        }  
       }
     }
     
