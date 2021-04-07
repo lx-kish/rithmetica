@@ -9,8 +9,8 @@ import TwoDigitsAndTens from './problem-types/two-digit-and-tens.component';
 import TwoDigitsOperands from './problem-types/two-digit-operands.component';
 import TwoDigitsTidingUp from './problem-types/two-digit-tidying-up.component';
 
-import schemaBigScreen from './shcema-big-screen-arrows.png';
-import schemaSmallScreen from './shcema-small-screen-arrows.png';
+import schemaSmallScreen from './schema-arrows--small.png';
+import schemaBigScreen from './shcema-arrows--big.png';
 
 const HowAdditionSubtractionWorks = (props) => {
 	return (
