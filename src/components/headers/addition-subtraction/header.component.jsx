@@ -21,8 +21,8 @@ const Header = (props) => {
 					id={`math`}
 					collapsibleClassName={`collapsible`}
 					titleClassName={`collapsible__title collapsible__title--level-two`}
-					iconBoxClassName={`collapsible__icon-box`}
-					iconClassName={`collapsible__icon`}
+					iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-two`}
+					iconClassName={`collapsible__icon--level-two`}
 					content={
 						<Math
 							className="description"
@@ -36,8 +36,8 @@ const Header = (props) => {
 					id={`how-it-works`}
 					collapsibleClassName={`collapsible`}
 					titleClassName={`collapsible__title collapsible__title--level-two`}
-					iconBoxClassName={`collapsible__icon-box`}
-					iconClassName={`collapsible__icon`}
+					iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-two`}
+					iconClassName={`collapsible__icon--level-two`}
 					content={<HowAdditionSubtractionWorks />}
 					borderBottom={false}
 				/>
@@ -55,8 +55,8 @@ const Header = (props) => {
 				id={`about`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-one`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
+				iconClassName={`collapsible__icon--level-one`}
 				content={collapsibleContent()}
 				borderBottom={false}
 			/>

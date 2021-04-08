@@ -22,8 +22,8 @@ const Math = (props) => {
 				id={`counting-on`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<CountingOn
 						className="description"
@@ -37,8 +37,8 @@ const Math = (props) => {
 				id={`make-a-ten`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<MakeATen
 						className="description"
@@ -52,8 +52,8 @@ const Math = (props) => {
 				id={`decomposing`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<Decomposing
 						className="description"
@@ -67,8 +67,8 @@ const Math = (props) => {
 				id={`equal-addition`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<EqualAddition
 						className="description"
@@ -82,8 +82,8 @@ const Math = (props) => {
 				id={`compensation`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<Compensation
 						className="description"

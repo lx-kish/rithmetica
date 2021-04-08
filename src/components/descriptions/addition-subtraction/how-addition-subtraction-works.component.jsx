@@ -51,8 +51,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`up-to-ten`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<UpToTen
 						className="description"
@@ -66,8 +66,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`single-digit-operands`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<SingleDigitOperands
 						className="description"
@@ -81,8 +81,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`two-and-single-digits`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<TwoAndSingleDigits
 						className="description"
@@ -96,8 +96,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`two-digits-and-tens`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<TwoDigitsAndTens
 						className="description"
@@ -111,8 +111,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`two-digits-operands`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<TwoDigitsOperands
 						className="description"
@@ -126,8 +126,8 @@ const HowAdditionSubtractionWorks = (props) => {
 				id={`two-digits-tiding-up`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<TwoDigitsTidingUp
 						className="description"

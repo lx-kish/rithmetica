@@ -14,11 +14,11 @@ const content = {
 			htmlFor: 'addition-subtraction',
 			span: {
 				left: {
-					className: 'header__description',
+					className: 'toggler description__paragraph--level-three',
 					text: 'addition'
 				},
 				right: {
-					className: 'header__description',
+					className: 'toggler description__paragraph--level-two',
 					text: 'subtraction'
 				}
 			}
@@ -47,8 +47,8 @@ const Header = (props) => {
 				content={collapsibleContent()}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-one`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
+				iconClassName={`collapsible__icon--level-one`}
 				borderBottom={true}
 				// collapsibleClassName={`collapsible--settings`}
 			/>

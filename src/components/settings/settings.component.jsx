@@ -297,8 +297,8 @@ const ProblemSettings = (props) => {
 				content={collapsibleContent()}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-one`}
-				iconBoxClassName={`collapsible__icon-box`}
-				iconClassName={`collapsible__icon`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
+				iconClassName={`collapsible__icon--level-one`}
 				borderBottom={true}
 			/>
 			<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />

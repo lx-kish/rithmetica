@@ -75,12 +75,45 @@
     }
 
     &__icon {
-        height: 4rem;
-        width: 4rem;
+
+        &--level-one {
+            height: 4rem;
+            width: 4rem;
         
-        @include respond(_640-680) {
-            height: 12rem;
-            width: 12rem;
+            @include respond(_640-680) {
+                height: 10rem;
+                width: 10rem;
+            }
+        }
+
+        &--level-two {
+            height: 4rem;
+            width: 4rem;
+        
+            @include respond(_640-680) {
+                height: 9rem;
+                width: 9rem;
+            }
+        }
+
+        &--level-three {
+            height: 4rem;
+            width: 4rem;
+        
+            @include respond(_640-680) {
+                height: 12rem;
+                width: 12rem;
+            }
+        }
+
+        &--level-four {
+            height: 3rem;
+            width: 3rem;
+        
+            @include respond(_640-680) {
+                height: 8rem;
+                width: 8rem;
+            }
         }
 
         &-box {
@@ -89,8 +122,8 @@
             right: 25rem;
             top: 1rem;
             // top: 1.5rem;
-            height: 3rem;
-            width: 3rem;
+            // height: 3rem;
+            // width: 3rem;
             fill: var(--color-white);
             cursor: pointer;
 
@@ -98,8 +131,48 @@
 
                     
             @include respond(_640-680) {
-                height: 7rem;
-                width: 7rem;
+                // height: 7rem;
+                // width: 7rem;
+            }
+            
+            &--level-one {
+                height: 3rem;
+                width: 3rem;
+        
+                @include respond(_640-680) {
+                    height: 7rem;
+                    width: 7rem;
+                }
+            }
+            
+            &--level-two {
+                height: 3rem;
+                width: 3rem;
+        
+                @include respond(_640-680) {
+                    height: 6rem;
+                    width: 6rem;
+                }
+            }
+            
+            &--level-three {
+                height: 3rem;
+                width: 3rem;
+        
+                @include respond(_640-680) {
+                    height: 7rem;
+                    width: 7rem;
+                }
+            }
+            
+            &--level-four {
+                height: 2rem;
+                width: 2rem;
+        
+                @include respond(_640-680) {
+                    height: 5rem;
+                    width: 5rem;
+                }
             }
         }
     }
