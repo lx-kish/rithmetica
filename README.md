@@ -55,11 +55,6 @@ There are several problem types for addition or subtraction in the application:
 
 - A Two-Digits Tidying Up - is the variation of A Two-digits Operands type of problems, where the ones of the one or both operands are close to ten and can be rounded up. Despite it can be solved using any mental strategies, this type of problems dedicated to train rounding up strategies, such as Make a Ten, Equal addition, or Compensation.
 
-## Training application for learning math for kids "Rithmetica"
-### the extention of the application "Multiply me"
+## About the project
 
-It allows to train basic arithmetic skills. Application generates random problems for all basic math.
-
-### How to use
-
-@TODO
+The application is a React JS Single Page Application, based on create-react-app. 
