@@ -17,14 +17,16 @@ const HowAdditionSubtractionWorks = (props) => {
 		<div className="description">
 			<p className="description__paragraph description__paragraph--level-two">
 				The application consists of the Settings part and the Problems part.<br />
-				Problems part contains randomly generated problems, having specific problems characteristics, which can be
-				preassigned in settings part before generating. The right answer colors <b>white</b>. The wrong answer colors{' '}
+				The Problems part contains randomly generated problems, having specific problems characteristics, which can be
+				preassigned in settings part before generating.<br />
+				<br />
+				Each problem contains two numeric operands, addition or subtraction sign, equality sign and a numeric result.
+				Depends on the specific setting, one of the numeric operands or the result is missing number, means it's an
+				empty input field where the right answer should be input. If the answer is right it colors <b>white</b>, if it
+				is wrong it colors{' '}
 				<span className="three">
 					<b>red</b>
-				</span>.<br />
-				<br />
-				Each problem contains two numeric operands, addition or subtraction sign, equality sign and a numeric result.<br
-				/>
+				</span>.
 			</p>
 			<picture>
 				<source srcSet={`${schemaSmallScreen} 1.8x`} media="(max-width: 380px)" />
