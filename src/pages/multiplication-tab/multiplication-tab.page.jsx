@@ -8,6 +8,8 @@ import Tab from '../../components/multiplication-tab/table/tab.component';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
 
+import getHeaderOffsetTop from '../../utils/get-header-offset-top/get-header-offset-top';
+
 const MultiplicationTab = props => {
 
     /**
@@ -54,6 +56,21 @@ const MultiplicationTab = props => {
 	// 	});
 	// };
 
+   	/**
+	 * 
+	 * @param {Object} settings - passing parameter from the settings component
+	 * 
+	 * For details see: 
+	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
+	 */
+	const getDisplay = (display) => {
+
+		setFullState({
+			...fullState,
+			display: display
+		});
+	};
+
     /**
      * Returns mathematical sign for addition or subtraction
      * @return {html entity} sign code
@@ -62,18 +79,18 @@ const MultiplicationTab = props => {
         return fullState.subtract ? <>&#x2212;</> : <>&#x2b;</>
     }
 
-    /**
-     * Gets and returns offsetTop of the 'header-stick' section
-     * @return {Number} offsetTop
-     */
-    const getHeaderOffsetTop = () => {
-        const header = document.getElementById('header-stick');
-        if (header) {
-            return header.offsetTop;
-        } else {
-            return null;
-        }
-    };
+    // /**
+    //  * Gets and returns offsetTop of the 'header-stick' section
+    //  * @return {Number} offsetTop
+    //  */
+    // const getHeaderOffsetTop = () => {
+    //     const header = document.getElementById('header-stick');
+    //     if (header) {
+    //         return header.offsetTop;
+    //     } else {
+    //         return null;
+    //     }
+    // };
 
     /**
     * Empty all the table inputs
@@ -155,7 +172,8 @@ const MultiplicationTab = props => {
         <>
         	<NavigationBar open={fullState.open} setOpen={setOpen} hideSliderMenu={hideSliderMenu} menuRef={menuRef} />
             <Header
-                display={fullState.display}
+                // display={fullState.display}
+                getDisplay={getDisplay}
                 subtract={fullState.subtract}
                 // setChecked={setChecked}
                 setChecked={() =>

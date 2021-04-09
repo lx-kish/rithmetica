@@ -8,6 +8,13 @@ const Collapsible = (props) => {
 
 	const [ display, setDisplay ] = React.useState(false);
 
+	const setDisplayState = () => {
+		
+		// For those who may concern...
+		if (props?.getDisplay) props.getDisplay(display);
+		setDisplay(!display);
+	}
+
 	const showCollapsible = () => {
 		return display ? (
 			<React.Fragment>
@@ -26,7 +33,8 @@ const Collapsible = (props) => {
 				className="collapsible__btn"
 				id={props.id}
 				checked={display}
-				onChange={() => setDisplay(!display)}
+				onChange={setDisplayState}
+				// onChange={() => setDisplay(!display)}
 			/>
 			<label htmlFor={props.id} className={props?.iconBoxClassName}>
 				<IconChevronDown className={props?.iconClassName} />

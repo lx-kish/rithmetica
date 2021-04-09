@@ -50,6 +50,7 @@ const Header = (props) => {
 				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
 				iconClassName={`collapsible__icon--level-one`}
 				borderBottom={true}
+				getDisplay={props.getDisplay} // I know it's a bad music... Just d'know how to do better, and don't want to launch Redux just for this shit... :(
 				// collapsibleClassName={`collapsible--settings`}
 			/>
 			<Toggler
