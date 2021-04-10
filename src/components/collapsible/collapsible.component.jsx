@@ -8,12 +8,21 @@ const Collapsible = (props) => {
 
 	const [ display, setDisplay ] = React.useState(false);
 
-	const setDisplayState = () => {
+  /**
+   * React hook useEffect for sending up the state in case it is needed
+   */
+  React.useEffect(() => {
+
+    if (props?.getDisplay) props.getDisplay(display);
+
+  }, [display]);
+
+	// const setDisplayState = () => {
 		
-		// For those who may concern...
-		if (props?.getDisplay) props.getDisplay(display);
-		setDisplay(!display);
-	}
+	// 	// For those who may concern...
+	// 	if (props?.getDisplay) props.getDisplay(display);
+	// 	setDisplay(!display);
+	// }
 
 	const showCollapsible = () => {
 		return display ? (
@@ -33,8 +42,8 @@ const Collapsible = (props) => {
 				className="collapsible__btn"
 				id={props.id}
 				checked={display}
-				onChange={setDisplayState}
-				// onChange={() => setDisplay(!display)}
+				// onChange={setDisplayState}
+				onChange={() => setDisplay(!display)}
 			/>
 			<label htmlFor={props.id} className={props?.iconBoxClassName}>
 				<IconChevronDown className={props?.iconClassName} />

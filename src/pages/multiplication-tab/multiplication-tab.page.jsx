@@ -1,14 +1,12 @@
 import React from 'react';
 
-// import useClickOutside from '../../utils/use-click-outside/useClickOutside';
-
 import Header from '../../components/headers/multiplication-tab/header.component';
 import Footer from '../../components/footer/footer.component';
 import Tab from '../../components/multiplication-tab/table/tab.component';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
 
-import getHeaderOffsetTop from '../../utils/get-header-offset-top/get-header-offset-top';
+import getNodeOffsetTop from '../../utils/get-node-offset-top/get-node-offset-top';
 
 const MultiplicationTab = props => {
 
@@ -21,8 +19,6 @@ const MultiplicationTab = props => {
         subtract: false,
         open: false
     });
-
-    const menuRef = React.useRef();
 
 	const setOpen = () => {
 		setFullState({
@@ -38,8 +34,6 @@ const MultiplicationTab = props => {
 		});
 	};
   
-	// useClickOutside(menuRef, hideSliderMenu);
-
     // const setSubtract = () => {
     //     console.log('setSubtract inside ===> ', fullState.subtract);
 	// 	setFullState({
@@ -79,19 +73,6 @@ const MultiplicationTab = props => {
         return fullState.subtract ? <>&#x2212;</> : <>&#x2b;</>
     }
 
-    // /**
-    //  * Gets and returns offsetTop of the 'header-stick' section
-    //  * @return {Number} offsetTop
-    //  */
-    // const getHeaderOffsetTop = () => {
-    //     const header = document.getElementById('header-stick');
-    //     if (header) {
-    //         return header.offsetTop;
-    //     } else {
-    //         return null;
-    //     }
-    // };
-
     /**
     * Empty all the table inputs
     * @return {void} 
@@ -109,9 +90,10 @@ const MultiplicationTab = props => {
      */
     React.useEffect(() => {
 
+        const header = document.getElementById('header-stick');
         setFullState({
             ...fullState,
-            sticky: getHeaderOffsetTop()
+            sticky: getNodeOffsetTop(header)
         })
 
     }, [fullState.display]);
@@ -144,10 +126,11 @@ const MultiplicationTab = props => {
     */
     React.useEffect(() => {
 
+        const header = document.getElementById('header-stick');
         const resizeCallBack = window.addEventListener('resize', () => {
             setFullState({
                 ...fullState,
-                sticky: getHeaderOffsetTop()
+                sticky: getNodeOffsetTop(header)
             })
         });
 
@@ -170,7 +153,11 @@ const MultiplicationTab = props => {
 
     return (
         <>
-        	<NavigationBar open={fullState.open} setOpen={setOpen} hideSliderMenu={hideSliderMenu} menuRef={menuRef} />
+        	<NavigationBar 
+                open={fullState.open}
+                setOpen={setOpen}
+                hideSliderMenu={hideSliderMenu}
+            />
             <Header
                 // display={fullState.display}
                 getDisplay={getDisplay}
