@@ -52,7 +52,7 @@ const MultiplicationTab = props => {
 
    	/**
 	 * 
-	 * @param {Object} settings - passing parameter from the settings component
+	 * @param {Boolean} display - passing parameter from the settings component
 	 * 
 	 * For details see: 
 	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
@@ -83,42 +83,46 @@ const MultiplicationTab = props => {
         inputs = Array.from(inputs);
         inputs.map(input => input.value = '')
     };
+    
+    /**
+     * React hook useEffect for stick header on scrolling
+     */
+    React.useEffect(() => {
+        
+        const scrollCallBack = window.addEventListener('scroll', () => {
+            const header = document.getElementById('header-stick');
+
+            if (header) {
+
+                const scrolledDown = window.pageYOffset >= fullState.sticky;
+
+                if (scrolledDown) header.classList.add('sticky');
+                if (!scrolledDown) header.classList.remove('sticky');
+            }
+        });
+        
+        return () => {
+            window.removeEventListener('scroll', scrollCallBack);
+        };
+    }, [fullState.sticky]);
 
     /**
      * React hook useEffect for updating sticky state property
      * on display property changing
      */
     React.useEffect(() => {
-
-        const header = document.getElementById('header-stick');
-        setFullState({
-            ...fullState,
-            sticky: getNodeOffsetTop(header)
-        })
-
+    
+            document.fonts.ready.then(() => {
+                const header = document.getElementById('header-stick');
+                const offset = getNodeOffsetTop(header);
+                
+                setFullState(previousState => ({
+                    ...previousState,
+                    sticky: offset
+                }));
+            })
+    
     }, [fullState.display]);
-
-    /**
-     * React hook useEffect for stick header on scrolling
-     */
-    React.useEffect(() => {
-
-        const scrollCallBack = window.addEventListener('scroll', () => {
-            const header = document.getElementById('header-stick');
-            // console.log('header from useEffect ===> ', header);
-            if (header) {
-                if (window.pageYOffset >= fullState.sticky) { //sticky) {
-                    header.classList.add('sticky');
-                } else {
-                    header.classList.remove('sticky');
-                }
-            }
-        });
-
-        return () => {
-            window.removeEventListener('scroll', scrollCallBack);
-        };
-    }, [fullState.sticky]);
 
     /**
     * React hook useEffect for updating sticky state property
@@ -128,10 +132,11 @@ const MultiplicationTab = props => {
 
         const header = document.getElementById('header-stick');
         const resizeCallBack = window.addEventListener('resize', () => {
-            setFullState({
-                ...fullState,
-                sticky: getNodeOffsetTop(header)
-            })
+            const offset = getNodeOffsetTop(header);
+            setFullState(previousState => ({
+                ...previousState,
+                sticky: offset
+            }))
         });
 
         return () => {

@@ -1,3 +1,33 @@
+@font-face {
+    font-family: 'Lemonada';
+    font-weight: 700;
+    src: local('lemonada'), url('../fonts/Lemonada-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lemonada';
+    font-weight: 600;
+    src: local('lemonada'), url('../fonts/Lemonada-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lemonada';
+    font-weight: 500;
+    src: local('lemonada'), url('../fonts/Lemonada-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lemonada';
+    font-weight: 400;
+    src: local('lemonada'), url('../fonts/Lemonada-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lemonada';
+    font-weight: 300;
+    src: local('lemonada'), url('../fonts/Lemonada-Light.ttf') format('truetype');
+}
+
 *,
 *::before,
 *::after {

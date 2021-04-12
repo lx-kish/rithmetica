@@ -1,6 +1,6 @@
 /**
  * Gets and returns offsetTop of the element
- * @node {Node} element who's offsetTop should be returned
+ * @node {Object} element who's offsetTop should be returned
  * @return {Number} offsetTop
  * 
  * For detailed explanations of checking the existance of node see:
@@ -8,12 +8,14 @@
  */
 const getNodeOffsetTop = (node) => {
 
-  console.log(
-  	'%c header and header.offsetTop from getHeaderOffsetTop ===> ',
-  	'color: orangered; font-weight: bold;',
-  	node,
-    node.offsetTop
-  );
+  // console.log(
+  // 	'%c header and header.offsetTop from getHeaderOffsetTop ===> ',
+  // 	'color: orangered; font-weight: bold;',
+  // 	node,
+  //   document.fonts,
+  //   document.fonts.ready,
+  //   node.offsetTop,
+  // );
 
   if (document.body.contains(node)) {
     return node.offsetTop;
