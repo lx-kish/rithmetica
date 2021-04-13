@@ -16,12 +16,11 @@ const getNodeOffsetTop = (node) => {
   //   document.fonts.ready,
   //   node.offsetTop,
   // );
-
-  if (document.body.contains(node)) {
-    return node.offsetTop;
-  } else {
+  
+  if (!document.body.contains(node)) {
     return null;
   }
+  return node.offsetTop;
 };
 
 export default getNodeOffsetTop;

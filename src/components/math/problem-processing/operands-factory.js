@@ -45,7 +45,12 @@ const operandsFactory = (type) => {
         break;
     }
 
-    console.log('%c processor from get-processor ===> ', 'color: violet; font-weight: bold;', processor);
+    // console.log(
+    //   '%c processor from get-processor ===> ',
+    //   'color: violet; font-weight: bold;',
+    //   processor
+    // );
+
     return processor;
   }
   catch (e) {

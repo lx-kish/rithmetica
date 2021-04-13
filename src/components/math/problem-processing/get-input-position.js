@@ -27,7 +27,11 @@ const getInputPosition = (numberOfOperands, missing) => {
       input = parseInt(numberOfOperands);
     }
 
-    console.log('%c input from "get-input-position" ===> ', 'color: orange; font-weight: bold;', input);
+    // console.log(
+    //   '%c input from "get-input-position" ===> ',
+    //   'color: orange; font-weight: bold;',
+    //   input
+    // );
 
     return input;
   }

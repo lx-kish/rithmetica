@@ -46,7 +46,11 @@ const upToTen = (operation, numberOfOperands) => {
       problemMaximum
     );
 
-    console.log('%c operands from "up-to-10" ===> ', 'color: orange; font-weight: bold;', operands);
+    // console.log(
+    //   '%c operands from "up-to-10" ===> ',
+    //   'color: orange; font-weight: bold;',
+    //   operands
+    // );
 
     return operands;
   }

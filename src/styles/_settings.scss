@@ -222,7 +222,17 @@
 
     @include respond(_640-680) {
       width: 100%;
-      font-size: 5rem;
+      font-size: 6rem;
+      line-height: 3.15;
+      // font-size: 5rem;
+      // font-size: 2.5rem;
+    }
+
+    @include respond(_520-560) {
+      width: 100%;
+      font-size: 6rem;
+      line-height: 3.17;
+      // font-size: 5rem;
       // font-size: 2.5rem;
     }
 

@@ -25,7 +25,14 @@ import problemsFactory  from './problem-processing/problems-factory';
 
     });
 
-    console.log('%c problems from problem-controller ===> ', 'color: yellowgreen; font-weight: bold;', problems, ' time stamp ===> ', new Date() / 1e3 | 0);
+    // console.log(
+    //   '%c problems from problem-controller ===> ',
+    //   'color: yellowgreen; font-weight: bold;',
+    //   problems,
+    //   ' time stamp ===> ',
+    //   new Date() / 1e3 | 0
+    // );
+
     return problems;
   }
   catch (e) {

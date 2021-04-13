@@ -47,12 +47,20 @@ const problemsFactory = (type, operation, numberOfOperands = 2, missing, quantit
         });
       }
 
-      console.log(`%c ${operation} problem from "problems-builder" ===> `, 'color: blue; font-weight: bold;', problem);
+      // console.log(
+      //   `%c ${operation} problem from "problems-factory" ===> `,
+      //   'color: blue; font-weight: bold;',
+      //   problem
+      // );
 
       problems.push(problem);
     }
 
-    console.log('%c problems from "problems-builder" ===> ', 'color: orange; font-weight: bold;', problems);
+    // console.log(
+    //   '%c problems from "problems-factory" ===> ',
+    //   'color: orange; font-weight: bold;',
+    //   problems
+    // );
 
     return problems;
   }

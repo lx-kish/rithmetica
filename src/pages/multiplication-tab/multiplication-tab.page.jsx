@@ -110,7 +110,8 @@ const MultiplicationTab = props => {
      * React hook useEffect for updating sticky state property
      * on display property changing
      */
-    React.useEffect(() => {
+    React.useLayoutEffect (() => {
+    // React.useEffect(() => {
     
             document.fonts.ready.then(() => {
                 const header = document.getElementById('header-stick');
@@ -120,7 +121,7 @@ const MultiplicationTab = props => {
                     ...previousState,
                     sticky: offset
                 }));
-            })
+            });
     
     }, [fullState.display]);
 
