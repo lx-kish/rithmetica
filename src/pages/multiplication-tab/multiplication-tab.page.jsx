@@ -16,12 +16,13 @@ const MultiplicationTab = props => {
      * Single state hook useState for all the state properties
      */
     const [fullState, setFullState] = React.useState({
-        size: useWindowSize(),
         sticky: 0,
         display: false,
         subtract: false,
         open: false
     });
+
+    const dimentions = useWindowSize();
 
 	const setOpen = () => {
 		setFullState({
@@ -92,15 +93,21 @@ const MultiplicationTab = props => {
      */
     React.useEffect(() => {
         
-        const scrollCallBack = window.addEventListener('scroll', () => {
-            const header = document.getElementById('header-stick');
+        const headerPage = document.getElementById('header__main');
+        const headerScrolled = getNodeOffsetTop(headerPage);
+        const headerTab = document.getElementById('header-stick');
 
-            if (header) {
+        const scrollCallBack = window.addEventListener('scroll', () => {
+
+            if (headerTab) {
 
                 const scrolledDown = window.pageYOffset >= fullState.sticky;
+                // const scrolledDown = window.pageYOffset >= fullState.sticky && window.pageYOffset >= headerScrolled;
+                // const scrolledDownHeader = window.pageYOffset >= headerScrolled;
 
-                if (scrolledDown) header.classList.add('sticky');
-                if (!scrolledDown) header.classList.remove('sticky');
+                if (scrolledDown) headerTab.classList.add('sticky');
+                if (!scrolledDown) headerTab.classList.remove('sticky');
+                if (headerScrolled >= fullState.sticky) headerTab.classList.remove('sticky');
             }
         });
         
@@ -117,16 +124,17 @@ const MultiplicationTab = props => {
     React.useEffect(() => {
     
             document.fonts.ready.then(() => {
-                const header = document.getElementById('header-stick');
-                const offset = getNodeOffsetTop(header);
+            
+                const headerTab = document.getElementById('header-stick');
+                const offsetTab = getNodeOffsetTop(headerTab);
                 
                 setFullState(previousState => ({
                     ...previousState,
-                    sticky: offset
+                    sticky: offsetTab
                 }));
             });
     
-    }, [fullState.display, fullState.size]);
+    }, [fullState.display, dimentions]);
 
     /**
     * React hook useEffect for updating sticky state property
@@ -141,12 +149,6 @@ const MultiplicationTab = props => {
                 ...previousState,
                 sticky: offset
             }))
-            
-
-            // setFullState(previousState => ({
-            //     ...previousState,
-            //     size: newSize
-            // }))
         });
 
         return () => {

@@ -37,7 +37,7 @@ const Header = (props) => {
 	};
 
 	return (
-		<header className="header">
+		<header className="header" id="header__main">
 			<h1 className="header__title">Multiplication table</h1>
 			<h3 className="header__title--small">learn multiplication using addition and subtraction</h3>
 			<hr className="header__hr" />

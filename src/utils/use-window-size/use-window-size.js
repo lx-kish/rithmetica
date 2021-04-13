@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * 
- * @returns @size [length, width] - the dimentions of the browser window
+ * @returns @dimensions [width, height] - the dimentions of the browser window
  * 
  * More details at:
  * https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react
@@ -10,20 +10,20 @@ import React from 'react';
  */
 const useWindowSize = () => {
 
-  const [dimension, setDimension] = React.useState([
+  const [dimensions, setDimensions] = React.useState([
     window.innerWidth,
     window.innerHeight,
   ]);
 
   React.useLayoutEffect(() => {
     const debouncedResizeHandler = debounce(() => {
-      setDimension([window.innerWidth, window.innerHeight]);
+      setDimensions([window.innerWidth, window.innerHeight]);
     }, 100); // 100ms
     window.addEventListener('resize', debouncedResizeHandler);
     debouncedResizeHandler();
     return () => window.removeEventListener('resize', debouncedResizeHandler);
   }, []);
-  return dimension;
+  return dimensions;
 };
 
 function debounce(fn, ms) {
