@@ -5,8 +5,10 @@ import Footer from '../../components/footer/footer.component';
 import Tab from '../../components/multiplication-tab/table/tab.component';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
+import ShowWindowDimentions from '../../utils/use-window-size/show-window-dimentions';
 
 import getNodeOffsetTop from '../../utils/get-node-offset-top/get-node-offset-top';
+import useWindowSize from '../../utils/use-window-size/use-window-size';
 
 const MultiplicationTab = props => {
 
@@ -14,6 +16,7 @@ const MultiplicationTab = props => {
      * Single state hook useState for all the state properties
      */
     const [fullState, setFullState] = React.useState({
+        size: useWindowSize(),
         sticky: 0,
         display: false,
         subtract: false,
@@ -108,10 +111,10 @@ const MultiplicationTab = props => {
 
     /**
      * React hook useEffect for updating sticky state property
-     * on display property changing
+     * on table header offset top changing
      */
-    React.useLayoutEffect (() => {
-    // React.useEffect(() => {
+    // React.useLayoutEffect (() => {
+    React.useEffect(() => {
     
             document.fonts.ready.then(() => {
                 const header = document.getElementById('header-stick');
@@ -123,7 +126,7 @@ const MultiplicationTab = props => {
                 }));
             });
     
-    }, [fullState.display]);
+    }, [fullState.display, fullState.size]);
 
     /**
     * React hook useEffect for updating sticky state property
@@ -138,6 +141,12 @@ const MultiplicationTab = props => {
                 ...previousState,
                 sticky: offset
             }))
+            
+
+            // setFullState(previousState => ({
+            //     ...previousState,
+            //     size: newSize
+            // }))
         });
 
         return () => {
@@ -163,6 +172,9 @@ const MultiplicationTab = props => {
                 open={fullState.open}
                 setOpen={setOpen}
                 hideSliderMenu={hideSliderMenu}
+            />
+            <ShowWindowDimentions 
+                className="white description__paragraph description__paragraph--level-two"
             />
             <Header
                 // display={fullState.display}
