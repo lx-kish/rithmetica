@@ -16,7 +16,7 @@ const MultiplicationTab = props => {
      * Single state hook useState for all the state properties
      */
     const [fullState, setFullState] = React.useState({
-        sticky: 0,
+        // sticky: 0,
         display: false,
         subtract: false,
         open: false
@@ -94,32 +94,22 @@ const MultiplicationTab = props => {
     React.useEffect(() => {
 
         const tab = document.getElementById('tab');
+        const headerTab = document.getElementById('header-stick');
+
         let tabOffsetTop;
+
         document.fonts.ready.then(() => {
             tabOffsetTop = getNodeOffsetTop(tab);
         });
-        
-        const headerTab = document.getElementById('header-stick');
-        // const headerTabOffsetTop = getNodeOffsetTop(headerTab);
-
-        // const emptyStick = document.getElementById('empty-stick');
-        // let emptyStickOffsetTop = 0;
-        // if (emptyStick) emptyStickOffsetTop = getNodeOffsetTop(emptyStick);
 
         const scrollCallBack = window.addEventListener('scroll', () => {
 
             if (tab && headerTab) {
-            // if (headerTab) {
 
                 const scrolledDown = window.pageYOffset >= tabOffsetTop;
-                // const scrolledDown = window.pageYOffset >= fullState.sticky;
-                // const scrolledDown = window.pageYOffset >= fullState.sticky && window.pageYOffset >= headerScrolled;
 
                 if (scrolledDown) headerTab.classList.add('sticky');
                 if (!scrolledDown) headerTab.classList.remove('sticky');
-                // if (scrolledDown) headerTab.classList.add('sticky');
-                // if (!scrolledDown) headerTab.classList.remove('sticky');
-                // if (emptyStickOffsetTop > headerTabOffsetTop) headerTab.classList.remove('sticky');
             }
         });
         
@@ -127,50 +117,6 @@ const MultiplicationTab = props => {
             window.removeEventListener('scroll', scrollCallBack);
         };
     }, [dimensions]);
-    // }, [fullState.sticky]);
-
-    // /**
-    //  * React hook useEffect for updating sticky state property
-    //  * on table header offset top changing
-    //  */
-    // React.useEffect(() => {
-    
-    //         document.fonts.ready.then(() => {
-                
-    //             // const emptyStick = document.getElementById('empty-stick');
-    //             // let emptyStickOffsetTop = 0;
-    //             // if (emptyStick) emptyStickOffsetTop = getNodeOffsetTop(emptyStick);
-            
-    //             const headerTab = document.getElementById('header-stick');
-    //             const offsetTab = getNodeOffsetTop(headerTab);
-                
-    //             setFullState(previousState => ({
-    //                 ...previousState,
-    //                 sticky: offsetTab
-    //             }));
-    //         });
-    
-    // }, [fullState.display, dimensions]);
-
-    /**
-    * React hook useEffect for updating sticky state property
-    * on resizing
-    */
-    React.useEffect(() => {
-
-        const header = document.getElementById('header-stick');
-        const resizeCallBack = window.addEventListener('resize', () => {
-            const offset = getNodeOffsetTop(header);
-            setFullState(previousState => ({
-                ...previousState,
-                sticky: offset
-            }))
-        });
-
-        return () => {
-            window.removeEventListener('resize', resizeCallBack);
-        };
-    }, [fullState.sticky]);
 
     /**
      * React hook useEffect for empty input when toggle addition/subtraction
@@ -208,7 +154,7 @@ const MultiplicationTab = props => {
                 }
             />
             <Tab
-                sticky={fullState.sticky}
+                // sticky={fullState.sticky}
                 subtract={fullState.subtract}
                 sign={getSign()}
             />

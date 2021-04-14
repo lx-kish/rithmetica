@@ -8,15 +8,15 @@
  */
 const getNodeOffsetTop = (node) => {
 
-  console.log(
-  	'%c header and header.offsetTop from getHeaderOffsetTop ===> ',
-  	'color: orangered; font-weight: bold;',
-  	node,
-    document.fonts,
-    document.fonts.ready,
-    node.offsetTop,
-    node.offsetTop + node.offsetHeight,
-  );
+  // console.log(
+  // 	'%c header and header.offsetTop from getHeaderOffsetTop ===> ',
+  // 	'color: orangered; font-weight: bold;',
+  // 	node,
+  //   document.fonts,
+  //   document.fonts.ready,
+  //   node.offsetTop,
+  //   node.offsetTop + node.offsetHeight,
+  // );
   
   if (!document.body.contains(node)) {
     return null;
