@@ -12,7 +12,7 @@ const Tab = props => {
 
     return (
         <main className='main'>
-            <section className='tab'>
+            <section className='tab' id='tab'>
                 <TabHeader
                     subtract={props.subtract}
                     sign={props.sign}

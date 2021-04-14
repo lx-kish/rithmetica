@@ -37,10 +37,10 @@ const Header = (props) => {
 	};
 
 	return (
-		<header className="header" id="header__main">
-			<h1 className="header__title">Multiplication table</h1>
-			<h3 className="header__title--small">learn multiplication using addition and subtraction</h3>
-			<hr className="header__hr" />
+		<header className='header'>
+			<h1 className='header__title'>Multiplication table</h1>
+			<h3 className='header__title--small'>learn multiplication using addition and subtraction</h3>
+			<hr className='header__hr' />
 			<Collapsible
 				title={`How it works`}
 				id={`multitable-usage`}
@@ -59,7 +59,7 @@ const Header = (props) => {
 				// onChange={props.setSubtract}
 				onChange={() => props.setSubtract()}
 			/>
-			<hr className="header__hr" />
+			<hr className='header__hr' />
 		</header>
 	);
 };

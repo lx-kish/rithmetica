@@ -5,7 +5,7 @@ import Footer from '../../components/footer/footer.component';
 import Tab from '../../components/multiplication-tab/table/tab.component';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
-import ShowWindowDimentions from '../../utils/use-window-size/show-window-dimentions';
+// import ShowWindowDimensions from '../../utils/use-window-size/show-window-dimensions';
 
 import getNodeOffsetTop from '../../utils/get-node-offset-top/get-node-offset-top';
 import useWindowSize from '../../utils/use-window-size/use-window-size';
@@ -22,7 +22,7 @@ const MultiplicationTab = props => {
         open: false
     });
 
-    const dimentions = useWindowSize();
+    const dimensions = useWindowSize();
 
 	const setOpen = () => {
 		setFullState({
@@ -92,49 +92,65 @@ const MultiplicationTab = props => {
      * React hook useEffect for stick header on scrolling
      */
     React.useEffect(() => {
+
+        const tab = document.getElementById('tab');
+        let tabOffsetTop;
+        document.fonts.ready.then(() => {
+            tabOffsetTop = getNodeOffsetTop(tab);
+        });
         
-        const headerPage = document.getElementById('header__main');
-        const headerScrolled = getNodeOffsetTop(headerPage);
         const headerTab = document.getElementById('header-stick');
+        // const headerTabOffsetTop = getNodeOffsetTop(headerTab);
+
+        // const emptyStick = document.getElementById('empty-stick');
+        // let emptyStickOffsetTop = 0;
+        // if (emptyStick) emptyStickOffsetTop = getNodeOffsetTop(emptyStick);
 
         const scrollCallBack = window.addEventListener('scroll', () => {
 
-            if (headerTab) {
+            if (tab && headerTab) {
+            // if (headerTab) {
 
-                const scrolledDown = window.pageYOffset >= fullState.sticky;
+                const scrolledDown = window.pageYOffset >= tabOffsetTop;
+                // const scrolledDown = window.pageYOffset >= fullState.sticky;
                 // const scrolledDown = window.pageYOffset >= fullState.sticky && window.pageYOffset >= headerScrolled;
-                // const scrolledDownHeader = window.pageYOffset >= headerScrolled;
 
                 if (scrolledDown) headerTab.classList.add('sticky');
                 if (!scrolledDown) headerTab.classList.remove('sticky');
-                if (headerScrolled >= fullState.sticky) headerTab.classList.remove('sticky');
+                // if (scrolledDown) headerTab.classList.add('sticky');
+                // if (!scrolledDown) headerTab.classList.remove('sticky');
+                // if (emptyStickOffsetTop > headerTabOffsetTop) headerTab.classList.remove('sticky');
             }
         });
         
         return () => {
             window.removeEventListener('scroll', scrollCallBack);
         };
-    }, [fullState.sticky]);
+    }, [dimensions]);
+    // }, [fullState.sticky]);
 
-    /**
-     * React hook useEffect for updating sticky state property
-     * on table header offset top changing
-     */
-    // React.useLayoutEffect (() => {
-    React.useEffect(() => {
+    // /**
+    //  * React hook useEffect for updating sticky state property
+    //  * on table header offset top changing
+    //  */
+    // React.useEffect(() => {
     
-            document.fonts.ready.then(() => {
-            
-                const headerTab = document.getElementById('header-stick');
-                const offsetTab = getNodeOffsetTop(headerTab);
+    //         document.fonts.ready.then(() => {
                 
-                setFullState(previousState => ({
-                    ...previousState,
-                    sticky: offsetTab
-                }));
-            });
+    //             // const emptyStick = document.getElementById('empty-stick');
+    //             // let emptyStickOffsetTop = 0;
+    //             // if (emptyStick) emptyStickOffsetTop = getNodeOffsetTop(emptyStick);
+            
+    //             const headerTab = document.getElementById('header-stick');
+    //             const offsetTab = getNodeOffsetTop(headerTab);
+                
+    //             setFullState(previousState => ({
+    //                 ...previousState,
+    //                 sticky: offsetTab
+    //             }));
+    //         });
     
-    }, [fullState.display, dimentions]);
+    // }, [fullState.display, dimensions]);
 
     /**
     * React hook useEffect for updating sticky state property
@@ -165,9 +181,6 @@ const MultiplicationTab = props => {
 
     }, [fullState.subtract]);
 
-    // console.log('fullState.display from multiplication tab component ===> ', fullState.display);
-    // console.log('fullState.subtract from multiplication tab component ===> ', fullState.subtract);
-
     return (
         <>
         	<NavigationBar 
@@ -175,21 +188,18 @@ const MultiplicationTab = props => {
                 setOpen={setOpen}
                 hideSliderMenu={hideSliderMenu}
             />
-            <ShowWindowDimentions 
+            {/* <ShowWindowDimensions 
                 className="white description__paragraph description__paragraph--level-two"
-            />
+            /> */}
             <Header
-                // display={fullState.display}
                 getDisplay={getDisplay}
                 subtract={fullState.subtract}
-                // setChecked={setChecked}
                 setChecked={() =>
                     setFullState({
                         ...fullState,
                         display: !fullState.display
                     })
                 }
-                // setSubtract={setSubtract}
                 setSubtract={() =>
                     setFullState({
                         ...fullState,

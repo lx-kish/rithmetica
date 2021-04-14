@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * 
- * @returns @dimensions [width, height] - the dimentions of the browser window
+ * @returns {dimensions} [window.innerWidth, window.innerHeight] - the dimentions of the browser window
  * 
  * More details at:
  * https://stackoverflow.com/questions/19014250/rerender-view-on-browser-resize-with-react
