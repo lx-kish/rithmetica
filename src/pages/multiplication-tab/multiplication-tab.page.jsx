@@ -116,7 +116,7 @@ const MultiplicationTab = props => {
         return () => {
             window.removeEventListener('scroll', scrollCallBack);
         };
-    }, [dimensions]);
+    }, [fullState.display, dimensions]);
 
     /**
      * React hook useEffect for empty input when toggle addition/subtraction
