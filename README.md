@@ -8,6 +8,11 @@ React JS Single Page Application, dedicated to boost mental math skills and deve
 
 Visit https://lx-kish.github.io/rithmetica/ to see the app in operation.
 
+#### ! ! ! I M P O R T A N T ! ! ! 
+
+#### Because of the nature of github pages hosting and it's sub-links routing, it is impossible to load the direct link of a sub-page. So in case of update of sub-page you will get a 404 (page not found) error in return. To avoid it, return on the starting page (https://lx-kish.github.io/rithmetica/), update it, and move to the needed page using the menu item.
+
+
 ## How to use
 
 Application contains several parts:
