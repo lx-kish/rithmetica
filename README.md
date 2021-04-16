@@ -10,7 +10,7 @@ Visit https://lx-kish.github.io/rithmetica/ to see the app in operation.
 
 #### ! ! ! I M P O R T A N T ! ! ! 
 
-#### Because of the nature of github pages hosting and it's sub-links routing, it is impossible to load the direct link to a sub-page. In case of update of a sub-page you will get a 404 (File not found) error in return. To avoid it, first load the start page (https://lx-kish.github.io/rithmetica/), then after it's successful loading, move to the needed page using the menu items.
+#### Because of the nature of github pages hosting and it's sub-links routing, it is impossible to load the direct link to a sub-page. In case of update of a sub-page you will get a 404 (File not found) error in return. To avoid it, first load the start page (https://lx-kish.github.io/rithmetica/), then after it's successful loading, move to the needed page using the menu navigation items.
 
 
 ## How to use
