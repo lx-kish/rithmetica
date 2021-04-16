@@ -24,19 +24,19 @@ const MultiplicationTab = props => {
 
     const dimensions = useWindowSize();
 
-	const setOpen = () => {
-		setFullState({
-			...fullState,
-			open: !fullState.open
-		});
-	};
+	// const setOpen = () => {
+	// 	setFullState({
+	// 		...fullState,
+	// 		open: !fullState.open
+	// 	});
+	// };
 
-	const hideSliderMenu = () => {
-		setFullState({
-			...fullState,
-			open: false
-		});
-	};
+	// const hideSliderMenu = () => {
+	// 	setFullState({
+	// 		...fullState,
+	// 		open: false
+	// 	});
+	// };
   
     // const setSubtract = () => {
     //     console.log('setSubtract inside ===> ', fullState.subtract);
@@ -130,9 +130,9 @@ const MultiplicationTab = props => {
     return (
         <>
         	<NavigationBar 
-                open={fullState.open}
-                setOpen={setOpen}
-                hideSliderMenu={hideSliderMenu}
+                // open={fullState.open}
+                // setOpen={setOpen}
+                // hideSliderMenu={hideSliderMenu}
             />
             {/* <ShowWindowDimensions 
                 className="white description__paragraph description__paragraph--level-two"
