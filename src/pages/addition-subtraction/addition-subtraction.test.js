@@ -1,26 +1,38 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { render, fireEvent, cleanup } from '@testing-library/react';
-// import { render, fireEvent, cleanup, screen } from '@testing-library/react';
-// import { shallow, render, mount } from 'enzyme';
+import { render, fireEvent, cleanup, screen } from '@testing-library/react';
 
-// import Header from './header.component';
 import AdditionSubtraction from './addition-subtraction.page';
 
-
-// import appMenu from '../navigation/appMenu';
-// import delimeter from '../navigation/delimeter';
-// import siteMenu from '../navigation/siteMenu';
-
-// import NavigationBar from '../navigation/navigation-bar/navigation-bar.component';
-// import BurgerIcon from '../navigation/burger icon/icon-burger.component';
-// import SlideBar from '../navigation/slide bar/slide-bar.component';
-
+/**
+ * - @DONE - application should change the burger button by adding/removing css class 'is-active' on every click on it
+ * 
+ * - @DONE - application should show/hide the slider menu by adding/removing css class 'is-active' on every click on burger button
+ * 
+ * - @DONE - slider bar menu of the application should contain 2 menu items
+ * 
+ * - @DONE - application initially should contain 2 collapsible components
+ * 
+ * - @DONE - application should contain header block with 1 collapsible component
+ * 
+ * - @DONE - collapsible component should expand/collapse on click on the chevron icon
+ *           (unit test, moved to the separate test file)
+ * 
+ * - @DONE - application should contain main block with 1 collapsible component
+ * 
+ * - @DONE - after header collapsible component expanded, header block should contain 3 collapsible components
+ * 
+ * - @TODO - application should contain <deploy 1 collapsible in the main block>
+ * 
+ */
 describe('Addition and Subtraction component test suit', () => {
 
     afterEach(cleanup);
 
+    /**
+    * - @DONE - application should change the burger button by adding/removing css class 'is-active' on every click on it 
+    */
     it('should add/remove css class "is-active" to the burger button on every click on it', () => {
 
         const { container } = render(
@@ -42,6 +54,9 @@ describe('Addition and Subtraction component test suit', () => {
         expect(button.classList.contains('is-active')).toBe(false);
     })
 
+    /**
+    * - @DONE - application should show/hide the slider menu by adding/removing css class 'is-active' on every click on burger button
+    */
     it('should add/remove class "is-active" to the slide bar on every click on the burger button', () => {
 
         const { container } = render(
@@ -65,7 +80,10 @@ describe('Addition and Subtraction component test suit', () => {
         expect(slidebar.classList.contains('is-active')).toBe(false);
     })
 
-    it('should contain 2 links in slider bar component', () => {
+    /**
+     * - @DONE - slider bar menu of the application should contain 2 menu items
+     */
+    it('should contain 2 menu items in slider bar component', () => {
 
         const { container } = render(
             <BrowserRouter>
@@ -75,92 +93,91 @@ describe('Addition and Subtraction component test suit', () => {
 
         const slidebar = container.querySelector('.slide-bar');
 
-        // expect(slidebar.getAllByRole('link').length).toBe(2);
-        expect(slidebar.getAllByRole('link').length).toBe(2);
-        // expect(screen.getAllByRole('link')).toHaveAttribute('href', '/profile');
-
+        expect(slidebar.querySelectorAll('.slide-bar__item').length).toBe(2);
     })
 
-    // it('should contain 10 links across component if user ID has NOT passed to props', () => {
+    /**
+     * - @DONE - application initially should contain 2 collapsible components
+     */
+    it('in initial state should contain 2 collapsible components', () => {
 
-    //     const { container } = render(
-    //         <BrowserRouter>
-    //             <Header />
-    //         </BrowserRouter>
-    //     );
+        const { container } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
 
-    //     // const button = container.querySelector('.btn--header');
+        expect(container.querySelectorAll('.collapsible').length).toBe(2);
+    })
 
-    //     expect(screen.getAllByRole('link').length).toBe(10);
-    //     // expect(screen.getAllByRole('link')).toHaveAttribute('href', '/profile');
+    /**
+     * - @DONE - application should initially contain header block with 1 collapsible component
+     */
+    it('in initial state should initially contain a header block with 1 collapsible component in it', () => {
 
-    // })
+        const { container } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
 
+        const header = container.querySelector('.header');
 
-    // it('button should contain link to "/logout" if user ID HAS passed to props', () => {
-    //     const props = {
-    //         data: {
-    //             _id: '123456789'
-    //         }
-    //     };
+        expect(header.querySelectorAll('.collapsible').length).toBe(1);
+    })
 
-    //     const { container } = render(
-    //         <BrowserRouter>
-    //             <Header {...props} />
-    //         </BrowserRouter>
-    //     );
+    /**
+     * - @DONE - application should initially contain main block with 1 collapsible component
+     */
+    it('in initial state should initially contain a main block with 1 collapsible component in it', () => {
 
-    //     const button = container.querySelector('.btn--header');
+        const { container } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
 
-    //     expect(button).toHaveAttribute('href', '/logout');
+        const main = container.querySelector('.problem__main');
 
-    // })
+        expect(main.querySelectorAll('.collapsible').length).toBe(1);
+    })
 
-    // it('button should contain link to "/signin" if user ID has NOT passed to props', () => {
+    /**
+     * - @DONE - after header collapsible component expanded, header block should contain 3 collapsible components
+     */
+    it('after header collapsible component expanded, header block should contain 3 collapsible components', () => {
 
-    //     const { container } = render(
-    //         <BrowserRouter>
-    //             <Header />
-    //         </BrowserRouter>
-    //     );
+        const { container } = render(
+        // const { container, debug } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
 
-    //     const button = container.querySelector('.btn--header');
+        const header = container.querySelector('.header');
 
-    //     expect(button).toHaveAttribute('href', '/signin');
+        const aboutBtn = container.querySelector('#about');
+        
+        const mathBtn = container.querySelector('#math');
 
-    // })
+        // debug(mathBtn);
+
+        expect(header.querySelectorAll('.collapsible').length).toBe(1);
+
+        const icon = container.querySelector('label[for="about"]');
+
+        expect(aboutBtn.checked).toBe(false);
+
+        fireEvent.click(icon);
+
+        expect(aboutBtn.checked).toBe(true);
+
+        expect(header.querySelectorAll('.collapsible').length).toBe(3);
+
+        fireEvent.click(icon);
+
+        expect(aboutBtn.checked).toBe(false);
+
+        expect(header.querySelectorAll('.collapsible').length).toBe(1);
+    })
 })
-
-
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// import AdditionSubtraction from './addition-subtraction.page';
-
-// const setUp = (props = {}) => {
-//     return shallow(<AdditionSubtraction {...props} />);
-// }
-
-// describe('AdditionSubtraction page test set', () => {
-
-//     let component;
-//     beforeEach(() => {
-//         component = setUp();
-//     });
-
-//     it('Should render Header component without errors', () => {
-//         const wrapper = component.find('Header');
-//         expect(wrapper.length).toBe(1);
-//     });
-
-//     it('Should render Tab component without errors', () => {
-//         const wrapper = component.find('Tab');
-//         expect(wrapper.length).toBe(1);
-//     });
-
-
-//     it('Should render Footer component without errors', () => {
-//         const wrapper = component.find('Footer');
-//         expect(wrapper.length).toBe(1);
-//     });
-// })

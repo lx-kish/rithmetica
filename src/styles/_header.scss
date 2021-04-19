@@ -6,8 +6,13 @@
 
     @include respond(_640-680) {
         margin-top: 3rem;
-        margin-bottom: 5rem;
         width: 95vw;
+    }
+
+    &--multiplication-tab {
+        @include respond(_640-680) {
+            margin-bottom: 5rem;
+        }        
     }
 
     &__title {
