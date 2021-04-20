@@ -21,7 +21,8 @@ import AdditionSubtraction from './addition-subtraction.page';
  * 
  * - @DONE - application should contain main block with 1 collapsible component
  * 
- * - @DONE - after header collapsible component expanded, header block should contain 3 collapsible components
+ * - @DONE - after header collapsible component "About" expanded, header block should contain 3 collapsible
+ *           components, which are "About", "Math Theory", and "How it Works"
  * 
  * - @TODO - application should contain <deploy 1 collapsible in the main block>
  * 
@@ -143,12 +144,13 @@ describe('Addition and Subtraction component test suit', () => {
     })
 
     /**
-     * - @DONE - after header collapsible component expanded, header block should contain 3 collapsible components
+     * - @DONE - after header collapsible component "About" expanded, header block should contain 3 collapsible
+     *           components, which are "About", "Math Theory", and "How it Works"
      */
-    it('after header collapsible component expanded, header block should contain 3 collapsible components', () => {
+    it('when "About" component in the header collapsed, header block should contain just one collapsible component, which is "About"; when "About" component in the header expanded, header block should contain 3 collapsible components, which are "About", "Math Theory", and "How it Works"', () => {
 
-        const { container } = render(
-        // const { container, debug } = render(
+        const { container, queryByText } = render(
+            // const { container, debug } = render(
             <BrowserRouter>
                 <AdditionSubtraction />
             </BrowserRouter>
@@ -157,8 +159,12 @@ describe('Addition and Subtraction component test suit', () => {
         const header = container.querySelector('.header');
 
         const aboutBtn = container.querySelector('#about');
-        
-        const mathBtn = container.querySelector('#math');
+
+        // const mathBtn = container.querySelector('#math');
+
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).not.toBeInTheDocument();
+        expect(queryByText('How it works')).not.toBeInTheDocument();
 
         // debug(mathBtn);
 
@@ -174,10 +180,87 @@ describe('Addition and Subtraction component test suit', () => {
 
         expect(header.querySelectorAll('.collapsible').length).toBe(3);
 
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).toBeInTheDocument();
+        expect(queryByText('How it works')).toBeInTheDocument();
+
         fireEvent.click(icon);
 
         expect(aboutBtn.checked).toBe(false);
 
         expect(header.querySelectorAll('.collapsible').length).toBe(1);
+
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).not.toBeInTheDocument();
+        expect(queryByText('How it works')).not.toBeInTheDocument();
+    })
+
+    /**
+     * - @DONE - after header collapsible component "About" expanded, and "Math Theory" collapsible component expanded too, header block should contain 8 collapsible
+     *           components, which are "About", "Math Theory", "Counting On", "Make A Ten", "Decomposition", "Equal Addition", "Compensation", and "How it Works"
+     */
+    it('after header collapsible component "About" expanded, and "Math Theory" collapsible component expanded too, header block should contain 8 collapsible components, which are "About", "Math Theory", "Counting On", "Make A Ten", "Decomposition", "Equal Addition", "Compensation", and "How it Works"', () => {
+
+        const { container, queryByText } = render(
+            // const { container, debug } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
+
+        const header = container.querySelector('.header');
+
+        const aboutBtn = container.querySelector('#about');
+
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).not.toBeInTheDocument();
+        expect(queryByText('How it works')).not.toBeInTheDocument();
+
+        // debug(mathBtn);
+
+        expect(header.querySelectorAll('.collapsible').length).toBe(1);
+
+        const iconAbout = container.querySelector('label[for="about"]');
+
+        expect(aboutBtn.checked).toBe(false);
+        
+        fireEvent.click(iconAbout);
+
+        const mathBtn = container.querySelector('#math');
+        
+        expect(aboutBtn.checked).toBe(true);
+        expect(mathBtn.checked).toBe(false);
+
+        const iconMath = container.querySelector('label[for="math"]');
+        
+        fireEvent.click(iconMath);
+
+        expect(mathBtn.checked).toBe(true);
+        
+        expect(header.querySelectorAll('.collapsible').length).toBe(8);
+        
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).toBeInTheDocument();
+        expect(queryByText('Counting On')).toBeInTheDocument();
+        expect(queryByText('Make A Ten')).toBeInTheDocument();
+        expect(queryByText('Decomposing')).toBeInTheDocument();
+        expect(queryByText('Equal Addition')).toBeInTheDocument();
+        expect(queryByText('Compensation')).toBeInTheDocument();
+        expect(queryByText('How it works')).toBeInTheDocument();
+        
+        fireEvent.click(iconMath);
+
+        expect(mathBtn.checked).toBe(false);
+        
+        expect(header.querySelectorAll('.collapsible').length).toBe(3);
+        
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).toBeInTheDocument();
+        expect(queryByText('Counting On')).not.toBeInTheDocument();
+        expect(queryByText('Make A Ten')).not.toBeInTheDocument();
+        expect(queryByText('Decomposing')).not.toBeInTheDocument();
+        expect(queryByText('Equal Addition')).not.toBeInTheDocument();
+        expect(queryByText('Compensation')).not.toBeInTheDocument();
+        expect(queryByText('How it works')).toBeInTheDocument();
     })
 })
