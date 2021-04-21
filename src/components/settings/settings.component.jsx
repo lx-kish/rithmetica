@@ -240,7 +240,7 @@ const ProblemSettings = (props) => {
 									Qty:
 								</label>
 								<NumberInputField
-									index={`${setting.operation}-${setting.missing}-${setting.type}`}
+									index={`${setting.operation}-${setting.missing}-${setting.type}-${index}`}
 									// index
 									name="quantity"
 									min="1"
