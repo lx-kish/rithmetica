@@ -3,9 +3,7 @@ import React from 'react';
 import Collapsible from '../collapsible/collapsible.component';
 import NumberInputField from '../input-fields/number-input-field.component';
 
-// import operations from '../addition-subtraction/operations';
 import types from '../addition-subtraction/types';
-// import formats from '../addition-subtraction/missing';
 
 const ProblemSettings = (props) => {
 	const [ fullState, setFullState ] = React.useState({
@@ -19,8 +17,7 @@ const ProblemSettings = (props) => {
 				operation: 'addition',
 				type: '',
 				missing: 'result',
-				quantity: 0,
-				// key: Date.now()
+				quantity: 0
 			},
 			...fullState.problemSettings.slice(i + 1)
 		];
@@ -47,8 +44,7 @@ const ProblemSettings = (props) => {
 				operation: '',
 				type: '',
 				missing: '',
-				quantity: 0,
-				// key: Date.now()
+				quantity: 0
 			});
 
 		// console.log(
@@ -76,11 +72,10 @@ const ProblemSettings = (props) => {
 	};
 
 	const setStateOnChange = (i) => (e) => {
+
 		const newProblemSettings = [ ...fullState.problemSettings ];
 		const value = e.target.value === 'true' ? '' : e.target.value;
-		// const fieldName = e.target.name.indexOf('opeartion') ? 'opeartion' : e.target.name;
-		// const value = e.target.tagName === 'SELECT' ? (e.target.value === 'true' ? '' : e.target.value) : e.target.value;
-		// newProblemSettings[i][fieldName] = value;
+
 		newProblemSettings[i][e.target.name] = value;
 		setFullState({
 			...fullState,
@@ -133,15 +128,14 @@ const ProblemSettings = (props) => {
 			(setting) => setting.operation && setting.type && setting.missing && setting.quantity
 		);
 
-		console.log(
-			'%c fullState.problemSettings after generate triggered ===> ',
-			'color: gold; font-weight: bold;',
-			fullState.problemSettings,
-			validProblemSettings
-		);
+		// console.log(
+		// 	'%c fullState.problemSettings after generate triggered ===> ',
+		// 	'color: gold; font-weight: bold;',
+		// 	fullState.problemSettings,
+		// 	validProblemSettings
+		// );
 
 		props.sendData(validProblemSettings);
-		// props.sendData(fullState.problemSettings);
 	};
 
 	const collapsibleContent = () => {
@@ -155,7 +149,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`addition-${index}`}
 									name={`operation-${index}`}
-									// name="operation"
 									value="addition"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -166,7 +159,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`subtraction-${index}`}
 									name={`operation-${index}`}
-									// name="operation"
 									value="subtraction"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -179,7 +171,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`first-${index}`}
 									name={`missing-${index}`}
-									// name="missing"
 									value="first"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -190,7 +181,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`last-${index}`}
 									name={`missing-${index}`}
-									// name="missing"
 									value="last"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -201,7 +191,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`result-${index}`}
 									name={`missing-${index}`}
-									// name="missing"
 									value="result"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -212,7 +201,6 @@ const ProblemSettings = (props) => {
 									type="radio"
 									id={`random-${index}`}
 									name={`missing-${index}`}
-									// name="missing"
 									value="random"
 									className="settings__input"
 									onChange={setStateOnRadioChange(index)}
@@ -239,7 +227,6 @@ const ProblemSettings = (props) => {
 											key={i}
 											value={type}
 											className="settings__option"
-											// {...(type === setting.type ? '' : 'defaultValue')}
 										>
 											{type}
 										</option>
@@ -252,16 +239,9 @@ const ProblemSettings = (props) => {
 								<label htmlFor="settings-quantity" className="settings__label">
 									Qty:
 								</label>
-								{/* <input */}
 								<NumberInputField
-									// step="1"
-									// title=""
-									// placeholder=" "
-									// type="number"
-									// pattern="[0-9]*"
-									// inputMode="numeric"
-									// index={Date.now()}
-									index
+									index={`${setting.operation}-${setting.missing}-${setting.type}`}
+									// index
 									name="quantity"
 									min="1"
 									max="100"

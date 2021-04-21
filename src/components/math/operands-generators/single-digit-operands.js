@@ -38,7 +38,11 @@ const singleDigitOperands = (operation, numberOfOperands) => {
       problemMaximum
     );
 
-    console.log('%c operands from "single-digit-operands" ===> ', 'color: orange; font-weight: bold;', operands);
+    // console.log(
+    //   '%c operands from "single-digit-operands" ===> ',
+    //   'color: orange; font-weight: bold;',
+    //   operands
+    // );
 
     return operands;
   }

@@ -50,7 +50,11 @@ const doubleDigitTidingUp = (operation, numberOfOperands) => {
       problemMaximum
     );
 
-    console.log(`%c operands from "double-and-single-digits" ===> `, 'color: orange; font-weight: bold;', operands);
+    // console.log(
+    //   `%c operands from "double-and-single-digits" ===> `,
+    //   'color: orange; font-weight: bold;',
+    //   operands
+    // );
 
     return operands;
   }
