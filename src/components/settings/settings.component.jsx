@@ -19,7 +19,8 @@ const ProblemSettings = (props) => {
 				operation: 'addition',
 				type: '',
 				missing: 'result',
-				quantity: 0
+				quantity: 0,
+				// key: Date.now()
 			},
 			...fullState.problemSettings.slice(i + 1)
 		];
@@ -46,13 +47,32 @@ const ProblemSettings = (props) => {
 				operation: '',
 				type: '',
 				missing: '',
-				quantity: 0
+				quantity: 0,
+				// key: Date.now()
 			});
 
+		// console.log(
+		// 	'%c fullState.problemSettings before setFullState in deleteSettings ===> ',
+		// 	'color: yellowgreen; font-weight: bold;',
+		// 	i,
+		// 	e.target.value,
+		// 	fullState.problemSettings,
+		// 	newProblemSettings
+		// );
+		
 		setFullState({
 			...fullState,
 			problemSettings: newProblemSettings
 		});
+
+		// console.log(
+		// 	'%c fullState.problemSettings after setFullState in deleteSettings ===> ',
+		// 	'color: yellowgreen; font-weight: bold;',
+		// 	i,
+		// 	e.target.value,
+		// 	fullState.problemSettings,
+		// 	newProblemSettings
+		// );
 	};
 
 	const setStateOnChange = (i) => (e) => {
@@ -113,6 +133,13 @@ const ProblemSettings = (props) => {
 			(setting) => setting.operation && setting.type && setting.missing && setting.quantity
 		);
 
+		console.log(
+			'%c fullState.problemSettings after generate triggered ===> ',
+			'color: gold; font-weight: bold;',
+			fullState.problemSettings,
+			validProblemSettings
+		);
+
 		props.sendData(validProblemSettings);
 		// props.sendData(fullState.problemSettings);
 	};
@@ -148,7 +175,7 @@ const ProblemSettings = (props) => {
 								<label htmlFor={`subtraction-${index}`}>subtraction</label>
 							</div>
 							<div className="settings__control settings__control--radio">
-							<input
+								<input
 									type="radio"
 									id={`first-${index}`}
 									name={`missing-${index}`}
@@ -192,30 +219,6 @@ const ProblemSettings = (props) => {
 									checked={setting.missing === 'random'}
 								/>
 								<label htmlFor={`random-${index}`}>random</label>
-								{/* <label htmlFor="settings-missing" className="settings__label">
-									Missing:
-								</label>
-								<select
-									name="missing"
-									id="settings-missing"
-									className="settings__select"
-									value={setting.missing}
-									onChange={setStateOnChange(index)}
-								>
-									<option defaultValue value>
-										-- select --
-									</option>
-									{formats.map((missing, i) => (
-										<option
-											key={i}
-											value={missing}
-											className="settings__option"
-											// {...(missing === setting.missing ? '' : 'defaultValue')}
-										>
-											{missing}
-										</option>
-									))}
-								</select> */}
 							</div>
 							<div className="settings__control">
 								<label htmlFor="settings-type" className="settings__label">
@@ -257,6 +260,7 @@ const ProblemSettings = (props) => {
 									// type="number"
 									// pattern="[0-9]*"
 									// inputMode="numeric"
+									// index={Date.now()}
 									index
 									name="quantity"
 									min="1"

@@ -1,7 +1,7 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { render, fireEvent, cleanup, screen } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 
 import AdditionSubtraction from './addition-subtraction.page';
 

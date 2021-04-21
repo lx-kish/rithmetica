@@ -16,7 +16,7 @@ import AdditionSubtraction from './pages/addition-subtraction/addition-subtracti
 const Routes = () => {
 	return (
 		<Switch>
-			<Route path="/" exact component={MultiplicationTab} />
+			<Route path="/" exact component={AdditionSubtraction} />
 			<Route path="/multiplication-tab" exact component={MultiplicationTab} />
 			<Route path="/addition-subtraction" exact component={AdditionSubtraction} />
 		</Switch>
