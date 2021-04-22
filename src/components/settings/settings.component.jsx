@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Collapsible from '../collapsible/collapsible.component';
-import NumberInputField from '../input-fields/number-input-field.component';
+
+import handleKeyDown from '../../utils/handle-key-down-event/handle-key-down-event';
 
 import types from '../addition-subtraction/types';
 
@@ -239,15 +240,20 @@ const ProblemSettings = (props) => {
 								<label htmlFor="settings-quantity" className="settings__label">
 									Qty:
 								</label>
-								<NumberInputField
-									index={`${setting.operation}-${setting.missing}-${setting.type}-${index}`}
-									// index
+								<input
+									type="number"
+									pattern="[0-9]*"
+									inputMode="numeric"
+									step="1"
+									title=""
+									placeholder=" "
 									name="quantity"
 									min="1"
 									max="100"
 									className="settings__input"
 									value={setting.quantity}
 									onChange={setStateOnChange(index)}
+									onKeyDown={(event) => handleKeyDown(event)}
 								/>
 							</div>
 							<div className="settings__control settings__control--btns">
