@@ -19,9 +19,19 @@ const Problem = (props) => {
 				renderedElement = <Sign sign={operand.value} className="problem__sign" key={i} />;
 				break;
 			case 'input':
+
+				// console.log(
+				// 	'%c problem component at the input field ===> ',
+				// 	'color: gold; font-weight: bold;',
+				// 	i,
+				// 	operand.value,
+				// 	Date.now()
+				// );
+
 				renderedElement = (
 					<input
-						key={i}
+						key={Date.now()}
+						// key={i}
 						type="number"
 						pattern="[0-9]*"
 						inputMode="numeric"
@@ -31,6 +41,7 @@ const Problem = (props) => {
 						placeholder=" "
 						min={operand.value}
 						max={operand.value}
+						defaultValue={''}
 						onKeyDown={(event) => handleKeyDown(event)}
 					/>
 				);
