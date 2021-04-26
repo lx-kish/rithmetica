@@ -1,0 +1,47 @@
+import React from 'react';
+
+interface IProps {
+    checked: boolean;
+    onChange: () => void;
+    toggleBox: { 
+        className: string;
+    };
+    label: {
+        htmlFor: string;
+        span: { 
+            left: {
+                className: string;
+                text: string;
+            };
+            right: {
+                className: string;
+                text: string;
+            };
+        };
+    };
+    input: { };
+};
+
+const Toggler: React.FC<IProps> = props => {
+
+    return (
+        <div className={props.toggleBox.className}>
+            <label htmlFor={props.label.htmlFor}>
+                <span className={props.label.span.left.className}>{props.label.span.left.text}</span>
+                <input
+                    {...props.input}
+                    checked={props.checked}
+                    onChange={props.onChange}
+                    // type='checkbox'
+                    // className='add-subtract-toggle__input'
+                    // id='addition-subtraction'
+                    // checked={props.subtract}
+                    // onChange={() => props.setSubtract()}
+                />
+                <span className={props.label.span.right.className}>{props.label.span.right.text}</span>
+            </label>
+        </div>
+    )
+};
+
+export default Toggler;
