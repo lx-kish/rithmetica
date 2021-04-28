@@ -263,4 +263,76 @@ describe('Addition and Subtraction component test suit', () => {
         expect(queryByText('Compensation')).not.toBeInTheDocument();
         expect(queryByText('How it works')).toBeInTheDocument();
     })
-})
+
+    /**
+     * - @DONE - after header collapsible component "About" expanded, and "Math Theory" collapsible component expanded too, header block should contain 8 collapsible
+     *           components, which are "About", "Math Theory", "Counting On", "Make A Ten", "Decomposition", "Equal Addition", "Compensation", and "How it Works"
+     */
+     
+    it('after header collapsible component "About" expanded, and "How it Works" collapsible component expanded too, header block should contain 9 collapsible components, which are "About", "Math Theory", "How it Works", "Up To Ten ", "Single Digit Operands", "Two and Single Digits", "Two Digits and Tens", "Two Digits Operands", and "Two Digits Tiding Up"', () => {
+
+        const { container, queryByText } = render(
+            // const { container, debug } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
+
+        const header = container.querySelector('.header');
+
+        const aboutBtn = container.querySelector('#about');
+
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).not.toBeInTheDocument();
+        expect(queryByText('How it works')).not.toBeInTheDocument();
+
+        // debug(mathBtn);
+
+        expect(header.querySelectorAll('.collapsible').length).toBe(1);
+
+        const iconAbout = container.querySelector('label[for="about"]');
+
+        expect(aboutBtn.checked).toBe(false);
+        
+        fireEvent.click(iconAbout);
+
+        const howItWorksBtn = container.querySelector('#how-it-works');
+        
+        expect(aboutBtn.checked).toBe(true);
+        expect(howItWorksBtn.checked).toBe(false);
+
+        const iconHowItWorks = container.querySelector('label[for="how-it-works"]');
+        
+        fireEvent.click(iconHowItWorks);
+
+        expect(howItWorksBtn.checked).toBe(true);
+        
+        expect(header.querySelectorAll('.collapsible').length).toBe(9);
+        
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).toBeInTheDocument();
+        expect(queryByText('How it works')).toBeInTheDocument();
+        expect(queryByText('Up To Ten')).toBeInTheDocument();
+        expect(queryByText('Single Digit Operands')).toBeInTheDocument();
+        expect(queryByText('Two and Single Digits')).toBeInTheDocument();
+        expect(queryByText('Two Digits and Tens')).toBeInTheDocument();
+        expect(queryByText('Two Digits Operands')).toBeInTheDocument();
+        expect(queryByText('Two Digits Tiding Up')).toBeInTheDocument();
+
+        fireEvent.click(iconHowItWorks);
+
+        expect(howItWorksBtn.checked).toBe(false);
+        
+        expect(header.querySelectorAll('.collapsible').length).toBe(3);
+
+        expect(queryByText('About')).toBeInTheDocument();
+        expect(queryByText('Math Theory')).toBeInTheDocument();
+        expect(queryByText('How it works')).toBeInTheDocument();
+        expect(queryByText('Up To Ten')).not.toBeInTheDocument();
+        expect(queryByText('Single Digit Operands')).not.toBeInTheDocument();
+        expect(queryByText('Two and Single Digits')).not.toBeInTheDocument();
+        expect(queryByText('Two Digits and Tens')).not.toBeInTheDocument();
+        expect(queryByText('Two Digits Operands')).not.toBeInTheDocument();
+        expect(queryByText('Two Digits Tiding Up')).not.toBeInTheDocument();
+    });
+});

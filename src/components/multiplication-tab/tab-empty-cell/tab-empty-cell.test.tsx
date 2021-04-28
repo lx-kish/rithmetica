@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import TabEmptyCell from './tab-empty-cell.component';
 
-const setUp = (props = {}) => {
+const setUp = (props = {className:'tab__empty-cell'}) => {
     return shallow(<TabEmptyCell {...props} />);
 }
 
