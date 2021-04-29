@@ -376,53 +376,84 @@ describe('Addition and Subtraction component test suit', () => {
         expect(main.querySelectorAll('.settings__setting').length).toBe(0);
     });
 
-    // /**
-    //  * - @DONE - after main collapsible component "Settings" expanded, main block should contain 1 settings row in it;
-    //  *           then, after pressing in the ... button in the settings row, main block should contain 2 settings rows,
-    //  *           and after main collapsible component "Settings" collapsed, main block should not contain a settings row,
-    //  *           and after main collapsible component "Settings" expanded again, main block should still contain 2 settings rows.
-    //  */
+    /**
+     * - @DONE - after main collapsible component "Settings" expanded, main block should contain 1 settings row in it;
+     *           then, after pressing in the ... button in the settings row, main block should contain 2 settings rows,
+     *           and after main collapsible component "Settings" collapsed, main block should not contain a settings row,
+     *           and after main collapsible component "Settings" expanded again, main block should still contain 2 settings rows;
+     *           repeat 3 times with the same results.
+     */
      
-    // it('after main collapsible component "Settings" expanded, main block should contain 1 collapsible section with 1 settings row in it, and after main collapsible component "Settings" collapsed, main block should not contain a settings row, and after main collapsible component "Settings" expanded again, main block should still contain 2 settings rows', () => {
+    it('after main collapsible component "Settings" expanded, main block should contain 1 collapsible section with 1 settings row in it, and after main collapsible component "Settings" collapsed, main block should not contain a settings row, and after main collapsible component "Settings" expanded again, main block should still contain 2 settings rows; repeat 3 times with the same results', () => {
 
-    //     const { container, queryByText } = render(
-    //         // const { container, debug } = render(
-    //         <BrowserRouter>
-    //             <AdditionSubtraction />
-    //         </BrowserRouter>
-    //     );
+        const { container, queryByText } = render(
+            // const { container, debug } = render(
+            <BrowserRouter>
+                <AdditionSubtraction />
+            </BrowserRouter>
+        );
 
-    //     const main = container.querySelector('.problem__main');
+        const main = container.querySelector('.problem__main');
 
-    //     const settingsBtn = main.querySelector('#settings');
+        const settingsBtn = main.querySelector('#settings');
 
-    //     expect(queryByText('Settings')).toBeInTheDocument();
-    //     expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
+        expect(queryByText('Settings')).toBeInTheDocument();
+        expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
 
-    //     expect(main.querySelectorAll('.collapsible').length).toBe(1);
+        expect(main.querySelectorAll('.collapsible').length).toBe(1);
 
-    //     const iconSettings = main.querySelector('label[for="settings"]');
+        const iconSettings = main.querySelector('label[for="settings"]');
 
-    //     expect(settingsBtn.checked).toBe(false);
+        expect(settingsBtn.checked).toBe(false);
         
-    //     fireEvent.click(iconSettings);
+        fireEvent.click(iconSettings);
 
-    //     expect(settingsBtn.checked).toBe(true);
-    //     expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
-    //     expect(main.querySelectorAll('.settings__setting').length).toBe(1);
+        expect(settingsBtn.checked).toBe(true);
+        expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(1);
 
-    //     const setting1 = main.querySelectorAll('.settings__setting')[0];
-    //     const setting1AddBtn = setting1.queryByText('add line');
+        const setting1 = main.querySelectorAll('.settings__setting')[0];
+        const setting1AddBtn = setting1.querySelector('input[title="add line"]');
         
+        fireEvent.click(setting1AddBtn);
+
+        expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(2);
+
+        fireEvent.click(iconSettings);
         
+        expect(settingsBtn.checked).toBe(false);
+        expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(0);
 
-
-
-
-    //     fireEvent.click(iconSettings);
+        fireEvent.click(iconSettings);
         
-    //     expect(settingsBtn.checked).toBe(false);
-    //     expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
-    //     expect(main.querySelectorAll('.settings__setting').length).toBe(0);
-    // });
+        expect(settingsBtn.checked).toBe(true);
+        expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(2);
+        
+        fireEvent.click(iconSettings);
+        
+        expect(settingsBtn.checked).toBe(false);
+        expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(0);
+
+        fireEvent.click(iconSettings);
+        
+        expect(settingsBtn.checked).toBe(true);
+        expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(2);
+        
+        fireEvent.click(iconSettings);
+        
+        expect(settingsBtn.checked).toBe(false);
+        expect(main.querySelector('.settings__settings-group')).not.toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(0);
+
+        fireEvent.click(iconSettings);
+        
+        expect(settingsBtn.checked).toBe(true);
+        expect(main.querySelector('.settings__settings-group')).toBeInTheDocument();
+        expect(main.querySelectorAll('.settings__setting').length).toBe(2);
+    });
 });
