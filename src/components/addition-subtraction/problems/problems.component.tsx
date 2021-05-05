@@ -30,12 +30,10 @@ const Problems: React.FC<IProps> = (props) => {
 
 		<div key={i} className="problem__row">
 			{row.map((problem, j) => <Problem key={j} content={problem} />)}
-			{/* {row.map((problem: { type: string; value: string; }[], j: number) => <Problem key={j} content={problem} x={problem.x} y={problem.y} sign={`+`} />)} */}
 		</div>
 	));
 
 	return <div className="problems">{getContent}</div>;
-	// }, areEqual);
 };
 
 export default Problems;

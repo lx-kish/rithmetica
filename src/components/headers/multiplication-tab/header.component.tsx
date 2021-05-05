@@ -58,12 +58,10 @@ const Header: React.FC<IProps> = (props) => {
 				iconClassName={`collapsible__icon--level-one`}
 				borderBottom={true}
 				getDisplay={props.getDisplay} // I know it's a bad music... Just d'know how to do better, and don't want to launch Redux just for this shit... :(
-				// collapsibleClassName={`collapsible--settings`}
 			/>
 			<Toggler
 				{...content.togglerAddSubtract}
 				checked={props.subtract}
-				// onChange={props.setSubtract}
 				onChange={() => props.setSubtract()}
 			/>
 			<hr className='header__hr' />

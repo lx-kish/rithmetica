@@ -3,7 +3,7 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 /**
  * 
  */
-const doubleDigitTidingUp = (operation: string, numberOfOperands: number) => {
+const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
 
   try {
     // console.log(
@@ -18,7 +18,6 @@ const doubleDigitTidingUp = (operation: string, numberOfOperands: number) => {
     let problemMaximum = 0;
 
     const operands: number[] = [];
-    // const operands = [];
     let operand = 0;
 
     // 2. Loop with length <numberOfOperands>-1
@@ -64,4 +63,4 @@ const doubleDigitTidingUp = (operation: string, numberOfOperands: number) => {
   }
 };
 
-export default doubleDigitTidingUp;
+export default twoDigitTidingUp;

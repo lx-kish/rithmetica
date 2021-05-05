@@ -27,13 +27,6 @@ const Collapsible: React.FC<IProps> = (props) => {
 
 	}, [display]);
 
-	// const setDisplayState = () => {
-
-	// 	// For those who may concern...
-	// 	if (props?.getDisplay) props.getDisplay(display);
-	// 	setDisplay(!display);
-	// }
-
 	const showCollapsible = () => {
 		return display ? (
 			<React.Fragment>
@@ -45,14 +38,12 @@ const Collapsible: React.FC<IProps> = (props) => {
 
 	return (
 		<div className={props?.collapsibleClassName}>
-			{/* <hr className="header__hr" /> */}
 			<h3 className={props?.titleClassName}>{props.title}</h3>
 			<input
 				type="checkbox"
 				className="collapsible__btn"
 				id={props.id}
 				checked={display}
-				// onChange={setDisplayState}
 				onChange={() => setDisplay(!display)}
 			/>
 			<label htmlFor={props.id} className={props?.iconBoxClassName}>

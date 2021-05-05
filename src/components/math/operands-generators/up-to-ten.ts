@@ -21,7 +21,6 @@ const upToTen = (operation: string, numberOfOperands: number) => {
     const problemMaximum = randomInteger(0 + numberOfOperands, 10);
 
     const operands: number[] = [];
-    // const operands = [];
     let operand = 0;
     let problemSum = 0;
 

@@ -14,7 +14,6 @@ const Header: React.FC<IProps> = (props) => {
 					<p className="description__paragraph description__paragraph--level-one">
 						The application is dedicated to developing mental addition and subtraction skills, which achieves via
 						solving problems with different levels of complexity.<br />
-						{/* The information about Math and Technical aspects of the application contains in appropriate sections.<br /> */}
 					</p>
 				</div>
 				<hr className="header__hr" />

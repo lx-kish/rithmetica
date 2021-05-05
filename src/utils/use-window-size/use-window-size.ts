@@ -28,7 +28,6 @@ const useWindowSize = (): number[] => {
 
 function debounce(fn: any, ms: number) {
   let timer: any;
-  // let timer: null | ReturnType<typeof setTimeout>;
   return function(_: any) {
     clearTimeout(timer);
     timer = setTimeout(function(this: void, _: any) {

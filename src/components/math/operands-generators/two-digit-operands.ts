@@ -3,7 +3,7 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 /**
  * 
  */
-const doubleDigitOperands = (operation: string, numberOfOperands: number) => {
+const twoDigitOperands = (operation: string, numberOfOperands: number) => {
 
   try {
     // console.log(
@@ -19,7 +19,6 @@ const doubleDigitOperands = (operation: string, numberOfOperands: number) => {
     // let problemMaximum = 0;
 
     const operands: number[] = [];
-    // const operands = [];
     let operand = 0;
     let problemSum = 0;
 
@@ -57,4 +56,4 @@ const doubleDigitOperands = (operation: string, numberOfOperands: number) => {
   }
 };
 
-export default doubleDigitOperands;
+export default twoDigitOperands;

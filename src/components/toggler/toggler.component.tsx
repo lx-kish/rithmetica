@@ -32,11 +32,6 @@ const Toggler: React.FC<IProps> = props => {
                     {...props.input}
                     checked={props.checked}
                     onChange={props.onChange}
-                    // type='checkbox'
-                    // className='add-subtract-toggle__input'
-                    // id='addition-subtraction'
-                    // checked={props.subtract}
-                    // onChange={() => props.setSubtract()}
                 />
                 <span className={props.label.span.right.className}>{props.label.span.right.text}</span>
             </label>

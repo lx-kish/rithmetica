@@ -17,8 +17,6 @@ const operandsFactory = (type: string): (operation: string, numberOfOperands: nu
     //   problemDescriptions
     // );
 
-    // let processor: (operation: Operation, numberOfOperands: number) => number[];
-
     if (type === 'up to ten') return upToTen;
     if (type === 'single digit operands') return singleDigitOperands;
     if (type === 'two- and single- digit') return twoAndSingleDigits;
@@ -26,46 +24,7 @@ const operandsFactory = (type: string): (operation: string, numberOfOperands: nu
     if (type === 'two-digit operands') return twoDigitOperands;
     if (type === 'two-digit tidying up') return twoDigitTidyngUp;
     throw(new Error(`No processor found for case ${type}!`));
-    // switch (type) {
-    //   case 'up to ten':
-    //     return upToTen;
-    //     // processor = upToTen;
-    //     break;
-    //   case 'single digit operands':
-    //     return singleDigitOperands;
-    //     // processor = singleDigitOperands;
-    //     break;
-    //   case 'two- and single- digit':
-    //     return twoAndSingleDigits;
-    //     // processor = twoAndSingleDigits;
-    //     break;
-    //   case 'two-digit and tens':
-    //     return twoDigitAndTens;
-    //     // processor = twoDigitAndTens;
-    //     break;
-    //   case 'two-digit operands':
-    //     return twoDigitOperands;
-    //     // processor = twoDigitOperands;
-    //     break;
-    //   case 'two-digit tidying up':
-    //     return twoDigitTidyngUp;
-    //     // processor = twoDigitTidyngUp;
-    //     break;
-    //   // case 'tens withing thousand':
-    //   //   processor = upToTen;
-    //   //   break;
-    //   default:
-    //     throw(new Error(`No processor found for case ${type}!`));
-    //     break;
-    // }
 
-    // console.log(
-    //   '%c processor from get-processor ===> ',
-    //   'color: violet; font-weight: bold;',
-    //   processor
-    // );
-
-    // return processor;
   }
   catch (e) {
     throw new Error(e);

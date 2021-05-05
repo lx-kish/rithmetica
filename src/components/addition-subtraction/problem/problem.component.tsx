@@ -13,7 +13,6 @@ interface IProps {
 };
 
 const Problem: React.FC<IProps> = (props) => {
-	// console.log('problem from problem.component ====> ', props.content);
 
 	const renderProblem = props.content.map((operand: { type: string, value: string }, i) => {
 		let renderedElement: any = null;
@@ -27,18 +26,9 @@ const Problem: React.FC<IProps> = (props) => {
 				break;
 			case 'input':
 
-				// console.log(
-				// 	'%c problem component at the input field ===> ',
-				// 	'color: gold; font-weight: bold;',
-				// 	i,
-				// 	operand.value,
-				// 	Date.now()
-				// );
-
 				renderedElement = (
 					<input
 						key={Date.now()}
-						// key={i}
 						type="number"
 						pattern="[0-9]*"
 						inputMode="numeric"

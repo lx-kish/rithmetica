@@ -50,16 +50,6 @@ const TabCell: React.FC<IProps> = (props) => {
 					max={props.value}
 					className={getInputClassName()}
 					onKeyDown={(event) => handleKeyDown(event)}
-
-					// type="number"
-					// pattern="[0-9]*"
-					// inputMode="numeric"
-					// className={getInputClassName()}
-					// placeholder=" "
-					// min={props.value}
-					// max={props.value}
-					// step="1"
-					// onKeyDown={(event) => handleKeyDown(event)}
 				/>
 			</div>
 			<div className="component__score">

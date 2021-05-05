@@ -1,8 +1,5 @@
 import React from 'react';
 
-// import useClickOutside from '../../utils/use-click-outside/useClickOutside';
-// import problems from './problems';
-
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
 import Header from '../../components/headers/addition-subtraction/header.component';
 import Settings from '../../components/settings/settings.component';
@@ -10,11 +7,8 @@ import Problems from '../../components/addition-subtraction/problems/problems.co
 import Footer from '../../components/footer/footer.component';
 
 import problemController from '../../components/math/problems-controller';
-// import * as problemController from '../../components/math/problems-controller';
 
 import initialProblemSettings from './initial-problem-settings';
-
-// import useTraceUpdate from '../../utils/state-update-tracer/state-update-tracer';
 
 import ISetting from '../../TS/interfaces/ISetting';
 
@@ -57,10 +51,6 @@ const AdditionSubtraction: React.FC<IProps> = (props) => {
 			problemSettings: settings
 		});
 	};
-
-	// useTraceUpdate(props);
-
-	// console.log('random numbers from addition-subtraction page ===> ', random(0, 99));
 
 	return (
 		<React.Fragment>

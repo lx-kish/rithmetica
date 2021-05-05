@@ -14,7 +14,6 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
    * @return {boolean} validation state
    */
   const applyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    var value = true;
 
     /**
      * arrows up & down are allways denied
@@ -29,9 +28,8 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       e.which === 8 || //backspace
       e.which === 46 || //delete
-      e.which === 9
+      e.which === 9 //tab
     ) {
-      //tab
       return false;
     }
 
@@ -40,7 +38,6 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
      * instant return to prevent overflowing
      */
     if (e.currentTarget.value.length > e.currentTarget.max.length - 1) {
-    // if (e.target.value.length > e.target.max.length - 1) {
       return true;
     }
 
@@ -52,14 +49,10 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
      */
     let key = Number(e.key);
     if (isNaN(key) || e.key === null || e.key === ' ') {
-      // console.log("is not numeric");
-      value = true;
-    } else {
-      // console.log("is numeric");
-      value = false;
+      return true;
     }
 
-    return value;
+    return false;
   };
 
   if (applyKeyDown(e)) {

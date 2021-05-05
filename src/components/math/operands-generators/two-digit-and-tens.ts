@@ -3,7 +3,7 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 /**
  * 
  */
-const doubleDigitAndTens = (operation: string, numberOfOperands: number) => {
+const twoDigitAndTens = (operation: string, numberOfOperands: number) => {
 
   try {
     // console.log(
@@ -18,7 +18,6 @@ const doubleDigitAndTens = (operation: string, numberOfOperands: number) => {
     let problemMaximum = 0;
 
     const operands: number[] = [];
-    // const operands = [];
     let operand = 0;
 
     // 2. Loop with length <numberOfOperands>-1
@@ -60,4 +59,4 @@ const doubleDigitAndTens = (operation: string, numberOfOperands: number) => {
   }
 };
 
-export default doubleDigitAndTens;
+export default twoDigitAndTens;

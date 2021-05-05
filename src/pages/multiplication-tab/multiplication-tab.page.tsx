@@ -5,7 +5,6 @@ import Footer from '../../components/footer/footer.component';
 import Tab from '../../components/multiplication-tab/table/tab.component';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
-// import ShowWindowDimensions from '../../utils/use-window-size/show-window-dimensions';
 
 import getNodeOffsetTop from '../../utils/get-node-offset-top/get-node-offset-top';
 import useWindowSize from '../../utils/use-window-size/use-window-size';
@@ -18,7 +17,6 @@ const MultiplicationTab: React.FC<IProps> = props => {
      * Single state hook useState for all the state properties
      */
     const [fullState, setFullState] = React.useState({
-        // sticky: 0,
         display: false,
         subtract: false,
         open: false
@@ -26,43 +24,13 @@ const MultiplicationTab: React.FC<IProps> = props => {
 
     const dimensions = useWindowSize();
 
-    // const setOpen = () => {
-    // 	setFullState({
-    // 		...fullState,
-    // 		open: !fullState.open
-    // 	});
-    // };
-
-    // const hideSliderMenu = () => {
-    // 	setFullState({
-    // 		...fullState,
-    // 		open: false
-    // 	});
-    // };
-
-    // const setSubtract = () => {
-    //     console.log('setSubtract inside ===> ', fullState.subtract);
-    // 	setFullState({
-    // 		...fullState,
-    // 		open: !fullState.subtract
-    // 	});
-    // };
-
-    // const setChecked = () => {
-    //     console.log('setChecked inside ===> ', fullState.display);
-    // 	setFullState({
-    // 		...fullState,
-    // 		display: !fullState.display
-    // 	});
-    // };
-
     /**
-* 
-* @param {Boolean} display - passing parameter from the settings component
-* 
-* For details see: 
-* https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
-*/
+    * 
+    * @param {Boolean} display - passing parameter from the settings component
+    * 
+    * For details see: 
+    * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
+    */
     const getDisplay = (display: boolean): any => {
 
         setFullState({
@@ -85,19 +53,8 @@ const MultiplicationTab: React.FC<IProps> = props => {
     */
     const emptyInputs = (): void => {
         let inputs: any = Array.from(document.getElementsByClassName('component__input'));
-        // let inputs: HTMLInputElement[] | Element[] = Array.from(document.getElementsByClassName('component__input'));
-        // let inputs: Element[] = Array.from(document.getElementsByClassName('component__input'));
-        // let inputs: HTMLCollectionOf<Element> = document.getElementsByClassName('component__input');
-        // let inputs = document.getElementsByClassName('component__input');
-        // console.log(typeof(inputs))
-
-        // inputs = Array.from(inputs);
-        // inputs.map((input: HTMLInputElement | Element) => input['value'] = '')
         inputs.map((input: HTMLInputElement) => input.value = '')
     };
-
-    // let inputs: HTMLInputElement[] | Element[] = Array.from(document.getElementsByClassName('component__input'));
-    // console.log(inputs);
 
     /**
      * React hook useEffect for stick header on scrolling
@@ -110,11 +67,10 @@ const MultiplicationTab: React.FC<IProps> = props => {
         let tabOffsetTop: number;
 
         (document as any).fonts.ready.then(() => {
-        // document.fonts.ready.then(() => {
             tabOffsetTop = getNodeOffsetTop(tab);
         });
 
-        const scrollCallBack: any = window.addEventListener('scroll', ()  => {
+        const scrollCallBack: any = window.addEventListener('scroll', () => {
 
             if (tab && headerTab) {
 
@@ -141,14 +97,7 @@ const MultiplicationTab: React.FC<IProps> = props => {
 
     return (
         <>
-            <NavigationBar
-            // open={fullState.open}
-            // setOpen={setOpen}
-            // hideSliderMenu={hideSliderMenu}
-            />
-            {/* <ShowWindowDimensions 
-                className="white description__paragraph description__paragraph--level-two"
-            /> */}
+            <NavigationBar />
             <Header
                 getDisplay={getDisplay}
                 subtract={fullState.subtract}
@@ -166,7 +115,6 @@ const MultiplicationTab: React.FC<IProps> = props => {
                 }
             />
             <Tab
-                // sticky={fullState.sticky}
                 subtract={fullState.subtract}
                 sign={getSign()}
             />

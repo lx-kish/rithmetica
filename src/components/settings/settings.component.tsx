@@ -31,14 +31,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 			...fullState.problemSettings.slice(i + 1)
 		];
 
-		// console.log(
-		// 	'%c fullState.problemSettings after addSetting of settings ===> ',
-		// 	'color: orangered; font-weight: bold;',
-		// 	i,
-		// 	e.target.tagName,
-		// 	fullState.problemSettings
-		// );
-
 		setFullState({
 			...fullState,
 			problemSettings: newProblemSettings
@@ -57,57 +49,23 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 				quantity: 0
 			});
 
-		// console.log(
-		// 	'%c fullState.problemSettings before setFullState in deleteSettings ===> ',
-		// 	'color: yellowgreen; font-weight: bold;',
-		// 	i,
-		// 	e.target.value,
-		// 	fullState.problemSettings,
-		// 	newProblemSettings
-		// );
-
 		setFullState({
 			...fullState,
 			problemSettings: newProblemSettings
 		});
-
-		// console.log(
-		// 	'%c fullState.problemSettings after setFullState in deleteSettings ===> ',
-		// 	'color: yellowgreen; font-weight: bold;',
-		// 	i,
-		// 	e.target.value,
-		// 	fullState.problemSettings,
-		// 	newProblemSettings
-		// );
 	};
 
 	const setStateOnChange = (i: number) => (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>): void => {
 
-		// const newProblemSettings = [ fullState.problemSettings ];
 		const newProblemSettings = [...fullState.problemSettings];
 		const value = e.target.value === 'true' ? '' : e.target.value;
 
-		// type SettingKey = keyof typeof SettingKeys;
-		// let key: SettingKey = e.target.name;
-
-		// newProblemSettings[i][key] = value;
 		newProblemSettings[i][e.target.name] = value;
 		setFullState({
 			...fullState,
 			problemSettings: newProblemSettings
 		});
 
-		// console.log(
-		// 	'%c operation from select tag of settings ===> ',
-		// 	'color: orangered; font-weight: bold;',
-		// 	i,
-		// 	e.target.type,
-		// 	e.target.id,
-		// 	e.target.name,
-		// 	e.target.checked,
-		// 	newProblemSettings[i][e.target.name],
-		// 	fullState.problemSettings
-		// );
 	};
 
 	const setStateOnRadioChange = (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,19 +76,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 			...fullState,
 			problemSettings: newProblemSettings
 		});
-
-		// console.log(
-		// 	'%c operation from select tag of settings ===> ',
-		// 	'color: orangered; font-weight: bold;',
-		// 	i,
-		// 	e.target.type,
-		// 	e.target.id,
-		// 	e.target.name,
-		// 	e.target.name.indexOf('opeartion'),
-		// 	e.target.checked,
-		// 	newProblemSettings[i][fieldName],
-		// 	fullState.problemSettings
-		// );
 	};
 
 	/**
@@ -142,13 +87,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 		const validProblemSettings = fullState.problemSettings.filter(
 			(setting) => setting.operation && setting.type && setting.missing && setting.quantity
 		);
-
-		// console.log(
-		// 	'%c fullState.problemSettings after generate triggered ===> ',
-		// 	'color: gold; font-weight: bold;',
-		// 	fullState.problemSettings,
-		// 	validProblemSettings
-		// );
 
 		props.sendData(validProblemSettings);
 	};
@@ -241,7 +179,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									onChange={setStateOnChange(index)}
 								>
 									<option >
-									{/* <option defaultValue value> */}
 										-- select --
 									</option>
 									{types.map((type, i) => (

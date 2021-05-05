@@ -18,7 +18,6 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
     let problemMaximum = 0;
 
     const operands: number[] = [];
-    // const operands = [];
     let operand = 0;
 
     // 2. Loop with length <numberOfOperands>-1

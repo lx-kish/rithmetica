@@ -22,7 +22,6 @@ const Tab: React.FC<IProps> = props => {
                     id={'header-stick'}
                 />
                 <TabEmptyLine />
-                {/* <TabEmptyLine sign={props.sign} /> */}
                 {[...Array(11)].map((x, i) =>
                     i > 1 ?
                         <TabLine
@@ -34,7 +33,6 @@ const Tab: React.FC<IProps> = props => {
                         />
                         : null
                 )}
-                {/* <TabCell number={5} /> */}
                 <TabHeader
                     subtract={props.subtract}
                     sign={props.sign}
