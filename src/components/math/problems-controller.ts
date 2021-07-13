@@ -1,11 +1,12 @@
 import problemsFactory from './problem-processing/problems-factory';
 
-import ISetting from '../../TS/interfaces/ISetting';
+import IAdditionSubtractionSetting from '../../TS/interfaces/IAdditionSubtractionSetting';
+import IProblem from '../../TS/interfaces/IProblem';
 
 /**
  * 
  */
-const problemsController = (problemDescriptions: ISetting[]): { type: string; value: string }[][] => {
+const problemsController = (problemDescriptions: IAdditionSubtractionSetting[]): IProblem[][] => {
 
   try {
     // console.log(
@@ -13,9 +14,10 @@ const problemsController = (problemDescriptions: ISetting[]): { type: string; va
     //   'color: orangered; font-weight: bold;',
     //   problemDescriptions
     // );
-    const problems: { type: string; value: string }[][] = [];
+    const problems: IProblem[][] = [];
+    // const problems: { type: string; value: string }[][] = [];
 
-    problemDescriptions.forEach((type: ISetting) => {
+    problemDescriptions.forEach((type: IAdditionSubtractionSetting) => {
 
       problems.push(...problemsFactory(
         type.type,

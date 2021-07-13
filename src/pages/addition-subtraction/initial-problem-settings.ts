@@ -1,6 +1,6 @@
-import ISetting from '../../TS/interfaces/ISetting';
+import IAdditionSubtractionSetting from '../../TS/interfaces/IAdditionSubtractionSetting';
 
-const initialProblemSettings: ISetting[] = [
+const initialProblemSettings: IAdditionSubtractionSetting[] = [
   {
     operation: 'addition',
     type: 'up to ten',

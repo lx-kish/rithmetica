@@ -5,11 +5,10 @@ import Sign from '../../sign/sign.component';
 
 import handleKeyDown from '../../../utils/handle-key-down-event/handle-key-down-event';
 
+import IProblem from '../../../TS/interfaces/IProblem';
+
 interface IProps {
-	content: {
-		type: string;
-		value: string;
-	}[];
+	content: IProblem[];
 };
 
 const Problem: React.FC<IProps> = (props) => {

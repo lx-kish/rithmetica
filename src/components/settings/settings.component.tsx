@@ -1,95 +1,29 @@
 import React from 'react';
 
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import {
+	insertSetting,
+	deleteSetting,
+	changeSetting,
+	generateProblems,
+	selectAdditionSubtraction,
+
+} from '../../redux/addition-subtraction/additionSubtractionSlice';
+
 import Collapsible from '../collapsible/collapsible.component';
 
 import handleKeyDown from '../../utils/handle-key-down-event/handle-key-down-event';
 
 import types from '../addition-subtraction/types';
 
-import ISetting from '../../TS/interfaces/ISetting';
-
 interface IProps {
-	settings: ISetting[];
-	sendData: (settings: ISetting[]) => void;
+
 };
 
 const ProblemSettings: React.FC<IProps> = (props) => {
-	const [fullState, setFullState] = React.useState({
-		problemSettings: props.settings
-	});
 
-	const insertSettings = (i: number) => (e: React.MouseEvent<HTMLInputElement>) => {
-		const newProblemSettings: ISetting[] = [
-			...fullState.problemSettings.slice(0, i + 1),
-			{
-				operation: 'addition',
-				type: '',
-				missing: 'result',
-				numberOfOperands: 2,
-				quantity: 0
-			},
-			...fullState.problemSettings.slice(i + 1)
-		];
-
-		setFullState({
-			...fullState,
-			problemSettings: newProblemSettings
-		});
-	};
-
-	const deleteSettings = (i: number) => (e: React.MouseEvent<HTMLInputElement>) => {
-		const newProblemSettings = [...fullState.problemSettings.slice(0, i), ...fullState.problemSettings.slice(i + 1)];
-
-		if (!newProblemSettings.length)
-			newProblemSettings.push({
-				operation: '',
-				type: '',
-				missing: '',
-				numberOfOperands: 2,
-				quantity: 0
-			});
-
-		setFullState({
-			...fullState,
-			problemSettings: newProblemSettings
-		});
-	};
-
-	const setStateOnChange = (i: number) => (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>): void => {
-
-		const newProblemSettings = [...fullState.problemSettings];
-		const value = e.target.value === 'true' ? '' : e.target.value;
-
-		newProblemSettings[i][e.target.name] = value;
-		setFullState({
-			...fullState,
-			problemSettings: newProblemSettings
-		});
-
-	};
-
-	const setStateOnRadioChange = (i: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
-		const newProblemSettings = [...fullState.problemSettings];
-		const fieldName = e.target.name.indexOf('operation') >= 0 ? 'operation' : 'missing';
-		newProblemSettings[i][fieldName] = e.target.value;
-		setFullState({
-			...fullState,
-			problemSettings: newProblemSettings
-		});
-	};
-
-	/**
-	 * Passing data to the parent component. For more details see:
-	 * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
-	 */
-	const generate = () => {
-		//Validation of problemSettings
-		const validProblemSettings = fullState.problemSettings.filter(
-			(setting) => setting.operation && setting.type && setting.missing && setting.quantity
-		);
-
-		props.sendData(validProblemSettings);
-	};
+	const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
+	const dispatch = useAppDispatch();
 
 	// console.log(
 	// 	'%c fullState.problemSettings after generate triggered ===> ',
@@ -100,7 +34,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 	const collapsibleContent = () => {
 		return (
 			<div className="settings__settings-group">
-				{fullState.problemSettings.map((setting, index) => (
+				{additionSubtractionState.settings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
 						<div className="settings__row--mobile">
 							<div className="settings__control settings__control--radio">
@@ -110,8 +44,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`operation-${index}`}
 									value="addition"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.operation === 'addition'}
+									onChange={() => dispatch(changeSetting({ index, name: "operation", value: "addition" }))}
+									checked={setting.operation === "addition"}
 								/>
 								<label htmlFor={`addition-${index}`}>addition</label>
 								<input
@@ -120,8 +54,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`operation-${index}`}
 									value="subtraction"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.operation === 'subtraction'}
+									onChange={() => dispatch(changeSetting({ index, name: "operation", value: "subtraction" }))}
+									checked={setting.operation === "subtraction"}
 								/>
 								<label htmlFor={`subtraction-${index}`}>subtraction</label>
 							</div>
@@ -132,8 +66,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`missing-${index}`}
 									value="first"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.missing === 'first'}
+									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "first" }))}
+									checked={setting.missing === "first"}
 								/>
 								<label htmlFor={`first-${index}`}>first</label>
 								<input
@@ -142,8 +76,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`missing-${index}`}
 									value="last"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.missing === 'last'}
+									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "last" }))}
+									checked={setting.missing === "last"}
 								/>
 								<label htmlFor={`last-${index}`}>last</label>
 								<input
@@ -152,8 +86,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`missing-${index}`}
 									value="result"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.missing === 'result'}
+									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "result" }))}
+									checked={setting.missing === "result"}
 								/>
 								<label htmlFor={`result-${index}`}>result</label>
 								<input
@@ -162,8 +96,8 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									name={`missing-${index}`}
 									value="random"
 									className="settings__input"
-									onChange={setStateOnRadioChange(index)}
-									checked={setting.missing === 'random'}
+									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "random" }))}
+									checked={setting.missing === "random"}
 								/>
 								<label htmlFor={`random-${index}`}>random</label>
 							</div>
@@ -176,7 +110,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									id="settings-type"
 									className="settings__select"
 									value={setting.type}
-									onChange={setStateOnChange(index)}
+									onChange={(event) => dispatch(changeSetting({ index, name: "type", value: event.target.value }))}
 								>
 									<option >
 										-- select --
@@ -210,7 +144,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									max="100"
 									className="settings__input"
 									value={setting.quantity}
-									onChange={setStateOnChange(index)}
+									onChange={(event) => dispatch(changeSetting({ index, name: "quantity", value: event.target.value }))}
 									onKeyDown={(event) => handleKeyDown(event)}
 								/>
 							</div>
@@ -219,14 +153,14 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									type="button"
 									value="+"
 									className="btn settings__control-btn"
-									onClick={insertSettings(index)}
+									onClick={() => dispatch(insertSetting(index))}
 									title="add line"
 								/>
 								<input
 									type="button"
 									value="&times;"
 									className="btn settings__control-btn"
-									onClick={deleteSettings(index)}
+									onClick={() => dispatch(deleteSetting(index))}
 									title="remove line"
 								/>
 							</div>
@@ -249,7 +183,12 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 				iconClassName={`collapsible__icon--level-one`}
 				borderBottom={true}
 			/>
-			<input type="button" className="btn settings__go-btn" value="Generate" onClick={generate} />
+			<input
+				type="button"
+				className="btn settings__go-btn"
+				value="Generate"
+				onClick={() => dispatch(generateProblems())}
+			/>
 			<hr className="header__hr" />
 		</div>
 	);

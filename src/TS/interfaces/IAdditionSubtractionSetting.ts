@@ -1,4 +1,4 @@
-export default interface ISetting extends Record<string, any> {
+export default interface IAdditionSubtractionSetting extends Record<string, any> {
 	operation: string;
 	type: string;
 	missing: string;
