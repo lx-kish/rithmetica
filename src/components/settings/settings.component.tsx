@@ -6,7 +6,7 @@ import {
 	deleteSetting,
 	changeSetting,
 	generateProblems,
-	selectAdditionSubtraction,
+	settings,
 
 } from '../../redux/addition-subtraction/additionSubtractionSlice';
 
@@ -22,7 +22,8 @@ interface IProps {
 
 const ProblemSettings: React.FC<IProps> = (props) => {
 
-	const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
+	const stateSettings = useAppSelector(settings);
+	// const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
 	const dispatch = useAppDispatch();
 
 	// console.log(
@@ -34,7 +35,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 	const collapsibleContent = () => {
 		return (
 			<div className="settings__settings-group">
-				{additionSubtractionState.settings.map((setting, index) => (
+				{stateSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
 						<div className="settings__row--mobile">
 							<div className="settings__control settings__control--radio">

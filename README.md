@@ -62,4 +62,26 @@ There are several problem types for addition or subtraction in the application:
 
 ## About the project
 
-The application is a React JS Single Page Application, based on create-react-app. 
+The application is a React JS Single Page Application, based on create-react-app.
+
+## Starting from v2.3.3 all changes will be announced in README.md file below this point
+
+#### v2.3.4 release notes
+
+- Bug fixes;
+
+- Correct selectors for additionSubtractionSlice of Redux storage to prevent full application rerendering on partly changing of state of the slice and instead rerender only those parts of application, which state has been changed;
+
+- Add release notes section in README.md;
+
+#### v2.3.3 release notes
+
+- Bug fixes;
+
+- Addition and Subtraction application switches from local component states via useState() React Hooks to Redux store via @reduxjs/toolkit library to organize the state management and to improve codebase;
+
+- Addition and Subtraction page and related components refactores;
+
+- Version of the application addes in the footer;
+
+- Description for the Multiplication tab module improves;

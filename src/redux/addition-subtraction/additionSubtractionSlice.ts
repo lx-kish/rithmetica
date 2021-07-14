@@ -100,6 +100,8 @@ export const {
 } = additionSubtractionSlice.actions;
 
 export const selectAdditionSubtraction = (state: RootState) => state.additionSubtraction;
-// export const settings = (state: RootState) => state.additionSubtraction.settings;
+export const settings = (state: RootState) => state.additionSubtraction.settings;
+export const problems = (state: RootState) => state.additionSubtraction.problems;
+export const columns = (state: RootState) => state.additionSubtraction.columns;
 
 export default additionSubtractionSlice.reducer;

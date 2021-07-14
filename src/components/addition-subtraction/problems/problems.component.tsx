@@ -2,7 +2,8 @@ import React from 'react';
 
 import { useAppSelector } from '../../../redux/hooks';
 import {
-	selectAdditionSubtraction,
+	columns,
+	problems,
 } from '../../../redux/addition-subtraction/additionSubtractionSlice';
 
 import Problem from '../problem/problem.component';
@@ -15,7 +16,8 @@ interface IProps {
 
 const Problems: React.FC<IProps> = (props) => {
 
-	const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
+	const stateProblems = useAppSelector(problems);
+	const stateColumns = useAppSelector(columns);
 
 	/**
 	 * The following algorithm explained in details at:
@@ -32,7 +34,7 @@ const Problems: React.FC<IProps> = (props) => {
 	// chunk the problems into the array of rows
 	const contentRows = (arr: IProblem[][], cols: number) => rows(arr, cols).map((row, idx: number) => arr.slice(idx * cols, idx * cols + cols));
 
-	const getContent = contentRows(additionSubtractionState.problems, additionSubtractionState.columns).map((row, i) => (
+	const getContent = contentRows(stateProblems, stateColumns).map((row, i) => (
 
 		<div key={i} className="problem__row">
 			{row.map((problem, j) => <Problem key={j} content={problem} />)}
