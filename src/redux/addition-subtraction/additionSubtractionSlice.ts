@@ -34,7 +34,7 @@ export const additionSubtractionSlice = createSlice({
         {
           operation: 'addition',
           type: '',
-          missing: 'result',
+          missing: 'random',
           numberOfOperands: 2,
           quantity: 0
         },
