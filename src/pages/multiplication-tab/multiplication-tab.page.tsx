@@ -19,7 +19,7 @@ const MultiplicationTab: React.FC<IProps> = props => {
     const [fullState, setFullState] = React.useState({
         display: false,
         subtract: false,
-        open: false
+        // open: false
     });
 
     const dimensions = useWindowSize();
