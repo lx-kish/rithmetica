@@ -17,7 +17,8 @@ export interface AdditionSubtractionState {
 const initialState = {
   settings: initialProblemSettings,
   columns: 2,
-  problems: [[{type: '', value: ''}]],
+  problems: problemController(initialProblemSettings),
+  // problems: [[{type: '', value: ''}]],
 };
 
 export const additionSubtractionSlice = createSlice({

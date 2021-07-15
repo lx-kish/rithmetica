@@ -4,7 +4,7 @@ const initialProblemSettings: IAdditionSubtractionSetting[] = [
   {
     operation: 'addition',
     type: 'up to ten',
-    missing: 'result',
+    missing: 'random',
     numberOfOperands: 2,
     quantity: 8
   }

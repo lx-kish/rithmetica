@@ -1,12 +1,14 @@
 .settings {
 
-  max-width: 78vw;
+  max-width: 75vw;
+  // max-width: 78vw;
   margin: 0 auto;
   
   text-align: center;
 
   @include respond(_920-960) {
-      max-width: 82vw;
+      max-width: 80vw;
+      // max-width: 82vw;
   }
   
   @include respond(_600-640) {

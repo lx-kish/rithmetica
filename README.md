@@ -64,7 +64,14 @@ There are several problem types for addition or subtraction in the application:
 
 The application is a React JS Single Page Application, based on create-react-app.
 
-## Starting from v2.3.3 all changes will be announced in README.md file below this point
+## Releas notes 
+##### Releas notes starts from v2.3.3
+
+#### v2.3.5 release notes
+
+- Bug fixes;
+
+- Add initial task generation using initial settings in Addition and Subtraction application;
 
 #### v2.3.4 release notes
 

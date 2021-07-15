@@ -35,7 +35,12 @@
     }
 
     &__hr {
-        width: 60%;
+        width: 60vw;
+        // width: 60%;
         margin: .5rem auto;
+
+        @include respond(_640-680) {
+            width: 80vw;
+        }
     }
 }
