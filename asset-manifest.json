@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rithmetica/static/css/main.0ff00a64.chunk.css",
-    "main.js": "/rithmetica/static/js/main.5c08a00f.chunk.js",
-    "main.js.map": "/rithmetica/static/js/main.5c08a00f.chunk.js.map",
+    "main.css": "/rithmetica/static/css/main.985718ce.chunk.css",
+    "main.js": "/rithmetica/static/js/main.ee0c2c7f.chunk.js",
+    "main.js.map": "/rithmetica/static/js/main.ee0c2c7f.chunk.js.map",
     "runtime-main.js": "/rithmetica/static/js/runtime-main.9fb88564.js",
     "runtime-main.js.map": "/rithmetica/static/js/runtime-main.9fb88564.js.map",
     "static/js/2.ed38f6f8.chunk.js": "/rithmetica/static/js/2.ed38f6f8.chunk.js",
     "static/js/2.ed38f6f8.chunk.js.map": "/rithmetica/static/js/2.ed38f6f8.chunk.js.map",
     "index.html": "/rithmetica/index.html",
-    "precache-manifest.130adda33319f9e6d69cc1c0bb528daf.js": "/rithmetica/precache-manifest.130adda33319f9e6d69cc1c0bb528daf.js",
+    "precache-manifest.b3676b19a91501d43a107e2944ead6e7.js": "/rithmetica/precache-manifest.b3676b19a91501d43a107e2944ead6e7.js",
     "service-worker.js": "/rithmetica/service-worker.js",
-    "static/css/main.0ff00a64.chunk.css.map": "/rithmetica/static/css/main.0ff00a64.chunk.css.map",
+    "static/css/main.985718ce.chunk.css.map": "/rithmetica/static/css/main.985718ce.chunk.css.map",
     "static/js/2.ed38f6f8.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.ed38f6f8.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/rithmetica/static/media/Lemonada-SemiBold.db980608.ttf",
     "static/media/schema-arrows--small.png": "/rithmetica/static/media/schema-arrows--small.8821d472.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.9fb88564.js",
     "static/js/2.ed38f6f8.chunk.js",
-    "static/css/main.0ff00a64.chunk.css",
-    "static/js/main.5c08a00f.chunk.js"
+    "static/css/main.985718ce.chunk.css",
+    "static/js/main.ee0c2c7f.chunk.js"
   ]
 }
