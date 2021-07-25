@@ -6,11 +6,11 @@ import IconLxKish from '../icons-svg/icon-lx-kish.component';
 const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
-			<p className="footer__version">v2.3.5</p>
+			<p className="footer__version">v2.3.6</p>
 			<p className="footer__credentials">
 				&#169; 2020 - 2021. Built with
 				<span className="footer__icon-box">
-					<IconHeart className="footer__icon three" />
+					<IconHeart className="footer__icon red" />
 				</span>
 				by
 				<a
