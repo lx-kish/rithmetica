@@ -4,7 +4,13 @@ import operandsFactory from './operands-factory';
 /**
  * 
  */
-const problemsFactory = (type: string, operation: string, numberOfOperands = 2, missing: string, quantity: number) => {
+const problemsFactory = (
+  type: string,
+  operation: string,
+  numberOfOperands = 2,
+  missing: string,
+  quantity: number
+) => {
 
   try {
     // console.log(
@@ -17,16 +23,16 @@ const problemsFactory = (type: string, operation: string, numberOfOperands = 2, 
 
     const processor: (operation: string, numberOfOperands: number) => number[] = operandsFactory(type);
 
-    let problems: { type: string; value: string}[][] = [];
+    let problems: { type: string; value: string }[][] = [];
 
-    let problem: { type: string; value: string}[];
+    let problem: { type: string; value: string }[];
 
     for (let q = 0; q < quantity; q++) {
 
       problem = [];
 
       const operands: number[] = processor(operation, numberOfOperands);
-      
+
       // 6. Identify missing.
       let input = getInputPosition(numberOfOperands, missing);
 

@@ -4,6 +4,7 @@ import twoAndSingleDigits from '../operands-generators/two-and-single-digits';
 import twoDigitAndTens from '../operands-generators/two-digit-and-tens';
 import twoDigitOperands from '../operands-generators/two-digit-operands';
 import twoDigitTidyngUp from '../operands-generators/two-digit-tidying-up';
+import tensWithinThousands from '../operands-generators/tens-within-thousand';
 
 /**
  * 
@@ -23,6 +24,7 @@ const operandsFactory = (type: string): (operation: string, numberOfOperands: nu
     if (type === 'two-digit and tens') return twoDigitAndTens;
     if (type === 'two-digit operands') return twoDigitOperands;
     if (type === 'two-digit tidying up') return twoDigitTidyngUp;
+    if (type === 'tens within thousand') return tensWithinThousands;
     throw(new Error(`No processor found for case ${type}!`));
 
   }
