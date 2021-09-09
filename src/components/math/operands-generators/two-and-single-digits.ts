@@ -47,7 +47,7 @@ const twoAndSingleDigits = (operation: string, numberOfOperands: number) => {
     );
 
     // console.log(
-    //   `%c operands from "double-and-single-digits" ===> `,
+    //   `%c operands from "double-and-single-digits", ${operation} ===> `,
     //   'color: orange; font-weight: bold;',
     //   operands
     // );

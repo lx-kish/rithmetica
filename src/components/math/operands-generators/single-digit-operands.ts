@@ -39,7 +39,7 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
     );
 
     // console.log(
-    //   '%c operands from "single-digit-operands" ===> ',
+    //   `%c operands from "single-digit-operands", ${operation} ===> `,
     //   'color: orange; font-weight: bold;',
     //   operands
     // );

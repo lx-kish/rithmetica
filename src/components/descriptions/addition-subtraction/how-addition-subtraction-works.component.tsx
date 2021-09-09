@@ -8,6 +8,7 @@ import TwoAndSingleDigits from './problem-types/two-and-single-digits.component'
 import TwoDigitsAndTens from './problem-types/two-digit-and-tens.component';
 import TwoDigitsOperands from './problem-types/two-digit-operands.component';
 import TwoDigitsTidingUp from './problem-types/two-digit-tidying-up.component';
+import TensWithinThousand from './problem-types/tens-within-thousand.component';
 
 import schemaSmallScreen from './schema-arrows--small.png';
 import schemaBigScreen from './shcema-arrows--big.png';
@@ -132,6 +133,21 @@ const HowAdditionSubtractionWorks: React.FC<IProps> = (props) => {
 				iconClassName={`collapsible__icon--level-four`}
 				content={
 					<TwoDigitsTidingUp
+						className="description"
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={true}
+			/>
+			<Collapsible
+				title={`Tens Within Thousand`}
+				id={`tens-within-thousand`}
+				collapsibleClassName={`collapsible`}
+				titleClassName={`collapsible__title collapsible__title--level-four`}
+				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
+				iconClassName={`collapsible__icon--level-four`}
+				content={
+					<TensWithinThousand
 						className="description"
 						paragraphClassName="description__paragraph description__paragraph--level-two"
 					/>

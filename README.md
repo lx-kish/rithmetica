@@ -54,11 +54,13 @@ There are several problem types for addition or subtraction in the application:
 
 - A Two-Digit and a Single Digit - is a type of problems, where single digit number is added to or subtracted from a two-digit number. Besides the addition numbers, this type of problems developes the skill of keeping in mind resulted tens and includ them into calculations. Possible solution strategies are Counting on, Make a ten, or Decomposing.
 
-- A Two-Digit and a Tens - is a type of problems, where tens number is added to or subtracted from a two-digit number. This type of problems is designed to develop the skill of increasing any number buy any tens, which is leading-up to the base mental strategies, like decomposing.
+- A Two-Digit and a Tens - is a type of problems, where tens number is added to or subtracted from a two-digit number. This type of problems is designed to develop the skill of increasing any number buy any tens, which is leading-up to the base mental strategies, like Decomposing.
 
 - A Two-digits Operands - is the most common type of problems where any two-digits number combined with another two-digit number without any limits. Because of it's universality, all mental strategies can be used to solve problems of this type.
 
 - A Two-Digits Tidying Up - is the variation of A Two-digits Operands type of problems, where the ones of the one or both operands are close to ten and can be rounded up. Despite it can be solved using any mental strategies, this type of problems dedicated to train rounding up strategies, such as Make a Ten, Equal addition, or Compensation.
+
+- A Tens Within Thousand - is a type of problems, where tens number is added to or subtracted from a three-digit number. This type of problems is designed to develop the skill of increasing or decreasing any three-digit number by any tens, sometimes resulting in increasing or decreasing hundreds of the number. It helps to realise the relationship between tens and hundreds, and is leading-up to the base mental strategies, like Decomposing.
 
 ## About the project
 
@@ -66,6 +68,32 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ## Releas notes 
 ##### Releas notes starts from v2.3.3
+
+#### v2.4.2 release notes
+
+- Bug fixes;
+
+- Refactor problem generator for type Tens Within Thousand;
+
+- Add description for the Tens Within Thousand problem type;
+
+#### v2.4.1 release notes
+
+- Bug fixes;
+
+- Refactor problem generator for type Tens Within Thousand;
+
+#### v2.4.0 release notes
+
+- Bug fixes;
+
+- Add new problem type Tens Within Thousand of Addition and Subtraction section;
+
+#### v2.3.6 release notes
+
+- Bug fixes;
+
+- Change gradations of colors for number 3;
 
 #### v2.3.5 release notes
 

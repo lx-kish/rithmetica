@@ -47,7 +47,7 @@ const upToTen = (operation: string, numberOfOperands: number) => {
     );
 
     // console.log(
-    //   '%c operands from "up-to-10" ===> ',
+    //   `%c operands from "up-to-10", ${operation} ===> `,
     //   'color: orange; font-weight: bold;',
     //   operands
     // );

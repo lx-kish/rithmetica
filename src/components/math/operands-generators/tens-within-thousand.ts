@@ -19,16 +19,38 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
 
     const operands: number[] = [];
     let operand = 0;
+    let problemSum = 0;
+
+    let hundreds = 0;
+    let tens = 0;
+    let units = 0;
 
     // 2. Loop with length <numberOfOperands>-1
     for (let i = 0; i < numberOfOperands; i++) {
 
       // 3. Generate operand with limits min=0 (or 1), max=sum-problemTotal
       if (i > 0) {
-        operand = randomInteger(1, 9) * 10;
+
+        // Defining minimum tens to add or subtract for changing hundreds
+        const minTens = 
+          operation === 'addition' ? 
+            (10 - tens / 10) : 
+            tens / 10 + 1;
+
+        operand = randomInteger(minTens, 9) * 10;
         problemMaximum += operand;
-      } else {
-        operand = randomInteger(110, 999);
+      } 
+
+      if (i === 0) {
+        
+        // subtrahent should be more than minuend's tens
+        const maxTens = operation === 'subtraction' ? 7 : 9;
+        
+        hundreds = randomInteger(1, 8) * 100;
+        tens = randomInteger(1, maxTens) * 10;
+        units = randomInteger(1, 9);
+
+        operand = hundreds + tens + units;
         problemMaximum += operand;
       }
 
@@ -47,7 +69,7 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
     );
 
     // console.log(
-    //   '%c operands from "up-to-10" ===> ',
+    //   `%c operands from "tens-within-thousand", ${operation} ===> `,
     //   'color: orange; font-weight: bold;',
     //   operands
     // );
