@@ -157,7 +157,7 @@ const HowAdditionSubtractionWorks: React.FC<IProps> = (props) => {
 			/>
 			<Collapsible
 				title={`Hundreds Within Thousand`}
-				id={`tens-within-thousand`}
+				id={`hundreds-within-thousand`}
 				collapsibleClassName={`collapsible`}
 				titleClassName={`collapsible__title collapsible__title--level-four`}
 				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
