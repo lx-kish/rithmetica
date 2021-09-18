@@ -3,15 +3,12 @@
     line-height: 100%;
     vertical-align: middle;
     padding: $component-pad-vertical $component-pad-horizontal;
-    // background-color: white;
 
     &__input {
         font-family: inherit;
         width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
         line-height: 6rem;
-        // border-radius: 5rem;
 
-        // background-color: orangered;
         background-color: transparent;
         border: none;
         outline: none;
@@ -20,7 +17,6 @@
         border-radius: 1rem;
         text-align: center;
         font-size: 4rem;
-        // width: 75%;
         color: var(--color-white);
 
         @include respond(_360-400) {
@@ -33,11 +29,6 @@
             @include respond(_480-520) {
                 font-size: 2.8rem;
             }
-
-            // @include respond(_320-360) {
-            //     font-size: 2rem;
-            // }
-
         }
 
         &[type="number"] {
@@ -53,10 +44,8 @@
 
         &:invalid {
             color: var(--color-red);
-            // border-right: 2px solid var(--color__accent);
         }
 
-        // &:focus,
         &:not(:placeholder-shown),
         &:-webkit-autofill {
             border-color: transparent;
@@ -64,7 +53,6 @@
 
         &-box {
             width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
-            // padding: 0 1rem;
         }
     }
 
@@ -72,11 +60,9 @@
         display: block;
         text-align: center;
         padding: 0.6rem 0;
-        // background-color: darkblue;
     }
 
     &__icon {
-        // margin-right: -0.5rem;
         line-height: 100%;
         width: 1rem;
         height: 1rem;

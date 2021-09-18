@@ -1,14 +1,12 @@
 .settings {
 
-  max-width: 77vw;
-  // max-width: 78vw;
+  max-width: 80vw;
   margin: 0 auto;
   
   text-align: center;
 
   @include respond(_920-960) {
-      max-width: 80vw;
-      // max-width: 82vw;
+      max-width: 83vw;
   }
   
   @include respond(_600-640) {
@@ -31,7 +29,6 @@
 
   &__setting {
     margin: .5rem 0;
-    // margin: .5rem;
 
     display: flex;
     justify-content: space-evenly;
@@ -41,7 +38,6 @@
     border-radius: .5rem;
                
     @include respond(_640-680) {
-      // flex-direction: column;
       border-radius: 1.5rem;
       padding: 2rem;
       justify-content: space-between;
@@ -53,7 +49,6 @@
   &__row--mobile {
     display: flex;
     justify-content: space-between;
-    // justify-content: space-evenly;
 
     @include respond(_640-680) {
       flex-direction: column;
@@ -163,7 +158,6 @@
 
   &__select {
     display: inline-block;
-    // width: 10rem;
     font-family: inherit;
     font-size: 1.3rem;
     font-weight: bold;
@@ -174,14 +168,10 @@
 
     @include respond(_640-680) {
       font-size: 3.5rem;
-      // font-size: 2.5rem;
 
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      // background: url(../components/icons-svg/icon-chevron-down.svg) 96% / 20% #fff no-repeat transparent;
-      // background: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat transparent;
-      // background-image: url(https://stackoverflow.com/favicon.ico) 96% / 20% no-repeat transparent;
       }
   
     @include respond(_400-440) {
@@ -226,16 +216,12 @@
       width: 100%;
       font-size: 6rem;
       line-height: 3.15;
-      // font-size: 5rem;
-      // font-size: 2.5rem;
     }
 
     @include respond(_520-560) {
       width: 100%;
       font-size: 6rem;
       line-height: 3.17;
-      // font-size: 5rem;
-      // font-size: 2.5rem;
     }
 
     &[type="number"] {
@@ -263,7 +249,6 @@
         background-color: transparent;
         outline: none;
         border: 2px solid var(--color-white);
-        // border-radius: .5rem;
         text-align: center;
         font-family: inherit;
         font-size: 1.3rem;
@@ -272,7 +257,6 @@
         cursor: pointer;
 
         &:first-of-type {
-          // border-right: 1px;
           border-radius: .5rem 0 0 .5rem;
         }
         &:not(:last-of-type) {
@@ -280,7 +264,6 @@
         }
 
         &:last-of-type {
-          // border-left: 1px;
           border-radius: 0 .5rem .5rem 0;
         }
 

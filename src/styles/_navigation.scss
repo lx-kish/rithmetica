@@ -1,11 +1,5 @@
 .navigation {
 
-  // height: 100%;
-  // width: 100vw;
-
-  // &__box {
-  //   width: 100%;
-  // }
   &__bg {
     height: 100vh;
     width: 100vw;
@@ -31,7 +25,6 @@
   z-index: 50;
 
   width: 5rem;
-  // height: 5rem;
   padding: 1rem;
   margin: 1rem 0 0 1rem;
           
@@ -93,20 +86,6 @@
       -o-transform: translateY(10px) rotate(45deg);
       transform: translateY(10px) rotate(45deg);
     }
-
-    // @include respond(_320-360) {
-    //   -webkit-transform: translateY(11px) rotate(45deg);
-    //   -ms-transform: translateY(11px) rotate(45deg);
-    //   -o-transform: translateY(11px) rotate(45deg);
-    //   transform: translateY(11px) rotate(45deg);
-    // }
-
-    // @include respond(_560-600) {
-    //   -webkit-transform: translateY(12px) rotate(45deg);
-    //   -ms-transform: translateY(12px) rotate(45deg);
-    //   -o-transform: translateY(12px) rotate(45deg);
-    //   transform: translateY(12px) rotate(45deg);
-    // }
   }
 
   &.is-active .line:nth-child(3) {
@@ -114,17 +93,6 @@
     -ms-transform: translateY(-6px) rotate(-45deg);
     -o-transform: translateY(-6px) rotate(-45deg);
     transform: translateY(-6px) rotate(-45deg);
-    // -webkit-transform: translateY(-6px) rotate(-45deg);
-    // -ms-transform: translateY(-6px) rotate(-45deg);
-    // -o-transform: translateY(-6px) rotate(-45deg);
-    // transform: translateY(-6px) rotate(-45deg);
-        
-    // @include respond(_1100-1200) {
-    //   -webkit-transform: translateY(-8px) rotate(-45deg);
-    //   -ms-transform: translateY(-8px) rotate(-45deg);
-    //   -o-transform: translateY(-8px) rotate(-45deg);
-    //   transform: translateY(-8px) rotate(-45deg);
-    // }
 
     @include respond(_580-720) {
       -webkit-transform: translateY(-8px) rotate(-45deg);
@@ -137,10 +105,7 @@
 
 .line {
   background-color: var(--color-white);
-  // width: 5rem;
   height: 0.3rem;
-  // width: 2.5rem;
-  // height: 0.2rem;
   display: block;
 
   -webkit-transition: all 0.3s ease-in-out;
@@ -169,7 +134,6 @@
 
   &:nth-child(2) {
     margin: 0.6rem auto;
-    // margin: 0.4rem auto;
     
     @include respond(_880-920) {
       margin: .7rem auto;
@@ -210,8 +174,6 @@
   left: -100vw;
   height: 100vh;
   top: 0;
-  // height: 80vh;
-  // width: 80vw;
 
   padding: 5rem 1rem 1rem;
 
@@ -274,14 +236,11 @@
     &:hover,
     &:active {
       text-decoration: none;
-      // text-transform: uppercase;
     }
   }
 }
 
 .toggler {
-  // font-size: 1.6rem;
-  // font-weight: 300;
   padding: 1rem 10rem;
 }
 

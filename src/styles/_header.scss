@@ -18,8 +18,6 @@
     &__title {
         font-size: 5rem;
         font-weight: 900;
-        // margin: 1rem 0;
-        // padding: 1rem 0;
 
         @include respond(_640-680) {
             font-size: 7rem;
@@ -36,7 +34,6 @@
 
     &__hr {
         width: 60vw;
-        // width: 60%;
         margin: .5rem auto;
 
         @include respond(_640-680) {

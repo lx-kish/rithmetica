@@ -16,14 +16,7 @@
     }
     
     &__credentials {
-        // margin: 0 auto;
-        // color: var(--color-white);
         text-align: right;
-        // font-size: $footer-font-size-main;
-        
-        // @include respond(_640-680) {
-        //     font-size: $footer-font-size-mobile;
-        // }
     }
 
     &__icon {
@@ -31,9 +24,6 @@
         width: 2.8rem;
         vertical-align: middle;
         height: $footer-font-size-main;
-
-        // display: flex;
-        // align-items: center;
         
         @include respond(_640-680) {
             height: $footer-font-size-mobile;

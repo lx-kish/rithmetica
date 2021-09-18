@@ -26,14 +26,14 @@ possible $breakpoint arguments:
         //phone-small {
         @media only screen and (max-width: 20em) {
             @content;
-        } //18.75em) { @content };
+        } 
     }
 
     @if $breakpoint == _320-360 {
         //phone-small {
         @media only screen and (max-width: 22.5em) {
             @content;
-        } //18.75em) { @content };
+        } 
     }
 
     @if $breakpoint == _360-400 {

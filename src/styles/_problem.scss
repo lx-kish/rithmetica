@@ -3,10 +3,7 @@
   margin: 0 auto;
   width: 90vw;
   text-align: center;
-  // font-size: 1.6rem;
-  // font-weight: 300;
   padding: 1rem;
-  // padding: 1rem 10rem;
 
   @include respond(_640-680) {
     width: 95vw;
@@ -30,9 +27,9 @@
     font-size: 12rem;
   }
   
-  @include respond(_320-360) {
-    font-size: 13rem;
-  }
+  // @include respond(_320-360) {
+  //   font-size: 13rem;
+  // }
   
   // @include respond(_0-320) {
   //   font-size: 15rem;
@@ -45,18 +42,15 @@
   &__digit {
     text-align: center;
     vertical-align: middle;
-    // width: $main-digit-dimention;
     height: $main-digit-dimention;
     line-height: $main-digit-dimention;
-    // font-size: 5rem;
   }
   
   &__row {
     display: flex;
-    // align-items: flex-end;
     justify-content: space-around;
 
-    @include respond(_600-640) {
+    @include respond(_640-680) {
       flex-direction: column;
     }
   }
@@ -67,39 +61,20 @@
 
   &__input {
     font-family: inherit;
-    // width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
     line-height: 6rem;
-    // border-radius: 5rem;
 
-    // background-color: orangered;
     background-color: transparent;
     border: none;
     outline: none;
     border-bottom: 2px solid;
     border-color: var(--color-white);
-    // border-radius: 1rem;
     text-align: center;
     font-size: inherit;
-    // font-size: 5rem;
-    // width: 75%;
     color: var(--color-white);
 
     @include respond(_360-400) {
       border-width: .5px;
     }
-
-    // &--hundreed {
-    //   font-size: 3.5rem;
-
-    //   @include respond(_480-520) {
-    //     font-size: 2.8rem;
-    //   }
-
-    //   // @include respond(_320-360) {
-    //   //     font-size: 2rem;
-    //   // }
-
-    // }
 
     &[type="number"] {
       -webkit-appearance: textfield;
@@ -114,18 +89,11 @@
 
     &:invalid {
       color: var(--color-red);
-      // border-right: 2px solid var(--color__accent);
     }
 
-    // &:focus,
     &:not(:placeholder-shown),
     &:-webkit-autofill {
       border-color: transparent;
     }
-
-    // &-box {
-    //   width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
-    //   // padding: 0 1rem;
-    // }
   }
 }

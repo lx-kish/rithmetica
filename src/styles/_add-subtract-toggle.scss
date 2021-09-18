@@ -1,12 +1,6 @@
 /////////////////////////////////////////////////////////
 //GENERAL SETTINGS FOR A DARK-MODE TOGGLER INPUT
 .add-subtract-toggle {
-    // &__box {
-    //     display: flex;
-    //     flex-direction: row;
-    //     justify-content: center;
-    //     align-items: center;
-    // }
 
     &__input {
         position: relative;
@@ -37,10 +31,6 @@
 
             background-color: var(--color-white);
         }
-
-        // &:checked {
-        //     // background-color: yellowgreen;
-        // }
 
         &:checked::before {
             left: 55%;
