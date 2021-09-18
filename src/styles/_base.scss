@@ -163,17 +163,14 @@ html {
 
   @include respond(_360-400) {
     font-size: 20%; //1rem = 4px (4px/16px = 25%)
-    // font-size: 25%; //1rem = 4px (4px/16px = 25%)
   }
 
   @include respond(_320-360) {
     font-size: 18%; //1rem = 4px (4px/16px = 25%)
-    // font-size: 25%; //1rem = 4px (4px/16px = 25%)
   }
 
   @include respond(_0-320) {
     font-size: 16%; //1rem = 4px (4px/16px = 25%)
-    // font-size: 25%; //1rem = 4px (4px/16px = 25%)
   }
 }
 
