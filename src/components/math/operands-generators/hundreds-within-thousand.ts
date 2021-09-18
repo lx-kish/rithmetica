@@ -6,16 +6,19 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 const hundredsWithinThousand = (operation: string, numberOfOperands: number) => {
 
   try {
-    console.log(
-      '%c arguments of addition-problem-generator ===> ',
-      'color: orangered; font-weight: bold;',
-      operation,
-      numberOfOperands,
-    );
-
-    let hundredsMax = 0;
+    //   console.log(
+    //     '%c arguments of addition-problem-generator ===> ',
+    //     'color: orangered; font-weight: bold;',
+    //     operation,
+    //     numberOfOperands,
+    //   );
 
     const operands: number[] = [];
+
+    let hundredsMax = 0;
+    let hundredsLowest = 0;
+    let hundredsHighest = 0;
+
     let hundredsLeft = 0;
 
     let hundreds = 0;
@@ -24,17 +27,29 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     // 1. Generate maximum hundreds of the problem within the following boundaries:
     // min=(numberOfOperands-1),
     // max=9
-    hundredsMax = randomInteger((numberOfOperands - 1), 9);
+    operation === 'addition' ?
+      hundredsLowest = numberOfOperands :
+      hundredsLowest = 1;
+
+    hundredsMax = randomInteger(hundredsLowest, 9);
 
     hundredsLeft = hundredsMax;
 
     // 2. Loop with length <numberOfOperands>-1
-    for (let i = 0; i < numberOfOperands-1; i++) {
+    for (let i = 0; i < numberOfOperands - 1; i++) {
 
       // 3. Generate hundreds operands with limits:
-      // max=hundredsLeft, 
       // min=numberOfOperands-1-i
-      hundreds = randomInteger(numberOfOperands - 1 - i, hundredsLeft);
+      operation === 'addition' ?
+        hundredsLowest = numberOfOperands - 1 :
+        hundredsLowest = 1;
+
+      // max=hundredsLeft, 
+      operation === 'addition' ?
+        hundredsHighest = hundredsLeft - 1 :
+        hundredsHighest = hundredsLeft;
+
+      hundreds = randomInteger(hundredsLowest, hundredsHighest);
 
       operand = hundreds * 100;
       hundredsLeft -= hundreds;
@@ -45,8 +60,8 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
 
     let tens = randomInteger(0, 9) * 10;
     let units = randomInteger(1, 9);
-    let problemMin = hundredsLeft * 100 + tens * 10 + units;
-    let problemMax = hundredsMax * 100 + tens * 10 + units;
+    let problemMin = hundredsLeft * 100 + tens + units;
+    let problemMax = hundredsMax * 100 + tens + units;
 
     // push the result value at the end depends on operation
     operands.push(
@@ -60,15 +75,15 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
       0,
       0,
       operation === 'addition' ?
-        problemMax :
-        problemMin
+        problemMin :
+        problemMax
     );
 
-    console.log(
-      `%c operands from "tens-within-thousand", ${operation} ===> `,
-      'color: orange; font-weight: bold;',
-      operands
-    );
+    // console.log(
+    //   `%c operands from "tens-within-thousand", ${operation} ===> `,
+    //   'color: orange; font-weight: bold;',
+    //   operands,
+    // );
 
     return operands;
   }
