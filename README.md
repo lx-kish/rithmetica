@@ -69,6 +69,14 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes 
 ##### Releas notes starts from v2.3.3
 
+#### v2.4.3 release notes
+
+- Bug fixes;
+
+- Add problem generator for Hundreds Within Thousand problem type;
+
+- Add description for the Hundreds Within Thousand problem type;
+
 #### v2.4.2 release notes
 
 - Bug fixes;

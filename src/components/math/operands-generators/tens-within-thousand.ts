@@ -19,7 +19,6 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
 
     const operands: number[] = [];
     let operand = 0;
-    let problemSum = 0;
 
     let hundreds = 0;
     let tens = 0;
