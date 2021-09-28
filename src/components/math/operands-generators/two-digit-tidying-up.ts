@@ -29,7 +29,7 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
         let compensation;
         while (!compensation) compensation = randomInteger(-3, 3);
         
-        operand = randomInteger(1, 9) * 10 - compensation;
+        operand = randomInteger(2, 9) * 10 - compensation;
         problemMaximum += operand;
       } else {
         operand = randomInteger(11, 99);
