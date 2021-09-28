@@ -37,7 +37,7 @@ const Collapsible: React.FC<IProps> = (props) => {
 	};
 
 	return (
-		<div className={props?.collapsibleClassName}>
+		<div className={props?.collapsibleClassName} key={props.id}>
 			<h3 className={props?.titleClassName}>{props.title}</h3>
 			<input
 				type="checkbox"

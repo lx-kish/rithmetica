@@ -27,7 +27,8 @@ const Problem: React.FC<IProps> = (props) => {
 
 				renderedElement = (
 					<input
-						key={Date.now()}
+						key={props.content.map((op) => op.value).reduce((res: string, v: string,) => res + v)}
+						// key={Date.now()}
 						type="number"
 						pattern="[0-9]*"
 						inputMode="numeric"
