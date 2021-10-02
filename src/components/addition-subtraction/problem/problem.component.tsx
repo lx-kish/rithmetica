@@ -28,7 +28,6 @@ const Problem: React.FC<IProps> = (props) => {
 				renderedElement = (
 					<input
 						key={props.content.map((op) => op.value).reduce((res: string, v: string,) => res + v)}
-						// key={Date.now()}
 						type="number"
 						pattern="[0-9]*"
 						inputMode="numeric"
@@ -40,6 +39,7 @@ const Problem: React.FC<IProps> = (props) => {
 						max={operand.value}
 						defaultValue={''}
 						onKeyDown={(event) => handleKeyDown(event)}
+						autoComplete="off" //for dropping the value when cached by browser
 					/>
 				);
 				break;

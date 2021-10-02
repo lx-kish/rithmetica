@@ -45,6 +45,7 @@ const Collapsible: React.FC<IProps> = (props) => {
 				id={props.id}
 				checked={display}
 				onChange={() => setDisplay(!display)}
+				autoComplete="off" //for dropping the value when cached by browser
 			/>
 			<label htmlFor={props.id} className={props?.iconBoxClassName}>
 				<IconChevronDown className={props.iconClassName} />
