@@ -69,6 +69,10 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes 
 ##### Releas notes starts from v2.3.3
 
+#### v2.4.6 release notes
+
+- Bug fixes;
+
 #### v2.4.5 release notes
 
 - Bug fixes;
