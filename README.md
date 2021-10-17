@@ -69,6 +69,10 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes 
 ##### Releas notes starts from v2.3.3
 
+#### v2.4.7 release notes
+
+- Fixed bug when it was impossible to use left and right arrow buttons in input fields;
+
 #### v2.4.6 release notes
 
 - Bug fixes;

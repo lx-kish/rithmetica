@@ -28,7 +28,9 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       e.which === 8 || //backspace
       e.which === 46 || //delete
-      e.which === 9 //tab
+      e.which === 9 || //tab
+      e.which === 37 || //<- arrow
+      e.which === 39 //-> arrow
     ) {
       return false;
     }
