@@ -14,12 +14,12 @@ import HundredsWithinThousand from './problem-types/hundreds-within-thousand.com
 import schemaSmallScreen from './schema-arrows--small.png';
 import schemaBigScreen from './shcema-arrows--big.png';
 
-interface IProps {};
+import ICollapsibleProps from '../../../TS/interfaces/ICollapsibleProps';
 
-const HowAdditionSubtractionWorks: React.FC<IProps> = (props) => {
+const HowAdditionSubtractionWorks: React.FC<ICollapsibleProps> = (props) => {
 	return (
-		<div className="description">
-			<p className="description__paragraph description__paragraph--level-two">
+		<React.Fragment>
+			<p className={props.paragraphClassName}>
 				The application consists of the Settings part and the Problems part.<br />
 				The Problems part contains randomly generated problems, having specific problems characteristics, which can be
 				preassigned in settings part before generating.<br />
@@ -49,128 +49,119 @@ const HowAdditionSubtractionWorks: React.FC<IProps> = (props) => {
 				<br />
 				There are several problem types for addition or subtraction in the application:<br />
 			</p>
-			<hr className="header__hr" />
 			<Collapsible
-				title={`Up To Ten`}
-				id={`up-to-ten`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
+				title="Up To Ten"
+				id="up-to-ten"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
 				content={
 					<UpToTen
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Single Digit Operands`}
-				id={`single-digit-operands`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<SingleDigitOperands
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Two and Single Digits`}
-				id={`two-and-single-digits`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<TwoAndSingleDigits
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Two Digits and Tens`}
-				id={`two-digits-and-tens`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<TwoDigitsAndTens
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Two Digits Operands`}
-				id={`two-digits-operands`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<TwoDigitsOperands
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Two Digits Tiding Up`}
-				id={`two-digits-tiding-up`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<TwoDigitsTidingUp
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Tens Within Thousand`}
-				id={`tens-within-thousand`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<TensWithinThousand
-						className="description"
-						paragraphClassName="description__paragraph description__paragraph--level-two"
-					/>
-				}
-				borderBottom={true}
-			/>
-			<Collapsible
-				title={`Hundreds Within Thousand`}
-				id={`hundreds-within-thousand`}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-four`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-four`}
-				iconClassName={`collapsible__icon--level-four`}
-				content={
-					<HundredsWithinThousand
-						className="description"
 						paragraphClassName="description__paragraph description__paragraph--level-two"
 					/>
 				}
 				borderBottom={false}
 			/>
-		</div>
+			<Collapsible
+				title="Single Digit Operands"
+				id="single-digit-operands"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<SingleDigitOperands
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Two and Single Digits"
+				id="two-and-single-digits"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<TwoAndSingleDigits
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Two Digits and Tens"
+				id="two-digits-and-tens"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<TwoDigitsAndTens
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Two Digits Operands"
+				id="two-digits-operands"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<TwoDigitsOperands
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Two Digits Tiding Up"
+				id="two-digits-tiding-up"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<TwoDigitsTidingUp
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Tens Within Thousand"
+				id="tens-within-thousand"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<TensWithinThousand
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+			<Collapsible
+				title="Hundreds Within Thousand"
+				id="hundreds-within-thousand"
+				collapsibleClassName="collapsible"
+				titleClassName="collapsible__title collapsible__title--level-four"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
+				iconClassName="collapsible__icon--level-four"
+				content={
+					<HundredsWithinThousand
+						paragraphClassName="description__paragraph description__paragraph--level-two"
+					/>
+				}
+				borderBottom={false}
+			/>
+		</React.Fragment>
 	);
 };
 

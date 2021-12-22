@@ -13,11 +13,6 @@ import hundredsWithinThousands from '../operands-generators/hundreds-within-thou
 const operandsFactory = (type: string): (operation: string, numberOfOperands: number) => number[] => {
 
   try {
-    // console.log(
-    //   '%c arguments of problem-controller ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemDescriptions
-    // );
 
     if (type === 'up to ten') return upToTen;
     if (type === 'single digit operands') return singleDigitOperands;

@@ -14,32 +14,30 @@ interface IProps {
 const Tab: React.FC<IProps> = props => {
 
     return (
-        <main className='main'>
-            <section className='tab' id='tab'>
-                <TabHeader
-                    subtract={props.subtract}
-                    sign={props.sign}
-                    id={'header-stick'}
-                />
-                <TabEmptyLine />
-                {[...Array(11)].map((x, i) =>
-                    i > 1 ?
-                        <TabLine
-                            key={i}
-                            className={content.styles[i]}
-                            value={i}
-                            subtract={props.subtract}
-                            sign={props.sign}
-                        />
-                        : null
-                )}
-                <TabHeader
-                    subtract={props.subtract}
-                    sign={props.sign}
-                    id={''}
-                />
-            </section>
-        </main>
+        <section className='tab' id='tab'>
+            <TabHeader
+                subtract={props.subtract}
+                sign={props.sign}
+                id={'header-stick'}
+            />
+            <TabEmptyLine />
+            {[...Array(11)].map((x, i) =>
+                i > 1 ?
+                    <TabLine
+                        key={i}
+                        className={content.styles[i]}
+                        value={i}
+                        subtract={props.subtract}
+                        sign={props.sign}
+                    />
+                    : null
+            )}
+            <TabHeader
+                subtract={props.subtract}
+                sign={props.sign}
+                id={''}
+            />
+        </section>
     )
 };
 

@@ -9,11 +9,7 @@ import IProblem from '../../TS/interfaces/IProblem';
 const problemsController = (problemDescriptions: IAdditionSubtractionSetting[]): IProblem[][] => {
 
   try {
-    // console.log(
-    //   '%c arguments of problem-controller ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemDescriptions
-    // );
+
     const problems: IProblem[][] = [];
     // const problems: { type: string; value: string }[][] = [];
 
@@ -28,14 +24,6 @@ const problemsController = (problemDescriptions: IAdditionSubtractionSetting[]):
       ));
 
     });
-
-    // console.log(
-    //   '%c problems from problem-controller ===> ',
-    //   'color: yellowgreen; font-weight: bold;',
-    //   problems,
-    //   ' time stamp ===> ',
-    //   new Date() / 1e3 | 0
-    // );
 
     return problems;
   }

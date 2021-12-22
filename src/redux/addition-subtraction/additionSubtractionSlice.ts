@@ -49,9 +49,9 @@ export const additionSubtractionSlice = createSlice({
 
       if (!newProblemSettings.length)
         newProblemSettings.push({
-          operation: '',
+          operation: 'addition',
           type: '',
-          missing: '',
+          missing: 'random',
           numberOfOperands: 2,
           quantity: 0
         });
@@ -68,15 +68,6 @@ export const additionSubtractionSlice = createSlice({
         ...newProblemSettings[index],
         [name]: value,
       };
-
-      // console.log(
-      //   '%c redux additionSubtractionSlice.changeSetting index, name, value ===> ',
-      //   'color: gold; font-weight: bold;',
-      //   index,
-      //   name,
-      //   value,
-      //   newProblemSettings[index],
-      // );
 
       state.settings = newProblemSettings;
 

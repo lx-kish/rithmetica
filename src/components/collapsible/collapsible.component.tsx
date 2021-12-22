@@ -6,7 +6,7 @@ interface IProps {
 	id: string;
 	content?: JSX.Element | string;
 	borderBottom?: boolean;
-	collapsibleClassName?: string;
+	collapsibleClassName: string;
 	titleClassName?: string;
 	title?: string;
 	iconBoxClassName?: string;
@@ -27,31 +27,29 @@ const Collapsible: React.FC<IProps> = (props) => {
 
 	}, [display]);
 
-	const showCollapsible = () => {
-		return display ? (
-			<React.Fragment>
-				{props.content}
-				{props.borderBottom ? <hr className="header__hr" /> : null}
-			</React.Fragment>
-		) : null;
-	};
+	const handleChange = () => {
+		setDisplay(!display);
+	}
 
 	return (
 		<div className={props?.collapsibleClassName} key={props.id}>
-			<h3 className={props?.titleClassName}>{props.title}</h3>
-			<input
-				type="checkbox"
-				className="collapsible__btn"
-				id={props.id}
-				checked={display}
-				onChange={() => setDisplay(!display)}
-				autoComplete="off" //for dropping the value when cached by browser
-			/>
-			<label htmlFor={props.id} className={props?.iconBoxClassName}>
-				<IconChevronDown className={props.iconClassName} />
-			</label>
-			<hr className="header__hr" />
-			{showCollapsible()}
+			<div className={`collapsible__line${props.borderBottom ? " collapsible__border-bottom" : ""}`}>
+				<h3 className={props?.titleClassName}>{props.title}</h3>
+				<input
+					type="checkbox"
+					className="collapsible__btn"
+					id={props.id}
+					checked={display}
+					onChange={handleChange}
+					autoComplete="off" //for dropping the value when cached by browser
+				/>
+				<label htmlFor={props.id} className={props?.iconBoxClassName}>
+					<IconChevronDown className={props.iconClassName} />
+				</label>
+			</div>
+			<div className={`description ${display ? "collapsible--expanded" : "collapsible--collapsed"}`}>
+				{props.content}
+			</div>
 		</div>
 	);
 };

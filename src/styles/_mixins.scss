@@ -169,10 +169,10 @@ possible $breakpoint arguments:
         }
     }
 
-    // @if $breakpoint == big-desktop {
-    //     //big-desktop
-    //     @media only screen and (min-width: 112.5em) {
-    //         @content;
-    //     }
-    // }
+    @if $breakpoint == big-desktop {
+        //big-desktop
+        @media only screen and (min-width: 112.5em) {
+            @content;
+        }
+    }
 }

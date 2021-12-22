@@ -6,13 +6,6 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 const upToTen = (operation: string, numberOfOperands: number) => {
 
   try {
-    // console.log(
-    //   '%c arguments of addition-problem-generator ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemType,
-    //   numberOfOperands,
-    //   numberOfProblems
-    // );
 
     // to prevent a lot of randomized zeros generated
     let zero = 1;
@@ -45,12 +38,6 @@ const upToTen = (operation: string, numberOfOperands: number) => {
       0,
       problemMaximum
     );
-
-    // console.log(
-    //   `%c operands from "up-to-10", ${operation} ===> `,
-    //   'color: orange; font-weight: bold;',
-    //   operands
-    // );
 
     return operands;
   }

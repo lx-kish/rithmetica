@@ -2,6 +2,11 @@
 //GENERAL SETTINGS FOR A DARK-MODE TOGGLER INPUT
 .add-subtract-toggle {
 
+    &__box {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--color-white);    
+    }
+
     &__input {
         position: relative;
         top: .5rem;
@@ -40,4 +45,8 @@
             outline: none;
         }
     }
+}
+
+.toggler {
+  margin: 0 2rem;
 }

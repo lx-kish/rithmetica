@@ -6,13 +6,6 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 const singleDigitOperands = (operation: string, numberOfOperands: number) => {
 
   try {
-    // console.log(
-    //   '%c arguments of addition-problem-generator ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemType,
-    //   numberOfOperands,
-    //   numberOfProblems
-    // );
 
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     let problemMaximum = 0;
@@ -37,12 +30,6 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
       0,
       problemMaximum
     );
-
-    // console.log(
-    //   `%c operands from "single-digit-operands", ${operation} ===> `,
-    //   'color: orange; font-weight: bold;',
-    //   operands
-    // );
 
     return operands;
   }

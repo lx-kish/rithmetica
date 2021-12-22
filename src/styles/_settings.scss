@@ -1,42 +1,61 @@
 .settings {
-
-  max-width: 80vw;
   margin: 0 auto;
-  
+
   text-align: center;
+  border-bottom: 1px solid var(--color-white);
 
   @include respond(_920-960) {
-      max-width: 83vw;
+    max-width: 83vw;
   }
-  
+
   @include respond(_600-640) {
-      max-width: 90vw;
+    max-width: 90vw;
   }
 
   @include respond(_440-480) {
-      max-width: 95vw;
+    max-width: 95vw;
   }
 
   &__settings-group {
     color: var(--color-white);
     background-color: var(--color-background);
 
-    min-width: 50vw;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
+
+    @include respond(_1100-1200) {
+      max-width: 77vw;
+    }
+
+    @include respond(_1050-1100) {
+      max-width: 80vw;
+    }
+
+    @include respond(_880-920) {
+      max-width: 84vw;
+    }
+
+    @include respond(_600-640) {
+      max-width: 90vw;
+    }
+
+    @include respond(_440-480) {
+      max-width: 95vw;
+    }
   }
 
   &__setting {
-    margin: .5rem 0;
+    margin: 0.5rem 0;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
-    padding: .5rem;
+    padding: 0.5rem;
     border: 2px solid var(--color-white);
-    border-radius: .5rem;
-               
+    border-radius: 0.5rem;
+
     @include respond(_640-680) {
       border-radius: 1.5rem;
       padding: 2rem;
@@ -72,7 +91,7 @@
     font-weight: bold;
     color: var(--color-white);
     background-color: var(--color-background);
-            
+
     @include respond(_640-680) {
       flex-direction: column;
       order: 2;
@@ -80,7 +99,6 @@
     }
 
     &--radio {
-
       @include respond(_640-680) {
         flex-direction: row;
       }
@@ -88,10 +106,10 @@
       &:not(:first-child) {
         @include respond(_640-680) {
           margin-top: 4rem;
-        }  
+        }
       }
     }
-    
+
     &--btns {
       @include respond(_640-680) {
         flex-direction: row;
@@ -102,7 +120,7 @@
     }
 
     &-btn {
-      padding: 0 .7rem;
+      padding: 0 0.7rem;
 
       font-size: 2.1rem;
 
@@ -130,13 +148,12 @@
       }
 
       &:last-child {
-
-        margin-left: .2rem;
+        margin-left: 0.2rem;
 
         @include respond(_640-680) {
           margin-left: 2rem;
         }
-  
+
         @include respond(_400-440) {
           margin-left: 3rem;
         }
@@ -163,7 +180,7 @@
     font-weight: bold;
     color: var(--color-white);
     border: 2px solid var(--color-white);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background-color: var(--color-background);
 
     @include respond(_640-680) {
@@ -172,8 +189,8 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      }
-  
+    }
+
     @include respond(_400-440) {
       font-size: 4rem;
     }
@@ -189,13 +206,13 @@
     font-weight: bold;
     color: var(--color-white);
     border: 2px solid var(--color-white);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     background-color: var(--color-background);
 
     @include respond(_640-680) {
       font-size: 3.5rem;
     }
-      
+
     @include respond(_400-440) {
       font-size: 4rem;
     }
@@ -205,7 +222,7 @@
     background-color: transparent;
     outline: none;
     border: 2px solid var(--color-white);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     text-align: center;
     font-family: inherit;
     font-size: 1.3rem;
@@ -229,7 +246,7 @@
       -moz-appearance: textfield;
       appearance: textfield;
     }
-    
+
     &[type="number"]::-webkit-inner-spin-button,
     &[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
@@ -245,7 +262,7 @@
         align-items: center;
         flex: 1;
 
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
         background-color: transparent;
         outline: none;
         border: 2px solid var(--color-white);
@@ -257,14 +274,14 @@
         cursor: pointer;
 
         &:first-of-type {
-          border-radius: .5rem 0 0 .5rem;
+          border-radius: 0.5rem 0 0 0.5rem;
         }
         &:not(:last-of-type) {
           border-right: 1px;
         }
 
         &:last-of-type {
-          border-radius: 0 .5rem .5rem 0;
+          border-radius: 0 0.5rem 0.5rem 0;
         }
 
         @include respond(_640-680) {
@@ -287,17 +304,17 @@
     font-weight: bold;
     line-height: 1.5;
 
-    margin: .5rem auto;
+    margin: 1rem auto;
 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    
+
     @include respond(_640-680) {
       width: 75%;
       font-size: 5rem;
       border-radius: 1.5rem;
-      
+
       line-height: 2;
 
       margin: 3rem auto;

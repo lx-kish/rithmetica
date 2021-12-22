@@ -98,26 +98,28 @@ const MultiplicationTab: React.FC<IProps> = props => {
     return (
         <>
             <NavigationBar />
-            <Header
-                getDisplay={getDisplay}
-                subtract={fullState.subtract}
-                setChecked={() =>
-                    setFullState({
-                        ...fullState,
-                        display: !fullState.display
-                    })
-                }
-                setSubtract={() =>
-                    setFullState({
-                        ...fullState,
-                        subtract: !fullState.subtract
-                    })
-                }
-            />
-            <Tab
-                subtract={fullState.subtract}
-                sign={getSign()}
-            />
+            <main className='main'>
+                <Header
+                    getDisplay={getDisplay}
+                    subtract={fullState.subtract}
+                    setChecked={() =>
+                        setFullState({
+                            ...fullState,
+                            display: !fullState.display
+                        })
+                    }
+                    setSubtract={() =>
+                        setFullState({
+                            ...fullState,
+                            subtract: !fullState.subtract
+                        })
+                    }
+                />
+                <Tab
+                    subtract={fullState.subtract}
+                    sign={getSign()}
+                />
+            </main>
             <Footer />
         </>
     )

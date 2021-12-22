@@ -13,13 +13,6 @@ const problemsFactory = (
 ) => {
 
   try {
-    // console.log(
-    //   '%c arguments of addition-problem-generator ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemType,
-    //   numberOfOperands,
-    //   numberOfProblems
-    // );
 
     const processor: (operation: string, numberOfOperands: number) => number[] = operandsFactory(type);
 
@@ -53,20 +46,8 @@ const problemsFactory = (
         });
       }
 
-      // console.log(
-      //   `%c ${operation} problem from "problems-factory" ===> `,
-      //   'color: blue; font-weight: bold;',
-      //   problem
-      // );
-
       problems.push(problem);
     }
-
-    // console.log(
-    //   '%c problems from "problems-factory" ===> ',
-    //   'color: orange; font-weight: bold;',
-    //   problems
-    // );
 
     return problems;
   }

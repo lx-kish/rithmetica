@@ -6,14 +6,6 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 const getInputPosition = (numberOfOperands: number, missing: string) => {
 
   try {
-    
-    // console.log(
-    //   '%c arguments of addition-problem-generator ===> ',
-    //   'color: orangered; font-weight: bold;',
-    //   problemType,
-    //   numberOfOperands,
-    //   numberOfProblems
-    // );
 
     let input;
 
@@ -26,12 +18,6 @@ const getInputPosition = (numberOfOperands: number, missing: string) => {
     } else if (missing === 'result') {
       input = numberOfOperands;
     }
-
-    // console.log(
-    //   '%c input from "get-input-position" ===> ',
-    //   'color: orange; font-weight: bold;',
-    //   input
-    // );
 
     return input;
   }

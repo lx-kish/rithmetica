@@ -9,7 +9,7 @@ import Footer from '../../components/footer/footer.component';
 interface IProps { };
 
 const AdditionSubtraction: React.FC<IProps> = (props) => {
-	
+
 	/**
 	 * Single state hook useState for all the state properties
 	 * 
@@ -24,9 +24,8 @@ const AdditionSubtraction: React.FC<IProps> = (props) => {
 	return (
 		<React.Fragment>
 			<NavigationBar />
-			<Header />
-			<main className="problem__main">
-				<Settings />
+			<main className="problem__main main">
+				<Header />
 				<Problems />
 			</main>
 			<Footer />

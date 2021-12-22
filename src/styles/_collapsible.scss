@@ -1,175 +1,169 @@
 .collapsible {
-    position: relative;
+  position: relative;
 
-    text-align: center;
+  text-align: center;
+  transition: all 0.4s ease-in;
+  border-top: 1px solid var(--color-white);
 
-    transition: all 0.4s ease-in;
+  &--expanded {
+    // visibility: visible;
+    opacity: 1;
+    height: auto;
+    transition: all 0.8s ease;
+  }
 
-    &--settings {
-        max-width: 78vw;
-        margin: 0 auto;
+  &--collapsed {
+    // visibility: hidden;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 
-        @include respond(_920-960) {
-            max-width: 82vw;
-        }
-        
-        @include respond(_600-640) {
-            max-width: 90vw;
-        }
+    transition: all 0.8s ease;
+  }
 
-        @include respond(_440-480) {
-            max-width: 95vw;
-        }
+  &__border-bottom {
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  &__line {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    display: block;
+    flex: 1;
+
+    &--level-one {
+      font-size: 3.2rem;
+
+      @include respond(_640-680) {
+        font-size: 5rem;
+      }
     }
 
-    &__title {
-        display: inline-block;
-        
-        &--level-one {
-            font-size: 3.2rem;
+    &--level-two {
+      font-size: 2.5rem;
 
-            @include respond(_640-680) {
-                font-size: 5rem;
-            }
-        }
-        
-        &--level-two {
-            font-size: 2.5rem;
-
-            @include respond(_640-680) {
-                font-size: 4rem;
-            }
-        }
-        
-        &--level-three {
-            font-size: 2rem;
-
-            @include respond(_640-680) {
-                font-size: 3.2rem;
-            }
-        }
-        
-        &--level-four {
-            font-size: 1.6rem;
-
-            @include respond(_640-680) {
-                font-size: 2.7rem;
-            }
-        }
+      @include respond(_640-680) {
+        font-size: 4rem;
+      }
     }
 
-    &__btn {
-        display: none;
+    &--level-three {
+      font-size: 2rem;
 
-        &:checked ~ .collapsible__icon-box {
-            transform: rotate(180deg);
-        }
-
-        &:checked ~ .collapsible__part {
-            opacity: 1;
-            height: auto;
-        }
+      @include respond(_640-680) {
+        font-size: 3.2rem;
+      }
     }
 
-    &__icon {
+    &--level-four {
+      font-size: 1.6rem;
+      text-align: left;
+      padding: 1rem 10rem;
 
-        &--level-one {
-            height: 4rem;
-            width: 4rem;
-        
-            @include respond(_640-680) {
-                height: 10rem;
-                width: 10rem;
-            }
-        }
+      @include respond(_640-680) {
+        font-size: 2.7rem;
+      }
+    }
+  }
 
-        &--level-two {
-            height: 4rem;
-            width: 4rem;
-        
-            @include respond(_640-680) {
-                height: 9rem;
-                width: 9rem;
-            }
-        }
+  &__btn {
+    display: none;
 
-        &--level-three {
-            height: 4rem;
-            width: 4rem;
-        
-            @include respond(_640-680) {
-                height: 12rem;
-                width: 12rem;
-            }
-        }
+    &:checked ~ .collapsible__icon-box {
+      transform: rotate(180deg);
+    }
+  }
 
-        &--level-four {
-            height: 3rem;
-            width: 3rem;
-        
-            @include respond(_640-680) {
-                height: 8rem;
-                width: 8rem;
-            }
-        }
+  &__icon {
+    &--level-one {
+      height: 4rem;
+      width: 4rem;
 
-        &-box {
-            display: inline-block;
-            position: absolute;
-            right: 14rem;
-            top: 1rem;
-            fill: var(--color-white);
-            cursor: pointer;
-
-            transition: all 0.4s ease;
-            
-            &--level-one {
-                height: 3rem;
-                width: 3rem;
-        
-                @include respond(_640-680) {
-                    height: 7rem;
-                    width: 7rem;
-                }
-            }
-            
-            &--level-two {
-                height: 3rem;
-                width: 3rem;
-        
-                @include respond(_640-680) {
-                    height: 6rem;
-                    width: 6rem;
-                }
-            }
-            
-            &--level-three {
-                height: 3rem;
-                width: 3rem;
-        
-                @include respond(_640-680) {
-                    height: 7rem;
-                    width: 7rem;
-                }
-            }
-            
-            &--level-four {
-                height: 2rem;
-                width: 2rem;
-        
-                @include respond(_640-680) {
-                    height: 5rem;
-                    width: 5rem;
-                }
-            }
-        }
+      @include respond(_640-680) {
+        height: 10rem;
+        width: 10rem;
+      }
     }
 
-    &__part {
-        opacity: 0;
-        height: 0;
-        overflow: hidden;
+    &--level-two {
+      height: 4rem;
+      width: 4rem;
 
-        transition: all 0.8s ease;
+      @include respond(_640-680) {
+        height: 9rem;
+        width: 9rem;
+      }
     }
+
+    &--level-three {
+      height: 4rem;
+      width: 4rem;
+
+      @include respond(_640-680) {
+        height: 12rem;
+        width: 12rem;
+      }
+    }
+
+    &--level-four {
+      height: 3rem;
+      width: 3rem;
+
+      @include respond(_640-680) {
+        height: 8rem;
+        width: 8rem;
+      }
+    }
+
+    &-box {
+      display: block;
+      fill: var(--color-white);
+      cursor: pointer;
+
+      transition: all 0.4s ease;
+
+      &--level-one {
+        height: 3rem;
+        width: 3rem;
+
+        @include respond(_640-680) {
+          height: 7rem;
+          width: 7rem;
+        }
+      }
+
+      &--level-two {
+        height: 3rem;
+        width: 3rem;
+
+        @include respond(_640-680) {
+          height: 6rem;
+          width: 6rem;
+        }
+      }
+
+      &--level-three {
+        height: 3rem;
+        width: 3rem;
+
+        @include respond(_640-680) {
+          height: 7rem;
+          width: 7rem;
+        }
+      }
+
+      &--level-four {
+        height: 2rem;
+        width: 2rem;
+
+        @include respond(_640-680) {
+          height: 5rem;
+          width: 5rem;
+        }
+      }
+    }
+  }
 }

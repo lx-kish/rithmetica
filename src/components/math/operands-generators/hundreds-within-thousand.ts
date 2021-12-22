@@ -6,12 +6,6 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
 const hundredsWithinThousand = (operation: string, numberOfOperands: number) => {
 
   try {
-    //   console.log(
-    //     '%c arguments of addition-problem-generator ===> ',
-    //     'color: orangered; font-weight: bold;',
-    //     operation,
-    //     numberOfOperands,
-    //   );
 
     const operands: number[] = [];
 
@@ -25,8 +19,6 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     let operand = 0;
 
     // 1. Generate maximum hundreds of the problem within the following boundaries:
-    // min=(numberOfOperands-1),
-    // max=9
     operation === 'addition' ?
       hundredsLowest = numberOfOperands :
       hundredsLowest = 1;
@@ -39,12 +31,10 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     for (let i = 0; i < numberOfOperands - 1; i++) {
 
       // 3. Generate hundreds operands with limits:
-      // min=numberOfOperands-1-i
       operation === 'addition' ?
         hundredsLowest = numberOfOperands - 1 :
         hundredsLowest = 1;
 
-      // max=hundredsLeft, 
       operation === 'addition' ?
         hundredsHighest = hundredsLeft - 1 :
         hundredsHighest = hundredsLeft;
@@ -78,12 +68,6 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
         problemMin :
         problemMax
     );
-
-    // console.log(
-    //   `%c operands from "tens-within-thousand", ${operation} ===> `,
-    //   'color: orange; font-weight: bold;',
-    //   operands,
-    // );
 
     return operands;
   }

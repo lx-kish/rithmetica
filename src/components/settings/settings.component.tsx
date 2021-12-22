@@ -26,12 +26,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 	// const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
 	const dispatch = useAppDispatch();
 
-	// console.log(
-	// 	'%c fullState.problemSettings after generate triggered ===> ',
-	// 	'color: gold; font-weight: bold;',
-	// 	[...fullState.problemSettings][0]['type']
-	// );
-
 	const collapsibleContent = () => {
 		return (
 			<div className="settings__settings-group">
@@ -175,14 +169,14 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 	return (
 		<div className="settings">
 			<Collapsible
-				title={`Settings`}
-				id={`settings`}
+				title="Settings"
+				id="settings"
 				content={collapsibleContent()}
-				collapsibleClassName={`collapsible`}
-				titleClassName={`collapsible__title collapsible__title--level-one`}
-				iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
-				iconClassName={`collapsible__icon--level-one`}
-				borderBottom={true}
+				collapsibleClassName="collapsible collapsible__border-bottom"
+				titleClassName="collapsible__title collapsible__title--level-one"
+				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
+				iconClassName="collapsible__icon--level-one"
+				borderBottom={false}
 			/>
 			<input
 				type="button"
@@ -190,7 +184,6 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 				value="Generate"
 				onClick={() => dispatch(generateProblems())}
 			/>
-			<hr className="header__hr" />
 		</div>
 	);
 };

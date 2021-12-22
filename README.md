@@ -69,6 +69,14 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes 
 ##### Releas notes starts from v2.3.3
 
+#### v3.0.0 release notes
+
+- The layout is redesigned to adapt for the wide screens;
+
+- The collapsible component is redesigned to be the same width;
+
+- Minor bugs fixed;
+
 #### v2.4.7 release notes
 
 - Fixed bug when it was impossible to use left and right arrow buttons in input fields;
