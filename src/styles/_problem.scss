@@ -1,43 +1,44 @@
-
 .problems {
   margin: 0 auto;
-  width: 95%;
+  // width: 95%;
+  // width: 110%;
   text-align: center;
-  padding: 1rem;
+  // padding: 1rem;
 
   @include respond(_640-680) {
     width: 95vw;
   }
-    
+
   @include respond(_400-440) {
     font-size: 4rem;
   }
 }
 
 .problem {
-  
   margin: auto 1rem;
-  font-size: 5rem;
+  font-size: 6rem;
+
+  @include respond(_1100-1200) {
+  // @include respond(_680-720) {
+    font-size: 5.5rem;
+  }
 
   @include respond(_640-680) {
-    font-size: 7rem;
+    // @include respond(_600-640) {
+    font-size: 11rem;
   }
 
-  @include respond(_600-640) {
-    font-size: 12rem;
-  }
-  
   &__main {
     color: var(--color-white);
   }
-  
+
   &__digit {
     text-align: center;
     vertical-align: middle;
     height: $main-digit-dimention;
     line-height: $main-digit-dimention;
   }
-  
+
   &__row {
     display: flex;
     justify-content: space-around;
@@ -65,7 +66,7 @@
     color: var(--color-white);
 
     @include respond(_360-400) {
-      border-width: .5px;
+      border-width: 0.5px;
     }
 
     &[type="number"] {

@@ -2,7 +2,6 @@ import React from 'react';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
 import Header from '../../components/headers/addition-subtraction/header.component';
-import Settings from '../../components/settings/settings.component';
 import Problems from '../../components/addition-subtraction/problems/problems.component';
 import Footer from '../../components/footer/footer.component';
 
