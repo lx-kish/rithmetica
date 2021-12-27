@@ -62,12 +62,20 @@ There are several problem types for addition or subtraction in the application:
 
 - A Tens Within Thousand - is a type of problems, where tens number is added to or subtracted from a three-digit number. This type of problems is designed to develop the skill of increasing or decreasing any three-digit number by any tens, sometimes resulting in increasing or decreasing hundreds of the number. It helps to realise the relationship between tens and hundreds, and is leading-up to the base mental strategies, like Decomposing.
 
+- A Hundreds Within Thousand - is a type of problems, where hundreds number is added to or subtracted from a three-digit number. This type of problems is designed to develop basic skill of increasing or decreasing any three-digit number by any hundreds.
+
 ## About the project
 
 The application is a React JS Single Page Application, based on create-react-app.
 
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
+
+#### v3.0.2 release notes
+
+- Problem font size corrections;
+
+- Minor bugs fixes;
 
 #### v3.0.1 release notes
 
@@ -83,7 +91,7 @@ The application is a React JS Single Page Application, based on create-react-app
 
 - The collapsible component is redesigned to be the same width;
 
-- Minor bugs fixed;
+- Minor bugs fixes;
 
 #### v2.4.7 release notes
 
