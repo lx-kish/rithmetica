@@ -1,5 +1,12 @@
 import React from 'react';
 
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
+import {
+	clearAllInputs,
+	switchSubtract,
+	subtract,
+} from '../../../redux/multiplicationTable/multiplicationTabSlice';
+
 import Collapsible from '../../collapsible/collapsible.component';
 import HowMultitabWorks from '../../descriptions/multiplication-table/how-multitab-works.component';
 
@@ -7,9 +14,7 @@ import Toggler from '../../toggler/toggler.component';
 
 interface IProps {
 	getDisplay: (display: boolean) => boolean;
-	subtract: boolean;
 	setChecked: () => void;
-	setSubtract: () => void;
 };
 
 const content = {
@@ -40,6 +45,15 @@ const content = {
 
 const Header: React.FC<IProps> = (props) => {
 
+	const subtractState = useAppSelector(subtract);
+
+	const dispatch = useAppDispatch();
+
+	const handleChange = () => {
+		dispatch(clearAllInputs());
+		dispatch(switchSubtract());
+	};
+
 	return (
 		<header className="header header--multiplication-tab">
 			<h1 className="header__title">Multiplication table</h1>
@@ -61,8 +75,8 @@ const Header: React.FC<IProps> = (props) => {
 			/>
 			<Toggler
 				{...content.togglerAddSubtract}
-				checked={props.subtract}
-				onChange={() => props.setSubtract()}
+				checked={subtractState}
+				onChange={handleChange}
 			/>
 		</header>
 	);

@@ -9,8 +9,8 @@ const addition = (augend: string, addend: string): number => {
   try {
     return parseInt(augend) + parseInt(addend);
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

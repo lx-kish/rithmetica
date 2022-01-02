@@ -21,7 +21,7 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
         // Getting compensation within of range from -3 to 3, distinctive from 0
         let compensation;
         while (!compensation) compensation = randomInteger(-3, 3);
-        
+
         operand = randomInteger(2, 9) * 10 - compensation;
         problemMaximum += operand;
       } else {
@@ -45,8 +45,8 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
 
     return operands;
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

@@ -25,8 +25,8 @@ const operandsFactory = (type: string): (operation: string, numberOfOperands: nu
     throw(new Error(`No processor found for case ${type}!`));
 
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

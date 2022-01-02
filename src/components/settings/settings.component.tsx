@@ -2,13 +2,18 @@ import React from 'react';
 
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
+	generateProblems,
 	insertSetting,
 	deleteSetting,
 	changeSetting,
-	generateProblems,
 	settings,
-
 } from '../../redux/addition-subtraction/additionSubtractionSlice';
+// import {
+// 	insertSetting,
+// 	deleteSetting,
+// 	changeSetting,
+// 	settings,
+// } from '../../redux/settingsProcessing/settingsProcessing';
 
 import Collapsible from '../collapsible/collapsible.component';
 
@@ -23,7 +28,7 @@ interface IProps {
 const ProblemSettings: React.FC<IProps> = (props) => {
 
 	const stateSettings = useAppSelector(settings);
-	// const additionSubtractionState = useAppSelector(selectAdditionSubtraction);
+
 	const dispatch = useAppDispatch();
 
 	const collapsibleContent = () => {
@@ -31,7 +36,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 			<div className="settings__settings-group">
 				{stateSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
-						<div className="settings__row--mobile">
+						<div className="settings__col">
 							<div className="settings__control settings__control--radio">
 								<input
 									type="radio"
@@ -122,7 +127,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 								</select>
 							</div>
 						</div>
-						<div className="settings__row--mobile">
+						<div className="settings__col">
 							<div className="settings__control">
 								<label htmlFor="settings-quantity" className="settings__label">
 									Qty:
@@ -183,6 +188,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 				className="btn settings__go-btn"
 				value="Generate"
 				onClick={() => dispatch(generateProblems())}
+			// onClick={() => dispatch(generateProblems(stateSettings))}
 			/>
 		</div>
 	);

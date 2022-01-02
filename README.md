@@ -71,6 +71,22 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v4.0.0 release notes
+
+- Redesign solution to store intermediate results between sessions;
+
+- Store settings, problems, and intermediate results of Addition and Subtraction page after each problems generation or answer input;
+
+- Store addition-subtraction switch state and answers of Multiplication Tab page after each addition-subtraction switch or answer input;
+
+- Add Redux storage for Multiplication Tab application;
+
+- Add Redux storage for Addition Subtraction problems and answers;
+
+- Add local storage processing;
+
+- Minor bugs fixes;
+
 #### v3.0.2 release notes
 
 - Problem font size corrections;

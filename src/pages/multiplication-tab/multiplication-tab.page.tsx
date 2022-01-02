@@ -16,11 +16,12 @@ const MultiplicationTab: React.FC<IProps> = props => {
     /**
      * Single state hook useState for all the state properties
      */
-    const [fullState, setFullState] = React.useState({
-        display: false,
-        subtract: false,
-        // open: false
-    });
+    const [display, setDisplay] = React.useState(false);
+    // const [fullState, setFullState] = React.useState({
+    //     display: false,
+    //     // subtract: false,
+    //     // open: false
+    // });
 
     const dimensions = useWindowSize();
 
@@ -33,27 +34,7 @@ const MultiplicationTab: React.FC<IProps> = props => {
     */
     const getDisplay = (display: boolean): any => {
 
-        setFullState({
-            ...fullState,
-            display: display
-        });
-    };
-
-    /**
-     * Returns mathematical sign for addition or subtraction
-     * @return {html entity} sign code
-     */
-    const getSign = (): any => {
-        return fullState.subtract ? <>&#x2212;</> : <>&#x2b;</>
-    }
-
-    /**
-    * Empty all the table inputs
-    * @return {void} 
-    */
-    const emptyInputs = (): void => {
-        let inputs: any = Array.from(document.getElementsByClassName('component__input'));
-        inputs.map((input: HTMLInputElement) => input.value = '')
+        setDisplay(display);
     };
 
     /**
@@ -84,16 +65,7 @@ const MultiplicationTab: React.FC<IProps> = props => {
         return () => {
             window.removeEventListener('scroll', scrollCallBack);
         };
-    }, [fullState.display, dimensions]);
-
-    /**
-     * React hook useEffect for empty input when toggle addition/subtraction
-     */
-    React.useEffect(() => {
-
-        emptyInputs();
-
-    }, [fullState.subtract]);
+    }, [display, dimensions]);
 
     return (
         <>
@@ -101,24 +73,11 @@ const MultiplicationTab: React.FC<IProps> = props => {
             <main className='main'>
                 <Header
                     getDisplay={getDisplay}
-                    subtract={fullState.subtract}
                     setChecked={() =>
-                        setFullState({
-                            ...fullState,
-                            display: !fullState.display
-                        })
-                    }
-                    setSubtract={() =>
-                        setFullState({
-                            ...fullState,
-                            subtract: !fullState.subtract
-                        })
+                        setDisplay(!display)
                     }
                 />
-                <Tab
-                    subtract={fullState.subtract}
-                    sign={getSign()}
-                />
+                <Tab />
             </main>
             <Footer />
         </>

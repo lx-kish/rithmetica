@@ -33,8 +33,8 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
 
     return operands;
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

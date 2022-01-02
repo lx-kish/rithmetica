@@ -34,25 +34,30 @@ const problemsFactory = (
 
         if (i > 0) {
           problem.push({
-            type: 'sign',
+            type: "sign",
             value: i === operands.length - 1 ?
-              '=' :
-              operation === 'addition' ? '+' : '-'
+              "=" :
+              operation === "addition" ? "+" : "-"
           });
         }
         problem.push({
-          type: input === i ? 'input' : 'operand',
+          type: input === i ? "input" : "operand",
           value: operands[i].toString(),
         });
       }
+
+      problem.push({
+        type: "result",
+        value: ""
+      });
 
       problems.push(problem);
     }
 
     return problems;
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

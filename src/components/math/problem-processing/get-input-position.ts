@@ -21,8 +21,8 @@ const getInputPosition = (numberOfOperands: number, missing: string) => {
 
     return input;
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

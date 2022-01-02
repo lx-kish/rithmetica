@@ -1,24 +1,34 @@
 import React from 'react';
 
+import { useAppSelector } from '../../../redux/hooks';
+import {
+    subtract,
+} from '../../../redux/multiplicationTable/multiplicationTabSlice';
+
 import content from '../../../table.content';
 
 import TabHeader from '../tab-header/tab-header.component';
 import TabEmptyLine from '../tab-empty-line/tab-empty-line.component';
 import TabLine from '../tab-line/tab-line.component';
 
-interface IProps {
-    subtract: boolean;
-    sign: Element;
-};
+interface IProps {};
 
 const Tab: React.FC<IProps> = props => {
+   
+    const subtractState = useAppSelector(subtract);
 
+    /**
+     * Returns mathematical sign for addition or subtraction
+     * @return {html entity} sign code
+     */
+     const getSign = (): any => {
+        return subtractState ? <>&#x2212;</> : <>&#x2b;</>
+    }
+    
     return (
-        <section className='tab' id='tab'>
+        <section className="tab" id="tab">
             <TabHeader
-                subtract={props.subtract}
-                sign={props.sign}
-                id={'header-stick'}
+                id={"header-stick"}
             />
             <TabEmptyLine />
             {[...Array(11)].map((x, i) =>
@@ -27,15 +37,13 @@ const Tab: React.FC<IProps> = props => {
                         key={i}
                         className={content.styles[i]}
                         value={i}
-                        subtract={props.subtract}
-                        sign={props.sign}
+                        subtract={subtractState}
+                        sign={getSign()}
                     />
                     : null
             )}
             <TabHeader
-                subtract={props.subtract}
-                sign={props.sign}
-                id={''}
+                id={""}
             />
         </section>
     )

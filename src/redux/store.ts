@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
+import multiplicationTabReducer from './multiplicationTable/multiplicationTabSlice';
 import additionSubtractionReducer from './addition-subtraction/additionSubtractionSlice';
+// import settingsReducer from './settingsProcessing/settingsProcessing';
 
 export const store = configureStore({
   reducer: {
-    additionSubtraction: additionSubtractionReducer,
+    multiplicationTab: multiplicationTabReducer.reducer,
+    additionSubtraction: additionSubtractionReducer.reducer,
+    // settingsState: settingsReducer.reducer,
   }
 });
 

@@ -9,8 +9,8 @@ const subtraction = (minuend: string, subtrahend: string) => {
   try {
     return parseInt(minuend) - parseInt(subtrahend);
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 

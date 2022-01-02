@@ -27,8 +27,8 @@ const problemsController = (problemDescriptions: IAdditionSubtractionSetting[]):
 
     return problems;
   }
-  catch (e) {
-    throw new Error(e);
+  catch (e: any) {
+    throw new Error(e.message);
   }
 };
 
