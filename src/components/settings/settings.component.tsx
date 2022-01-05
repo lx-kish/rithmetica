@@ -3,19 +3,19 @@ import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import {
 	generateProblems,
-	insertSetting,
-	deleteSetting,
 	changeSetting,
 	settings,
 } from '../../redux/addition-subtraction/additionSubtractionSlice';
-// import {
-// 	insertSetting,
-// 	deleteSetting,
-// 	changeSetting,
-// 	settings,
-// } from '../../redux/settingsProcessing/settingsProcessing';
 
 import Collapsible from '../collapsible/collapsible.component';
+
+import SettingsMissing from './settings-missing/settings-missing.component';
+
+import SettingsAdditionSubtraction from './settings-addition-subtraction/settings-addition-subtraction.component';
+
+import SettingsTypes from './settings-types/settings-types.component';
+
+import SettingsControlButtons from './settings-control-btns/settings-control-btns.component';
 
 import handleKeyDown from '../../utils/handle-key-down-event/handle-key-down-event';
 
@@ -25,7 +25,7 @@ interface IProps {
 
 };
 
-const ProblemSettings: React.FC<IProps> = (props) => {
+const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
 
 	const stateSettings = useAppSelector(settings);
 
@@ -37,95 +37,9 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 				{stateSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
 						<div className="settings__col">
-							<div className="settings__control settings__control--radio">
-								<input
-									type="radio"
-									id={`addition-${index}`}
-									name={`operation-${index}`}
-									value="addition"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "operation", value: "addition" }))}
-									checked={setting.operation === "addition"}
-								/>
-								<label htmlFor={`addition-${index}`}>addition</label>
-								<input
-									type="radio"
-									id={`subtraction-${index}`}
-									name={`operation-${index}`}
-									value="subtraction"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "operation", value: "subtraction" }))}
-									checked={setting.operation === "subtraction"}
-								/>
-								<label htmlFor={`subtraction-${index}`}>subtraction</label>
-							</div>
-							<div className="settings__control settings__control--radio">
-								<input
-									type="radio"
-									id={`first-${index}`}
-									name={`missing-${index}`}
-									value="first"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "first" }))}
-									checked={setting.missing === "first"}
-								/>
-								<label htmlFor={`first-${index}`}>first</label>
-								<input
-									type="radio"
-									id={`last-${index}`}
-									name={`missing-${index}`}
-									value="last"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "last" }))}
-									checked={setting.missing === "last"}
-								/>
-								<label htmlFor={`last-${index}`}>last</label>
-								<input
-									type="radio"
-									id={`result-${index}`}
-									name={`missing-${index}`}
-									value="result"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "result" }))}
-									checked={setting.missing === "result"}
-								/>
-								<label htmlFor={`result-${index}`}>result</label>
-								<input
-									type="radio"
-									id={`random-${index}`}
-									name={`missing-${index}`}
-									value="random"
-									className="settings__input"
-									onChange={() => dispatch(changeSetting({ index, name: "missing", value: "random" }))}
-									checked={setting.missing === "random"}
-								/>
-								<label htmlFor={`random-${index}`}>random</label>
-							</div>
-							<div className="settings__control">
-								<label htmlFor="settings-type" className="settings__label">
-									Type:
-								</label>
-								<select
-									name="type"
-									id="settings-type"
-									className="settings__select"
-									value={setting.type}
-									onChange={(event) => dispatch(changeSetting({ index, name: "type", value: event.target.value }))}
-								>
-									<option >
-										-- select --
-									</option>
-									{types.map((type, i) => (
-										<option
-											key={i}
-											value={type}
-											className="settings__option"
-										>
-											{type}
-										</option>
-									))}
-								</select>
-							</div>
+							<SettingsAdditionSubtraction index={index} setting={setting} />
+							<SettingsMissing index={index} setting={setting} />
+							<SettingsTypes index={index} setting={setting} types={types}/>
 						</div>
 						<div className="settings__col">
 							<div className="settings__control">
@@ -148,22 +62,7 @@ const ProblemSettings: React.FC<IProps> = (props) => {
 									onKeyDown={(event) => handleKeyDown(event)}
 								/>
 							</div>
-							<div className="settings__control settings__control--btns">
-								<input
-									type="button"
-									value="+"
-									className="btn settings__control-btn"
-									onClick={() => dispatch(insertSetting(index))}
-									title="add line"
-								/>
-								<input
-									type="button"
-									value="&times;"
-									className="btn settings__control-btn"
-									onClick={() => dispatch(deleteSetting(index))}
-									title="remove line"
-								/>
-							</div>
+							<SettingsControlButtons index={index} />
 						</div>
 					</div>
 				))}
