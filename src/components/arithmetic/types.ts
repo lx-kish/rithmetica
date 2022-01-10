@@ -126,6 +126,12 @@ const TaskTypes: IProblemType[] = [
     type: "equation",
     missing: "random",
   }, // 8 + 7 = 15; 9 - 3 = 6 
+  {
+    operation: "×",
+    name: "single digit and up to twenty",
+    type: "equation",
+    missing: "random",
+  }, // 8 + 7 = 15; 9 - 3 = 6 
   // {
   //   operation: "÷",
   //   name: "strip diagram",
@@ -147,6 +153,12 @@ const TaskTypes: IProblemType[] = [
   {
     operation: "÷",
     name: "single digit operands",
+    type: "equation",
+    missing: "random",
+  }, // 8 + 7 = 15; 9 - 3 = 6 
+  {
+    operation: "÷",
+    name: "single digit and up to twenty",
     type: "equation",
     missing: "random",
   }, // 8 + 7 = 15; 9 - 3 = 6 

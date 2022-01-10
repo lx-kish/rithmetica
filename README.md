@@ -71,6 +71,14 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v5.1.0 release notes
+
+- Add single-digit and up-to-twenty multiplication and division problem;
+
+- Reorganize operations processing inside settings component;
+
+- Minor bugs fixes;
+
 #### v5.0.0 release notes
 
 - Redesign application for all basic arithmetical operations;

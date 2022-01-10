@@ -5,7 +5,7 @@ import {
 	settings,
 } from '../../../redux/arithmetic/arithmeticSlice';
 
-import types from '../../addition-subtraction/types';
+import types from '../../arithmetic/types';
 
 import handleChangeArithmeticalSettings from '../../../utils/handle-change-event/handle-change-arithmetical-settings-event';
 

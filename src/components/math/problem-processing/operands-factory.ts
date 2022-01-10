@@ -10,6 +10,7 @@ import stripDiagram from '../operands-generators/multiplication-division/strip-d
 import equalGroups from '../operands-generators/multiplication-division/equal-groups';
 import array from '../operands-generators/multiplication-division/array';
 import singleDigitOperandsMultiplicationDivision from '../operands-generators/multiplication-division/single-digit-operands';
+import singleDigitAndUpToTwenty from '../operands-generators/multiplication-division/single-digit-and-up-to-twenty';
 import twoDigitPercentage from '../operands-generators/percentage/two-digit-percentage';
 
 /**
@@ -31,6 +32,7 @@ const operandsFactory = (name: string, operation: string): (operation: string, n
     if (name === 'equal gropus') return equalGroups;
     if (name === 'array') return array;
     if (name === 'single digit operands' && (operation === "×" || operation === "÷")) return singleDigitOperandsMultiplicationDivision;
+    if (name === 'single digit and up to twenty') return singleDigitAndUpToTwenty;
     if (name === 'two-digit percentage') return twoDigitPercentage;
     throw (new Error(`No processor found for case ${name}!`));
   }

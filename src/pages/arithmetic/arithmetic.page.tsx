@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
 import Header from '../../components/headers/arithmetic/header.component';
-import Problems from '../../components/addition-subtraction/problems/problems.component';
+import Problems from '../../components/arithmetic/problems/problems.component';
 import Footer from '../../components/footer/footer.component';
 
 interface IProps { };

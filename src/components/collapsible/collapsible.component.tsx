@@ -16,6 +16,8 @@ interface IProps {
 
 const Collapsible: React.FC<IProps> = (props) => {
 
+	const { getDisplay } = props;
+
 	const [display, setDisplay] = React.useState(false);
 
 	/**
@@ -23,9 +25,10 @@ const Collapsible: React.FC<IProps> = (props) => {
 	 */
 	React.useEffect(() => {
 
-		if (props?.getDisplay) props.getDisplay(display);
+		if (getDisplay) getDisplay(display);
 
-	}, [display]);
+	}, [getDisplay, display]);
+	// }, [display]);
 
 	const handleChange = () => {
 		setDisplay(!display);

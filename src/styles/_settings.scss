@@ -26,16 +26,18 @@
     flex-direction: column;
 
     @include respond(_1100-1200) {
-      max-width: 77vw;
+      max-width: 85vw;
+      // max-width: 77vw;
     }
 
-    @include respond(_1050-1100) {
-      max-width: 80vw;
-    }
+    // @include respond(_1050-1100) {
+    //   max-width: 90vw;
+    //   // max-width: 80vw;
+    // }
 
-    @include respond(_880-920) {
-      max-width: 84vw;
-    }
+    // @include respond(_880-920) {
+    //   max-width: 84vw;
+    // }
 
     @include respond(_600-640) {
       max-width: 90vw;
@@ -324,8 +326,8 @@
       line-height: 0.8;
 
       @include respond(_640-680) {
-        font-size: 4rem;
-        line-height: inherit;
+        font-size: 6rem;
+        line-height: 1.2;
       }
     }
   }
