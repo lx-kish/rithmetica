@@ -1,5 +1,6 @@
 import React from 'react';
 
+import sections from '../../../sections';
 import Collapsible from '../../collapsible/collapsible.component';
 import Settings from '../../settings/settings.component';
 import Math from '../../descriptions/addition-subtraction/math.component';
@@ -8,6 +9,9 @@ import HowAdditionSubtractionWorks from '../../descriptions/addition-subtraction
 interface IProps { };
 
 const Header: React.FC<IProps> = (props) => {
+
+	const sectionSettings = sections.find(el => el.link === "/arithmetic");
+
 	const collapsibleContent = () => {
 		return (
 			<React.Fragment>
@@ -49,8 +53,8 @@ const Header: React.FC<IProps> = (props) => {
 
 	return (
 		<header className="header">
-			<h1 className="header__title">Addition and Subtraction</h1>
-			<h3 className="header__title--small">boost your skills of addition and subtraction</h3>
+			<h1 className="header__title">{sectionSettings?.name}</h1>
+			<h3 className="header__title--small">{sectionSettings?.motto}</h3>
 			<Collapsible
 				title="About"
 				id="about"

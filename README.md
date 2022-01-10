@@ -71,6 +71,20 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v5.0.0 release notes
+
+- Redesign application for all basic arithmetical operations;
+
+- Add multiplication, division, fraction and percentage operations;
+
+- Redesign settings component;
+
+- Redesign problem generation to support different types of problems;
+
+- Add single digit multiplication and division problems type;
+
+- Minor bugs fixes;
+
 #### v4.0.1 release notes
 
 - Split settings component into smaller components

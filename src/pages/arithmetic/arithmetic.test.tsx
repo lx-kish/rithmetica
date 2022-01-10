@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 
-import AdditionSubtraction from './addition-subtraction.page';
+import Arithmetic from './arithmetic.page';
 
 /**
  * - @DONE - application should change the burger button by adding/removing css class 'is-active' on every click on it
@@ -38,7 +38,7 @@ describe('Addition and Subtraction component - Navigation component test set', (
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -62,7 +62,7 @@ describe('Addition and Subtraction component - Navigation component test set', (
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -88,7 +88,7 @@ describe('Addition and Subtraction component - Navigation component test set', (
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -111,7 +111,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -125,7 +125,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -141,7 +141,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
 
         const { container } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -159,7 +159,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -211,7 +211,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -281,7 +281,7 @@ describe('Addition and Subtraction component - Collapsible component test set', 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -360,7 +360,7 @@ describe('Addition and Subtraction component - Settings component test set', () 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -401,7 +401,7 @@ describe('Addition and Subtraction component - Settings component test set', () 
         const { container, queryByText, getAllByRole } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -452,7 +452,7 @@ describe('Addition and Subtraction component - Settings component test set', () 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 
@@ -571,7 +571,7 @@ describe('Addition and Subtraction component - Settings component test set', () 
         const { container, queryByText } = render(
             // const { container, debug } = render(
             <BrowserRouter>
-                <AdditionSubtraction />
+                <Arithmetic />
             </BrowserRouter>
         );
 

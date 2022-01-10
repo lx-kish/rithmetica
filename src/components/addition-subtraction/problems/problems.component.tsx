@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../redux/hooks';
 import {
 	columns,
 	problems,
-} from '../../../redux/addition-subtraction/additionSubtractionSlice';
+} from '../../../redux/arithmetic/arithmeticSlice';
 
 import Problem from '../problem/problem.component';
 

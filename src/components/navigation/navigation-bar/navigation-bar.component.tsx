@@ -3,8 +3,6 @@ import React from 'react';
 import BurgerIcon from '../burger icon/icon-burger.component';
 import SlideBar from '../slide bar/slide-bar.component';
 
-import siteMenu from '../siteMenu';
-
 interface IProps { };
 
 const NavigationBar: React.FC<IProps> = (props) => {
@@ -28,7 +26,7 @@ const NavigationBar: React.FC<IProps> = (props) => {
 		<div className="navigation">
 			<div className={`navigation__bg${open ? ' is-active' : ''}`} onClick={() => setOpen(false)} />
 			<BurgerIcon open={open} setOpen={() => setOpen(!open)} />
-			<SlideBar open={open} links={siteMenu} hideSliderMenu={() => setOpen(false)} />
+			<SlideBar open={open} hideSliderMenu={() => setOpen(false)} />
 		</div>
 	);
 };

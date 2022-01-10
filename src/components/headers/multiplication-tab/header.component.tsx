@@ -7,6 +7,7 @@ import {
 	subtract,
 } from '../../../redux/multiplicationTable/multiplicationTabSlice';
 
+import sections from '../../../sections';
 import Collapsible from '../../collapsible/collapsible.component';
 import HowMultitabWorks from '../../descriptions/multiplication-table/how-multitab-works.component';
 
@@ -49,6 +50,8 @@ const Header: React.FC<IProps> = (props) => {
 
 	const dispatch = useAppDispatch();
 
+	const sectionSettings = sections.find(el => el.link === "/multiplication-tab");
+
 	const handleChange = () => {
 		dispatch(clearAllInputs());
 		dispatch(switchSubtract());
@@ -56,8 +59,8 @@ const Header: React.FC<IProps> = (props) => {
 
 	return (
 		<header className="header header--multiplication-tab">
-			<h1 className="header__title">Multiplication table</h1>
-			<h3 className="header__title--small">learn multiplication using addition and subtraction</h3>
+			<h1 className="header__title">{sectionSettings?.name}</h1>
+			<h3 className="header__title--small">{sectionSettings?.motto}</h3>
 			<Collapsible
 				title="How it works"
 				id="multitable-usage"

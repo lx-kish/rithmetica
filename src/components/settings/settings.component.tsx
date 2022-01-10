@@ -5,13 +5,13 @@ import {
 	generateProblems,
 	changeSetting,
 	settings,
-} from '../../redux/addition-subtraction/additionSubtractionSlice';
+} from '../../redux/arithmetic/arithmeticSlice';
 
 import Collapsible from '../collapsible/collapsible.component';
 
 import SettingsMissing from './settings-missing/settings-missing.component';
 
-import SettingsAdditionSubtraction from './settings-addition-subtraction/settings-addition-subtraction.component';
+import SettingsOperation from './settings-operation/settings-operation.component';
 
 import SettingsTypes from './settings-types/settings-types.component';
 
@@ -19,11 +19,7 @@ import SettingsControlButtons from './settings-control-btns/settings-control-btn
 
 import handleKeyDown from '../../utils/handle-key-down-event/handle-key-down-event';
 
-import types from '../addition-subtraction/types';
-
-interface IProps {
-
-};
+interface IProps {};
 
 const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
 
@@ -36,12 +32,12 @@ const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
 			<div className="settings__settings-group">
 				{stateSettings.map((setting, index) => (
 					<div className="settings__setting" key={index}>
-						<div className="settings__col">
-							<SettingsAdditionSubtraction index={index} setting={setting} />
+						<div className="settings__col settings__col--controls">
+							<SettingsOperation index={index} setting={setting} />
 							<SettingsMissing index={index} setting={setting} />
-							<SettingsTypes index={index} setting={setting} types={types}/>
+							<SettingsTypes index={index} setting={setting}/>
 						</div>
-						<div className="settings__col">
+						<div className="settings__col settings__col--qty-btns">
 							<div className="settings__control">
 								<label htmlFor="settings-quantity" className="settings__label">
 									Qty:
@@ -87,7 +83,6 @@ const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
 				className="btn settings__go-btn"
 				value="Generate"
 				onClick={() => dispatch(generateProblems())}
-			// onClick={() => dispatch(generateProblems(stateSettings))}
 			/>
 		</div>
 	);

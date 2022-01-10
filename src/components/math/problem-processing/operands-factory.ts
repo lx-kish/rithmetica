@@ -1,29 +1,38 @@
-import upToTen from '../operands-generators/up-to-ten';
-import singleDigitOperands from '../operands-generators/single-digit-operands';
-import twoAndSingleDigits from '../operands-generators/two-and-single-digits';
-import twoDigitAndTens from '../operands-generators/two-digit-and-tens';
-import twoDigitOperands from '../operands-generators/two-digit-operands';
-import twoDigitTidyngUp from '../operands-generators/two-digit-tidying-up';
-import tensWithinThousands from '../operands-generators/tens-within-thousand';
-import hundredsWithinThousands from '../operands-generators/hundreds-within-thousand';
+import upToTen from '../operands-generators/addition-subtraction/up-to-ten';
+import singleDigitOperandsAdditionSubtraction from '../operands-generators/addition-subtraction/single-digit-operands';
+import twoAndSingleDigits from '../operands-generators/addition-subtraction/two-and-single-digits';
+import twoDigitAndTens from '../operands-generators/addition-subtraction/two-digit-and-tens';
+import twoDigitOperands from '../operands-generators/addition-subtraction/two-digit-operands';
+import twoDigitTidyngUp from '../operands-generators/addition-subtraction/two-digit-tidying-up';
+import tensWithinThousands from '../operands-generators/addition-subtraction/tens-within-thousand';
+import hundredsWithinThousands from '../operands-generators/addition-subtraction/hundreds-within-thousand';
+import stripDiagram from '../operands-generators/multiplication-division/strip-diagram';
+import equalGroups from '../operands-generators/multiplication-division/equal-groups';
+import array from '../operands-generators/multiplication-division/array';
+import singleDigitOperandsMultiplicationDivision from '../operands-generators/multiplication-division/single-digit-operands';
+import twoDigitPercentage from '../operands-generators/percentage/two-digit-percentage';
 
 /**
  * 
  */
-const operandsFactory = (type: string): (operation: string, numberOfOperands: number) => number[] => {
+const operandsFactory = (name: string, operation: string): (operation: string, numberOfOperands: number) => number[] => {
 
   try {
 
-    if (type === 'up to ten') return upToTen;
-    if (type === 'single digit operands') return singleDigitOperands;
-    if (type === 'two- and single- digit') return twoAndSingleDigits;
-    if (type === 'two-digit and tens') return twoDigitAndTens;
-    if (type === 'two-digit operands') return twoDigitOperands;
-    if (type === 'two-digit tidying up') return twoDigitTidyngUp;
-    if (type === 'tens within thousand') return tensWithinThousands;
-    if (type === 'hundreds within thousand') return hundredsWithinThousands;
-    throw(new Error(`No processor found for case ${type}!`));
-
+    if (name === 'up to ten') return upToTen;
+    if (name === 'single digit operands' && (operation === "+" || operation === "-")) return singleDigitOperandsAdditionSubtraction;
+    if (name === 'two- and single- digit') return twoAndSingleDigits;
+    if (name === 'two-digit and tens') return twoDigitAndTens;
+    if (name === 'two-digit operands') return twoDigitOperands;
+    if (name === 'two-digit tidying up') return twoDigitTidyngUp;
+    if (name === 'tens within thousand') return tensWithinThousands;
+    if (name === 'hundreds within thousand') return hundredsWithinThousands;
+    if (name === 'strip diagram') return stripDiagram;
+    if (name === 'equal gropus') return equalGroups;
+    if (name === 'array') return array;
+    if (name === 'single digit operands' && (operation === "×" || operation === "÷")) return singleDigitOperandsMultiplicationDivision;
+    if (name === 'two-digit percentage') return twoDigitPercentage;
+    throw (new Error(`No processor found for case ${name}!`));
   }
   catch (e: any) {
     throw new Error(e.message);

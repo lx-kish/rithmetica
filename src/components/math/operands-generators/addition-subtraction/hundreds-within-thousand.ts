@@ -1,4 +1,4 @@
-import randomInteger from '../randoms/get-random-integer-in-a-range';
+import randomInteger from '../../randoms/get-random-integer-in-a-range';
 
 /**
  * 
@@ -19,7 +19,7 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     let operand = 0;
 
     // 1. Generate maximum hundreds of the problem within the following boundaries:
-    operation === 'addition' ?
+    operation === '+' ?
       hundredsLowest = numberOfOperands :
       hundredsLowest = 1;
 
@@ -31,11 +31,11 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     for (let i = 0; i < numberOfOperands - 1; i++) {
 
       // 3. Generate hundreds operands with limits:
-      operation === 'addition' ?
+      operation === '+' ?
         hundredsLowest = numberOfOperands - 1 :
         hundredsLowest = 1;
 
-      operation === 'addition' ?
+      operation === '+' ?
         hundredsHighest = hundredsLeft - 1 :
         hundredsHighest = hundredsLeft;
 
@@ -55,7 +55,7 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
 
     // push the result value at the end depends on operation
     operands.push(
-      operation === 'addition' ?
+      operation === '+' ?
         problemMax :
         problemMin
     );
@@ -64,7 +64,7 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
     operands.splice(
       0,
       0,
-      operation === 'addition' ?
+      operation === '+' ?
         problemMin :
         problemMax
     );

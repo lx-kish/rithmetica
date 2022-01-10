@@ -1,4 +1,4 @@
-import randomInteger from '../randoms/get-random-integer-in-a-range';
+import randomInteger from '../../randoms/get-random-integer-in-a-range';
 
 /**
  * 
@@ -25,7 +25,7 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
 
         // Defining minimum tens to add or subtract for changing hundreds
         const minTens = 
-          operation === 'addition' ? 
+          operation === '+' ? 
             (10 - tens / 10) : 
             tens / 10 + 1;
 
@@ -36,7 +36,7 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
       if (i === 0) {
         
         // subtrahent should be more than minuend's tens
-        const maxTens = operation === 'subtraction' ? 7 : 9;
+        const maxTens = operation === '-' ? 7 : 9;
         
         hundreds = randomInteger(1, 8) * 100;
         tens = randomInteger(1, maxTens) * 10;
@@ -51,11 +51,11 @@ const tensWithinThousand = (operation: string, numberOfOperands: number) => {
     }
 
     // in case of addition sort array to add less to the bigger
-    if (operation === 'subtraction') operands.sort((a, b) => a - b);
+    if (operation === '-') operands.sort((a, b) => a - b);
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
     operands.splice(
-      operation === 'addition' ? operands.length : 0,
+      operation === '+' ? operands.length : 0,
       0,
       problemMaximum
     );

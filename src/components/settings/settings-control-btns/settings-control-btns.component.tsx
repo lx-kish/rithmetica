@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../../redux/hooks';
 import {
 	insertSetting,
 	deleteSetting,
-} from '../../../redux/addition-subtraction/additionSubtractionSlice';
+} from '../../../redux/arithmetic/arithmeticSlice';
 
 interface IProps {
   index: number,

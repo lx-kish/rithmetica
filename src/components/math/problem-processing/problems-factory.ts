@@ -5,16 +5,17 @@ import operandsFactory from './operands-factory';
  * 
  */
 const problemsFactory = (
+  name: string,
   type: string,
   operation: string,
   numberOfOperands = 2,
   missing: string,
   quantity: number
-) => {
+) => {  
 
   try {
 
-    const processor: (operation: string, numberOfOperands: number) => number[] = operandsFactory(type);
+    const processor: (operation: string, numberOfOperands: number) => number[] = operandsFactory(name, operation);
 
     let problems: { type: string; value: string }[][] = [];
 
@@ -26,7 +27,7 @@ const problemsFactory = (
 
       const operands: number[] = processor(operation, numberOfOperands);
 
-      // 6. Identify missing.
+      // 6. Identify missing. Only in case of equation
       let input = getInputPosition(numberOfOperands, missing);
 
       // 7. Formatting the problem with the defined operands and operator.
@@ -37,7 +38,7 @@ const problemsFactory = (
             type: "sign",
             value: i === operands.length - 1 ?
               "=" :
-              operation === "addition" ? "+" : "-"
+              operation
           });
         }
         problem.push({
@@ -45,6 +46,11 @@ const problemsFactory = (
           value: operands[i].toString(),
         });
       }
+
+      problem.push({
+        type: "type",
+        value: type
+      });
 
       problem.push({
         type: "result",

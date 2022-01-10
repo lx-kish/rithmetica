@@ -1,44 +1,47 @@
 import React from 'react';
 
-import { useAppDispatch } from '../../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 import {
-	changeSetting,
-} from '../../../redux/addition-subtraction/additionSubtractionSlice';
+	settings,
+} from '../../../redux/arithmetic/arithmeticSlice';
 
-import IAdditionSubtractionSetting from '../../../TS/interfaces/IAdditionSubtractionSetting';
+import types from '../../addition-subtraction/types';
+
+import handleChangeArithmeticalSettings from '../../../utils/handle-change-event/handle-change-arithmetical-settings-event';
+
+import IArithmeticSetting from '../../../TS/interfaces/IArithmeticSetting';
 
 interface IProps {
 	index: number,
-	setting: IAdditionSubtractionSetting,
-	types: string[]
+	setting: IArithmeticSetting,
 };
 
 const SettingsTypes: React.FC<IProps> = (props: IProps): JSX.Element => {
 
-	const dispatch = useAppDispatch();
+	const stateSettings = useAppSelector(settings);
 
 	return (
-		<div className="settings__control">
-			<label htmlFor="settings-type" className="settings__label">
+		<div className="settings__control settings__control--types">
+			<label htmlFor="settings-type" className="settings__label settings__label--types">
 				Type:
 			</label>
 			<select
 				name="type"
 				id="settings-type"
 				className="settings__select"
-				value={props.setting.type}
-				onChange={(event) => dispatch(changeSetting({ index: props.index, name: "type", value: event.target.value }))}
+				value={props.setting.name}
+				onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
 			>
 				<option >
 					-- select --
 				</option>
-				{props.types.map((type, i) => (
+				{types.filter(type => type.operation === stateSettings[props.index].operation).map((type, i) => (
 					<option
 						key={i}
-						value={type}
+						value={type.name}
 						className="settings__option"
 					>
-						{type}
+						{type.name}
 					</option>
 				))}
 			</select>

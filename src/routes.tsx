@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import MultiplicationTab from './pages/multiplication-tab/multiplication-tab.page';
-import AdditionSubtraction from './pages/addition-subtraction/addition-subtraction.page';
+import Arithmetic from './pages/arithmetic/arithmetic.page';
 
 /**
  * router adapted for github pages, see detailed eplanations at:
@@ -12,9 +12,9 @@ import AdditionSubtraction from './pages/addition-subtraction/addition-subtracti
 const Routes = () => {
 	return (
 		<Switch>
-			<Route path="/" exact component={AdditionSubtraction} />
+			<Route path="/" exact component={Arithmetic} />
 			<Route path="/multiplication-tab" exact component={MultiplicationTab} />
-			<Route path="/addition-subtraction" exact component={AdditionSubtraction} />
+			<Route path="/arithmetic" exact component={Arithmetic} />
 		</Switch>
 	);
 };

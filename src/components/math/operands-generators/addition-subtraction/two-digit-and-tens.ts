@@ -1,9 +1,9 @@
-import randomInteger from '../randoms/get-random-integer-in-a-range';
+import randomInteger from '../../randoms/get-random-integer-in-a-range';
 
 /**
  * 
  */
-const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
+const twoDigitAndTens = (operation: string, numberOfOperands: number) => {
 
   try {
 
@@ -18,11 +18,7 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
 
       // 3. Generate operand with limits min=0 (or 1), max=sum-problemTotal
       if (i > 0) {
-        // Getting compensation within of range from -3 to 3, distinctive from 0
-        let compensation;
-        while (!compensation) compensation = randomInteger(-3, 3);
-
-        operand = randomInteger(2, 9) * 10 - compensation;
+        operand = randomInteger(1, 9) * 10;
         problemMaximum += operand;
       } else {
         operand = randomInteger(11, 99);
@@ -34,11 +30,11 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
     }
 
     // in case of addition sort array to add less to the bigger
-    if (operation === 'subtraction') operands.sort((a, b) => a - b);
+    if (operation === '-') operands.sort((a, b) => a - b);
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
     operands.splice(
-      operation === 'addition' ? operands.length : 0,
+      operation === '+' ? operands.length : 0,
       0,
       problemMaximum
     );
@@ -50,4 +46,4 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
   }
 };
 
-export default twoDigitTidingUp;
+export default twoDigitAndTens;

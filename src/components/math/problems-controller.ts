@@ -1,26 +1,26 @@
 import problemsFactory from './problem-processing/problems-factory';
 
-import IAdditionSubtractionSetting from '../../TS/interfaces/IAdditionSubtractionSetting';
+import IArithmeticSetting from '../../TS/interfaces/IArithmeticSetting';
 import IProblem from '../../TS/interfaces/IProblem';
 
 /**
  * 
  */
-const problemsController = (problemDescriptions: IAdditionSubtractionSetting[]): IProblem[][] => {
+const problemsController = (problemDescriptions: IArithmeticSetting[]): IProblem[][] => {
 
   try {
 
     const problems: IProblem[][] = [];
-    // const problems: { type: string; value: string }[][] = [];
 
-    problemDescriptions.forEach((type: IAdditionSubtractionSetting) => {
+    problemDescriptions.forEach((type: IArithmeticSetting) => {
 
       problems.push(...problemsFactory(
+        type.name,
         type.type,
         type.operation,
         type.numberOfOperands,
         type.missing,
-        type.quantity
+        type.quantity,
       ));
 
     });

@@ -1,9 +1,9 @@
-import randomInteger from '../randoms/get-random-integer-in-a-range';
+import randomInteger from '../../randoms/get-random-integer-in-a-range';
 
 /**
  * 
  */
-const singleDigitOperands = (operation: string, numberOfOperands: number) => {
+const Array = (operation: string, numberOfOperands: number) => {
 
   try {
 
@@ -17,7 +17,7 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
     for (let i = 0; i < numberOfOperands; i++) {
 
       // 3. Generate operand with limits min=0 (or 1), max=sum-problemTotal
-      operand = randomInteger(1, 9);
+      operand = randomInteger(2, 9);
       problemMaximum += operand;
 
       // 4. Push operand into problems array
@@ -26,7 +26,7 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
     operands.splice(
-      operation === 'addition' ? operands.length : 0,
+      operation === '+' ? operands.length : 0,
       0,
       problemMaximum
     );
@@ -38,4 +38,4 @@ const singleDigitOperands = (operation: string, numberOfOperands: number) => {
   }
 };
 
-export default singleDigitOperands;
+export default Array;

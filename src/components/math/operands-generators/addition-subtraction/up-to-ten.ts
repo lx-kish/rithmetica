@@ -1,4 +1,4 @@
-import randomInteger from '../randoms/get-random-integer-in-a-range';
+import randomInteger from '../../randoms/get-random-integer-in-a-range';
 
 /**
  * 
@@ -34,7 +34,7 @@ const upToTen = (operation: string, numberOfOperands: number) => {
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
     operands.splice(
-      operation === 'addition' ? operands.length : 0,
+      operation === '+' ? operands.length : 0,
       0,
       problemMaximum
     );

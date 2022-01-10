@@ -1,5 +1,6 @@
-export default interface IAdditionSubtractionSetting extends Record<string, any> {
+export default interface IArithmeticSetting extends Record<string, any> {
 	operation: string;
+	name: string;
 	type: string;
 	missing: string;
   numberOfOperands: number;
