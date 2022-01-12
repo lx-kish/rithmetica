@@ -104,12 +104,6 @@ const TaskTypes: IProblemType[] = [
   // "tens within thousand",
   // {
   //   operation: "×",
-  //   name: "strip diagram",
-  //   type: "strip-diagram",
-  //   missing: "result",
-  // }, // 5 + 5 + 5 = 15
-  // {
-  //   operation: "×",
   //   name: "equal groups",
   //   type: "equal-groups",
   //   missing: "result",
@@ -118,6 +112,12 @@ const TaskTypes: IProblemType[] = [
   //   operation: "×",
   //   name: "array",
   //   type: "array",
+  //   missing: "result",
+  // }, // 5 + 5 + 5 = 15
+  // {
+  //   operation: "×",
+  //   name: "single digit strip diagram",
+  //   type: "strip-diagram",
   //   missing: "result",
   // }, // 5 + 5 + 5 = 15
   {
@@ -134,12 +134,6 @@ const TaskTypes: IProblemType[] = [
   }, // 8 + 7 = 15; 9 - 3 = 6 
   // {
   //   operation: "÷",
-  //   name: "strip diagram",
-  //   type: "strip-diagram",
-  //   missing: "result",
-  // }, // 5 + 5 + 5 = 15
-  // {
-  //   operation: "÷",
   //   name: "equal groups",
   //   type: "equal-groups",
   //   missing: "result",
@@ -148,6 +142,12 @@ const TaskTypes: IProblemType[] = [
   //   operation: "÷",
   //   name: "array",
   //   type: "array",
+  //   missing: "result",
+  // }, // 5 + 5 + 5 = 15
+  // {
+  //   operation: "÷",
+  //   name: "single digit strip diagram",
+  //   type: "strip-diagram",
   //   missing: "result",
   // }, // 5 + 5 + 5 = 15
   {
