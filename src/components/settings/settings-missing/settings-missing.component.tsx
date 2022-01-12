@@ -34,7 +34,7 @@ const SettingsMissing: React.FC<IProps> = (props: IProps): JSX.Element => {
 				id={`first-${props.index}`}
 				name={`missing-${props.index}`}
 				value="first"
-				className="settings__input settings__input--radio settings__input--missing"
+				className="settings__input settings__input--radio"
 				onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
 				checked={props.setting.missing === "first"}
 				disabled={getDisabled()}
@@ -50,7 +50,7 @@ const SettingsMissing: React.FC<IProps> = (props: IProps): JSX.Element => {
 				id={`last-${props.index}`}
 				name={`missing-${props.index}`}
 				value="last"
-				className="settings__input settings__input--radio settings__input--missing"
+				className="settings__input settings__input--radio"
 				onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
 				checked={props.setting.missing === "last"}
 				disabled={getDisabled()}
@@ -66,7 +66,7 @@ const SettingsMissing: React.FC<IProps> = (props: IProps): JSX.Element => {
 				id={`result-${props.index}`}
 				name={`missing-${props.index}`}
 				value="result"
-				className="settings__input settings__input--radio settings__input--missing"
+				className="settings__input settings__input--radio"
 				onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
 				checked={props.setting.missing === "result"}
 			/>
@@ -81,7 +81,7 @@ const SettingsMissing: React.FC<IProps> = (props: IProps): JSX.Element => {
 				id={`random-${props.index}`}
 				name={`missing-${props.index}`}
 				value="random"
-				className="settings__input settings__input--radio settings__input--missing"
+				className="settings__input settings__input--radio"
 				onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
 				checked={props.setting.missing === "random"}
 				disabled={getDisabled()}

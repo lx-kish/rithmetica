@@ -32,6 +32,7 @@ const SettingsOperation: React.FC<IProps> = (props: IProps): JSX.Element => {
             className="settings__input settings__input--radio"
             onChange={handleChangeArithmeticalSettings(props.index, stateSettings)}
             checked={stateSettings[props.index].operation === operation.symbol}
+            disabled={operation.symbol === "½" || operation.symbol === "%"}
           />
           <label
             className="settings__radio-label settings__radio-label--operation"

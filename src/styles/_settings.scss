@@ -271,9 +271,7 @@
         background-color: var(--color-white);
         color: var(--color-background);
       }
-    }
 
-    &--missing {
       &:disabled + .settings__radio-label {
         opacity: 0.5;
       }
