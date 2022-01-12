@@ -6,7 +6,7 @@ import twoDigitOperands from '../operands-generators/addition-subtraction/two-di
 import twoDigitTidyngUp from '../operands-generators/addition-subtraction/two-digit-tidying-up';
 import tensWithinThousands from '../operands-generators/addition-subtraction/tens-within-thousand';
 import hundredsWithinThousands from '../operands-generators/addition-subtraction/hundreds-within-thousand';
-import stripDiagram from '../operands-generators/multiplication-division/strip-diagram';
+import singleDigitStripDiagram from '../operands-generators/multiplication-division/single-digit-strip-diagram';
 import equalGroups from '../operands-generators/multiplication-division/equal-groups';
 import array from '../operands-generators/multiplication-division/array';
 import singleDigitOperandsMultiplicationDivision from '../operands-generators/multiplication-division/single-digit-operands';
@@ -28,7 +28,7 @@ const operandsFactory = (name: string, operation: string): (operation: string, n
     if (name === 'two-digit tidying up') return twoDigitTidyngUp;
     if (name === 'tens within thousand') return tensWithinThousands;
     if (name === 'hundreds within thousand') return hundredsWithinThousands;
-    if (name === 'strip diagram') return stripDiagram;
+    if (name === 'single digit strip diagram') return singleDigitStripDiagram;
     if (name === 'equal gropus') return equalGroups;
     if (name === 'array') return array;
     if (name === 'single digit operands' && (operation === "×" || operation === "÷")) return singleDigitOperandsMultiplicationDivision;

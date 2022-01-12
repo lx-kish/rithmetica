@@ -11,7 +11,7 @@ const problemsFactory = (
   numberOfOperands = 2,
   missing: string,
   quantity: number
-) => {  
+) => {
 
   try {
 
@@ -19,43 +19,72 @@ const problemsFactory = (
 
     let problems: { type: string; value: string }[][] = [];
 
-    let problem: { type: string; value: string }[];
+    let problem: { type: string; value: string }[] = [];
 
     for (let q = 0; q < quantity; q++) {
-
       problem = [];
-
       const operands: number[] = processor(operation, numberOfOperands);
 
-      // 6. Identify missing. Only in case of equation
-      let input = getInputPosition(numberOfOperands, missing);
+      if (type === "equation") {
 
-      // 7. Formatting the problem with the defined operands and operator.
-      for (let i = 0; i < operands.length; i++) {
+        // 6. Identify missing. Only in case of equation
+        let input = getInputPosition(numberOfOperands, missing);
 
-        if (i > 0) {
+        // 7. Formatting the problem with the defined operands and operator.
+        for (let i = 0; i < operands.length; i++) {
+
+          if (i > 0) {
+            problem.push({
+              type: "sign",
+              value: i === operands.length - 1 ?
+                "=" :
+                operation
+            });
+          }
           problem.push({
-            type: "sign",
-            value: i === operands.length - 1 ?
-              "=" :
-              operation
+            type: input === i ? "input" : "operand",
+            value: operands[i].toString(),
           });
         }
+
         problem.push({
-          type: input === i ? "input" : "operand",
-          value: operands[i].toString(),
+          type: "type",
+          value: type
+        });
+
+        problem.push({
+          type: "result",
+          value: ""
         });
       }
 
-      problem.push({
-        type: "type",
-        value: type
-      });
+      if (type === "strip-diagram") {
 
-      problem.push({
-        type: "result",
-        value: ""
-      });
+        // 7. Formatting the problem with the defined operands and operator.
+        problem.push({
+          type: operation === "×" ? "product" : "input",
+          value: operands[0].toString(),
+        });
+        problem.push({
+          type: "factor",
+          value: operands[1].toString(),
+        });
+        problem.push({
+          type: operation === "×" ? "input" : "operand",
+          value: operands[2].toString(),
+        });
+
+        problem.push({
+          type: "type",
+          value: type
+        });
+
+        problem.push({
+          type: "result",
+          value: ""
+        });
+
+      }
 
       problems.push(problem);
     }

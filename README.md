@@ -71,6 +71,18 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v6.0.0 release notes
+
+- Redesign application to reproduce different types of problems;
+
+- Redesign problems-factory and problem components to fit different types of problems;
+
+- Separate the equation problem component from the existing structure;
+
+- Add the strip diagram problem component to reproduce strip diagram types of problems;
+
+- Minor bugs fixes;
+
 #### v5.1.0 release notes
 
 - Add single-digit and up-to-twenty multiplication and division problem;
