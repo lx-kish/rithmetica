@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rithmetica/static/css/main.f0032be5.chunk.css",
-    "main.js": "/rithmetica/static/js/main.9d8ecdd5.chunk.js",
-    "main.js.map": "/rithmetica/static/js/main.9d8ecdd5.chunk.js.map",
+    "main.js": "/rithmetica/static/js/main.3627adaa.chunk.js",
+    "main.js.map": "/rithmetica/static/js/main.3627adaa.chunk.js.map",
     "runtime-main.js": "/rithmetica/static/js/runtime-main.f426bf05.js",
     "runtime-main.js.map": "/rithmetica/static/js/runtime-main.f426bf05.js.map",
     "static/js/2.550392ed.chunk.js": "/rithmetica/static/js/2.550392ed.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.f426bf05.js",
     "static/js/2.550392ed.chunk.js",
     "static/css/main.f0032be5.chunk.css",
-    "static/js/main.9d8ecdd5.chunk.js"
+    "static/js/main.3627adaa.chunk.js"
   ]
 }
