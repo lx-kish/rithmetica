@@ -58,18 +58,12 @@ const TabCell: React.FC<IProps> = React.memo((props) => {
 		 * @return {void}
 		 */
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		dispatch(setInputValue({ row: lineIndex, col: colIndex, value: + e.currentTarget.value }));
+		dispatch(setInputValue({ row: lineIndex, col: colIndex, value: e.currentTarget.value }));
 	}
 
-	/**
-		 * Calls redux action on value change
-		 * @return {void}
-		 */
-	const getDefaultValue = (): string => {
-		// const value = "" + stateValues[lineIndex][colIndex];
-		return stateValues[lineIndex][colIndex];
-		// return value || "";
-	};
+	const processKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    handleKeyDown(e);
+  }
 
 	return (
 		<div className="component">
@@ -81,12 +75,13 @@ const TabCell: React.FC<IProps> = React.memo((props) => {
 					step="1"
 					title=""
 					placeholder=" "
-					min={props.value}
-					max={props.value}
+					min={props.value.toString()}
+					max={props.value.toString()}
 					className={getInputClassName()}
-					onKeyDown={(event) => handleKeyDown(event)}
-					onChange={(event) => handleChange(event)}
-					value={getDefaultValue()}
+					onKeyDown={processKeyDown}
+					onChange={handleChange}
+					value={stateValues[lineIndex][colIndex].toString()}
+					autoComplete="off" //for dropping the value when cached by browser
 				/>
 			</div>
 			<div className="component__score">

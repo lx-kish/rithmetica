@@ -71,6 +71,10 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v6.0.3 release notes
+
+- Fix bug with deleting "0" from input in the Multiplication table application;
+
 #### v6.0.2 release notes
 
 - Deactivate operations those not in use;
