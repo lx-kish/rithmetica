@@ -6,7 +6,7 @@ import twoDigitOperands from '../operands-generators/addition-subtraction/two-di
 import twoDigitTidyngUp from '../operands-generators/addition-subtraction/two-digit-tidying-up';
 import tensWithinThousands from '../operands-generators/addition-subtraction/tens-within-thousand';
 import hundredsWithinThousands from '../operands-generators/addition-subtraction/hundreds-within-thousand';
-import singleDigitStripDiagram from '../operands-generators/multiplication-division/single-digit-strip-diagram';
+import singleDigitStripDiagram from '../operands-generators/multiplication-division/strip-diagram';
 import equalGroups from '../operands-generators/multiplication-division/equal-groups';
 import array from '../operands-generators/multiplication-division/array';
 import singleDigitOperandsMultiplicationDivision from '../operands-generators/multiplication-division/single-digit-operands';
@@ -16,7 +16,7 @@ import twoDigitPercentage from '../operands-generators/percentage/two-digit-perc
 /**
  * 
  */
-const operandsFactory = (name: string, operation: string): (operation: string, numberOfOperands: number) => number[] => {
+const operandsFactory = (name: string, operation: string): (operation: string, numberOfOperands: number) => number[] | undefined => {
 
   try {
 
@@ -36,9 +36,14 @@ const operandsFactory = (name: string, operation: string): (operation: string, n
     if (name === 'two-digit percentage') return twoDigitPercentage;
     throw (new Error(`No processor found for case ${name}!`));
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
+  return Array;
 };
 
 export default operandsFactory;

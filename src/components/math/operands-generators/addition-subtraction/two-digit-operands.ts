@@ -5,12 +5,13 @@ import randomInteger from '../../randoms/get-random-integer-in-a-range';
  */
 const twoDigitOperands = (operation: string, numberOfOperands: number) => {
 
+  const operands: number[] = [];
+
   try {
 
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     const problemMaximum = randomInteger(11 + numberOfOperands * 11, 99);
 
-    const operands: number[] = [];
     let operand = 0;
     let problemSum = 0;
 
@@ -37,8 +38,12 @@ const twoDigitOperands = (operation: string, numberOfOperands: number) => {
 
     return operands;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 

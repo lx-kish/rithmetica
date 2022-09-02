@@ -5,6 +5,8 @@ import randomInteger from '../../randoms/get-random-integer-in-a-range';
  */
 const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
 
+  const operands: number[] = [];
+
   try {
 
     // to prevent a lot of randomized zeros generated
@@ -13,7 +15,6 @@ const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     const problemMaximum = randomInteger(0 + numberOfOperands, 10);
 
-    const operands: number[] = [];
     let operand = 0;
     let problemSum = 0;
 
@@ -41,8 +42,12 @@ const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
 
     return operands;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 

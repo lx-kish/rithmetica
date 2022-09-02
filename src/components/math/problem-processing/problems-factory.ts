@@ -13,17 +13,22 @@ const problemsFactory = (
   quantity: number
 ) => {
 
+  let problems: { type: string; value: string }[][] = [];
+
   try {
 
-    const processor: (operation: string, numberOfOperands: number) => number[] = operandsFactory(name, operation);
-
-    let problems: { type: string; value: string }[][] = [];
+    const processor: (operation: string, numberOfOperands: number) => number[] | undefined = operandsFactory(name, operation);
 
     let problem: { type: string; value: string }[] = [];
 
+
     for (let q = 0; q < quantity; q++) {
       problem = [];
-      const operands: number[] = processor(operation, numberOfOperands);
+      const operands: number[] | undefined = processor(operation, numberOfOperands);
+
+      if (!operands) {
+        throw new Error("Wrong type of operands processor!");
+      }
 
       if (type === "equation") {
 
@@ -91,8 +96,12 @@ const problemsFactory = (
 
     return problems;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 

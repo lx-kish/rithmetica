@@ -58,7 +58,7 @@ export const arithmeticSlice = createSlice({
     generateProblems: (state) => {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems = problemsController(currentValidSettings);
+      const problems = problemsController(currentValidSettings) || [];
 
       state.problems = problems;
 

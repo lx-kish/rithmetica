@@ -5,9 +5,9 @@ import randomInteger from '../randoms/get-random-integer-in-a-range';
  */
 const getInputPosition = (numberOfOperands: number, missing: string) => {
 
-  try {
+  let input;
 
-    let input;
+  try {
 
     if (missing === 'random') {
       input = randomInteger(0, numberOfOperands)
@@ -21,8 +21,12 @@ const getInputPosition = (numberOfOperands: number, missing: string) => {
 
     return input;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 

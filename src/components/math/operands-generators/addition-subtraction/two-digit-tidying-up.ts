@@ -4,13 +4,14 @@ import randomInteger from '../../randoms/get-random-integer-in-a-range';
  * 
  */
 const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
+  
+  const operands: number[] = [];
 
   try {
 
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     let problemMaximum = 0;
 
-    const operands: number[] = [];
     let operand = 0;
 
     // 2. Loop with length <numberOfOperands>-1
@@ -45,8 +46,12 @@ const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
 
     return operands;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 

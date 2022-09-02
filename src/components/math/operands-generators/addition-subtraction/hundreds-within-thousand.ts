@@ -5,9 +5,9 @@ import randomInteger from '../../randoms/get-random-integer-in-a-range';
  */
 const hundredsWithinThousand = (operation: string, numberOfOperands: number) => {
 
+  const operands: number[] = [];
+  
   try {
-
-    const operands: number[] = [];
 
     let hundredsMax = 0;
     let hundredsLowest = 0;
@@ -71,8 +71,12 @@ const hundredsWithinThousand = (operation: string, numberOfOperands: number) => 
 
     return operands;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
 };
 
