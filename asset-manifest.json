@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/rithmetica/static/css/main.f0032be5.chunk.css",
-    "main.js": "/rithmetica/static/js/main.3627adaa.chunk.js",
-    "main.js.map": "/rithmetica/static/js/main.3627adaa.chunk.js.map",
-    "runtime-main.js": "/rithmetica/static/js/runtime-main.f426bf05.js",
-    "runtime-main.js.map": "/rithmetica/static/js/runtime-main.f426bf05.js.map",
-    "static/js/2.550392ed.chunk.js": "/rithmetica/static/js/2.550392ed.chunk.js",
-    "static/js/2.550392ed.chunk.js.map": "/rithmetica/static/js/2.550392ed.chunk.js.map",
+    "main.css": "/rithmetica/static/css/main.bebee93e.chunk.css",
+    "main.js": "/rithmetica/static/js/main.109f7ba3.chunk.js",
+    "main.js.map": "/rithmetica/static/js/main.109f7ba3.chunk.js.map",
+    "runtime-main.js": "/rithmetica/static/js/runtime-main.6b6d6332.js",
+    "runtime-main.js.map": "/rithmetica/static/js/runtime-main.6b6d6332.js.map",
+    "static/js/2.6636e9bb.chunk.js": "/rithmetica/static/js/2.6636e9bb.chunk.js",
+    "static/js/2.6636e9bb.chunk.js.map": "/rithmetica/static/js/2.6636e9bb.chunk.js.map",
     "index.html": "/rithmetica/index.html",
-    "static/css/main.f0032be5.chunk.css.map": "/rithmetica/static/css/main.f0032be5.chunk.css.map",
-    "static/js/2.550392ed.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.550392ed.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/rithmetica/static/media/Lemonada-SemiBold.ee2c4d26.ttf",
-    "static/media/schema-arrows--small.3dd42adf.png": "/rithmetica/static/media/schema-arrows--small.3dd42adf.png",
-    "static/media/shcema-arrows--big.ef03c2b2.png": "/rithmetica/static/media/shcema-arrows--big.ef03c2b2.png"
+    "precache-manifest.e3fd82483623080d87b96d729f2695ae.js": "/rithmetica/precache-manifest.e3fd82483623080d87b96d729f2695ae.js",
+    "service-worker.js": "/rithmetica/service-worker.js",
+    "static/css/main.bebee93e.chunk.css.map": "/rithmetica/static/css/main.bebee93e.chunk.css.map",
+    "static/js/2.6636e9bb.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.6636e9bb.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/rithmetica/static/media/Lemonada-SemiBold.db980608.ttf",
+    "static/media/schema-arrows--small.png": "/rithmetica/static/media/schema-arrows--small.8821d472.png",
+    "static/media/shcema-arrows--big.png": "/rithmetica/static/media/shcema-arrows--big.dcfc6e73.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f426bf05.js",
-    "static/js/2.550392ed.chunk.js",
-    "static/css/main.f0032be5.chunk.css",
-    "static/js/main.3627adaa.chunk.js"
+    "static/js/runtime-main.6b6d6332.js",
+    "static/js/2.6636e9bb.chunk.js",
+    "static/css/main.bebee93e.chunk.css",
+    "static/js/main.109f7ba3.chunk.js"
   ]
 }
