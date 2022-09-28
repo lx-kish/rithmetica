@@ -4,7 +4,7 @@ import {
   changeSetting,
 } from '../../redux/arithmetic/arithmeticSlice';
 
-import types from '../../components/arithmetic/types';
+import types from '../../components/views/arithmetic/types';
 
 import IProblemType from "../../TS/interfaces/IProblemType";
 import IArithmeticSetting from '../../TS/interfaces/IArithmeticSetting';

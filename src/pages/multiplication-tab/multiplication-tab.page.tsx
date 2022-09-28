@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Header from '../../components/headers/multiplication-tab/header.component';
-import Footer from '../../components/footer/footer.component';
-import Tab from '../../components/multiplication-tab/table/tab.component';
+import Header from '../../components/views/headers/multiplication-tab/header.component';
+import Footer from '../../components/views/footer/footer.component';
+import Tab from '../../components/views/multiplication-tab/table/tab.component';
 
-import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
+import NavigationBar from '../../components/views/navigation/navigation-bar/navigation-bar.component';
 
 import getNodeOffsetTop from '../../utils/get-node-offset-top/get-node-offset-top';
 import useWindowSize from '../../utils/use-window-size/use-window-size';

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-import problemsController from '../../components/math/problems-controller';
+import problemsController from '../../components/math/arithmetic/problems-controller';
 
 import { getStorage } from '../../utils/process-local-storage/process-local-storage';
 
@@ -9,6 +9,7 @@ import IArithmeticSetting from '../../TS/interfaces/IArithmeticSetting';
 import IProblem from '../../TS/interfaces/IProblem';
 
 import initialProblemSettings from '../../pages/arithmetic/initial-problem-settings';
+import { COLUMN_NUMBER_ARITHMETIC as columnNumber } from '../../constants';
 
 export interface ArithmeticState {
   settings: IArithmeticSetting[],
@@ -18,7 +19,7 @@ export interface ArithmeticState {
 
 const initialState: ArithmeticState = {
   settings: getStorage()?.getItem("arithmetic", true)?.settings || initialProblemSettings,
-  columns: 2,
+  columns: columnNumber,
   problems: getStorage()?.getItem("arithmetic", true)?.problems || problemsController(initialProblemSettings),
 };
 
@@ -44,8 +45,8 @@ export const arithmeticSlice = createSlice({
     // 1) set input value
     setInputValue: (state, action: PayloadAction<{ index: number, value: string }>) => {
       const { index, value } = action.payload;
-      state.problems[index][6].value = "" + value;
-      
+      state.problems[index][state.problems[index].length - 1].value = "" + value;
+
       const currentValidSettings = validProblemSettings(state);
 
       getStorage()?.setItem("arithmetic", localStorageData(state, currentValidSettings));
@@ -58,13 +59,27 @@ export const arithmeticSlice = createSlice({
     generateProblems: (state) => {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems = problemsController(currentValidSettings);
+      const problems = problemsController(currentValidSettings) || [];
 
       state.problems = problems;
 
       if (problems.length) getStorage()?.setItem("arithmetic", localStorageData(state, currentValidSettings));
 
       if (!problems.length) getStorage()?.removeItem("arithmetic");
+      console.log(
+        "%c :::::::::::::::: 68 line of changeSetings() of arithmeticSlice.ts ::::::::::::::::",
+        "color: olive; font-weight: bold",
+        "\n",
+        "state.settings ===> ",
+        state.settings,
+        "\n",
+        "currentValidSettings ===> ",
+        currentValidSettings,
+        "\n",
+        "state.problems ===> ",
+        state.problems,
+        "\n",
+      );
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {
@@ -86,7 +101,10 @@ export const arithmeticSlice = createSlice({
     },
     // 5) delete setting
     deleteSetting: (state, action: PayloadAction<number>) => {
-      const newProblemSettings = [...state.settings.slice(0, action.payload), ...state.settings.slice(action.payload + 1)];
+      const newProblemSettings = [
+        ...state.settings.slice(0, action.payload),
+        ...state.settings.slice(action.payload + 1)
+      ];
 
       if (!newProblemSettings.length)
         newProblemSettings.push({
@@ -105,10 +123,13 @@ export const arithmeticSlice = createSlice({
       const newProblemSettings = [...state.settings];
       const { index, name, value } = action.payload;
 
-      newProblemSettings[index] = {
-        ...newProblemSettings[index],
-        [name]: value,
-      };
+      const newSettings = Object.assign(
+        {},
+        newProblemSettings[index],
+        { [name]: value }
+      );
+      
+      newProblemSettings[index] = newSettings;
 
       state.settings = newProblemSettings;
     },

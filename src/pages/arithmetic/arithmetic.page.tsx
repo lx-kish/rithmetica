@@ -1,9 +1,9 @@
 import React from 'react';
 
-import NavigationBar from '../../components/navigation/navigation-bar/navigation-bar.component';
-import Header from '../../components/headers/arithmetic/header.component';
-import Problems from '../../components/arithmetic/problems/problems.component';
-import Footer from '../../components/footer/footer.component';
+import NavigationBar from '../../components/views/navigation/navigation-bar/navigation-bar.component';
+import Header from '../../components/views/headers/arithmetic/header.component';
+import Problems from '../../components/views/arithmetic/problems/problems.component';
+import Footer from '../../components/views/footer/footer.component';
 
 interface IProps { };
 

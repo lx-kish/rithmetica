@@ -28,6 +28,10 @@
     font-size: 11rem;
   }
 
+  &--fraction {
+    display: flex;
+  }
+
   &__main {
     color: var(--color-white);
   }

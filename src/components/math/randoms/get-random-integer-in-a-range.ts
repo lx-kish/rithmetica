@@ -20,9 +20,14 @@ const getRandomIntegerInARange = (incomeMin: number, incomeMax: number): number 
 
     return random;
   }
-  catch (e: any) {
-    throw new Error(e.message);
+  catch (e) {
+    if (e instanceof Error) {
+      throw new Error(e.message);
+    } else if (typeof e === "string") {
+      throw new Error(e);
+    }
   }
+  return -1;
 };
 
 export default getRandomIntegerInARange;

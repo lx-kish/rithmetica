@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import MultiplicationTab from './pages/multiplication-tab/multiplication-tab.page';
 import Arithmetic from './pages/arithmetic/arithmetic.page';
+import Fractions from './pages/fractions/fractions.page';
 
 /**
  * router adapted for github pages, see detailed eplanations at:
@@ -15,6 +16,7 @@ const Routes = () => {
 			<Route path="/" exact component={Arithmetic} />
 			<Route path="/multiplication-tab" exact component={MultiplicationTab} />
 			<Route path="/arithmetic" exact component={Arithmetic} />
+			<Route path="/fractions" exact component={Fractions} />
 		</Switch>
 	);
 };

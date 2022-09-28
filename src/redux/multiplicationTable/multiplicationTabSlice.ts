@@ -28,7 +28,7 @@ export const multiplicationTabSlice = createSlice({
   initialState,
   reducers: {
     // 1) set input value
-    setInputValue: (state, action: PayloadAction<{ row: number; col: number; value: number }>) => {
+    setInputValue: (state, action: PayloadAction<{ row: number; col: number; value: string }>) => {
 
       let { row, col, value } = action.payload;
 

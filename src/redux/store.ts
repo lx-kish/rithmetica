@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import multiplicationTabReducer from './multiplicationTable/multiplicationTabSlice';
 import additionSubtractionReducer from './arithmetic/arithmeticSlice';
+import fractionsReducer from './fractions/fractionsSlice';
 
 export const store = configureStore({
   reducer: {
     multiplicationTab: multiplicationTabReducer.reducer,
     arithmetic: additionSubtractionReducer.reducer,
+    fractions: fractionsReducer.reducer,
   }
 });
 

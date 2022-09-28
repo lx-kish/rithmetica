@@ -71,6 +71,57 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>*</sup>
 ##### <sup>*</sup> - starts from v2.3.3
 
+#### v7.0.0 release notes
+
+- Add Fractions application;
+
+- Add Fractions menu item;
+
+- Add Fractions redux storage and redux slice;
+
+- Add Fractions and procentages settings component;
+
+- Add Fractions problems controller;
+
+- Add Fractions view component for add and subtract problem types;
+
+- Add Fractions type of tasks "Fractions Addition and Subtraction";
+
+- Add Fractions task "Same denominator fractions" into the "Fractions Addition and Subtraction" type of tasks;
+
+- Add constants file;
+
+- Add number of columns constants for the correspondent applications;
+
+#### v6.0.4 release notes
+
+- Fix of catch variables' default types;
+
+- Refactor catch variables processing in:
+  - problems-controller.ts;
+  - problems-factory.ts;
+  - get-input-position.ts;
+  - operands-factory.ts;
+  - hundreds-within-thousand.ts;
+  - single-digit-operands.ts;
+  - tens-within-thousand.ts;
+  - two-and-single-digits.ts;
+  - two-digit-and-tens.ts;
+  - two-digit-operands.ts;
+  - two-digit-tidying-up.ts;
+  - up-to-ten.ts;
+  - array.ts;
+  - equal-groups.ts;
+  - single-digit-and-up-to-twenty.ts;
+  - single-digit-operands.ts;
+  - strip-diagram.ts;
+
+- Refactor redux arithmetic slice;
+
+#### v6.0.3 release notes
+
+- Fix bug with deleting "0" from input in the Multiplication table application;
+
 #### v6.0.2 release notes
 
 - Deactivate operations those not in use;

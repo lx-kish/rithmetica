@@ -1,0 +1,76 @@
+.fraction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; // space-evenly;
+
+  &__sign {
+    display: flex;
+    height: 5.5rem;
+    margin: auto .5rem;
+    align-items: center;
+
+    &--interim {
+      margin: auto 0;
+    }
+  }
+
+  &__delimeter {
+    border: 1px solid;
+    width: 100%;
+  }
+
+  &__interim-numerator {
+    display: flex;
+  }
+  
+  &__input {
+    font-family: inherit;
+    width: $main-fraction-default-dimention;
+    line-height: 6rem;
+    margin: 3px;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1rem;
+    border-color: var(--color-white);
+    text-align: center;
+    font-size: inherit;
+    color: var(--color-white);
+
+    &-box {
+      display: flex;
+      align-items: center;
+    }
+
+    &--slim {
+      width: $main-fraction-slim-dimention;
+    }
+
+    @include respond(_360-400) {
+      border-width: 0.5px;
+    }
+
+    &[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &:invalid {
+      color: var(--color-red);
+    }
+
+    &:not(:placeholder-shown),
+    &:-webkit-autofill {
+      border-color: transparent;
+    }
+  }
+}

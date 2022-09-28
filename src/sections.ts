@@ -15,6 +15,13 @@ const sections: ISectionsAttributes[] = [
     link: "/arithmetic",
     className: ""
   },
+  {
+    id: "fractions",
+    name: "Fractions",
+    motto: "boost your skills of operations with fractions",
+    link: "/fractions",
+    className: ""
+  },
 ];
 
 export default sections;
