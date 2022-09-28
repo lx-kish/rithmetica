@@ -7,6 +7,8 @@ const twoAndSingleDigits = (operation: string, numberOfOperands: number) => {
   
   const operands: number[] = [];
 
+  const operands: number[] = [];
+  
   try {
 
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10

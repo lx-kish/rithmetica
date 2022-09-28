@@ -4,6 +4,8 @@ import randomInteger from '../../../../math/randoms/get-random-integer-in-a-rang
  * 
  */
 const twoDigitTidingUp = (operation: string, numberOfOperands: number) => {
+  
+  const operands: number[] = [];
 
   const operands: number[] = [];
 
