@@ -6,8 +6,6 @@ import randomInteger from '../../../../math/randoms/get-random-integer-in-a-rang
 const twoAndSingleDigits = (operation: string, numberOfOperands: number) => {
   
   const operands: number[] = [];
-
-  const operands: number[] = [];
   
   try {
 
