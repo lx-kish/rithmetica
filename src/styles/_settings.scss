@@ -27,17 +27,7 @@
 
     @include respond(_1100-1200) {
       max-width: 85vw;
-      // max-width: 77vw;
     }
-
-    // @include respond(_1050-1100) {
-    //   max-width: 90vw;
-    //   // max-width: 80vw;
-    // }
-
-    // @include respond(_880-920) {
-    //   max-width: 84vw;
-    // }
 
     @include respond(_600-640) {
       max-width: 90vw;
@@ -175,6 +165,11 @@
           margin-left: 3rem;
         }
       }
+
+      &:hover {
+        background-color: var(--color-white);
+        color: var(--color-background);
+      }
     }
   }
 
@@ -266,7 +261,7 @@
 
     &--radio {
       display: none;
-      
+
       &:checked + .settings__radio-label {
         background-color: var(--color-white);
         color: var(--color-background);
@@ -319,6 +314,11 @@
       // font-size: 3.5rem;
     }
 
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-background);
+    }
+
     &--operation {
       font-size: 1.5rem;
       line-height: 0.8;
@@ -351,6 +351,11 @@
       line-height: 2;
 
       margin: 3rem auto;
+    }
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-background);
     }
   }
 }

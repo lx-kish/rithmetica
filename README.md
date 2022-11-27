@@ -70,34 +70,15 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
-#### v6.0.4 release notes
+#### v7.1.0 release notes
 
-- Fix of catch variables' default types;
+- Add "To The Top" button to the Arithmetica and Fractions applications;
 
-- Refactor catch variables processing in:
-  - problems-controller.ts;
-  - problems-factory.ts;
-  - get-input-position.ts;
-  - operands-factory.ts;
-  - hundreds-within-thousand.ts;
-  - single-digit-operands.ts;
-  - tens-within-thousand.ts;
-  - two-and-single-digits.ts;
-  - two-digit-and-tens.ts;
-  - two-digit-operands.ts;
-  - two-digit-tidying-up.ts;
-  - up-to-ten.ts;
-  - array.ts;
-  - equal-groups.ts;
-  - single-digit-and-up-to-twenty.ts;
-  - single-digit-operands.ts;
-  - strip-diagram.ts;
+- Add chevron up, left, right svg icons;
 
-- Refactor redux arithmetic slice;
+- Add icon-chevron-up component;
 
-#### v6.0.3 release notes
-
-- Fix bug with deleting "0" from input in the Multiplication table application;
+- Fix minor bugs.
 
 #### v7.0.0 release notes
 

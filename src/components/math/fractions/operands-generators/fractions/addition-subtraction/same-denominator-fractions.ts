@@ -20,7 +20,8 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
      */
 
     // denominators
-    const firstDenominator = randomInteger(2, 9);
+    const firstDenominator = randomInteger(3, 9);
+    // const firstDenominator = randomInteger(2, 9);
 
     const secondDenominator = firstDenominator;
 

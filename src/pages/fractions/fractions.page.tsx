@@ -1,35 +1,51 @@
-import React from 'react';
+import React from "react";
 
-import NavigationBar from '../../components/views/navigation/navigation-bar/navigation-bar.component';
-import Header from '../../components/views/headers/fractions/header.component';
-import Problems from '../../components/views/fractions/problems/problems.component';
-import Footer from '../../components/views/footer/footer.component';
+import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
+import Header from "../../components/views/headers/fractions/header.component";
+import Problems from "../../components/views/fractions/problems/problems.component";
+import BtnUp from "../../components/views/btn-up/btn-up.component";
+import Footer from "../../components/views/footer/footer.component";
 
-interface IProps { };
+const Fractions: React.FC = () => {
+  /**
+   * Single state hook useState for all the state properties
+   *
+   * PROBLEM PARAMETRES:
+   * operation: <addition>, <subtraction>
+   * missing: <result>, <missingFirst>, <missingLast>, <random>
+   * type: <up-to-10>, ...
+   * numberOfOperands: <Number>
+   * quantity: <Number>
+   */
+  const [renderUpBtn, setRenderUpBtn] = React.useState(false);
 
-const Fractions: React.FC<IProps> = (props) => {
+  /**
+   * React hook useEffect for rendering up button on scrolling
+   */
+  React.useEffect(() => {
+    const scrollCallBack: any = window.addEventListener("scroll", () => {
+      const scrolledDown = window.pageYOffset >= 50;
 
-	/**
-	 * Single state hook useState for all the state properties
-	 * 
-	 * PROBLEM PARAMETRES: 
-	 * operation: <addition>, <subtraction>
-	 * missing: <result>, <missingFirst>, <missingLast>, <random>
-	 * type: <up-to-10>, ...
-	 * numberOfOperands: <Number>
-	 * quantity: <Number>
-	 */
+      if (scrolledDown) setRenderUpBtn(true);
+      if (!scrolledDown) setRenderUpBtn(false);
+    });
 
-	return (
-		<React.Fragment>
-			<NavigationBar />
-			<main className="problem__main main">
-				<Header />
-				<Problems />
-			</main>
-			<Footer />
-		</React.Fragment>
-	);
+    return () => {
+      window.removeEventListener("scroll", scrollCallBack);
+    };
+  }, []);
+
+  return (
+    <>
+      <NavigationBar />
+      <main className="problem__main main">
+        <Header />
+        <Problems />
+        {renderUpBtn && <BtnUp />}
+      </main>
+      <Footer />
+    </>
+  );
 };
 
 export default Fractions;
