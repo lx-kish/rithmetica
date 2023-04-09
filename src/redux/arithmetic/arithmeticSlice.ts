@@ -66,20 +66,21 @@ export const arithmeticSlice = createSlice({
       if (problems.length) getStorage()?.setItem("arithmetic", localStorageData(state, currentValidSettings));
 
       if (!problems.length) getStorage()?.removeItem("arithmetic");
-      console.log(
-        "%c :::::::::::::::: 68 line of changeSetings() of arithmeticSlice.ts ::::::::::::::::",
-        "color: olive; font-weight: bold",
-        "\n",
-        "state.settings ===> ",
-        state.settings,
-        "\n",
-        "currentValidSettings ===> ",
-        currentValidSettings,
-        "\n",
-        "state.problems ===> ",
-        state.problems,
-        "\n",
-      );
+      
+      // console.log(
+      //   "%c :::::::::::::::: 68 line of changeSetings() of arithmeticSlice.ts ::::::::::::::::",
+      //   "color: olive; font-weight: bold",
+      //   "\n",
+      //   "state.settings ===> ",
+      //   state.settings,
+      //   "\n",
+      //   "currentValidSettings ===> ",
+      //   currentValidSettings,
+      //   "\n",
+      //   "state.problems ===> ",
+      //   state.problems,
+      //   "\n",
+      // );
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {

@@ -3,6 +3,6 @@ export default interface IFractionsSetting extends Record<string, any> {
 	operation: string;
 	name: string;
 	type: string;
-  numberOfOperands: number;
+  	numberOfOperands: number;
 	quantity: number;
 };

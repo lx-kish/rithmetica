@@ -18,7 +18,6 @@ const problemsFactory = (
 
     const processor: (operation: string, numberOfOperands: number) => number[] | undefined = operandsFactory(name, operation);
 
-
     let problem: IFractionsProblem[] = [];
 
     for (let q = 0; q < quantity; q++) {

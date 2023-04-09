@@ -5,7 +5,7 @@ const initialProblemSettings: IFractionsSetting[] = [
     section: '½',
     operation: '+',
     name: 'same denominator fractions',
-    type: 'add-subtract',
+    type: 'fractionsAddSubtract',
     numberOfOperands: 2,
     quantity: 8
   }

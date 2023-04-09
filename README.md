@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v7.1.1 release notes
+
+- Fix creation of Fractions problems with initial settings by loading page;
+
+- Fix minor bugs.
+
 #### v7.1.0 release notes
 
 - Add "To The Top" button to the Arithmetica and Fractions applications;
