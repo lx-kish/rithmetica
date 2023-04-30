@@ -10,7 +10,7 @@ Visit https://lx-kish.github.io/rithmetica/ to see the app in operation.
 
 #### ! ! ! I M P O R T A N T ! ! !
 
-#### Because of the nature of github pages hosting and it's sub-links routing, it is impossible to load the direct link to a sub-page. In case of update of a sub-page you will get a 404 (File not found) error in return. To avoid it, first load the start page (https://lx-kish.github.io/rithmetica/), then after it's successful loading, move to the needed page using the menu navigation items.
+#### Because of the nature of github pages hosting and it's sub-links routing, it is impossible to load the sub-page directly by its URL. In case you refresh a sub-page you will get a 404 (File not found) error in return. To avoid it, please load the landing page first (https://lx-kish.github.io/rithmetica/), then use site navigation menu to go to the needed sub-page.
 
 ## How to use
 
@@ -69,6 +69,20 @@ The application is a React JS Single Page Application, based on create-react-app
 ## Releas notes <sup>\*</sup>
 
 ##### <sup>\*</sup> - starts from v2.3.3
+
+#### v7.2.0 release notes
+
+- Remove Same Denominator Fractions problem type;
+
+- Add One-Digit Same Denominator Simple Fractions problem type;
+
+- Add One-Digit Same Denominator Mixed Fractions problem type;
+
+- Add One-Digit Same Denominator Mixed Simplified Fractions problem type;
+
+- Extract fractions problem operands processing into the separate component;
+
+- Fix minor bugs.
 
 #### v7.1.1 release notes
 

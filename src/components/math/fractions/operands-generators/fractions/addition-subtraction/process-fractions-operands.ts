@@ -5,41 +5,20 @@ import getGreatestCommonNumber from "../../../../../../utils/get-greatest-common
 /**
  * 
  */
-const sameDenominatorFractions = (operation: string, numberOfOperands: number) => {
+const processFractionsOperands = (
+  operation: string, 
+  firstDenominator: number,
+  secondDenominator: number,
+  commonDenominator: number,
+  resultDenominator: number,
+  firstNumerator: number,
+  secondNumerator: number,
+  resultNumerator: number
+  ): number[] => {
 
   const operands: number[] = [];
 
   try {
-
-    /**
-     * 1. define denominator (from 2 to 9).
-     * 2. define 2 numerators (a) less, than denominator; b) if subtraction, the last less than the first)
-     * 3. check, if can be simplified
-     * 4. answer is the next step if cannot be simplified
-     * 5. + one extra step for simplifying if can be simplified
-     */
-
-    // denominators
-    const firstDenominator = randomInteger(3, 9);
-    // const firstDenominator = randomInteger(2, 9);
-
-    const secondDenominator = firstDenominator;
-
-    const commonDenominator = firstDenominator;
-    
-    let resultDenominator = commonDenominator;
-
-    // numerators
-    const firstNumerator = randomInteger(1, firstDenominator - 1);
-
-    let secondNumerator = randomInteger(1, firstDenominator - 1);
-
-    let resultNumerator = firstNumerator + secondNumerator;
-
-    if (operation === "-") {
-      secondNumerator = randomInteger(1, firstNumerator - 1);
-      resultNumerator = firstNumerator - secondNumerator;
-    }
 
     const firstInterimNumerator = firstNumerator;
 
@@ -118,7 +97,6 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     operands.push(simplifiedNumerator); // [13]
     operands.push(simplifiedDenominator); // [14]
 
-    return operands;
   }
   catch (e) {
     if (e instanceof Error) {
@@ -127,6 +105,8 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
       throw new Error(e);
     }
   }
+
+  return operands;
 };
 
-export default sameDenominatorFractions;
+export default processFractionsOperands;
