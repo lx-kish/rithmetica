@@ -1,6 +1,6 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
 // import getFactors from "../../../../../../utils/get-factors/get-factors";
-// import getGreatestCommonNumber from "../../../../../../utils/get-greatest-common-number/get-greatest-common-number";
+// import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-number/get-greatest-common-number";
 
 import processFractionOperands from "./process-fractions-operands";
 
@@ -63,6 +63,8 @@ const oneDigitSameDenominatorMixedSimplifiedFractions = (operation: string, numb
       secondDenominator,
       commonDenominator,
       resultDenominator,
+      firstNumerator,
+      secondNumerator,
       firstNumerator,
       secondNumerator,
       resultNumerator

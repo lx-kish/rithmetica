@@ -32,7 +32,6 @@ const SettingsSection: React.FC<IProps> = (props: IProps): JSX.Element => {
             className="settings__input settings__input--radio"
             onChange={handleChangeFractionsSettings(props.index, stateSettings)}
             checked={stateSettings[props.index].section === section.symbol}
-            // disabled={section.symbol === "½" || section.symbol === "%"}
           />
           <label
             className="settings__radio-label settings__radio-label--section"

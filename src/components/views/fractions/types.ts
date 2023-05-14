@@ -19,12 +19,12 @@ const TaskTypes: IFractionsProblemType[] = [
     name: "1-digit same denominator mixed simplified fractions",
     type: "fractionsAddSubtract",
   }, // 8 + 7 = 15; 9 - 3 = 6 
-  // {
-  //   section: "½",
-  //   operation: "+",
-  //   name: "different denominators fractions",
-  //   type: "fractionsAddSubtract",
-  // }, // 2 + 3 = 5; 6 - 4 = 2
+  {
+    section: "½",
+    operation: "+",
+    name: "different denominators fractions",
+    type: "fractionsAddSubtract",
+  }, // 2 + 3 = 5; 6 - 4 = 2
   // {
   //   section: "½",
   //   operation: "+",
@@ -43,12 +43,12 @@ const TaskTypes: IFractionsProblemType[] = [
   //   name: "same denominator mixed fractions",
   //   type: "fractionsAddSubtract",
   // }, // 8 + 7 = 15; 9 - 3 = 6
-  // {
-  //   section: "½",
-  //   operation: "-",
-  //   name: "different denominators fractions",
-  //   type: "fractionsAddSubtract",
-  // }, // 2 + 3 = 5; 6 - 4 = 2
+  {
+    section: "½",
+    operation: "-",
+    name: "different denominators fractions",
+    type: "fractionsAddSubtract",
+  }, // 2 + 3 = 5; 6 - 4 = 2
   // {
   //   section: "½",
   //   operation: "-",

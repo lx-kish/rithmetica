@@ -1,50 +1,96 @@
-import randomInteger from '../../../../randoms/get-random-integer-in-a-range';
+import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
+import getLeastCommonMultiple from "../../../../../../utils/get-least-common-multiple/get-least-common-multiple";
+
+import processFractionOperands from "./process-fractions-operands";
 
 /**
  * 
  */
 const differentDenominatorsFractions = (operation: string, numberOfOperands: number) => {
 
-  const operands: number[] = [];
-  
+  let operands: number[] = [];
+
   try {
 
     /**
-     * 1. 2 fractions add or subtract.
-     * 2. 3 steps of addition/subtraction
+     *
      */
-    // to prevent a lot of randomized zeros generated
-    let zero = 1;
 
-    // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
-    const problemMaximum = randomInteger(0 + numberOfOperands, 10);
+    // denominators
+    let firstDenominator = 0,
+      secondDenominator = 0,
+      commonDenominator = 0,
+      resultDenominator = 0,
 
-    let operand = 0;
-    let problemSum = 0;
+      // numerators
+      resultNumerator = 0,
+      firstNumerator = 0,
+      secondNumerator = 0,
+      firstInterimNumerator = 0,
+      secondInterimNumerator = 0,
 
-    // 2. Loop with length <numberOfOperands>-1
-    for (let i = 0; i < numberOfOperands - 1; i++) {
+      // factor
+      factor = 0;
 
-      // 3. Generate operand with limits min=0 (or 1), max=sum-problemTotal
-      operand = randomInteger(zero, problemMaximum - problemSum);
-      problemSum += operand;
+    firstDenominator = randomInteger(2, 9);
 
-      // 4. Push operand into problems array
-      operands.push(operand);
+    secondDenominator = randomInteger(2, 9);
 
-      // changing zero value 0/1 for each tick
-      zero = 1 - zero;
+    commonDenominator = [firstDenominator, secondDenominator].reduce(getLeastCommonMultiple);
+
+    resultDenominator = commonDenominator;
+
+    firstNumerator = randomInteger(1, firstDenominator - 1);
+
+    secondNumerator = randomInteger(1, secondDenominator - 1);
+
+    firstInterimNumerator = commonDenominator / firstDenominator * firstNumerator;
+
+    secondInterimNumerator = commonDenominator / secondDenominator * secondNumerator;
+
+    resultNumerator = firstInterimNumerator + secondInterimNumerator;
+
+    if (operation === '-') {
+
+      // switch values if difference is negative
+      if (firstInterimNumerator < secondInterimNumerator) {
+
+        //switch values of 2 variables without using the third one
+        // make firstNumerator as a sum of first and second numerators
+        firstNumerator = firstNumerator + secondNumerator;
+        // new secondNumerator equal sum - secondNumerator
+        secondNumerator = firstNumerator - secondNumerator;
+        // new firstNumerator equal sum - new secondNumerator
+        firstNumerator = firstNumerator - secondNumerator;
+
+        // repeat for the interim numerators
+        firstInterimNumerator = firstInterimNumerator + secondInterimNumerator;
+        secondInterimNumerator = firstInterimNumerator - secondInterimNumerator;
+        firstInterimNumerator = firstInterimNumerator - secondInterimNumerator;
+
+        // repeat the same for the denominators
+        firstDenominator = firstDenominator + secondDenominator;
+        secondDenominator = firstDenominator - secondDenominator;
+        firstDenominator = firstDenominator - secondDenominator;
+      }
+
+      // and compute the difference result
+      resultNumerator = firstInterimNumerator - secondInterimNumerator;
     }
-    operands.push(problemMaximum - problemSum);
 
-    // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
-    operands.splice(
-      operation === '+' ? operands.length : 0,
-      0,
-      problemMaximum
+    operands = processFractionOperands(
+      operation,
+      firstDenominator,
+      secondDenominator,
+      commonDenominator,
+      resultDenominator,
+      firstNumerator,
+      secondNumerator,
+      firstInterimNumerator,
+      secondInterimNumerator,
+      resultNumerator
     );
 
-    return operands;
   }
   catch (e) {
     if (e instanceof Error) {
@@ -53,6 +99,8 @@ const differentDenominatorsFractions = (operation: string, numberOfOperands: num
       throw new Error(e);
     }
   }
+
+  return operands;
 };
 
 export default differentDenominatorsFractions;

@@ -73,9 +73,7 @@ const MultiplicationTab: React.FC<IProps> = props => {
             <main className='main'>
                 <Header
                     getDisplay={getDisplay}
-                    setChecked={() =>
-                        setDisplay(!display)
-                    }
+                    setChecked={() => setDisplay(!display)}
                 />
                 <Tab />
             </main>

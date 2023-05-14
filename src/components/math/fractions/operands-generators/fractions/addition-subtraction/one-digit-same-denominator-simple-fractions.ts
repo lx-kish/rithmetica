@@ -1,6 +1,6 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
 import getFactors from "../../../../../../utils/get-factors/get-factors";
-import getGreatestCommonNumber from "../../../../../../utils/get-greatest-common-number/get-greatest-common-number";
+import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
 import processFractionOperands from "./process-fractions-operands";
 
@@ -14,11 +14,7 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
   try {
 
     /**
-     * 1. define denominator (from 2 to 9).
-     * 2. define 2 numerators (a) less, than denominator; b) if subtraction, the last less than the first)
-     * 3. check, if can be simplified
-     * 4. answer is the next step if cannot be simplified
-     * 5. + one extra step for simplifying if can be simplified
+     *
      */
 
     // denominators
@@ -29,6 +25,7 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
       theBiggestNumber = 0,
       theSecondRandomNumber = 0,
       theThirdRandomNumber = 0,
+      
       // numerators
       resultNumerator = 0,
       firstNumerator = 0,
@@ -67,9 +64,9 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
 
       // check if the result fraction can be reduced - it shouldn't be
       // if it can, then call recurently
-      let greatestCommonFactor = 0;
-      greatestCommonFactor = getGreatestCommonNumber(getFactors(resultNumerator), getFactors(resultDenominator));
-      if (greatestCommonFactor <= 1) foundRightNumbers = true;
+      let greatestCommonDivisor = 0;
+      greatestCommonDivisor = [resultNumerator, resultDenominator].reduce(getGreatestCommonDivisor);
+      if (greatestCommonDivisor <= 1) foundRightNumbers = true;
     }
 
     operands = processFractionOperands(
@@ -78,6 +75,8 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
       secondDenominator,
       commonDenominator,
       resultDenominator,
+      firstNumerator,
+      secondNumerator,
       firstNumerator,
       secondNumerator,
       resultNumerator

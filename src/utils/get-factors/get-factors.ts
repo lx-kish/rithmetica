@@ -19,7 +19,7 @@ const getFactors = (num: number): number[] => {
       
       if (maxFactors.length && i >= maxFactors[0]) break;
       
-      if (!(num % i)) { // if reminder is 0
+      if (!(num % i)) { // if remainder is 0
         
         const factor = num / i;
         maxFactors.unshift(factor);

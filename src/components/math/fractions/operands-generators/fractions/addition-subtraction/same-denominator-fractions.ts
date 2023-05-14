@@ -1,6 +1,6 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
 import getFactors from "../../../../../../utils/get-factors/get-factors";
-import getGreatestCommonNumber from "../../../../../../utils/get-greatest-common-number/get-greatest-common-number";
+import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
 /**
  * 
@@ -12,16 +12,11 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
   try {
 
     /**
-     * 1. define denominator (from 2 to 9).
-     * 2. define 2 numerators (a) less, than denominator; b) if subtraction, the last less than the first)
-     * 3. check, if can be simplified
-     * 4. answer is the next step if cannot be simplified
-     * 5. + one extra step for simplifying if can be simplified
+     *
      */
 
     // denominators
     const firstDenominator = randomInteger(3, 9);
-    // const firstDenominator = randomInteger(2, 9);
 
     const secondDenominator = firstDenominator;
 
@@ -78,7 +73,7 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     let greatestCommonFactor = 0, simplifiedNumerator = 0, simplifiedDenominator = 0;
 
     if (remainedDenominator) {
-      greatestCommonFactor = getGreatestCommonNumber(getFactors(remainedNumerator ? remainedNumerator : resultNumerator), getFactors(remainedDenominator));
+      greatestCommonFactor = [remainedNumerator ? remainedNumerator : resultNumerator, remainedDenominator].reduce(getGreatestCommonDivisor);
     }
     if (greatestCommonFactor > 1) {
       simplifiedNumerator = (remainedNumerator ? remainedNumerator : resultNumerator) / greatestCommonFactor;

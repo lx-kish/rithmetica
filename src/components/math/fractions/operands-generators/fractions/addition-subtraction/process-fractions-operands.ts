@@ -1,6 +1,6 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
 import getFactors from "../../../../../../utils/get-factors/get-factors";
-import getGreatestCommonNumber from "../../../../../../utils/get-greatest-common-number/get-greatest-common-number";
+import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
 /**
  * 
@@ -13,16 +13,14 @@ const processFractionsOperands = (
   resultDenominator: number,
   firstNumerator: number,
   secondNumerator: number,
+  firstInterimNumerator: number,
+  secondInterimNumerator: number,
   resultNumerator: number
   ): number[] => {
 
   const operands: number[] = [];
 
   try {
-
-    const firstInterimNumerator = firstNumerator;
-
-    const secondInterimNumerator = secondNumerator;
 
     // 1. check if it's a mixed fraction or just an integer
     let integer = 0;
@@ -54,14 +52,16 @@ const processFractionsOperands = (
     }
 
     // 2. checked if it can be simplified
-    let greatestCommonFactor = 0, simplifiedNumerator = 0, simplifiedDenominator = 0;
+    let greatestCommonDivisor = 0,
+        simplifiedNumerator = 0,
+        simplifiedDenominator = 0;
 
     if (remainedDenominator) {
-      greatestCommonFactor = getGreatestCommonNumber(getFactors(remainedNumerator ? remainedNumerator : resultNumerator), getFactors(remainedDenominator));
+      greatestCommonDivisor = [remainedNumerator ? remainedNumerator : resultNumerator, remainedDenominator].reduce(getGreatestCommonDivisor);
     }
-    if (greatestCommonFactor > 1) {
-      simplifiedNumerator = (remainedNumerator ? remainedNumerator : resultNumerator) / greatestCommonFactor;
-      simplifiedDenominator = remainedDenominator / greatestCommonFactor;
+    if (greatestCommonDivisor > 1) {
+      simplifiedNumerator = (remainedNumerator ? remainedNumerator : resultNumerator) / greatestCommonDivisor;
+      simplifiedDenominator = remainedDenominator / greatestCommonDivisor;
     }
 
     // no need to repeat the same numbers...

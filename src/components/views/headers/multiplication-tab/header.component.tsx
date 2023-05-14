@@ -21,7 +21,7 @@ interface IProps {
 const content = {
 	togglerAddSubtract: {
 		toggleBox: {
-			className: "add-subtract-toggle__box"
+			className: "toggler__box"
 		},
 		label: {
 			htmlFor: "addition-subtraction",
@@ -38,7 +38,7 @@ const content = {
 		},
 		input: {
 			type: "checkbox",
-			className: "add-subtract-toggle__input",
+			className: "toggler__input",
 			id: "addition-subtraction"
 		}
 	}

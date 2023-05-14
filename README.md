@@ -70,6 +70,20 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v7.3.0 release notes
+
+- Add different denominator fractions problems;
+
+- Add get greatest common divisor function (refactor);
+
+- Add get least common multiple function (refactor);
+
+- Remove get greatest common number function (outdated);
+
+- Refactor toggler component;
+
+- Fix minor errors and bugs.
+
 #### v7.2.0 release notes
 
 - Remove Same Denominator Fractions problem type;

@@ -3,6 +3,6 @@ export default interface IArithmeticSetting extends Record<string, any> {
 	name: string;
 	type: string;
 	missing: string;
-  numberOfOperands: number;
+	numberOfOperands: number;
 	quantity: number;
 };

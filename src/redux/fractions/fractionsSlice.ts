@@ -51,17 +51,6 @@ export const fractionsSlice = createSlice({
 
       getStorage()?.setItem("fractions", localStorageData(state, currentValidSettings));
 
-      console.log(
-        "%c :::::::::::::::: 54 line of setInputValue() of fractionSlice.ts ::::::::::::::::",
-        "color: olive; font-weight: bold",
-        "\n",
-        "currentValidSettings ===> ",
-        currentValidSettings,
-        "\n",
-        "state.problems ===> ",
-        state.problems,
-        "\n",
-      );
     },
     // 2) clear all locally saved problems and settings
     clearAllProblemsAndSettings: (state) => {
@@ -79,22 +68,6 @@ export const fractionsSlice = createSlice({
 
       if (!problems.length) getStorage()?.removeItem("fractions");
 
-      // console.log(
-      //   "%c :::::::::::::::: 82 line of generateProblems() of fractionSlice.ts ::::::::::::::::",
-      //   "color: olive; font-weight: bold",
-      //   "\n",
-      //   "state.settings ===> ",
-      //   state.settings,
-      //   // "current(state.settings) ===> ",
-      //   // current(state.settings),
-      //   "\n",
-      //   "currentValidSettings ===> ",
-      //   currentValidSettings,
-      //   "\n",
-      //   "problems ===> ",
-      //   problems,
-      //   "\n",
-      // );
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {
@@ -145,17 +118,6 @@ export const fractionsSlice = createSlice({
 
       state.settings = newProblemSettings;
 
-      // console.log(
-      //   "%c :::::::::::::::: 112 line of changeSetings() of fractionSlice.ts ::::::::::::::::",
-      //   "color: olive; font-weight: bold",
-      //   "\n",
-      //   "newProblemSettings[index] ===> ",
-      //   newProblemSettings[index],
-      //   "\n",
-      //   "state.settings ===> ",
-      //   state.settings,
-      //   "\n",
-      // );
     },
   },
 });
