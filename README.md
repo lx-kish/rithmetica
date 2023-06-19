@@ -70,6 +70,16 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.0.0 release notes
+
+- Upgrade React.js to the 18 version;
+
+- Upgrade other component to be compatible with the latest React.js version;
+
+- Refactor routing component;
+
+- Fix errors and bugs.
+
 #### v7.3.0 release notes
 
 - Add different denominator fractions problems;
