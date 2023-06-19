@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IProps {
 	className: string;
-	sign: string | number | Record<string, any> | undefined;
+	sign: string | number | React.ReactNode;
 };
 
 const Sign: React.FC<IProps> = (props) => {

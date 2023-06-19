@@ -7,13 +7,13 @@ import { store } from './redux/store';
 
 import './index.scss';
 
-import Routes from './routes';
+import AppRoutes from './approutes';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes />
+        <AppRoutes />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
