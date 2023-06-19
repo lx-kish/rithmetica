@@ -1,25 +1,20 @@
 {
   "files": {
-    "main.css": "/rithmetica/static/css/main.9d34a33b.chunk.css",
-    "main.js": "/rithmetica/static/js/main.c13084c3.chunk.js",
-    "main.js.map": "/rithmetica/static/js/main.c13084c3.chunk.js.map",
-    "runtime-main.js": "/rithmetica/static/js/runtime-main.6b6d6332.js",
-    "runtime-main.js.map": "/rithmetica/static/js/runtime-main.6b6d6332.js.map",
-    "static/js/2.393a83c6.chunk.js": "/rithmetica/static/js/2.393a83c6.chunk.js",
-    "static/js/2.393a83c6.chunk.js.map": "/rithmetica/static/js/2.393a83c6.chunk.js.map",
+    "main.css": "/rithmetica/static/css/main.81d322e7.css",
+    "main.js": "/rithmetica/static/js/main.ed7fdfda.js",
+    "static/media/Lemonada-Medium.ttf": "/rithmetica/static/media/Lemonada-Medium.1c128110eb2f11bbc2ac.ttf",
+    "static/media/Lemonada-SemiBold.ttf": "/rithmetica/static/media/Lemonada-SemiBold.ee2c4d26ee3bc6cef941.ttf",
+    "static/media/Lemonada-Regular.ttf": "/rithmetica/static/media/Lemonada-Regular.31001e9c4719136f8846.ttf",
+    "static/media/Lemonada-Bold.ttf": "/rithmetica/static/media/Lemonada-Bold.ae5696cad854e0967415.ttf",
+    "static/media/Lemonada-Light.ttf": "/rithmetica/static/media/Lemonada-Light.a68ecf33628fe3d050d4.ttf",
+    "static/media/schema-arrows--small.png": "/rithmetica/static/media/schema-arrows--small.3dd42adf1298c02ab088.png",
+    "static/media/shcema-arrows--big.png": "/rithmetica/static/media/shcema-arrows--big.ef03c2b2a8ca93aa49d5.png",
     "index.html": "/rithmetica/index.html",
-    "precache-manifest.23e54062fa7861a996dfdd6142e34734.js": "/rithmetica/precache-manifest.23e54062fa7861a996dfdd6142e34734.js",
-    "service-worker.js": "/rithmetica/service-worker.js",
-    "static/css/main.9d34a33b.chunk.css.map": "/rithmetica/static/css/main.9d34a33b.chunk.css.map",
-    "static/js/2.393a83c6.chunk.js.LICENSE.txt": "/rithmetica/static/js/2.393a83c6.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/rithmetica/static/media/Lemonada-SemiBold.db980608.ttf",
-    "static/media/schema-arrows--small.png": "/rithmetica/static/media/schema-arrows--small.8821d472.png",
-    "static/media/shcema-arrows--big.png": "/rithmetica/static/media/shcema-arrows--big.dcfc6e73.png"
+    "main.81d322e7.css.map": "/rithmetica/static/css/main.81d322e7.css.map",
+    "main.ed7fdfda.js.map": "/rithmetica/static/js/main.ed7fdfda.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.6b6d6332.js",
-    "static/js/2.393a83c6.chunk.js",
-    "static/css/main.9d34a33b.chunk.css",
-    "static/js/main.c13084c3.chunk.js"
+    "static/css/main.81d322e7.css",
+    "static/js/main.ed7fdfda.js"
   ]
 }
