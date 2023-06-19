@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.0.1 release notes
+
+- Fix eslint errors;
+
+- Fix building errors.
+
 #### v8.0.0 release notes
 
 - Upgrade React.js to the 18 version;

@@ -1,6 +1,7 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
+export {}
 // import Footer from './footer.component';
 
 // const setUp = (props = {}) => {
