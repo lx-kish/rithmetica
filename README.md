@@ -70,6 +70,16 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.0.2 release notes
+
+- Fix React render method after migration to the React version 18.x;
+
+- Fix Fix fraction problem name error at initial settings;
+
+- Fix blank page error occured after deployment to the github pages;
+
+- Fix minor errors.
+
 #### v8.0.1 release notes
 
 - Fix eslint errors;

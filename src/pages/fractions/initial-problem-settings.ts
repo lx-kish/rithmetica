@@ -4,7 +4,7 @@ const initialProblemSettings: IFractionsSetting[] = [
   {
     section: '½',
     operation: '+',
-    name: 'same denominator fractions',
+    name: '1-digit same denominator simple fractions',
     type: 'fractionsAddSubtract',
     numberOfOperands: 2,
     quantity: 8
