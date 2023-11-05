@@ -14,8 +14,6 @@ interface IProps {
   className: string;
   fraction: IFractionsProblem;
   type: string;
-  // stateNumeratorName: string;
-  // stateDenominatorName: string;
   stateProblemIndex: number;
 };
 
@@ -32,6 +30,32 @@ const FractionInput: React.FC<IProps> = props => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		dispatch(setInputValue({ index: props.stateProblemIndex, name: e.currentTarget.name, value: e.currentTarget.value }));
 	}
+
+	/**
+	 * Prevents default on passive event listener onWheel,
+	 * for details see:
+	 * https://stackoverflow.com/questions/63663025/react-onwheel-handler-cant-preventdefault-because-its-a-passive-event-listenev
+	 * https://github.com/facebook/react/pull/19654
+	 * https://stackoverflow.com/questions/54346040/react-hooks-ref-is-not-available-inside-useeffect/63033314#63033314
+	 * https://legacy.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+	 */
+	const onWheel = React.useCallback(
+		(e: WheelEvent) => {
+			e.preventDefault();
+		},
+		[],
+	);
+
+	const inputRefCallback = React.useCallback(
+
+		(node: HTMLInputElement) => {
+
+			if (node == null) return;
+
+			node.addEventListener('wheel', onWheel, { passive: false });
+		},
+		[onWheel],
+	);
 
   const numeratorName = `${props.type}Numerator`;
   const denominatorName = `${props.type}Denominator`;
@@ -52,6 +76,7 @@ const FractionInput: React.FC<IProps> = props => {
         value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1][numeratorName]?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
+        ref={inputRefCallback}
         autoComplete="off" //for dropping the value when cached by browser
       />
       <span className="fraction__delimeter"></span>
@@ -69,6 +94,7 @@ const FractionInput: React.FC<IProps> = props => {
       	value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1][denominatorName]?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
+        ref={inputRefCallback}
         autoComplete="off" //for dropping the value when cached by browser
       />
     </span>

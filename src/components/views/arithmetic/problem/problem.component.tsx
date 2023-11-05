@@ -14,19 +14,6 @@ const Problem: React.FC<IProps> = (props) => {
 
 	const { stateProblemIndex, content } = props;
 
-	// const stateProblems = useAppSelector(problems);
-
-	// const dispatch = useAppDispatch();
-
-	// const processKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-	// 	handleKeyDown(e);
-	// }
-
-	// const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-	// 	dispatch(setInputValue({ index: props.stateIndex, value: e.currentTarget.value }));
-	// }
-
-	// const renderProblem = () => {
 	let renderedElement: any = null;
 
 	const problemType = props.content.find(operand => operand.type === "type")?.value || "";
@@ -40,10 +27,8 @@ const Problem: React.FC<IProps> = (props) => {
 
 		renderedElement = <StripDiagram stateProblemIndex={stateProblemIndex} content={content} />;
 	}
+	
 	return <>{renderedElement}</>;
-	// {/* // } */ }
-
-	// {/* return <>{renderProblem()}</>; */ }
 };
 
 export default Problem;

@@ -31,6 +31,32 @@ const FractionInterim: React.FC<IProps> = props => {
     dispatch(setInputValue({ index: props.stateProblemIndex, name: e.currentTarget.name, value: e.currentTarget.value }));
   }
 
+	/**
+	 * Prevents default on passive event listener onWheel,
+	 * for details see:
+	 * https://stackoverflow.com/questions/63663025/react-onwheel-handler-cant-preventdefault-because-its-a-passive-event-listenev
+	 * https://github.com/facebook/react/pull/19654
+	 * https://stackoverflow.com/questions/54346040/react-hooks-ref-is-not-available-inside-useeffect/63033314#63033314
+	 * https://legacy.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+	 */
+	const onWheel = React.useCallback(
+		(e: WheelEvent) => {
+			e.preventDefault();
+		},
+		[],
+	);
+
+	const inputRefCallback = React.useCallback(
+
+		(node: HTMLInputElement) => {
+
+			if (node == null) return;
+
+			node.addEventListener('wheel', onWheel, { passive: false });
+		},
+		[onWheel],
+	);
+
   return (
     <span className={props.className}>
       <span className="fraction__interim-numerator">
@@ -48,6 +74,7 @@ const FractionInterim: React.FC<IProps> = props => {
           value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimNumerator1?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
+          ref={inputRefCallback}
           autoComplete="off" //for dropping the value when cached by browser
         />
         <Sign
@@ -68,6 +95,7 @@ const FractionInterim: React.FC<IProps> = props => {
           value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimNumerator2?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
+          ref={inputRefCallback}
           autoComplete="off" //for dropping the value when cached by browser
         />
       </span>
@@ -86,6 +114,7 @@ const FractionInterim: React.FC<IProps> = props => {
         value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimDenominator?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
+        ref={inputRefCallback}
         autoComplete="off" //for dropping the value when cached by browser
       />
     </span>
