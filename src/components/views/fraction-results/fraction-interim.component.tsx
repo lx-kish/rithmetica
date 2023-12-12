@@ -1,61 +1,44 @@
 import React from "react";
 
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   setInputValue,
   problems,
-} from '../../../redux/fractions/fractionsSlice';
+} from "../../../redux/fractions/fractionsSlice";
 
 import Sign from "../sign/sign.component";
-import handleKeyDown from '../../../utils/handle-key-down-event/handle-key-down-event';
+import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
+
+import { useInputScrollRefCallback } from "../../../hooks/use-input-scroll-ref-callback/use-input-scroll-ref-callback";
 
 import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
 
 interface IProps {
   className: string;
   fraction: IFractionsProblem;
-  stateProblemIndex: number,
-};
+  stateProblemIndex: number;
+}
 
-const FractionInterim: React.FC<IProps> = props => {
-
+const FractionInterim: React.FC<IProps> = (props) => {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
 
   const processKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     handleKeyDown(e);
-  }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setInputValue({ index: props.stateProblemIndex, name: e.currentTarget.name, value: e.currentTarget.value }));
-  }
+    dispatch(
+      setInputValue({
+        index: props.stateProblemIndex,
+        name: e.currentTarget.name,
+        value: e.currentTarget.value,
+      })
+    );
+  };
 
-	/**
-	 * Prevents default on passive event listener onWheel,
-	 * for details see:
-	 * https://stackoverflow.com/questions/63663025/react-onwheel-handler-cant-preventdefault-because-its-a-passive-event-listenev
-	 * https://github.com/facebook/react/pull/19654
-	 * https://stackoverflow.com/questions/54346040/react-hooks-ref-is-not-available-inside-useeffect/63033314#63033314
-	 * https://legacy.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
-	 */
-	const onWheel = React.useCallback(
-		(e: WheelEvent) => {
-			e.preventDefault();
-		},
-		[],
-	);
-
-	const inputRefCallback = React.useCallback(
-
-		(node: HTMLInputElement) => {
-
-			if (node == null) return;
-
-			node.addEventListener('wheel', onWheel, { passive: false });
-		},
-		[onWheel],
-	);
+  const ref = useInputScrollRefCallback();
 
   return (
     <span className={props.className}>
@@ -71,10 +54,12 @@ const FractionInterim: React.FC<IProps> = props => {
           name="interimNumerator1"
           min={props.fraction.numerator1?.toString()}
           max={props.fraction.numerator1?.toString()}
-          value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimNumerator1?.toString()}
+          value={stateProblems[props.stateProblemIndex][
+            stateProblems[props.stateProblemIndex].length - 1
+          ].interimNumerator1?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
-          ref={inputRefCallback}
+          ref={ref}
           autoComplete="off" //for dropping the value when cached by browser
         />
         <Sign
@@ -92,10 +77,12 @@ const FractionInterim: React.FC<IProps> = props => {
           name="interimNumerator2"
           min={props.fraction.numerator2?.toString()}
           max={props.fraction.numerator2?.toString()}
-          value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimNumerator2?.toString()}
+          value={stateProblems[props.stateProblemIndex][
+            stateProblems[props.stateProblemIndex].length - 1
+          ].interimNumerator2?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
-          ref={inputRefCallback}
+          ref={ref}
           autoComplete="off" //for dropping the value when cached by browser
         />
       </span>
@@ -111,10 +98,12 @@ const FractionInterim: React.FC<IProps> = props => {
         name="interimDenominator"
         min={props.fraction.denominator?.toString()}
         max={props.fraction.denominator?.toString()}
-        value={stateProblems[props.stateProblemIndex][stateProblems[props.stateProblemIndex].length - 1].interimDenominator?.toString()}
+        value={stateProblems[props.stateProblemIndex][
+          stateProblems[props.stateProblemIndex].length - 1
+        ].interimDenominator?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
-        ref={inputRefCallback}
+        ref={ref}
         autoComplete="off" //for dropping the value when cached by browser
       />
     </span>

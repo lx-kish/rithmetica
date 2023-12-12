@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.0.4 release notes
+
+- Extract mouse scroll event handler into a reusable custom hook;
+
+- Fix minor errors.
+
 #### v8.0.3 release notes
 
 - Fix error with autofill input fields on mouse scroll;
@@ -173,6 +179,7 @@ The application is a React JS Single Page Application, based on create-react-app
 - Fix of catch variables' default types;
 
 - Refactor catch variables processing in:
+
   - problems-controller.ts;
   - problems-factory.ts;
   - get-input-position.ts;
