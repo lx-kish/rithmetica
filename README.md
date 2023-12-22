@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.1.0 release notes
+
+- Prevent receiving a nullish result when setting up operands for the subtraction of fractions with different denominators;
+
+- Fix minor errors.
+
 #### v8.0.4 release notes
 
 - Extract mouse scroll event handler into a reusable custom hook;

@@ -1,36 +1,38 @@
-
 /**
- * Handles key-down event, runs key validation, 
+ * Handles key-down event, runs key validation,
  * decline input of the key if invalid
  * @param  {event} e a key down event
- * 
+ *
  * @return {void}
  */
 const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-
   /**
    * Validate a key down event for the range of criteria
    * @param  {event} e a key down event
    * @return {boolean} validation state
    */
   const applyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    /**
+     * define key code
+     */
+    const keyCode = e.keyCode || e.which;
 
     /**
      * arrows up & down are allways denied
-     * to prevent choosing right answer from keyboard 
+     * to prevent choosing right answer from keyboard
      */
-    if (e.which === 38 || e.which === 40) {
+    if (keyCode === 38 || keyCode === 40) {
       return true;
     }
 
-    /** delete, backspace and tab are always allowed 
+    /** delete, backspace and tab are always allowed
      */
     if (
-      e.which === 8 || //backspace
-      e.which === 46 || //delete
-      e.which === 9 || //tab
-      e.which === 37 || //<- arrow
-      e.which === 39 //-> arrow
+      keyCode === 8 || //backspace
+      keyCode === 46 || //delete
+      keyCode === 9 || //tab
+      keyCode === 37 || //<- arrow
+      keyCode === 39 //-> arrow
     ) {
       return false;
     }
@@ -49,8 +51,9 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
      *  on the key "Shift" and "Alt" to avoid special characters
      * such as e @ & " { } ...
      */
-    let key = Number(e.key);
-    if (isNaN(key) || e.key === null || e.key === ' ') {
+    const key = Number(e.key);
+
+    if (isNaN(key) || e.key === null || e.key === " ") {
       return true;
     }
 

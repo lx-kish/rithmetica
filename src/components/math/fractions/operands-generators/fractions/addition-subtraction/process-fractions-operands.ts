@@ -1,12 +1,10 @@
-import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
-import getFactors from "../../../../../../utils/get-factors/get-factors";
 import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
 /**
- * 
+ *
  */
 const processFractionsOperands = (
-  operation: string, 
+  operation: string,
   firstDenominator: number,
   secondDenominator: number,
   commonDenominator: number,
@@ -16,26 +14,29 @@ const processFractionsOperands = (
   firstInterimNumerator: number,
   secondInterimNumerator: number,
   resultNumerator: number
-  ): number[] => {
-
+): number[] => {
   const operands: number[] = [];
 
   try {
-
     // 1. check if it's a mixed fraction or just an integer
     let integer = 0;
     let remainedNumerator = resultNumerator;
     let remainedDenominator = resultDenominator;
 
     // 1.1 check if it's only an integer part, x/y = 1
-    if (!(resultNumerator - resultDenominator)) { // 1
+    if (!(resultNumerator - resultDenominator)) {
+      // 1
       integer = 1;
       remainedNumerator = 0;
       remainedDenominator = 0;
     }
 
     // // 1.2 check if it's zero in result, x/y - x/y
-    if (operation === "-" && !(firstInterimNumerator - secondInterimNumerator)) { // 1
+    if (
+      operation === "-" &&
+      !(firstInterimNumerator - secondInterimNumerator)
+    ) {
+      // 1
       integer = 0;
       resultNumerator = 0;
       resultDenominator = 0;
@@ -44,7 +45,8 @@ const processFractionsOperands = (
     }
 
     // 1.3 check if it's mixed fraction
-    if (resultNumerator > resultDenominator) { //mixed
+    if (resultNumerator > resultDenominator) {
+      //mixed
       integer = Math.trunc(resultNumerator / resultDenominator);
       remainedNumerator = resultNumerator % resultDenominator;
       // remainedNumerator = resultNumerator - integer * resultDenominator;
@@ -53,19 +55,27 @@ const processFractionsOperands = (
 
     // 2. checked if it can be simplified
     let greatestCommonDivisor = 0,
-        simplifiedNumerator = 0,
-        simplifiedDenominator = 0;
+      simplifiedNumerator = 0,
+      simplifiedDenominator = 0;
 
     if (remainedDenominator) {
-      greatestCommonDivisor = [remainedNumerator ? remainedNumerator : resultNumerator, remainedDenominator].reduce(getGreatestCommonDivisor);
+      greatestCommonDivisor = [
+        remainedNumerator ? remainedNumerator : resultNumerator,
+        remainedDenominator,
+      ].reduce(getGreatestCommonDivisor);
     }
     if (greatestCommonDivisor > 1) {
-      simplifiedNumerator = (remainedNumerator ? remainedNumerator : resultNumerator) / greatestCommonDivisor;
+      simplifiedNumerator =
+        (remainedNumerator ? remainedNumerator : resultNumerator) /
+        greatestCommonDivisor;
       simplifiedDenominator = remainedDenominator / greatestCommonDivisor;
     }
 
     // no need to repeat the same numbers...
-    if (remainedNumerator === resultNumerator && remainedDenominator === resultDenominator) {
+    if (
+      remainedNumerator === resultNumerator &&
+      remainedDenominator === resultDenominator
+    ) {
       remainedNumerator = 0;
       remainedDenominator = 0;
     }
@@ -96,9 +106,7 @@ const processFractionsOperands = (
     operands.push(simplifiedDenominator ? integer : simplifiedDenominator); // [12] // if whole, then 0
     operands.push(simplifiedNumerator); // [13]
     operands.push(simplifiedDenominator); // [14]
-
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
