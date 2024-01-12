@@ -1,7 +1,9 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
 import getLeastCommonMultiple from "../../../../../../utils/get-least-common-multiple/get-least-common-multiple";
 
-import processFractionOperands from "./process-fractions-operands";
+import processFractionOperands from "../process-fractions-operands";
+
+import { FractionOperandsType } from "../../../../../../TS/types/FractionOperandsType";
 
 /**
  *
@@ -10,7 +12,7 @@ const differentDenominatorsFractions = (
   operation: string,
   numberOfOperands: number
 ) => {
-  let operands: number[] = [];
+  let operands: FractionOperandsType = {};
 
   try {
     /**
@@ -26,11 +28,12 @@ const differentDenominatorsFractions = (
       resultNumerator = 0,
       firstNumerator = 0,
       secondNumerator = 0,
-      firstInterimNumerator = 0,
-      secondInterimNumerator = 0;
+      interimNumerator1 = 0,
+      interimNumerator2 = 0,
+      interimDenominator1 = 0,
+      interimDenominator2 = 0;
 
     // factor
-    // factor = 0;
     while (!resultNumerator) {
       firstDenominator = randomInteger(2, 9);
 
@@ -40,23 +43,25 @@ const differentDenominatorsFractions = (
         getLeastCommonMultiple
       );
 
+      interimDenominator1 = commonDenominator;
+
       resultDenominator = commonDenominator;
 
       firstNumerator = randomInteger(1, firstDenominator - 1);
 
       secondNumerator = randomInteger(1, secondDenominator - 1);
 
-      firstInterimNumerator =
+      interimNumerator1 =
         (commonDenominator / firstDenominator) * firstNumerator;
 
-      secondInterimNumerator =
+      interimNumerator2 =
         (commonDenominator / secondDenominator) * secondNumerator;
 
-      resultNumerator = firstInterimNumerator + secondInterimNumerator;
+      resultNumerator = interimNumerator1 + interimNumerator2;
 
       if (operation === "-") {
         // switch values if difference is negative
-        if (firstInterimNumerator < secondInterimNumerator) {
+        if (interimNumerator1 < interimNumerator2) {
           //switch values of 2 variables without using the third one
           // make firstNumerator as a sum of first and second numerators
           firstNumerator = firstNumerator + secondNumerator;
@@ -66,12 +71,9 @@ const differentDenominatorsFractions = (
           firstNumerator = firstNumerator - secondNumerator;
 
           // repeat for the interim numerators
-          firstInterimNumerator =
-            firstInterimNumerator + secondInterimNumerator;
-          secondInterimNumerator =
-            firstInterimNumerator - secondInterimNumerator;
-          firstInterimNumerator =
-            firstInterimNumerator - secondInterimNumerator;
+          interimNumerator1 = interimNumerator1 + interimNumerator2;
+          interimNumerator2 = interimNumerator1 - interimNumerator2;
+          interimNumerator1 = interimNumerator1 - interimNumerator2;
 
           // repeat the same for the denominators
           firstDenominator = firstDenominator + secondDenominator;
@@ -80,7 +82,7 @@ const differentDenominatorsFractions = (
         }
 
         // and compute the difference result
-        resultNumerator = firstInterimNumerator - secondInterimNumerator;
+        resultNumerator = interimNumerator1 - interimNumerator2;
       }
     }
 
@@ -92,8 +94,10 @@ const differentDenominatorsFractions = (
       resultDenominator,
       firstNumerator,
       secondNumerator,
-      firstInterimNumerator,
-      secondInterimNumerator,
+      interimNumerator1,
+      interimNumerator2,
+      interimDenominator1,
+      interimDenominator2,
       resultNumerator
     );
   } catch (e) {

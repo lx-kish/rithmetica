@@ -42,7 +42,7 @@ const FractionInterim: React.FC<IProps> = (props) => {
 
   return (
     <span className={props.className}>
-      <span className="fraction__interim-numerator">
+      <span className="fraction__interim">
         <input
           type="number"
           pattern="[0-9]*"
@@ -87,25 +87,27 @@ const FractionInterim: React.FC<IProps> = (props) => {
         />
       </span>
       <span className="fraction__delimeter"></span>
-      <input
-        type="number"
-        pattern="[0-9]*"
-        inputMode="numeric"
-        className="fraction__input"
-        step="1"
-        title=""
-        placeholder=" "
-        name="interimDenominator"
-        min={props.fraction.denominator?.toString()}
-        max={props.fraction.denominator?.toString()}
-        value={stateProblems[props.stateProblemIndex][
-          stateProblems[props.stateProblemIndex].length - 1
-        ].interimDenominator?.toString()}
-        onKeyDown={processKeyDown}
-        onChange={handleChange}
-        ref={ref}
-        autoComplete="off" //for dropping the value when cached by browser
-      />
+      <span className="fraction__interim">
+        <input
+          type="number"
+          pattern="[0-9]*"
+          inputMode="numeric"
+          className="fraction__input"
+          step="1"
+          title=""
+          placeholder=" "
+          name="interimDenominator1"
+          min={props.fraction.denominator1?.toString()}
+          max={props.fraction.denominator1?.toString()}
+          value={stateProblems[props.stateProblemIndex][
+            stateProblems[props.stateProblemIndex].length - 1
+          ].interimDenominator1?.toString()}
+          onKeyDown={processKeyDown}
+          onChange={handleChange}
+          ref={ref}
+          autoComplete="off" //for dropping the value when cached by browser
+        />
+      </span>
     </span>
   );
 };

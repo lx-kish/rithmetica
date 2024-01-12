@@ -1,8 +1,10 @@
 import operandsFactory from "./operands-factory";
 import IFractionsProblem from "../../../../TS/interfaces/IFractionsProblem";
 
+import { FractionOperandsType } from "../../../../TS/types/FractionOperandsType";
+
 /**
- * 
+ *
  */
 const problemsFactory = (
   name: string,
@@ -11,134 +13,149 @@ const problemsFactory = (
   numberOfOperands = 2,
   quantity: number
 ) => {
-
   let problems: IFractionsProblem[][] = [];
 
   try {
-
-    const processor: (operation: string, numberOfOperands: number) => number[] | undefined = operandsFactory(name, operation);
+    const processor: (
+      operation: string,
+      numberOfOperands: number
+    ) => FractionOperandsType | undefined = operandsFactory(name, operation);
 
     let problem: IFractionsProblem[] = [];
 
     for (let q = 0; q < quantity; q++) {
       problem = [];
-      const operands: number[] | undefined = processor(operation, numberOfOperands);
+      const operands: FractionOperandsType | undefined = processor(
+        operation,
+        numberOfOperands
+      );
 
       if (!operands) {
         throw new Error("Wrong type of operands processor!");
       }
 
       if (type === "fractionsAddSubtract") {
-
         // 7. Add type.
         problem.push({
           type: "type",
-          value: type
+          value: type,
         });
 
         problem.push({
           type: "fraction",
-          numerator: operands[0].toString(),
-          denominator: operands[1].toString(),
+          numerator: operands.firstNumerator, // [0]
+          denominator: operands.firstDenominator, // [1]
         });
 
         problem.push({
           type: "sign",
-          value: operation
+          value: operation,
         });
 
         problem.push({
           type: "fraction",
-          numerator: operands[2].toString(),
-          denominator: operands[3].toString(),
+          numerator: operands.secondNumerator, // [2]
+          denominator: operands.secondDenominator, // [3]
         });
 
         problem.push({
           type: "sign",
-          value: "="
+          value: "=",
         });
 
         problem.push({
           type: "interim",
-          numerator1: operands[4].toString(),
+          numerator1: operands.interimNumerator1, // [4]
           sign: operation,
-          numerator2: operands[5].toString(),
-          denominator: operands[6].toString(),
+          numerator2: operands.interimNumerator2, // [5]
+          denominator1: operands.interimDenominator1, // [6]
+          denominator2: operands.interimDenominator2, // [7]
         });
 
         problem.push({
           type: "sign",
-          value: "="
+          value: "=",
         });
 
-        if(operands[7] === 0 && operands[8] === 0) {
+        if (
+          operands.resultNumerator === 0 &&
+          operands.resultDenominator === 0
+        ) {
           problem.push({
             type: "resultInteger",
-            integer: "0"
+            integer: "0",
           });
         } else {
           problem.push({
             type: "result",
             integer: "",
-            numerator: operands[7].toString(),
-            denominator: operands[8].toString(),
+            numerator: operands.resultNumerator,
+            denominator: operands.resultDenominator,
           });
         }
-
 
         // first simplifying: extracting the integer part, or of no one, factoring then
         // operands[9] - integer part, operands[10] - fraction part
-        if (operands[9] || operands[10] || operands[11]) {
+        if (
+          operands.integer ||
+          operands.remainedNumerator ||
+          operands.remainedDenominator
+        ) {
           problem.push({
             type: "sign",
-            value: "="
+            value: "=",
           });
         }
 
-        if (operands[9]) {
+        if (operands.integer) {
           problem.push({
             type: "remainedInteger",
-            integer: operands[9].toString(),
-          })
+            integer: operands.integer,
+          });
         }
 
-        if (operands[10] || operands[11]) {
+        if (operands.remainedNumerator || operands.remainedDenominator) {
           problem.push({
             type: "remained",
-            numerator: operands[10].toString(),
-            denominator: operands[11].toString(),
-          })
+            numerator: operands.remainedNumerator,
+            denominator: operands.remainedDenominator,
+          });
         }
 
         // second simplifying: factoring if the first time it was an extraction of integer
         // operands[9] - integer part, operands[10] - fraction part
-        if (operands[12] || operands[13] || operands[14]) {
+        if (operands.simplifiedNumerator || operands.simplifiedDenominator) {
           problem.push({
             type: "sign",
-            value: "="
+            value: "=",
           });
         }
 
-        if (operands[12]) {
+        if (
+          operands.integer &&
+          operands.simplifiedNumerator &&
+          operands.simplifiedDenominator
+        ) {
           problem.push({
             type: "simplifiedInteger",
-            integer: operands[12].toString(),
-          })
+            integer: operands.integer,
+          });
         }
 
-        if (operands[13] || operands[14]) {
+        if (operands.simplifiedNumerator || operands.simplifiedDenominator) {
           problem.push({
             type: "simplified",
-            numerator: operands[13].toString(),
-            denominator: operands[14].toString(),
-          })
+            numerator: operands.simplifiedNumerator,
+            denominator: operands.simplifiedDenominator,
+          });
         }
 
         problem.push({
           type: "answers",
           interimNumerator1: "",
           interimNumerator2: "",
-          interimDenominator: "",
+          interimDenominator1: "",
+          interimDenominator2: "",
           resultInteger: "", // only for the x/y - x/y situations
           resultNumerator: "",
           resultDenominator: "",
@@ -152,39 +169,36 @@ const problemsFactory = (
       }
 
       if (type === "percentageAddSubtract") {
-
         // 7. Formatting the problem with the defined operands and operator.
         problem.push({
           type: operation === "×" ? "product" : "input",
-          value: operands[0].toString(),
+          value: operands.firstNumerator,
         });
         problem.push({
           type: "factor",
-          value: operands[1].toString(),
+          value: operands.firstDenominator,
         });
         problem.push({
           type: operation === "×" ? "input" : "operand",
-          value: operands[2].toString(),
+          value: operands.secondNumerator,
         });
 
         problem.push({
           type: "type",
-          value: type
+          value: type,
         });
 
         problem.push({
           type: "result",
-          value: ""
+          value: "",
         });
-
       }
 
       problems.push(problem);
     }
 
     return problems;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {

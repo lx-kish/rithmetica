@@ -7,7 +7,7 @@
   &__sign {
     display: flex;
     height: 5.5rem;
-    margin: auto .5rem;
+    margin: auto 0.5rem;
     align-items: center;
 
     &--interim {
@@ -20,10 +20,10 @@
     width: 100%;
   }
 
-  &__interim-numerator {
+  &__interim {
     display: flex;
   }
-  
+
   &__input {
     font-family: inherit;
     width: $main-fraction-default-dimention;

@@ -1,16 +1,16 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
-import getFactors from "../../../../../../utils/get-factors/get-factors";
 import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
 /**
- * 
+ *
  */
-const sameDenominatorFractions = (operation: string, numberOfOperands: number) => {
-
+const sameDenominatorFractions = (
+  operation: string,
+  numberOfOperands: number
+) => {
   const operands: number[] = [];
 
   try {
-
     /**
      *
      */
@@ -21,7 +21,7 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     const secondDenominator = firstDenominator;
 
     const commonDenominator = firstDenominator;
-    
+
     let resultDenominator = commonDenominator;
 
     // numerators
@@ -36,9 +36,9 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
       resultNumerator = firstNumerator - secondNumerator;
     }
 
-    const firstInterimNumerator = firstNumerator;
+    const interimNumerator1 = firstNumerator;
 
-    const secondInterimNumerator = secondNumerator;
+    const interimNumerator2 = secondNumerator;
 
     // 1. check if it's a mixed fraction or just an integer
     let integer = 0;
@@ -46,14 +46,16 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     let remainedDenominator = resultDenominator;
 
     // 1.1 check if it's only an integer part, x/y = 1
-    if (!(resultNumerator - resultDenominator)) { // 1
+    if (!(resultNumerator - resultDenominator)) {
+      // 1
       integer = 1;
       remainedNumerator = 0;
       remainedDenominator = 0;
     }
 
     // // 1.2 check if it's zero in result, x/y - x/y
-    if (operation === "-" && !(firstInterimNumerator - secondInterimNumerator)) { // 1
+    if (operation === "-" && !(interimNumerator1 - interimNumerator2)) {
+      // 1
       integer = 0;
       resultNumerator = 0;
       resultDenominator = 0;
@@ -62,26 +64,36 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     }
 
     // 1.3 check if it's mixed fraction
-    if (resultNumerator > resultDenominator) { //mixed
+    if (resultNumerator > resultDenominator) {
+      //mixed
       integer = Math.trunc(resultNumerator / resultDenominator);
       remainedNumerator = resultNumerator % resultDenominator;
-      // remainedNumerator = resultNumerator - integer * resultDenominator;
       remainedDenominator = resultDenominator;
     }
 
     // 2. checked if it can be simplified
-    let greatestCommonFactor = 0, simplifiedNumerator = 0, simplifiedDenominator = 0;
+    let greatestCommonFactor = 0,
+      simplifiedNumerator = 0,
+      simplifiedDenominator = 0;
 
     if (remainedDenominator) {
-      greatestCommonFactor = [remainedNumerator ? remainedNumerator : resultNumerator, remainedDenominator].reduce(getGreatestCommonDivisor);
+      greatestCommonFactor = [
+        remainedNumerator ? remainedNumerator : resultNumerator,
+        remainedDenominator,
+      ].reduce(getGreatestCommonDivisor);
     }
     if (greatestCommonFactor > 1) {
-      simplifiedNumerator = (remainedNumerator ? remainedNumerator : resultNumerator) / greatestCommonFactor;
+      simplifiedNumerator =
+        (remainedNumerator ? remainedNumerator : resultNumerator) /
+        greatestCommonFactor;
       simplifiedDenominator = remainedDenominator / greatestCommonFactor;
     }
 
     // no need to repeat the same numbers...
-    if (remainedNumerator === resultNumerator && remainedDenominator === resultDenominator) {
+    if (
+      remainedNumerator === resultNumerator &&
+      remainedDenominator === resultDenominator
+    ) {
       remainedNumerator = 0;
       remainedDenominator = 0;
     }
@@ -95,8 +107,8 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     operands.push(secondDenominator); // [3]
 
     // get common denominator
-    operands.push(firstInterimNumerator); // [4]
-    operands.push(secondInterimNumerator); // [5]
+    operands.push(interimNumerator1); // [4]
+    operands.push(interimNumerator2); // [5]
     operands.push(commonDenominator); // [6]
 
     // get row result
@@ -114,8 +126,7 @@ const sameDenominatorFractions = (operation: string, numberOfOperands: number) =
     operands.push(simplifiedDenominator); // [14]
 
     return operands;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {

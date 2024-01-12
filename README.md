@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.2.0 release notes
+
+- Redesign interim fraction view component and all the related components internal logic;
+
+- Fix minor bugs.
+
 #### v8.1.0 release notes
 
 - Prevent receiving a nullish result when setting up operands for the subtraction of fractions with different denominators;

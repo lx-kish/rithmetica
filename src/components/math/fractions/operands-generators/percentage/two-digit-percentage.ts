@@ -1,14 +1,14 @@
-import randomInteger from '../../../../math/randoms/get-random-integer-in-a-range';
+import randomInteger from "../../../../math/randoms/get-random-integer-in-a-range";
+
+import { FractionOperandsType } from "../../../../../TS/types/FractionOperandsType";
 
 /**
- * 
+ *
  */
 const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
-
-  const operands: number[] = [];
+  const operands: FractionOperandsType = {};
 
   try {
-
     // to prevent a lot of randomized zeros generated
     let zero = 1;
 
@@ -20,29 +20,27 @@ const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
 
     // 2. Loop with length <numberOfOperands>-1
     for (let i = 0; i < numberOfOperands - 1; i++) {
-
       // 3. Generate operand with limits min=0 (or 1), max=sum-problemTotal
       operand = randomInteger(zero, problemMaximum - problemSum);
       problemSum += operand;
 
       // 4. Push operand into problems array
-      operands.push(operand);
+      // operands.push(operand);
 
       // changing zero value 0/1 for each tick
       zero = 1 - zero;
     }
-    operands.push(problemMaximum - problemSum);
+    // operands.push(problemMaximum - problemSum);
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
-    operands.splice(
-      operation === '+' ? operands.length : 0,
-      0,
-      problemMaximum
-    );
+    // operands.splice(
+    //   operation === '+' ? operands.length : 0,
+    //   0,
+    //   problemMaximum
+    // );
 
     return operands;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {

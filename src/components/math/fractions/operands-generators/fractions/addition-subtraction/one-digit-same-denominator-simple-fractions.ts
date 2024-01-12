@@ -1,18 +1,20 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
-import getFactors from "../../../../../../utils/get-factors/get-factors";
 import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
-import processFractionOperands from "./process-fractions-operands";
+import processFractionOperands from "../process-fractions-operands";
+
+import { FractionOperandsType } from "../../../../../../TS/types/FractionOperandsType";
 
 /**
- * 
+ *
  */
-const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOperands: number) => {
-
-  let operands: number[] = [];
+const oneDigitSameDenominatorSimpleFractions = (
+  operation: string,
+  numberOfOperands: number
+) => {
+  let operands: FractionOperandsType = {};
 
   try {
-
     /**
      *
      */
@@ -25,19 +27,21 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
       theBiggestNumber = 0,
       theSecondRandomNumber = 0,
       theThirdRandomNumber = 0,
-      
       // numerators
       resultNumerator = 0,
       firstNumerator = 0,
-      secondNumerator = 0;
+      secondNumerator = 0,
+      interimDenominator1 = 0,
+      interimDenominator2 = 0;
 
     let foundRightNumbers = false;
 
     while (!foundRightNumbers) {
-
       firstDenominator = randomInteger(3, 9);
 
       secondDenominator = firstDenominator;
+
+      interimDenominator1 = firstDenominator;
 
       commonDenominator = firstDenominator;
 
@@ -65,7 +69,9 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
       // check if the result fraction can be reduced - it shouldn't be
       // if it can, then call recurently
       let greatestCommonDivisor = 0;
-      greatestCommonDivisor = [resultNumerator, resultDenominator].reduce(getGreatestCommonDivisor);
+      greatestCommonDivisor = [resultNumerator, resultDenominator].reduce(
+        getGreatestCommonDivisor
+      );
       if (greatestCommonDivisor <= 1) foundRightNumbers = true;
     }
 
@@ -79,11 +85,11 @@ const oneDigitSameDenominatorSimpleFractions = (operation: string, numberOfOpera
       secondNumerator,
       firstNumerator,
       secondNumerator,
+      interimDenominator1,
+      interimDenominator2,
       resultNumerator
     );
-
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {

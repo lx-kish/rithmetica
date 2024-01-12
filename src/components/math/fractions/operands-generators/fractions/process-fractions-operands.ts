@@ -1,5 +1,6 @@
-import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
+import getGreatestCommonDivisor from "../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
+import { FractionOperandsType } from "../../../../../TS/types/FractionOperandsType";
 /**
  *
  */
@@ -11,11 +12,13 @@ const processFractionsOperands = (
   resultDenominator: number,
   firstNumerator: number,
   secondNumerator: number,
-  firstInterimNumerator: number,
-  secondInterimNumerator: number,
+  interimNumerator1: number,
+  interimNumerator2: number,
+  interimDenominator1: number,
+  interimDenominator2: number,
   resultNumerator: number
-): number[] => {
-  const operands: number[] = [];
+): FractionOperandsType => {
+  const operands: FractionOperandsType = {};
 
   try {
     // 1. check if it's a mixed fraction or just an integer
@@ -32,10 +35,7 @@ const processFractionsOperands = (
     }
 
     // // 1.2 check if it's zero in result, x/y - x/y
-    if (
-      operation === "-" &&
-      !(firstInterimNumerator - secondInterimNumerator)
-    ) {
+    if (operation === "-" && !(interimNumerator1 - interimNumerator2)) {
       // 1
       integer = 0;
       resultNumerator = 0;
@@ -49,7 +49,6 @@ const processFractionsOperands = (
       //mixed
       integer = Math.trunc(resultNumerator / resultDenominator);
       remainedNumerator = resultNumerator % resultDenominator;
-      // remainedNumerator = resultNumerator - integer * resultDenominator;
       remainedDenominator = resultDenominator;
     }
 
@@ -81,31 +80,34 @@ const processFractionsOperands = (
     }
 
     // first fraction
-    operands.push(firstNumerator); // [0]
-    operands.push(firstDenominator); // [1]
+    operands.firstNumerator = firstNumerator; // [0]
+    operands.firstDenominator = firstDenominator; // [1]
 
     // second fraction
-    operands.push(secondNumerator); // [2]
-    operands.push(secondDenominator); // [3]
+    operands.secondNumerator = secondNumerator; // [2]
+    operands.secondDenominator = secondDenominator; // [3]
 
     // get common denominator
-    operands.push(firstInterimNumerator); // [4]
-    operands.push(secondInterimNumerator); // [5]
-    operands.push(commonDenominator); // [6]
+    operands.interimNumerator1 = interimNumerator1; // [4]
+    operands.interimNumerator2 = interimNumerator2; // [5]
+    operands.interimDenominator1 = interimDenominator1; // [6]
+    operands.interimDenominator2 = interimDenominator2; // [7]
 
     // get row result
-    operands.push(resultNumerator); // [7]
-    operands.push(resultDenominator); // [8]
+    operands.resultNumerator = resultNumerator; // [8]
+    operands.resultDenominator = resultDenominator; // [9]
 
     // extract integer (possibly not happens)
-    operands.push(integer); // [9]
-    operands.push(remainedNumerator); // [10]
-    operands.push(remainedDenominator); // [11]
+    operands.integer = integer; // [10]
+    operands.remainedNumerator = remainedNumerator; // [11]
+    operands.remainedDenominator = remainedDenominator; // [12]
 
     // simplifying (possibly not happens)
-    operands.push(simplifiedDenominator ? integer : simplifiedDenominator); // [12] // if whole, then 0
-    operands.push(simplifiedNumerator); // [13]
-    operands.push(simplifiedDenominator); // [14]
+    operands.simplifiedDenominator = simplifiedDenominator
+      ? integer
+      : simplifiedDenominator; // [13] // if whole, then 0
+    operands.simplifiedNumerator = simplifiedNumerator; // [14]
+    operands.simplifiedDenominator = simplifiedDenominator; // [15]
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
