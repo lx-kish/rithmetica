@@ -63,7 +63,11 @@ const FractionInterim: React.FC<IProps> = (props) => {
           autoComplete="off" //for dropping the value when cached by browser
         />
         <Sign
-          sign={props.fraction.sign}
+          sign={
+            props.fraction.sign === "×" || props.fraction.sign === "÷"
+              ? "×"
+              : props.fraction.sign
+          }
           className="fraction__sign fraction__sign--interim"
         />
         <input
@@ -107,6 +111,33 @@ const FractionInterim: React.FC<IProps> = (props) => {
           ref={ref}
           autoComplete="off" //for dropping the value when cached by browser
         />
+        {props.fraction.sign === "×" || props.fraction.sign === "÷" ? (
+          <>
+            <Sign
+              sign={"×"}
+              className="fraction__sign fraction__sign--interim"
+            />
+            <input
+              type="number"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              className="fraction__input"
+              step="1"
+              title=""
+              placeholder=" "
+              name="interimDenominator2"
+              min={props.fraction.denominator2?.toString()}
+              max={props.fraction.denominator2?.toString()}
+              value={stateProblems[props.stateProblemIndex][
+                stateProblems[props.stateProblemIndex].length - 1
+              ].interimDenominator2?.toString()}
+              onKeyDown={processKeyDown}
+              onChange={handleChange}
+              ref={ref}
+              autoComplete="off" //for dropping the value when cached by browser
+            />
+          </>
+        ) : null}
       </span>
     </span>
   );

@@ -8,7 +8,7 @@ import { FractionOperandsType } from "../../../../../../TS/types/FractionOperand
 /**
  *
  */
-const differentDenominatorsFractions = (
+const singleDigitDifferentDenominatorsFractions = (
   operation: string,
   numberOfOperands: number
 ) => {
@@ -90,7 +90,6 @@ const differentDenominatorsFractions = (
       operation,
       firstDenominator,
       secondDenominator,
-      commonDenominator,
       resultDenominator,
       firstNumerator,
       secondNumerator,
@@ -111,4 +110,4 @@ const differentDenominatorsFractions = (
   return operands;
 };
 
-export default differentDenominatorsFractions;
+export default singleDigitDifferentDenominatorsFractions;

@@ -8,7 +8,7 @@ import { FractionOperandsType } from "../../../../../../TS/types/FractionOperand
 /**
  *
  */
-const sameDenominatorMixedFractions = (
+const singleDigitSameDenominatorSimpleFractions = (
   operation: string,
   numberOfOperands: number
 ) => {
@@ -22,10 +22,10 @@ const sameDenominatorMixedFractions = (
     // denominators
     let firstDenominator = 0,
       secondDenominator = 0,
-      commonDenominator = 0,
       resultDenominator = 0,
-      firstdRandomNumber = 0,
-      secondRandomNumber = 0,
+      theBiggestNumber = 0,
+      theSecondRandomNumber = 0,
+      theThirdRandomNumber = 0,
       // numerators
       resultNumerator = 0,
       firstNumerator = 0,
@@ -42,27 +42,26 @@ const sameDenominatorMixedFractions = (
 
       interimDenominator1 = firstDenominator;
 
-      commonDenominator = firstDenominator;
-
-      resultDenominator = commonDenominator;
+      resultDenominator = firstDenominator;
 
       // numerators
-      resultNumerator = randomInteger(
-        commonDenominator + 1,
-        commonDenominator * 2 - 2
-      );
+      theBiggestNumber = randomInteger(2, resultDenominator - 1);
 
-      firstdRandomNumber = randomInteger(
-        resultNumerator / 2,
-        commonDenominator - 1
-      );
-      secondRandomNumber = resultNumerator - firstdRandomNumber;
+      theSecondRandomNumber = randomInteger(1, theBiggestNumber - 1);
 
-      firstNumerator = !!!randomInteger(0, 1)
-        ? firstdRandomNumber
-        : secondRandomNumber;
+      theThirdRandomNumber = theBiggestNumber - theSecondRandomNumber;
 
-      secondNumerator = resultNumerator - firstNumerator;
+      resultNumerator = theBiggestNumber;
+
+      firstNumerator = theSecondRandomNumber;
+
+      secondNumerator = theThirdRandomNumber;
+
+      if (operation === "-") {
+        firstNumerator = theBiggestNumber;
+        secondNumerator = theSecondRandomNumber;
+        resultNumerator = theThirdRandomNumber;
+      }
 
       // check if the result fraction can be reduced - it shouldn't be
       // if it can, then call recurently
@@ -77,7 +76,6 @@ const sameDenominatorMixedFractions = (
       operation,
       firstDenominator,
       secondDenominator,
-      commonDenominator,
       resultDenominator,
       firstNumerator,
       secondNumerator,
@@ -98,4 +96,4 @@ const sameDenominatorMixedFractions = (
   return operands;
 };
 
-export default sameDenominatorMixedFractions;
+export default singleDigitSameDenominatorSimpleFractions;

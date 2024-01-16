@@ -8,7 +8,7 @@ import { FractionOperandsType } from "../../../../../../TS/types/FractionOperand
 /**
  *
  */
-const oneDigitSameDenominatorSimpleFractions = (
+const singleDigitSameDenominatorMixedFractions = (
   operation: string,
   numberOfOperands: number
 ) => {
@@ -24,9 +24,8 @@ const oneDigitSameDenominatorSimpleFractions = (
       secondDenominator = 0,
       commonDenominator = 0,
       resultDenominator = 0,
-      theBiggestNumber = 0,
-      theSecondRandomNumber = 0,
-      theThirdRandomNumber = 0,
+      firstdRandomNumber = 0,
+      secondRandomNumber = 0,
       // numerators
       resultNumerator = 0,
       firstNumerator = 0,
@@ -45,26 +44,25 @@ const oneDigitSameDenominatorSimpleFractions = (
 
       commonDenominator = firstDenominator;
 
-      resultDenominator = commonDenominator;
+      resultDenominator = firstDenominator;
 
       // numerators
-      theBiggestNumber = randomInteger(2, resultDenominator - 1);
+      resultNumerator = randomInteger(
+        commonDenominator + 1,
+        commonDenominator * 2 - 2
+      );
 
-      theSecondRandomNumber = randomInteger(1, theBiggestNumber - 1);
+      firstdRandomNumber = randomInteger(
+        resultNumerator / 2,
+        commonDenominator - 1
+      );
+      secondRandomNumber = resultNumerator - firstdRandomNumber;
 
-      theThirdRandomNumber = theBiggestNumber - theSecondRandomNumber;
+      firstNumerator = !!!randomInteger(0, 1)
+        ? firstdRandomNumber
+        : secondRandomNumber;
 
-      resultNumerator = theBiggestNumber;
-
-      firstNumerator = theSecondRandomNumber;
-
-      secondNumerator = theThirdRandomNumber;
-
-      if (operation === "-") {
-        firstNumerator = theBiggestNumber;
-        secondNumerator = theSecondRandomNumber;
-        resultNumerator = theThirdRandomNumber;
-      }
+      secondNumerator = resultNumerator - firstNumerator;
 
       // check if the result fraction can be reduced - it shouldn't be
       // if it can, then call recurently
@@ -79,7 +77,6 @@ const oneDigitSameDenominatorSimpleFractions = (
       operation,
       firstDenominator,
       secondDenominator,
-      commonDenominator,
       resultDenominator,
       firstNumerator,
       secondNumerator,
@@ -100,4 +97,4 @@ const oneDigitSameDenominatorSimpleFractions = (
   return operands;
 };
 
-export default oneDigitSameDenominatorSimpleFractions;
+export default singleDigitSameDenominatorMixedFractions;

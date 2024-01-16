@@ -8,7 +8,6 @@ const processFractionsOperands = (
   operation: string,
   firstDenominator: number,
   secondDenominator: number,
-  commonDenominator: number,
   resultDenominator: number,
   firstNumerator: number,
   secondNumerator: number,

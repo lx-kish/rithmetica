@@ -34,7 +34,10 @@ const problemsFactory = (
         throw new Error("Wrong type of operands processor!");
       }
 
-      if (type === "fractionsAddSubtract") {
+      if (
+        type === "fractionsAddSubtract" ||
+        type === "fractionsMultiplyDivide"
+      ) {
         // 7. Add type.
         problem.push({
           type: "type",

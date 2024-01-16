@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.3.0 release notes
+
+- Add single-digit fractions multiplication and division tasks;
+
+- Fix minor bugs.
+
 #### v8.2.0 release notes
 
 - Redesign interim fraction view component and all the related components internal logic;

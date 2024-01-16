@@ -17,7 +17,10 @@ const Problem: React.FC<IProps> = (props) => {
   const problemType =
     props.content.find((operand) => operand.type === "type")?.value || "";
 
-  if (problemType === "fractionsAddSubtract") {
+  if (
+    problemType === "fractionsAddSubtract" ||
+    problemType === "fractionsMultiplyDivide"
+  ) {
     renderedElement = (
       <AddSubtract stateProblemIndex={stateProblemIndex} content={content} />
     );

@@ -1,7 +1,8 @@
-import oneDigitSameDenominatorSimpleFractions from "../operands-generators/fractions/addition-subtraction/one-digit-same-denominator-simple-fractions";
-import oneDigitSameDenominatorMixedFractions from "../operands-generators/fractions/addition-subtraction/one-digit-same-denominator-mixed-fractions";
-import oneDigitSameDenominatorMixedSimplifiedFractions from "../operands-generators/fractions/addition-subtraction/one-digit-same-denominator-mixed-simplified-fractions";
-import differentDenominatorsFractions from "../operands-generators/fractions/addition-subtraction/different-denominators-fractions";
+import singleDigitSameDenominatorSimpleFractions from "../operands-generators/fractions/addition-subtraction/single-digit-same-denominator-simple-fractions";
+import oneDigitsingleDigitSameDenominatorMixedFractions from "../operands-generators/fractions/addition-subtraction/single-digit-same-denominator-mixed-fractions";
+import singleDigitSameDenominatorMixedSimplifiedFractions from "../operands-generators/fractions/addition-subtraction/single-digit-same-denominator-mixed-simplified-fractions";
+import singleDigitDifferentDenominatorsFractions from "../operands-generators/fractions/addition-subtraction/single-digit-different-denominators-fractions";
+import singleDigitFractions from "../operands-generators/fractions/multitpication-division/single-digit-fractions";
 // import differentDenominatorsMixedFractions from "../operands-generators/fractions/addition-subtraction/different-denominators-mixed-fractions";
 // import twoDigitPercentage from "../operands-generators/percentage/two-digit-percentage";
 
@@ -14,16 +15,16 @@ const operandsFactory = (
   name: string,
   operation: string
 ): ((operation: string, numberOfOperands: number) => FractionOperandsType) => {
-  // ): ((operation: string, numberOfOperands: number) => number[] | undefined) => {
   try {
     if (name === "1-digit same denominator simple fractions")
-      return oneDigitSameDenominatorSimpleFractions;
+      return singleDigitSameDenominatorSimpleFractions;
     if (name === "1-digit same denominator mixed fractions")
-      return oneDigitSameDenominatorMixedFractions;
+      return oneDigitsingleDigitSameDenominatorMixedFractions;
     if (name === "1-digit same denominator mixed simplified fractions")
-      return oneDigitSameDenominatorMixedSimplifiedFractions;
-    if (name === "different denominators fractions")
-      return differentDenominatorsFractions;
+      return singleDigitSameDenominatorMixedSimplifiedFractions;
+    if (name === "1-digit different denominators fractions")
+      return singleDigitDifferentDenominatorsFractions;
+    if (name === "1-digit fractions") return singleDigitFractions;
     // if (name === "different denominators mixed fractions")
     //   return differentDenominatorsMixedFractions;
     // if (name === "two-digit percentage") return twoDigitPercentage;

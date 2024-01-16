@@ -7,7 +7,7 @@ import { FractionOperandsType } from "../../../../../../TS/types/FractionOperand
 /**
  *
  */
-const oneDigitSameDenominatorMixedSimplifiedFractions = (
+const singleDigitSameDenominatorMixedSimplifiedFractions = (
   operation: string,
   numberOfOperands: number
 ) => {
@@ -25,7 +25,6 @@ const oneDigitSameDenominatorMixedSimplifiedFractions = (
     // denominators
     let firstDenominator = 0,
       secondDenominator = 0,
-      commonDenominator = 0,
       resultDenominator = 0,
       simplifiedDenominator = 0,
       SimplifiedNumerator = 0,
@@ -55,8 +54,6 @@ const oneDigitSameDenominatorMixedSimplifiedFractions = (
 
     interimDenominator1 = resultDenominator;
 
-    commonDenominator = resultDenominator;
-
     resultNumerator = SimplifiedNumerator * factor;
 
     firstNumerator = randomInteger(
@@ -70,7 +67,6 @@ const oneDigitSameDenominatorMixedSimplifiedFractions = (
       operation,
       firstDenominator,
       secondDenominator,
-      commonDenominator,
       resultDenominator,
       firstNumerator,
       secondNumerator,
@@ -91,4 +87,4 @@ const oneDigitSameDenominatorMixedSimplifiedFractions = (
   return operands;
 };
 
-export default oneDigitSameDenominatorMixedSimplifiedFractions;
+export default singleDigitSameDenominatorMixedSimplifiedFractions;

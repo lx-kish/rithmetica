@@ -1,25 +1,24 @@
-import problemsFactory from './problem-processing/problems-factory';
+import problemsFactory from "./problem-processing/problems-factory";
 
-import IFractionsSetting from '../../../TS/interfaces/IFractionsSetting';
-import IFractionsProblem from '../../../TS/interfaces/IFractionsProblem';
+import IFractionsSetting from "../../../TS/interfaces/IFractionsSetting";
+import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
 
 /**
- * 
+ *
  */
-const fractionsProblemsController = (problemDescriptions: IFractionsSetting[]): IFractionsProblem[][] | undefined => {
-
+const fractionsProblemsController = (
+  problemDescriptions: IFractionsSetting[]
+): IFractionsProblem[][] | undefined => {
   try {
-
     const problems: IFractionsProblem[][] = [];
 
     problemDescriptions.forEach((type: IFractionsSetting) => {
-
       const problemsSet = problemsFactory(
         type.name,
         type.type,
         type.operation,
         type.numberOfOperands,
-        type.quantity,
+        type.quantity
       );
 
       if (!problemsSet) {
@@ -27,12 +26,10 @@ const fractionsProblemsController = (problemDescriptions: IFractionsSetting[]): 
       }
 
       problems.push(...problemsSet);
-
     });
 
     return problems;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {

@@ -20,9 +20,9 @@ const sameDenominatorFractions = (
 
     const secondDenominator = firstDenominator;
 
-    const commonDenominator = firstDenominator;
+    const interimDenominator = firstDenominator;
 
-    let resultDenominator = commonDenominator;
+    let resultDenominator = firstDenominator;
 
     // numerators
     const firstNumerator = randomInteger(1, firstDenominator - 1);
@@ -109,7 +109,7 @@ const sameDenominatorFractions = (
     // get common denominator
     operands.push(interimNumerator1); // [4]
     operands.push(interimNumerator2); // [5]
-    operands.push(commonDenominator); // [6]
+    operands.push(interimDenominator); // [6]
 
     // get row result
     operands.push(resultNumerator); // [7]
