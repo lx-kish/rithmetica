@@ -13,17 +13,17 @@ const Footer: React.FC = () => {
           <IconHeart className="footer__icon red" />
         </span>
         by
-        <a
+        {/* <a
           className="footer__link"
           href="https://lx-kish.github.io/personal-web-page/"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          <span className="footer__icon-box">
-            <IconLxKish className="footer__icon seven" />
-          </span>
-          Alexander Kish
-        </a>
+        > */}
+        <span className="footer__icon-box">
+          <IconLxKish className="footer__icon seven" />
+        </span>
+        Alexander Kish
+        {/* </a> */}
       </p>
     </footer>
   );
