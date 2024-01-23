@@ -25,15 +25,9 @@ const processFractionsOperands = (
     let remainedNumerator = resultNumerator;
     let remainedDenominator = resultDenominator;
 
-    // 1.1 check if it's only an integer part, x/y = 1
-    if (!(resultNumerator - resultDenominator)) {
-      // 1
-      integer = 1;
-      remainedNumerator = 0;
-      remainedDenominator = 0;
-    }
+    // 1.1 check if it's only an integer part, x/y = 1 ===> removed, checking at 1.4
 
-    // // 1.2 check if it's zero in result, x/y - x/y
+    // 1.2 check if it's zero in result, x/y - x/y
     if (operation === "-" && !(interimNumerator1 - interimNumerator2)) {
       // 1
       integer = 0;
@@ -51,6 +45,13 @@ const processFractionsOperands = (
       remainedDenominator = resultDenominator;
     }
 
+    // 1.4 if the result is the whole number without a remainder, set the numerators and denominators as 0
+    if (!(resultNumerator % resultDenominator)) {
+      integer = resultNumerator / resultDenominator;
+      remainedNumerator = 0;
+      remainedDenominator = 0;
+    }
+
     // 2. checked if it can be simplified
     let greatestCommonDivisor = 0,
       simplifiedNumerator = 0,
@@ -62,6 +63,7 @@ const processFractionsOperands = (
         remainedDenominator,
       ].reduce(getGreatestCommonDivisor);
     }
+
     if (greatestCommonDivisor > 1) {
       simplifiedNumerator =
         (remainedNumerator ? remainedNumerator : resultNumerator) /

@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.3.1 release notes
+
+- Correct single-digit fractions multiplication and division tasks output when the result is a whole number without reminder;
+
+- Fix minor bugs.
+
 #### v8.3.0 release notes
 
 - Add single-digit fractions multiplication and division tasks;
