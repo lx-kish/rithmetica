@@ -6,15 +6,20 @@ import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
 interface IProps {
   className: string;
   fraction: IFractionsProblem;
-};
+}
 
-const Fraction: React.FC<IProps> = props => {
-
+const Fraction: React.FC<IProps> = (props) => {
   return (
-    <span className={props.className}>
-      <Number number={props.fraction.numerator?.toString() || ""} className="problem__digit" />
+    <span className={props.className} data-testid="fraction-span">
+      <Number
+        number={props.fraction.numerator?.toString() || ""}
+        className="problem__digit"
+      />
       <span className="fraction__delimeter"></span>
-      <Number number={props.fraction.denominator?.toString() || ""} className="problem__digit" />
+      <Number
+        number={props.fraction.denominator?.toString() || ""}
+        className="problem__digit"
+      />
     </span>
   );
 };
