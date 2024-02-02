@@ -1,5 +1,4 @@
 import randomInteger from "../../../../randoms/get-random-integer-in-a-range";
-import getLeastCommonMultiple from "../../../../../../utils/get-least-common-multiple/get-least-common-multiple";
 
 import processFractionOperands from "../process-fractions-operands";
 
@@ -10,7 +9,6 @@ import { FractionOperandsType } from "../../../../../../TS/types/FractionOperand
  */
 const singleDigitFractions = (operation: string, numberOfOperands: number) => {
   let operands: FractionOperandsType = {};
-  // let operands: number[] = [];
 
   try {
     /**
@@ -39,10 +37,6 @@ const singleDigitFractions = (operation: string, numberOfOperands: number) => {
 
     secondNumerator = randomInteger(1, secondDenominator - 1);
 
-    // commonDenominator = [firstDenominator, secondDenominator].reduce(
-    //   getLeastCommonMultiple
-    // );
-
     interimDenominator1 = firstDenominator;
 
     interimNumerator1 = firstNumerator;
@@ -55,33 +49,6 @@ const singleDigitFractions = (operation: string, numberOfOperands: number) => {
     resultDenominator = interimDenominator1 * interimDenominator2;
 
     resultNumerator = interimNumerator1 * interimNumerator2;
-
-    // if (operation === "-") {
-    //   // switch values if difference is negative
-    //   if (interimNumerator1 < interimNumerator2) {
-    //     //switch values of 2 variables without using the third one
-    //     // make firstNumerator as a sum of first and second numerators
-    //     firstNumerator = firstNumerator + secondNumerator;
-    //     // new secondNumerator equal sum - secondNumerator
-    //     secondNumerator = firstNumerator - secondNumerator;
-    //     // new firstNumerator equal sum - new secondNumerator
-    //     firstNumerator = firstNumerator - secondNumerator;
-
-    //     // repeat for the interim numerators
-    //     interimNumerator1 = interimNumerator1 + interimNumerator2;
-    //     interimNumerator2 = interimNumerator1 - interimNumerator2;
-    //     interimNumerator1 = interimNumerator1 - interimNumerator2;
-
-    //     // repeat the same for the denominators
-    //     firstDenominator = firstDenominator + secondDenominator;
-    //     secondDenominator = firstDenominator - secondDenominator;
-    //     firstDenominator = firstDenominator - secondDenominator;
-    //   }
-
-    //   // and compute the difference result
-    //   resultNumerator = interimNumerator1 - interimNumerator2;
-    // }
-    // }
 
     operands = processFractionOperands(
       operation,

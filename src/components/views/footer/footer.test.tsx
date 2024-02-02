@@ -1,22 +1,29 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from "react";
+import { render } from "@testing-library/react";
+import Footer from "./footer.component";
 
-export {}
-// import Footer from './footer.component';
+describe("Footer Component", () => {
+  //   it("renders version correctly", () => {
+  //     const { getByText } = render(<Footer />);
+  //     const versionElement = getByText(/v8\.3\.1/i);
+  //     expect(versionElement).toBeInTheDocument();
+  //   });
 
-// const setUp = (props = {}) => {
-//     return shallow(<Footer {...props} />);
-// }
+  it("renders copyright information correctly", () => {
+    const { getByText } = render(<Footer />);
+    const copyrightElement = getByText(/© 2020 - 2024\. Built with/i);
+    expect(copyrightElement).toBeInTheDocument();
+  });
 
-// describe('Footer component test set', () => {
+  it("renders heart icon correctly", () => {
+    const { getByTestId } = render(<Footer />);
+    const heartIcon = getByTestId("heart-icon");
+    expect(heartIcon).toBeInTheDocument();
+  });
 
-//     let component;
-//     beforeEach(() => {
-//         component = setUp();
-//     });
-
-//     it('Should render <footer></footer> without errors', () => {
-//         const wrapper = component.find('footer');
-//         expect(wrapper.length).toBe(1);
-//     });
-// })
+  it("renders Lx Kish icon correctly", () => {
+    const { getByTestId } = render(<Footer />);
+    const lxKishIcon = getByTestId("lx-kish-icon");
+    expect(lxKishIcon).toBeInTheDocument();
+  });
+});
