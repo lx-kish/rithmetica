@@ -1,6 +1,6 @@
 // Fraction.test.tsx
 import React from "react";
-import { render, screen, prettyDOM } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"; // for additional matchers
 
 import Fraction from "./fraction.component"; // Update the import path accordingly
