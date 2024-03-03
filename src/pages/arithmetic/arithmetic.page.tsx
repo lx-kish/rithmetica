@@ -6,6 +6,8 @@ import Problems from "../../components/views/arithmetic/problems/problems.compon
 import BtnUp from "../../components/views/btn-up/btn-up.component";
 import Footer from "../../components/views/footer/footer.component";
 
+import useRenderScrollUpBtn from "../../utils/use-render-up-btn/use-render-scroll-up-btn";
+
 const Arithmetic: React.FC = () => {
   /**
    * Single state hook useState for all the state properties
@@ -17,23 +19,7 @@ const Arithmetic: React.FC = () => {
    * numberOfOperands: <Number>
    * quantity: <Number>
    */
-  const [renderUpBtn, setRenderUpBtn] = React.useState(false);
-
-  /**
-   * React hook useEffect for rendering up button on scrolling
-   */
-  React.useEffect(() => {
-    const scrollCallBack: any = window.addEventListener("scroll", () => {
-      const scrolledDown = window.pageYOffset >= 50;
-
-      if (scrolledDown) setRenderUpBtn(true);
-      if (!scrolledDown) setRenderUpBtn(false);
-    });
-
-    return () => {
-      window.removeEventListener("scroll", scrollCallBack);
-    };
-  }, []);
+  const renderScrollUpBtn = useRenderScrollUpBtn();
 
   return (
     <>
@@ -41,7 +27,7 @@ const Arithmetic: React.FC = () => {
       <main className="problem__main main">
         <Header />
         <Problems />
-        {renderUpBtn && <BtnUp />}
+        {renderScrollUpBtn && <BtnUp />}
       </main>
       <Footer />
     </>
