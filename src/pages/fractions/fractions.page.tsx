@@ -6,7 +6,7 @@ import Problems from "../../components/views/fractions/problems/problems.compone
 import BtnUp from "../../components/views/btn-up/btn-up.component";
 import Footer from "../../components/views/footer/footer.component";
 
-import useRenderScrollUpBtn from "../../utils/use-render-up-btn/use-render-scroll-up-btn";
+import useRenderScrollUpBtn from "../../hooks/use-render-scroll-up-btn/use-render-scroll-up-btn";
 
 const Fractions: React.FC = () => {
   /**
