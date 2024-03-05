@@ -2,8 +2,8 @@ import { act, renderHook } from "@testing-library/react";
 import useRenderScrollBtn from "./use-render-scroll-up-btn";
 
 describe("useRenderScrollBtn", () => {
-  let addEventListenerSpy;
-  let removeEventListenerSpy;
+  let addEventListenerSpy: any;
+  let removeEventListenerSpy: any;
 
   beforeEach(() => {
     addEventListenerSpy = jest.spyOn(window, "addEventListener");
