@@ -70,11 +70,10 @@ const Header: React.FC<IProps> = (props) => {
         iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
         iconClassName="collapsible__icon--level-one"
         getDisplay={props.getDisplay} // I know it's a bad music... Just d'know how to do better, and don't want to launch Redux just for this shit... :(
-        content={
-          <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
-        }
         borderBottom={false}
-      />
+      >
+        <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
+      </Collapsible>
       <Toggler
         {...content.togglerAddSubtract}
         checked={subtractState}

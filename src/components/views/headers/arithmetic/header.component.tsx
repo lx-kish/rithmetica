@@ -25,11 +25,10 @@ const Header: React.FC = () => {
           titleClassName="collapsible__title collapsible__title--level-two"
           iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-two"
           iconClassName="collapsible__icon--level-two"
-          content={
-            <Math paragraphClassName="description__paragraph description__paragraph--level-two" />
-          }
           borderBottom={false}
-        />
+        >
+          <Math paragraphClassName="description__paragraph description__paragraph--level-two" />
+        </Collapsible>
         <Collapsible
           title="How it works"
           id="how-it-works"
@@ -37,11 +36,10 @@ const Header: React.FC = () => {
           titleClassName="collapsible__title collapsible__title--level-two"
           iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-two"
           iconClassName="collapsible__icon--level-two"
-          content={
-            <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
-          }
           borderBottom={false}
-        />
+        >
+          <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
+        </Collapsible>
       </>
     );
   };
@@ -57,9 +55,10 @@ const Header: React.FC = () => {
         titleClassName="collapsible__title collapsible__title--level-one"
         iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
         iconClassName="collapsible__icon--level-one"
-        content={collapsibleContent()}
         borderBottom={false}
-      />
+      >
+        {collapsibleContent()}
+      </Collapsible>
       <Settings />
     </header>
   );

@@ -1,10 +1,9 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 import IconChevronDown from "../icons-svg/icon-chevron-down.component";
 
 interface IProps {
   id: string;
-  content?: JSX.Element | string;
   borderBottom?: boolean;
   collapsibleClassName: string;
   titleClassName?: string;
@@ -12,43 +11,51 @@ interface IProps {
   iconBoxClassName?: string;
   iconClassName: string;
   getDisplay?: (display: boolean) => void;
+  children: React.ReactNode;
 }
 
-const Collapsible: React.FC<IProps> = (props) => {
-  const { getDisplay } = props;
-
-  const [display, setDisplay] = React.useState(false);
+const Collapsible: React.FC<IProps> = ({
+  id,
+  borderBottom = false,
+  collapsibleClassName,
+  titleClassName = "",
+  title = "",
+  iconBoxClassName = "",
+  iconClassName,
+  getDisplay = undefined,
+  children,
+}) => {
+  const [display, setDisplay] = useState(false);
 
   /**
    * React hook useEffect for sending up the state in case it is needed
    */
-  React.useEffect(() => {
+  useEffect(() => {
     if (getDisplay) getDisplay(display);
-  }, [getDisplay, display]);
-  // }, [display]);
+  }, [display, getDisplay]);
 
   const handleChange = () => {
-    setDisplay(!display);
+    setDisplay((currDisplay) => !currDisplay);
   };
 
   return (
-    <div className={props?.collapsibleClassName} key={props.id}>
+    <div className={collapsibleClassName} key={id}>
       <div
         className={`collapsible__line${
-          props.borderBottom ? " collapsible__border-bottom" : ""
+          borderBottom ? " collapsible__border-bottom" : ""
         }`}
       >
-        <h3 className={props?.titleClassName}>{props.title}</h3>
+        <h3 className={titleClassName}>{title}</h3>
         <input
           type="checkbox"
           className="collapsible__btn"
-          id={props.id}
+          id={id}
           checked={display}
           onChange={handleChange}
           autoComplete="off" //for dropping the value when cached by browser
         />
-        <label htmlFor={props.id} className={props?.iconBoxClassName}>
-          <IconChevronDown className={props.iconClassName} />
+        <label htmlFor={id} className={iconBoxClassName}>
+          <IconChevronDown className={iconClassName} />
         </label>
       </div>
       <div
@@ -56,7 +63,7 @@ const Collapsible: React.FC<IProps> = (props) => {
           display ? "collapsible--expanded" : "collapsible--collapsed"
         }`}
       >
-        {props.content}
+        {children}
       </div>
     </div>
   );

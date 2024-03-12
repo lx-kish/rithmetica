@@ -78,13 +78,14 @@ const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
       <Collapsible
         title="Settings"
         id="settings"
-        content={collapsibleContent()}
         collapsibleClassName="collapsible collapsible__border-bottom"
         titleClassName="collapsible__title collapsible__title--level-one"
         iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
         iconClassName="collapsible__icon--level-one"
         borderBottom={false}
-      />
+      >
+        {collapsibleContent()}
+      </Collapsible>
       <input
         type="button"
         className="btn settings__go-btn"
