@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.4.0 release notes
+
+- Redesign multiplication tab page logic;
+
+- Fix minor bugs.
+
 #### v8.3.2 release notes
 
 - Add unit tests.

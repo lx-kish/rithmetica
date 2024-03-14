@@ -1,6 +1,7 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../../redux/hooks";
+import { useLocation } from "react-router-dom";
 import {
   clearAllInputs,
   switchSubtract,
@@ -13,12 +14,7 @@ import HowMultitabWorks from "../../../descriptions/multiplication-table/how-mul
 
 import Toggler from "../../toggler/toggler.component";
 
-interface IProps {
-  getDisplay: (display: boolean) => void;
-  setChecked: () => void;
-}
-
-const content = {
+const togglerContent = {
   togglerAddSubtract: {
     toggleBox: {
       className: "toggler__box",
@@ -44,14 +40,14 @@ const content = {
   },
 };
 
-const Header: React.FC<IProps> = (props) => {
+function Header(): ReactElement {
   const subtractState = useAppSelector(subtract);
 
   const dispatch = useAppDispatch();
 
-  const sectionSettings = sections.find(
-    (el) => el.link === "/multiplication-tab"
-  );
+  const location = useLocation();
+
+  const sectionSettings = sections.find((el) => el.link === location.pathname);
 
   const handleChange = () => {
     dispatch(clearAllInputs());
@@ -69,18 +65,18 @@ const Header: React.FC<IProps> = (props) => {
         titleClassName="collapsible__title collapsible__title--level-one"
         iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
         iconClassName="collapsible__icon--level-one"
-        getDisplay={props.getDisplay} // I know it's a bad music... Just d'know how to do better, and don't want to launch Redux just for this shit... :(
+        useStickHeader={true}
         borderBottom={false}
       >
         <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
       <Toggler
-        {...content.togglerAddSubtract}
+        {...togglerContent.togglerAddSubtract}
         checked={subtractState}
         onChange={handleChange}
       />
     </header>
   );
-};
+}
 
 export default Header;

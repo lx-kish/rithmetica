@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import IconChevronDown from "../icons-svg/icon-chevron-down.component";
 
+import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
+
 interface IProps {
   id: string;
   borderBottom?: boolean;
@@ -10,7 +12,7 @@ interface IProps {
   title?: string;
   iconBoxClassName?: string;
   iconClassName: string;
-  getDisplay?: (display: boolean) => void;
+  useStickHeader?: boolean;
   children: React.ReactNode;
 }
 
@@ -22,17 +24,18 @@ const Collapsible: React.FC<IProps> = ({
   title = "",
   iconBoxClassName = "",
   iconClassName,
-  getDisplay = undefined,
+  useStickHeader = false,
   children,
 }) => {
+  const { setDisplayTabHeader } = useStickHeaderOnScroll();
   const [display, setDisplay] = useState(false);
 
   /**
    * React hook useEffect for sending up the state in case it is needed
    */
   useEffect(() => {
-    if (getDisplay) getDisplay(display);
-  }, [display, getDisplay]);
+    if (useStickHeader) setDisplayTabHeader(display);
+  }, [display, useStickHeader, setDisplayTabHeader]);
 
   const handleChange = () => {
     setDisplay((currDisplay) => !currDisplay);
