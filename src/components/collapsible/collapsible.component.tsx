@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 
 import IconChevronDown from "../icons-svg/icon-chevron-down.component";
 
@@ -16,7 +16,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const Collapsible: React.FC<IProps> = ({
+export default function Collapsible({
   id,
   borderBottom = false,
   collapsibleClassName,
@@ -26,7 +26,7 @@ const Collapsible: React.FC<IProps> = ({
   iconClassName,
   useStickHeader = false,
   children,
-}) => {
+}: IProps): ReactElement {
   const { setDisplayTabHeader } = useStickHeaderOnScroll();
   const [display, setDisplay] = useState(false);
 
@@ -70,6 +70,4 @@ const Collapsible: React.FC<IProps> = ({
       </div>
     </div>
   );
-};
-
-export default Collapsible;
+}

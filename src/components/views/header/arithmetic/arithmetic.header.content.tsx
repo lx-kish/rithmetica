@@ -1,17 +1,22 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-import sections from "../../../../sections";
 import Collapsible from "../../../collapsible/collapsible.component";
 import Settings from "../../../settings/arythmetic/settings.component";
 import Math from "../../../descriptions/addition-subtraction/math.component";
 import HowAdditionSubtractionWorks from "../../../descriptions/addition-subtraction/how-addition-subtraction-works.component";
 
-const Header: React.FC = () => {
-  const sectionSettings = sections.find((el) => el.link === "/arithmetic");
-
-  const collapsibleContent = () => {
-    return (
-      <>
+export default function ArithmeticHeaderContent(): ReactElement {
+  return (
+    <>
+      <Collapsible
+        title="About"
+        id="about"
+        collapsibleClassName="collapsible"
+        titleClassName="collapsible__title collapsible__title--level-one"
+        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
+        iconClassName="collapsible__icon--level-one"
+        borderBottom={false}
+      >
         <p className="description__paragraph description__paragraph--level-one">
           The application is dedicated to developing mental addition,
           subtraction, multiplication and division skills, which achieves via
@@ -40,28 +45,8 @@ const Header: React.FC = () => {
         >
           <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
-      </>
-    );
-  };
-
-  return (
-    <header className="header">
-      <h1 className="header__title">{sectionSettings?.name}</h1>
-      <h3 className="header__title--small">{sectionSettings?.motto}</h3>
-      <Collapsible
-        title="About"
-        id="about"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-one"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
-        iconClassName="collapsible__icon--level-one"
-        borderBottom={false}
-      >
-        {collapsibleContent()}
       </Collapsible>
       <Settings />
-    </header>
+    </>
   );
-};
-
-export default Header;
+}

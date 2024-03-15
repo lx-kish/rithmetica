@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 
-import Header from "../../components/views/headers/multiplication-tab/header.component";
+import Header from "../../components/views/header/header.component";
+import MultiplicationTabHeaderContent from "../../components/views/header/multiplication-tab/multiplication-tab.header.content";
 import Footer from "../../components/views/footer/footer.component";
 import Tab from "../../components/views/multiplication-tab/table/tab.component";
 
@@ -11,7 +12,9 @@ function MultiplicationTab(): ReactElement {
     <>
       <NavigationBar />
       <main className="main">
-        <Header />
+        <Header>
+          <MultiplicationTabHeaderContent />
+        </Header>
         <Tab />
       </main>
       <Footer />
