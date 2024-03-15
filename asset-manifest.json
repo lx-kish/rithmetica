@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rithmetica/static/css/main.791dab1e.css",
-    "main.js": "/rithmetica/static/js/main.17f3fe87.js",
+    "main.js": "/rithmetica/static/js/main.2281f80b.js",
     "static/media/Lemonada-Medium.ttf": "/rithmetica/static/media/Lemonada-Medium.1c128110eb2f11bbc2ac.ttf",
     "static/media/Lemonada-SemiBold.ttf": "/rithmetica/static/media/Lemonada-SemiBold.ee2c4d26ee3bc6cef941.ttf",
     "static/media/Lemonada-Regular.ttf": "/rithmetica/static/media/Lemonada-Regular.31001e9c4719136f8846.ttf",
@@ -11,10 +11,10 @@
     "static/media/shcema-arrows--big.png": "/rithmetica/static/media/shcema-arrows--big.ef03c2b2a8ca93aa49d5.png",
     "index.html": "/rithmetica/index.html",
     "main.791dab1e.css.map": "/rithmetica/static/css/main.791dab1e.css.map",
-    "main.17f3fe87.js.map": "/rithmetica/static/js/main.17f3fe87.js.map"
+    "main.2281f80b.js.map": "/rithmetica/static/js/main.2281f80b.js.map"
   },
   "entrypoints": [
     "static/css/main.791dab1e.css",
-    "static/js/main.17f3fe87.js"
+    "static/js/main.2281f80b.js"
   ]
 }
