@@ -1,55 +1,70 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
-import problemsController from '../../components/math/arithmetic/problems-controller';
+import problemsController from "../../components/math/arithmetic/problems-controller";
 
-import { getStorage } from '../../utils/process-local-storage/process-local-storage';
+import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
-import IArithmeticSetting from '../../TS/interfaces/IArithmeticSetting';
-import IProblem from '../../TS/interfaces/IProblem';
+import IArithmeticSetting from "../../TS/interfaces/IArithmeticSetting";
+import IProblem from "../../TS/interfaces/IProblem";
 
-import initialProblemSettings from '../../pages/arithmetic/initial-problem-settings';
-import { COLUMN_NUMBER_ARITHMETIC as columnNumber } from '../../constants';
+import initialProblemSettings from "../../pages/arithmetic/initial-problem-settings";
+import { numberOfColumns } from "../../TS/constatnts/constants";
 
 export interface ArithmeticState {
-  settings: IArithmeticSetting[],
-  columns: number,
-  problems: IProblem[][],
+  settings: IArithmeticSetting[];
+  columns: number;
+  problems: IProblem[][];
 }
 
 const initialState: ArithmeticState = {
-  settings: getStorage()?.getItem("arithmetic", true)?.settings || initialProblemSettings,
-  columns: columnNumber,
-  problems: getStorage()?.getItem("arithmetic", true)?.problems || problemsController(initialProblemSettings),
+  settings:
+    getStorage()?.getItem("arithmetic", true)?.settings ||
+    initialProblemSettings,
+  columns: numberOfColumns.two,
+  problems:
+    getStorage()?.getItem("arithmetic", true)?.problems ||
+    problemsController(initialProblemSettings),
 };
 
-const localStorageData = (state: ArithmeticState, settings: IArithmeticSetting[]) => {
+const localStorageData = (
+  state: ArithmeticState,
+  settings: IArithmeticSetting[]
+) => {
   return {
     settings,
     columns: state.columns,
     problems: JSON.parse(JSON.stringify(state.problems)),
-  }
-}
+  };
+};
 
 const validProblemSettings = (state: ArithmeticState): IArithmeticSetting[] => {
   return state.settings.filter(
-    (setting: IArithmeticSetting) => setting.operation && setting.type && setting.missing && setting.quantity
+    (setting: IArithmeticSetting) =>
+      setting.operation && setting.type && setting.missing && setting.quantity
   );
-}
+};
 
 export const arithmeticSlice = createSlice({
-  name: 'arithmetic',
+  name: "arithmetic",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     // 1) set input value
-    setInputValue: (state, action: PayloadAction<{ index: number, value: string }>) => {
+    setInputValue: (
+      state,
+      action: PayloadAction<{ index: number; value: string }>
+    ) => {
       const { index, value } = action.payload;
-      state.problems[index][state.problems[index].length - 1].value = "" + value;
+      state.problems[index][state.problems[index].length - 1].value =
+        "" + value;
 
       const currentValidSettings = validProblemSettings(state);
 
-      getStorage()?.setItem("arithmetic", localStorageData(state, currentValidSettings));
+      getStorage()?.setItem(
+        "arithmetic",
+        localStorageData(state, currentValidSettings)
+      );
     },
     // 2) clear all locally saved problems and settings
     clearAllProblemsAndSettings: (state) => {
@@ -63,39 +78,27 @@ export const arithmeticSlice = createSlice({
 
       state.problems = problems;
 
-      if (problems.length) getStorage()?.setItem("arithmetic", localStorageData(state, currentValidSettings));
+      if (problems.length)
+        getStorage()?.setItem(
+          "arithmetic",
+          localStorageData(state, currentValidSettings)
+        );
 
       if (!problems.length) getStorage()?.removeItem("arithmetic");
-      
-      // console.log(
-      //   "%c :::::::::::::::: 68 line of changeSetings() of arithmeticSlice.ts ::::::::::::::::",
-      //   "color: olive; font-weight: bold",
-      //   "\n",
-      //   "state.settings ===> ",
-      //   state.settings,
-      //   "\n",
-      //   "currentValidSettings ===> ",
-      //   currentValidSettings,
-      //   "\n",
-      //   "state.problems ===> ",
-      //   state.problems,
-      //   "\n",
-      // );
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {
-
       const newProblemSettings: IArithmeticSetting[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
-          operation: '+',
-          name: '',
-          type: '',
-          missing: 'random',
+          operation: "+",
+          name: "",
+          type: "",
+          missing: "random",
           numberOfOperands: 2,
-          quantity: 0
+          quantity: 0,
         },
-        ...state.settings.slice(action.payload + 1)
+        ...state.settings.slice(action.payload + 1),
       ];
 
       state.settings = newProblemSettings;
@@ -104,32 +107,33 @@ export const arithmeticSlice = createSlice({
     deleteSetting: (state, action: PayloadAction<number>) => {
       const newProblemSettings = [
         ...state.settings.slice(0, action.payload),
-        ...state.settings.slice(action.payload + 1)
+        ...state.settings.slice(action.payload + 1),
       ];
 
       if (!newProblemSettings.length)
         newProblemSettings.push({
-          operation: '+',
-          name: '',
-          type: '',
-          missing: 'random',
+          operation: "+",
+          name: "",
+          type: "",
+          missing: "random",
           numberOfOperands: 2,
-          quantity: 0
+          quantity: 0,
         });
 
       state.settings = newProblemSettings;
     },
     // 6) set setting on change
-    changeSetting: (state, action: PayloadAction<{ index: number; name: string; value: string }>) => {
+    changeSetting: (
+      state,
+      action: PayloadAction<{ index: number; name: string; value: string }>
+    ) => {
       const newProblemSettings = [...state.settings];
       const { index, name, value } = action.payload;
 
-      const newSettings = Object.assign(
-        {},
-        newProblemSettings[index],
-        { [name]: value }
-      );
-      
+      const newSettings = Object.assign({}, newProblemSettings[index], {
+        [name]: value,
+      });
+
       newProblemSettings[index] = newSettings;
 
       state.settings = newProblemSettings;

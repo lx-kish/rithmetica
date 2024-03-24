@@ -9,7 +9,7 @@ import IFractionsSetting from "../../TS/interfaces/IFractionsSetting";
 import IFractionsProblem from "../../TS/interfaces/IFractionsProblem";
 
 import initialProblemSettings from "../../pages/fractions/initial-problem-settings";
-import { COLUMN_NUMBER_FRACTIONS as columnNumber } from "../../constants";
+import { numberOfColumns } from "../../TS/constatnts/constants";
 
 export interface FractionsState {
   settings: IFractionsSetting[];
@@ -21,7 +21,7 @@ const initialState: FractionsState = {
   settings:
     getStorage()?.getItem("fractions", true)?.settings ||
     initialProblemSettings,
-  columns: columnNumber,
+  columns: numberOfColumns.one,
   problems:
     getStorage()?.getItem("fractions", true)?.problems ||
     fractionsProblemsController(initialProblemSettings),

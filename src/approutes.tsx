@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MultiplicationTab from "./pages/multiplication-tab/multiplication-tab.page";
 import Arithmetic from "./pages/arithmetic/arithmetic.page";
 import Fractions from "./pages/fractions/fractions.page";
+import { routes } from "./TS/constatnts/constants";
 
 /**
  * router adapted for github pages, see detailed eplanations at:
@@ -13,10 +14,10 @@ import Fractions from "./pages/fractions/fractions.page";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Arithmetic />} />
-      <Route path="/multiplication-tab" element={<MultiplicationTab />} />
-      <Route path="/arithmetic" element={<Arithmetic />} />
-      <Route path="/fractions" element={<Fractions />} />
+      <Route path={routes.root} element={<Arithmetic />} />
+      <Route path={routes.multiplicationTab} element={<MultiplicationTab />} />
+      <Route path={routes.arithmetic} element={<Arithmetic />} />
+      <Route path={routes.fractions} element={<Fractions />} />
     </Routes>
   );
 };
