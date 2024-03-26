@@ -6,15 +6,15 @@ import singleDigitFractions from "../operands-generators/fractions/multitpicatio
 // import differentDenominatorsMixedFractions from "../operands-generators/fractions/addition-subtraction/different-denominators-mixed-fractions";
 // import twoDigitPercentage from "../operands-generators/percentage/two-digit-percentage";
 
-import { FractionOperandsType } from "../../../../TS/types/FractionOperandsType";
+import { IFractionProblemOperands } from "../../../../TS/interfaces/interfaces";
 
 /**
  *
  */
-const operandsFactory = (
+function operandsFactory(
   name: string,
   operation: string
-): ((operation: string, numberOfOperands: number) => FractionOperandsType) => {
+): (operation: string, numberOfOperands: number) => IFractionProblemOperands {
   try {
     if (name === "1-digit same denominator simple fractions")
       return singleDigitSameDenominatorSimpleFractions;
@@ -39,9 +39,28 @@ const operandsFactory = (
   return (
     operation: string,
     numberOfOperands: number
-  ): FractionOperandsType => {
-    return {};
+  ): IFractionProblemOperands => {
+    return {
+      operation: "",
+      firstDenominator: 0,
+      secondDenominator: 0,
+      resultDenominator: 0,
+      firstNumerator: 0,
+      secondNumerator: 0,
+      interimNumerator1: 0,
+      interimNumerator2: 0,
+      interimDenominator1: 0,
+      interimDenominator2: 0,
+      commonDenominator: 0,
+      integer: 0,
+      remainedNumerator: 0,
+      remainedDenominator: 0,
+      resultNumerator: 0,
+      simplifiedNumerator: 0,
+      simplifiedDenominator: 0,
+    };
+    // return {};
   };
-};
+}
 
 export default operandsFactory;

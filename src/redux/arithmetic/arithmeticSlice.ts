@@ -5,14 +5,16 @@ import problemsController from "../../components/math/arithmetic/problems-contro
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
-import IArithmeticSetting from "../../TS/interfaces/IArithmeticSetting";
-import IProblem from "../../TS/interfaces/IProblem";
+import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
 
 import initialProblemSettings from "../../pages/arithmetic/initial-problem-settings";
-import { numberOfColumns } from "../../TS/constatnts/constants";
+import {
+  arithmeticMissing,
+  numberOfColumns,
+} from "../../TS/constatnts/constants";
 
 export interface ArithmeticState {
-  settings: IArithmeticSetting[];
+  settings: ISettings[];
   columns: number;
   problems: IProblem[][];
 }
@@ -27,23 +29,20 @@ const initialState: ArithmeticState = {
     problemsController(initialProblemSettings),
 };
 
-const localStorageData = (
-  state: ArithmeticState,
-  settings: IArithmeticSetting[]
-) => {
+function localStorageData(state: ArithmeticState, settings: ISettings[]) {
   return {
     settings,
     columns: state.columns,
     problems: JSON.parse(JSON.stringify(state.problems)),
   };
-};
+}
 
-const validProblemSettings = (state: ArithmeticState): IArithmeticSetting[] => {
+function validProblemSettings(state: ArithmeticState): ISettings[] {
   return state.settings.filter(
-    (setting: IArithmeticSetting) =>
+    (setting: ISettings) =>
       setting.operation && setting.type && setting.missing && setting.quantity
   );
-};
+}
 
 export const arithmeticSlice = createSlice({
   name: "arithmetic",
@@ -88,13 +87,13 @@ export const arithmeticSlice = createSlice({
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {
-      const newProblemSettings: IArithmeticSetting[] = [
+      const newProblemSettings: ISettings[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
           operation: "+",
           name: "",
           type: "",
-          missing: "random",
+          missing: arithmeticMissing.random,
           numberOfOperands: 2,
           quantity: 0,
         },
@@ -115,7 +114,7 @@ export const arithmeticSlice = createSlice({
           operation: "+",
           name: "",
           type: "",
-          missing: "random",
+          missing: arithmeticMissing.random,
           numberOfOperands: 2,
           quantity: 0,
         });

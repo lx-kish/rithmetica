@@ -1,28 +1,28 @@
-import React from 'react';
+import React, { ReactElement } from "react";
 
-import Collapsible from '../../collapsible/collapsible.component';
+import Collapsible from "../../collapsible/collapsible.component";
 
-import UpToTen from './problem-types/up-to-ten.component';
-import SingleDigitOperands from './problem-types/single-digit-operands.component';
-import TwoAndSingleDigits from './problem-types/two-and-single-digits.component';
-import TwoDigitsAndTens from './problem-types/two-digit-and-tens.component';
-import TwoDigitsOperands from './problem-types/two-digit-operands.component';
-import TwoDigitsTidingUp from './problem-types/two-digit-tidying-up.component';
-import TensWithinThousand from './problem-types/tens-within-thousand.component';
-import HundredsWithinThousand from './problem-types/hundreds-within-thousand.component';
+import UpToTen from "./problem-types/up-to-ten.component";
+import SingleDigitOperands from "./problem-types/single-digit-operands.component";
+import TwoAndSingleDigits from "./problem-types/two-and-single-digits.component";
+import TwoDigitsAndTens from "./problem-types/two-digit-and-tens.component";
+import TwoDigitsOperands from "./problem-types/two-digit-operands.component";
+import TwoDigitsTidingUp from "./problem-types/two-digit-tidying-up.component";
+import TensWithinThousand from "./problem-types/tens-within-thousand.component";
+import HundredsWithinThousand from "./problem-types/hundreds-within-thousand.component";
 
-import schemaSmallScreen from './schema-arrows--small.png';
-import schemaBigScreen from './shcema-arrows--big.png';
+import schemaSmallScreen from "./schema-arrows--small.png";
+import schemaBigScreen from "./shcema-arrows--big.png";
 
-import ICollapsibleProps from '../../../TS/interfaces/ICollapsibleProps';
+import { ICollapsibleProps } from "../../../TS/interfaces/interfaces";
 
-const HowFractionsWorks: React.FC<ICollapsibleProps> = (props) => {
-	return (
-		<React.Fragment>
-			<p className={props.paragraphClassName}>
-				This section is not implemented yet.
-			</p>
-			{/* <picture>
+function HowFractionsWorks({
+  paragraphClassName,
+}: ICollapsibleProps): ReactElement {
+  return (
+    <React.Fragment>
+      <p className={paragraphClassName}>This section is not implemented yet.</p>
+      {/* <picture>
 				<source srcSet={`${schemaSmallScreen} 1.8x`} media="(max-width: 380px)" />
 				<source srcSet={`${schemaSmallScreen} 1.5x`} media="(max-width: 480px)" />
 				<source srcSet={`${schemaSmallScreen} 1.2x`} media="(max-width: 580px)" />
@@ -39,7 +39,7 @@ const HowFractionsWorks: React.FC<ICollapsibleProps> = (props) => {
 				<br />
 				There are several problem types for addition or subtraction in the application:<br />
 			</p> */}
-			{/* <Collapsible
+      {/* <Collapsible
 				title="Up To Ten"
 				id="up-to-ten"
 				collapsibleClassName="collapsible"
@@ -151,8 +151,8 @@ const HowFractionsWorks: React.FC<ICollapsibleProps> = (props) => {
 				}
 				borderBottom={false}
 			/> */}
-		</React.Fragment>
-	);
-};
+    </React.Fragment>
+  );
+}
 
 export default HowFractionsWorks;

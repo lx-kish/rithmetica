@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import Collapsible from "../../collapsible/collapsible.component";
 
@@ -8,12 +8,12 @@ import Decomposing from "../math-theory/strategies/decomposing.component";
 import EqualAddition from "../math-theory/strategies/equal-addition.component";
 import Compensation from "../math-theory/strategies/compensation.component";
 
-import ICollapsibleProps from "../../../TS/interfaces/ICollapsibleProps";
+import { ICollapsibleProps } from "../../../TS/interfaces/interfaces";
 
-const Math: React.FC<ICollapsibleProps> = (props) => {
+function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
   return (
-    <React.Fragment>
-      <p className={props.paragraphClassName}>
+    <>
+      <p className={paragraphClassName}>
         There are several strategies for performing mental addition and
         subtraction:
         <br />
@@ -73,8 +73,8 @@ const Math: React.FC<ICollapsibleProps> = (props) => {
       >
         <Compensation paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-    </React.Fragment>
+    </>
   );
-};
+}
 
 export default Math;

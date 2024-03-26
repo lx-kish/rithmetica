@@ -5,16 +5,15 @@ import fractionsProblemsController from "../../components/math/fractions/fractio
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
-import IFractionsSetting from "../../TS/interfaces/IFractionsSetting";
-import IFractionsProblem from "../../TS/interfaces/IFractionsProblem";
+import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
 
 import initialProblemSettings from "../../pages/fractions/initial-problem-settings";
 import { numberOfColumns } from "../../TS/constatnts/constants";
 
 export interface FractionsState {
-  settings: IFractionsSetting[];
+  settings: ISettings[];
   columns: number;
-  problems: IFractionsProblem[][];
+  problems: IProblem[][];
 }
 
 const initialState: FractionsState = {
@@ -27,23 +26,20 @@ const initialState: FractionsState = {
     fractionsProblemsController(initialProblemSettings),
 };
 
-const localStorageData = (
-  state: FractionsState,
-  settings: IFractionsSetting[]
-) => {
+function localStorageData(state: FractionsState, settings: ISettings[]) {
   return {
     settings,
     columns: state.columns,
     problems: JSON.parse(JSON.stringify(state.problems)),
   };
-};
+}
 
-const validProblemSettings = (state: FractionsState): IFractionsSetting[] => {
+function validProblemSettings(state: FractionsState): ISettings[] {
   return state.settings.filter(
-    (setting: IFractionsSetting) =>
+    (setting: ISettings) =>
       setting.section && setting.operation && setting.type && setting.quantity
   );
-};
+}
 
 export const fractionsSlice = createSlice({
   name: "fractions",
@@ -56,8 +52,9 @@ export const fractionsSlice = createSlice({
       action: PayloadAction<{ index: number; name: string; value: string }>
     ) => {
       const { index, name, value } = action.payload;
-      state.problems[index][state.problems[index].length - 1][name] =
-        "" + value;
+      state.problems[index][state.problems[index].length - 1][name] = value;
+
+      // const problems = {...state.problems, state.problems[index][state.problems[index].length - 1][name]: value};
 
       const currentValidSettings = validProblemSettings(state);
 
@@ -88,7 +85,7 @@ export const fractionsSlice = createSlice({
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {
-      const newProblemSettings: IFractionsSetting[] = [
+      const newProblemSettings: ISettings[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
           section: "½",

@@ -3,8 +3,7 @@ import { changeSetting } from "../../redux/fractions/fractionsSlice";
 
 import types from "../../components/views/fractions/types";
 
-import IFractionsProblemType from "../../TS/interfaces/IFractionsProblemType";
-import IFractionsSetting from "../../TS/interfaces/IFractionsSetting";
+import { IProblemType, ISettings } from "../../TS/interfaces/interfaces";
 
 /**
  * Handles key-down event, runs key validation,
@@ -15,14 +14,14 @@ import IFractionsSetting from "../../TS/interfaces/IFractionsSetting";
  * @return {void}
  */
 const handleChangeFractionsSettings =
-  (index: number, previousStateSetting: IFractionsSetting[]) =>
+  (index: number, previousStateSetting: ISettings[]) =>
   (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ): void => {
     // 1) Set variables and values
-    let currentTaskType: IFractionsProblemType | undefined;
+    let currentTaskType: IProblemType | undefined;
 
     // 1) Define the type of the field fired the event
     let fieldType = "";

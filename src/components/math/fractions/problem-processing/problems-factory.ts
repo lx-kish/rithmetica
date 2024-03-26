@@ -1,31 +1,36 @@
 import operandsFactory from "./operands-factory";
-import IFractionsProblem from "../../../../TS/interfaces/IFractionsProblem";
-
-import { FractionOperandsType } from "../../../../TS/types/FractionOperandsType";
+import {
+  IProblem,
+  IFractionProblemOperands,
+} from "../../../../TS/interfaces/interfaces";
+import { fractionOperandTypes } from "../../../../TS/constatnts/constants";
 
 /**
  *
  */
-const problemsFactory = (
+function problemsFactory(
   name: string,
   type: string,
   operation: string,
   numberOfOperands = 2,
   quantity: number
-) => {
-  let problems: IFractionsProblem[][] = [];
+) {
+  let problems: IProblem[][] = [];
 
   try {
     const processor: (
       operation: string,
       numberOfOperands: number
-    ) => FractionOperandsType | undefined = operandsFactory(name, operation);
+    ) => IFractionProblemOperands | undefined = operandsFactory(
+      name,
+      operation
+    );
 
-    let problem: IFractionsProblem[] = [];
+    let problem: IProblem[] = [];
 
     for (let q = 0; q < quantity; q++) {
       problem = [];
-      const operands: FractionOperandsType | undefined = processor(
+      const operands: IFractionProblemOperands | undefined = processor(
         operation,
         numberOfOperands
       );
@@ -40,34 +45,34 @@ const problemsFactory = (
       ) {
         // 7. Add type.
         problem.push({
-          type: "type",
+          type: fractionOperandTypes.type,
           value: type,
         });
 
         problem.push({
-          type: "fraction",
+          type: fractionOperandTypes.fraction,
           numerator: operands.firstNumerator, // [0]
           denominator: operands.firstDenominator, // [1]
         });
 
         problem.push({
-          type: "sign",
+          type: fractionOperandTypes.sign,
           value: operation,
         });
 
         problem.push({
-          type: "fraction",
+          type: fractionOperandTypes.fraction,
           numerator: operands.secondNumerator, // [2]
           denominator: operands.secondDenominator, // [3]
         });
 
         problem.push({
-          type: "sign",
+          type: fractionOperandTypes.sign,
           value: "=",
         });
 
         problem.push({
-          type: "interim",
+          type: fractionOperandTypes.interim,
           numerator1: operands.interimNumerator1, // [4]
           sign: operation,
           numerator2: operands.interimNumerator2, // [5]
@@ -76,7 +81,7 @@ const problemsFactory = (
         });
 
         problem.push({
-          type: "sign",
+          type: fractionOperandTypes.sign,
           value: "=",
         });
 
@@ -85,12 +90,12 @@ const problemsFactory = (
           operands.resultDenominator === 0
         ) {
           problem.push({
-            type: "resultInteger",
+            type: fractionOperandTypes.resultInteger,
             integer: "0",
           });
         } else {
           problem.push({
-            type: "result",
+            type: fractionOperandTypes.result,
             integer: "",
             numerator: operands.resultNumerator,
             denominator: operands.resultDenominator,
@@ -105,21 +110,21 @@ const problemsFactory = (
           operands.remainedDenominator
         ) {
           problem.push({
-            type: "sign",
+            type: fractionOperandTypes.sign,
             value: "=",
           });
         }
 
         if (operands.integer) {
           problem.push({
-            type: "remainedInteger",
+            type: fractionOperandTypes.remainedInteger,
             integer: operands.integer,
           });
         }
 
         if (operands.remainedNumerator || operands.remainedDenominator) {
           problem.push({
-            type: "remained",
+            type: fractionOperandTypes.remained,
             numerator: operands.remainedNumerator,
             denominator: operands.remainedDenominator,
           });
@@ -129,7 +134,7 @@ const problemsFactory = (
         // operands[9] - integer part, operands[10] - fraction part
         if (operands.simplifiedNumerator || operands.simplifiedDenominator) {
           problem.push({
-            type: "sign",
+            type: fractionOperandTypes.sign,
             value: "=",
           });
         }
@@ -140,26 +145,26 @@ const problemsFactory = (
           operands.simplifiedDenominator
         ) {
           problem.push({
-            type: "simplifiedInteger",
+            type: fractionOperandTypes.simplifiedInteger,
             integer: operands.integer,
           });
         }
 
         if (operands.simplifiedNumerator || operands.simplifiedDenominator) {
           problem.push({
-            type: "simplified",
+            type: fractionOperandTypes.simplified,
             numerator: operands.simplifiedNumerator,
             denominator: operands.simplifiedDenominator,
           });
         }
 
         problem.push({
-          type: "answers",
+          type: fractionOperandTypes.answers,
           interimNumerator1: "",
           interimNumerator2: "",
           interimDenominator1: "",
           interimDenominator2: "",
-          resultInteger: "", // only for the x/y - x/y situations
+          resultInteger: "", // only for the x/y - x/y case
           resultNumerator: "",
           resultDenominator: "",
           remainedInteger: "",
@@ -208,6 +213,6 @@ const problemsFactory = (
       throw new Error(e);
     }
   }
-};
+}
 
 export default problemsFactory;

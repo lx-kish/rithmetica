@@ -1,4 +1,4 @@
-import IOperation from "../../../TS/interfaces/IOperation";
+import { IOperation } from "../../../TS/interfaces/interfaces";
 
 const Operations: IOperation[] = [
   {
@@ -12,7 +12,6 @@ const Operations: IOperation[] = [
   {
     name: "multiplication",
     symbol: "×",
-
   },
   {
     name: "division",

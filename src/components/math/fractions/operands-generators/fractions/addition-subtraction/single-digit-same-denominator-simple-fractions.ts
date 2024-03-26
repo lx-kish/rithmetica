@@ -3,16 +3,35 @@ import getGreatestCommonDivisor from "../../../../../../utils/get-greatest-commo
 
 import processFractionOperands from "../process-fractions-operands";
 
-import { FractionOperandsType } from "../../../../../../TS/types/FractionOperandsType";
+import { IFractionProblemOperands } from "../../../../../../TS/interfaces/interfaces";
 
 /**
  *
  */
-const singleDigitSameDenominatorSimpleFractions = (
+function singleDigitSameDenominatorSimpleFractions(
   operation: string,
   numberOfOperands: number
-) => {
-  let operands: FractionOperandsType = {};
+) {
+  let operands: IFractionProblemOperands = {
+    operation: "",
+    firstDenominator: 0,
+    secondDenominator: 0,
+    resultDenominator: 0,
+    firstNumerator: 0,
+    secondNumerator: 0,
+    interimNumerator1: 0,
+    interimNumerator2: 0,
+    interimDenominator1: 0,
+    interimDenominator2: 0,
+    commonDenominator: 0,
+    integer: 0,
+    remainedNumerator: 0,
+    remainedDenominator: 0,
+    resultNumerator: 0,
+    simplifiedNumerator: 0,
+    simplifiedDenominator: 0,
+  };
+  // let operands: IFractionProblemOperands = {};
 
   try {
     /**
@@ -94,6 +113,6 @@ const singleDigitSameDenominatorSimpleFractions = (
   }
 
   return operands;
-};
+}
 
 export default singleDigitSameDenominatorSimpleFractions;

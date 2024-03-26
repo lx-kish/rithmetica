@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
@@ -10,16 +10,21 @@ import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-
 
 import { useInputScrollRefCallback } from "../../../hooks/use-input-scroll-ref-callback/use-input-scroll-ref-callback";
 
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem } from "../../../TS/interfaces/interfaces";
 
 interface IProps {
   className: string;
-  fraction: IFractionsProblem;
+  fraction: IProblem;
   type: string;
   stateProblemIndex: number;
 }
 
-const FractionInteger: React.FC<IProps> = (props) => {
+function FractionInteger({
+  className,
+  fraction,
+  type,
+  stateProblemIndex,
+}: IProps): ReactElement {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
@@ -31,7 +36,7 @@ const FractionInteger: React.FC<IProps> = (props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       setInputValue({
-        index: props.stateProblemIndex,
+        index: stateProblemIndex,
         name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
@@ -50,18 +55,18 @@ const FractionInteger: React.FC<IProps> = (props) => {
         title=""
         className="fraction__input"
         placeholder=" "
-        name={props.type}
-        min={props.fraction.integer?.toString()}
-        max={props.fraction.integer?.toString()}
+        name={type}
+        min={fraction.integer?.toString()}
+        max={fraction.integer?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
         ref={ref}
-        value={stateProblems[props.stateProblemIndex][
-          stateProblems[props.stateProblemIndex].length - 1
-        ][props.type]?.toString()}
+        value={stateProblems[stateProblemIndex][
+          stateProblems[stateProblemIndex].length - 1
+        ][type]?.toString()}
       />
     </span>
   );
-};
+}
 
 export default FractionInteger;

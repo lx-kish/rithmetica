@@ -1,22 +1,20 @@
-import React from 'react';
+import { ReactElement } from "react";
 
-import Collapsible from '../../collapsible/collapsible.component';
+import Collapsible from "../../collapsible/collapsible.component";
 
-import CountingOn from '../math-theory/strategies/counting-on.component';
-import MakeATen from '../math-theory/strategies/make-a-ten.component';
-import Decomposing from '../math-theory/strategies/decomposing.component';
-import EqualAddition from '../math-theory/strategies/equal-addition.component';
-import Compensation from '../math-theory/strategies/compensation.component';
+import CountingOn from "../math-theory/strategies/counting-on.component";
+import MakeATen from "../math-theory/strategies/make-a-ten.component";
+import Decomposing from "../math-theory/strategies/decomposing.component";
+import EqualAddition from "../math-theory/strategies/equal-addition.component";
+import Compensation from "../math-theory/strategies/compensation.component";
 
-import ICollapsibleProps from '../../../TS/interfaces/ICollapsibleProps';
+import { ICollapsibleProps } from "../../../TS/interfaces/interfaces";
 
-const Math: React.FC<ICollapsibleProps> = (props) => {
-	return (
-		<React.Fragment>
-			<p className={props.paragraphClassName}>
-				This section is not emplemented yet.
-			</p>
-			{/* <Collapsible
+function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
+  return (
+    <>
+      <p className={paragraphClassName}>This section is not emplemented yet.</p>
+      {/* <Collapsible
 				title="Counting On"
 				id="counting-on"
 				collapsibleClassName="collapsible"
@@ -86,8 +84,8 @@ const Math: React.FC<ICollapsibleProps> = (props) => {
 				}
 				borderBottom={false}
 			/> */}
-		</React.Fragment>
-	);
-};
+    </>
+  );
+}
 
 export default Math;

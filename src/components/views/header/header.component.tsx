@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import sections from "../../../sections";
 import { routes } from "../../../TS/constatnts/constants";
 
-export default function Header({ children }: any): ReactElement {
+function Header({ children }: any): ReactElement {
   const location = useLocation();
 
   const sectionName =
@@ -21,3 +21,5 @@ export default function Header({ children }: any): ReactElement {
     </header>
   );
 }
+
+export default Header;

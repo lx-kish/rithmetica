@@ -1,4 +1,4 @@
-import ISection from "../../../TS/interfaces/ISection";
+import { ISection } from "../../../TS/interfaces/interfaces";
 
 const Sections: ISection[] = [
   {

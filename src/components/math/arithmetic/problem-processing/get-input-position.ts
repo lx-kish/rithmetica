@@ -1,33 +1,34 @@
-import randomInteger from '../../randoms/get-random-integer-in-a-range';
+import { arithmeticMissing } from "../../../../TS/constatnts/constants";
+import randomInteger from "../../randoms/get-random-integer-in-a-range";
 
 /**
- * 
+ *
  */
-const getInputPosition = (numberOfOperands: number, missing: string) => {
-
+function getInputPosition(
+  numberOfOperands: number,
+  missing: string | undefined
+) {
   let input;
-  
-  try {
 
-    if (missing === 'random') {
-      input = randomInteger(0, numberOfOperands)
-    } else if (missing === 'first') {
+  try {
+    if (missing === arithmeticMissing.random) {
+      input = randomInteger(0, numberOfOperands);
+    } else if (missing === arithmeticMissing.first) {
       input = 0;
-    } else if (missing === 'last') {
+    } else if (missing === arithmeticMissing.last) {
       input = numberOfOperands - 1;
-    } else if (missing === 'result') {
+    } else if (missing === arithmeticMissing.result) {
       input = numberOfOperands;
     }
 
     return input;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
   }
-};
+}
 
 export default getInputPosition;

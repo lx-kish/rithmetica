@@ -4,9 +4,9 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"; // for additional matchers
 
 import Fraction from "./fraction.component"; // Update the import path accordingly
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem } from "../../../TS/interfaces/interfaces";
 
-const mockFraction: IFractionsProblem = {
+const mockFraction: IProblem = {
   numerator: 3,
   denominator: 4,
 };
@@ -21,9 +21,9 @@ describe("Fraction Component", () => {
   });
 
   it("renders Fraction component with empty numerator and denominator", () => {
-    const emptyFraction: IFractionsProblem = {
-      numerator: undefined,
-      denominator: undefined,
+    const emptyFraction: IProblem = {
+      numerator: "",
+      denominator: "",
     };
 
     render(<Fraction className="test" fraction={emptyFraction} />);

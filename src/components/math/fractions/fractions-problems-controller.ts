@@ -1,18 +1,17 @@
 import problemsFactory from "./problem-processing/problems-factory";
 
-import IFractionsSetting from "../../../TS/interfaces/IFractionsSetting";
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem, ISettings } from "../../../TS/interfaces/interfaces";
 
 /**
  *
  */
-const fractionsProblemsController = (
-  problemDescriptions: IFractionsSetting[]
-): IFractionsProblem[][] | undefined => {
+function fractionsProblemsController(
+  problemDescriptions: ISettings[]
+): IProblem[][] | undefined {
   try {
-    const problems: IFractionsProblem[][] = [];
+    const problems: IProblem[][] = [];
 
-    problemDescriptions.forEach((type: IFractionsSetting) => {
+    problemDescriptions.forEach((type: ISettings) => {
       const problemsSet = problemsFactory(
         type.name,
         type.type,
@@ -36,6 +35,6 @@ const fractionsProblemsController = (
       throw new Error(e);
     }
   }
-};
+}
 
 export default fractionsProblemsController;

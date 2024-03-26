@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
@@ -11,15 +11,19 @@ import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-
 
 import { useInputScrollRefCallback } from "../../../hooks/use-input-scroll-ref-callback/use-input-scroll-ref-callback";
 
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem } from "../../../TS/interfaces/interfaces";
 
 interface IProps {
   className: string;
-  fraction: IFractionsProblem;
+  fraction: IProblem;
   stateProblemIndex: number;
 }
 
-const FractionInterim: React.FC<IProps> = (props) => {
+function FractionInterim({
+  className,
+  fraction,
+  stateProblemIndex,
+}: IProps): ReactElement {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
@@ -31,7 +35,7 @@ const FractionInterim: React.FC<IProps> = (props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       setInputValue({
-        index: props.stateProblemIndex,
+        index: stateProblemIndex,
         name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
@@ -41,7 +45,7 @@ const FractionInterim: React.FC<IProps> = (props) => {
   const ref = useInputScrollRefCallback();
 
   return (
-    <span className={props.className}>
+    <span className={className}>
       <span className="fraction__interim">
         <input
           type="number"
@@ -52,10 +56,10 @@ const FractionInterim: React.FC<IProps> = (props) => {
           title=""
           placeholder=" "
           name="interimNumerator1"
-          min={props.fraction.numerator1?.toString()}
-          max={props.fraction.numerator1?.toString()}
-          value={stateProblems[props.stateProblemIndex][
-            stateProblems[props.stateProblemIndex].length - 1
+          min={fraction.numerator1?.toString()}
+          max={fraction.numerator1?.toString()}
+          value={stateProblems[stateProblemIndex][
+            stateProblems[stateProblemIndex].length - 1
           ].interimNumerator1?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
@@ -64,9 +68,7 @@ const FractionInterim: React.FC<IProps> = (props) => {
         />
         <Sign
           sign={
-            props.fraction.sign === "×" || props.fraction.sign === "÷"
-              ? "×"
-              : props.fraction.sign
+            fraction.sign === "×" || fraction.sign === "÷" ? "×" : fraction.sign
           }
           className="fraction__sign fraction__sign--interim"
         />
@@ -79,10 +81,10 @@ const FractionInterim: React.FC<IProps> = (props) => {
           title=""
           placeholder=" "
           name="interimNumerator2"
-          min={props.fraction.numerator2?.toString()}
-          max={props.fraction.numerator2?.toString()}
-          value={stateProblems[props.stateProblemIndex][
-            stateProblems[props.stateProblemIndex].length - 1
+          min={fraction.numerator2?.toString()}
+          max={fraction.numerator2?.toString()}
+          value={stateProblems[stateProblemIndex][
+            stateProblems[stateProblemIndex].length - 1
           ].interimNumerator2?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
@@ -101,17 +103,17 @@ const FractionInterim: React.FC<IProps> = (props) => {
           title=""
           placeholder=" "
           name="interimDenominator1"
-          min={props.fraction.denominator1?.toString()}
-          max={props.fraction.denominator1?.toString()}
-          value={stateProblems[props.stateProblemIndex][
-            stateProblems[props.stateProblemIndex].length - 1
+          min={fraction.denominator1?.toString()}
+          max={fraction.denominator1?.toString()}
+          value={stateProblems[stateProblemIndex][
+            stateProblems[stateProblemIndex].length - 1
           ].interimDenominator1?.toString()}
           onKeyDown={processKeyDown}
           onChange={handleChange}
           ref={ref}
           autoComplete="off" //for dropping the value when cached by browser
         />
-        {props.fraction.sign === "×" || props.fraction.sign === "÷" ? (
+        {fraction.sign === "×" || fraction.sign === "÷" ? (
           <>
             <Sign
               sign={"×"}
@@ -126,10 +128,10 @@ const FractionInterim: React.FC<IProps> = (props) => {
               title=""
               placeholder=" "
               name="interimDenominator2"
-              min={props.fraction.denominator2?.toString()}
-              max={props.fraction.denominator2?.toString()}
-              value={stateProblems[props.stateProblemIndex][
-                stateProblems[props.stateProblemIndex].length - 1
+              min={fraction.denominator2?.toString()}
+              max={fraction.denominator2?.toString()}
+              value={stateProblems[stateProblemIndex][
+                stateProblems[stateProblemIndex].length - 1
               ].interimDenominator2?.toString()}
               onKeyDown={processKeyDown}
               onChange={handleChange}
@@ -141,6 +143,6 @@ const FractionInterim: React.FC<IProps> = (props) => {
       </span>
     </span>
   );
-};
+}
 
 export default FractionInterim;

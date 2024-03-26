@@ -1,6 +1,6 @@
-import IFractionsProblemType from "../../../TS/interfaces/IFractionsProblemType";
+import { IProblemType } from "../../../TS/interfaces/interfaces";
 
-const TaskTypes: IFractionsProblemType[] = [
+const TaskTypes: IProblemType[] = [
   {
     section: "½",
     operation: "+",
@@ -67,6 +67,12 @@ const TaskTypes: IFractionsProblemType[] = [
     name: "1-digit fractions",
     type: "fractionsMultiplyDivide",
   }, // 5 + 5 + 5 = 15
+  // {
+  //   section: ".1",
+  //   operation: "÷",
+  //   name: "1-digit decimals",
+  //   type: "percentageAddSubtract",
+  // }, // 5 + 5 + 5 = 15
   {
     section: "%",
     operation: "+",
@@ -81,6 +87,12 @@ const TaskTypes: IFractionsProblemType[] = [
   }, // 17% of 36
   // {
   //   operation: "½",
+  //   name: "two-digit percentage",
+  //   type: "linear",
+  //   missing: "result",
+  // }, // 17% of 36 ½¾
+  // {
+  //   operation: "․1",
   //   name: "two-digit percentage",
   //   type: "linear",
   //   missing: "result",

@@ -1,4 +1,4 @@
-import ISectionsAttributes from './TS/interfaces/ISectionsAttributes';
+import { ISectionsAttributes } from "./TS/interfaces/interfaces";
 
 const sections: ISectionsAttributes[] = [
   {
@@ -6,21 +6,21 @@ const sections: ISectionsAttributes[] = [
     name: "Multiplication table",
     motto: "learn multiplication using addition and subtraction",
     link: "/multiplication-tab",
-    className: ""
+    className: "",
   },
   {
     id: "arithmetic",
     name: "Arithmetic operations",
     motto: "boost your skills of basic arithmetical operations",
     link: "/arithmetic",
-    className: ""
+    className: "",
   },
   {
     id: "fractions",
     name: "Fractions",
     motto: "boost your skills of operations with fractions",
     link: "/fractions",
-    className: ""
+    className: "",
   },
 ];
 

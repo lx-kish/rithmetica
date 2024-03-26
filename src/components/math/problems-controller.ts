@@ -1,44 +1,39 @@
-import problemsFactory from './arithmetic/problem-processing/problems-factory';
+import problemsFactory from "./arithmetic/problem-processing/problems-factory";
 
-import IArithmeticSetting from '../../TS/interfaces/IArithmeticSetting';
-import IProblem from '../../TS/interfaces/IProblem';
+import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
 
 /**
- * 
+ *
  */
-const problemsController = (problemDescriptions: IArithmeticSetting[]): IProblem[][] | undefined => {
-
+function problemsController(
+  problemDescriptions: ISettings[]
+): IProblem[][] | undefined {
   const problems: IProblem[][] = [];
-
   try {
-
-    problemDescriptions.forEach((type: IArithmeticSetting) => {
-
+    problemDescriptions.forEach((type: ISettings) => {
       const problemsSet = problemsFactory(
         type.name,
         type.type,
         type.operation,
         type.numberOfOperands,
         type.missing,
-        type.quantity,
+        type.quantity
       );
 
       if (!problemsSet) {
         throw new Error("Wrong type of operands processor in the settings!");
       }
       problems.push(...problemsSet);
-
     });
 
     return problems;
-  }
-  catch (e) {
+  } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
   }
-};
+}
 
 export default problemsController;

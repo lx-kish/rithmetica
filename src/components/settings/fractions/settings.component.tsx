@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../redux/hooks";
 import {
@@ -8,20 +8,17 @@ import {
 } from "../../../redux/fractions/fractionsSlice";
 
 import Collapsible from "../../collapsible/collapsible.component";
-
 import SettingsSection from "./settings-section/settings-section.component";
-
 import SettingsOperation from "./settings-operation/settings-operation.component";
-
 import SettingsTypes from "./settings-types/settings-types.component";
-
 import SettingsControlButtons from "./settings-control-btns/settings-control-btns.component";
-
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
 
-interface IProps {}
+// import TimerControl from './timer-control/timer-control.component';
 
-const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
+// import { Applications } from '../../../TS/types/enumApplications';
+
+function ProblemSettings(): ReactElement {
   const stateSettings = useAppSelector(settings);
 
   const dispatch = useAppDispatch();
@@ -69,6 +66,7 @@ const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
             </div>
           </div>
         ))}
+        {/* <TimerControl appName={Applications.fractions} /> */}
       </div>
     );
   };
@@ -94,6 +92,6 @@ const ProblemSettings: React.FC<IProps> = (props: IProps): JSX.Element => {
       />
     </div>
   );
-};
+}
 
 export default ProblemSettings;

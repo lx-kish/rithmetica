@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
@@ -10,16 +10,21 @@ import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-
 
 import { useInputScrollRefCallback } from "../../../hooks/use-input-scroll-ref-callback/use-input-scroll-ref-callback";
 
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem } from "../../../TS/interfaces/interfaces";
 
 interface IProps {
   className: string;
-  fraction: IFractionsProblem;
+  fraction: IProblem;
   type: string;
   stateProblemIndex: number;
 }
 
-const FractionInput: React.FC<IProps> = (props) => {
+function FractionInput({
+  className,
+  fraction,
+  type,
+  stateProblemIndex,
+}: IProps): ReactElement {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
@@ -31,7 +36,7 @@ const FractionInput: React.FC<IProps> = (props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       setInputValue({
-        index: props.stateProblemIndex,
+        index: stateProblemIndex,
         name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
@@ -40,11 +45,11 @@ const FractionInput: React.FC<IProps> = (props) => {
 
   const ref = useInputScrollRefCallback();
 
-  const numeratorName = `${props.type}Numerator`;
-  const denominatorName = `${props.type}Denominator`;
+  const numeratorName = `${type}Numerator`;
+  const denominatorName = `${type}Denominator`;
 
   return (
-    <span className={props.className}>
+    <span className={className}>
       <input
         type="number"
         pattern="[0-9]*"
@@ -54,10 +59,10 @@ const FractionInput: React.FC<IProps> = (props) => {
         title=""
         placeholder=" "
         name={numeratorName}
-        min={props.fraction.numerator?.toString()}
-        max={props.fraction.numerator?.toString()}
-        value={stateProblems[props.stateProblemIndex][
-          stateProblems[props.stateProblemIndex].length - 1
+        min={fraction.numerator?.toString()}
+        max={fraction.numerator?.toString()}
+        value={stateProblems[stateProblemIndex][
+          stateProblems[stateProblemIndex].length - 1
         ][numeratorName]?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
@@ -74,10 +79,10 @@ const FractionInput: React.FC<IProps> = (props) => {
         title=""
         placeholder=" "
         name={denominatorName}
-        min={props.fraction.denominator?.toString()}
-        max={props.fraction.denominator?.toString()}
-        value={stateProblems[props.stateProblemIndex][
-          stateProblems[props.stateProblemIndex].length - 1
+        min={fraction.denominator?.toString()}
+        max={fraction.denominator?.toString()}
+        value={stateProblems[stateProblemIndex][
+          stateProblems[stateProblemIndex].length - 1
         ][denominatorName]?.toString()}
         onKeyDown={processKeyDown}
         onChange={handleChange}
@@ -86,6 +91,6 @@ const FractionInput: React.FC<IProps> = (props) => {
       />
     </span>
   );
-};
+}
 
 export default FractionInput;

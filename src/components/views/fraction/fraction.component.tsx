@@ -1,27 +1,27 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import Number from "../number/number.component";
-import IFractionsProblem from "../../../TS/interfaces/IFractionsProblem";
+import { IProblem } from "../../../TS/interfaces/interfaces";
 
 interface IProps {
   className: string;
-  fraction: IFractionsProblem;
+  fraction: IProblem;
 }
 
-const Fraction: React.FC<IProps> = (props) => {
+function Fraction({ className, fraction }: IProps): ReactElement {
   return (
-    <span className={props.className} data-testid="fraction-span">
+    <span className={className} data-testid="fraction-span">
       <Number
-        number={props.fraction.numerator?.toString() || ""}
+        number={fraction.numerator?.toString() || ""}
         className="problem__digit"
       />
       <span className="fraction__delimeter"></span>
       <Number
-        number={props.fraction.denominator?.toString() || ""}
+        number={fraction.denominator?.toString() || ""}
         className="problem__digit"
       />
     </span>
   );
-};
+}
 
 export default Fraction;

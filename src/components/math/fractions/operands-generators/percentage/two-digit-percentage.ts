@@ -1,12 +1,12 @@
 import randomInteger from "../../../../math/randoms/get-random-integer-in-a-range";
 
-import { FractionOperandsType } from "../../../../../TS/types/FractionOperandsType";
+import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
 
 /**
  *
  */
-const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
-  const operands: FractionOperandsType = {};
+function twoDigitPercentage(operation: string, numberOfOperands: number) {
+  const operands = {};
 
   try {
     // to prevent a lot of randomized zeros generated
@@ -47,6 +47,6 @@ const twoDigitPercentage = (operation: string, numberOfOperands: number) => {
       throw new Error(e);
     }
   }
-};
+}
 
 export default twoDigitPercentage;

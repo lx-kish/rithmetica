@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import Collapsible from "../../collapsible/collapsible.component";
 
@@ -14,12 +14,14 @@ import HundredsWithinThousand from "./problem-types/hundreds-within-thousand.com
 import schemaSmallScreen from "./schema-arrows--small.png";
 import schemaBigScreen from "./shcema-arrows--big.png";
 
-import ICollapsibleProps from "../../../TS/interfaces/ICollapsibleProps";
+import { ICollapsibleProps } from "../../../TS/interfaces/interfaces";
 
-const HowAdditionSubtractionWorks: React.FC<ICollapsibleProps> = (props) => {
+function HowAdditionSubtractionWorks({
+  paragraphClassName,
+}: ICollapsibleProps): ReactElement {
   return (
-    <React.Fragment>
-      <p className={props.paragraphClassName}>
+    <>
+      <p className={paragraphClassName}>
         The application consists of the Settings part and the Problems part.
         <br />
         The Problems part contains randomly generated problems, having specific
@@ -161,8 +163,8 @@ const HowAdditionSubtractionWorks: React.FC<ICollapsibleProps> = (props) => {
       >
         <HundredsWithinThousand paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-    </React.Fragment>
+    </>
   );
-};
+}
 
 export default HowAdditionSubtractionWorks;
