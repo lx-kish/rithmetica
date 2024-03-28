@@ -1,4 +1,3 @@
-import { Applications } from "../types/enumApplications";
 import { TArithmeticMissing } from "../types/types";
 
 export interface ISettings {
