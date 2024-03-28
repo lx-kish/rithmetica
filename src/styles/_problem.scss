@@ -19,7 +19,7 @@
   font-size: 4.5rem;
 
   @include respond(_1100-1200) {
-  // @include respond(_680-720) {
+    // @include respond(_680-720) {
     font-size: 5.5rem;
   }
 
@@ -30,6 +30,12 @@
 
   &--fraction {
     display: flex;
+    justify-content: center;
+
+    @include respond(_640-680) {
+      // @include respond(_600-640) {
+      font-size: 6rem;
+    }
   }
 
   &__main {

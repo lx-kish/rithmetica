@@ -40,6 +40,12 @@
     font-size: inherit;
     color: var(--color-white);
 
+    @include respond(_640-680) {
+      // @include respond(_600-640) {
+      width: 8.5rem;
+      line-height: 8rem;
+    }
+
     &-box {
       display: flex;
       align-items: center;

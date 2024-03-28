@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.6.1 release notes
+
+- Add mobile layout styling for fractions app;
+
+- Fix minor bugs.
+
 #### v8.6.0 release notes
 
 - Redesign application interfaces;

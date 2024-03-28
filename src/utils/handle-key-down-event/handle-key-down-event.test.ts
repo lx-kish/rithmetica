@@ -11,7 +11,7 @@ describe("handleKeyDown function", () => {
         max: "",
       },
     };
-    handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+    handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
     expect(event.preventDefault).toHaveBeenCalled();
   });
 
@@ -24,7 +24,7 @@ describe("handleKeyDown function", () => {
         max: "",
       },
     };
-    handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+    handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
     expect(event.preventDefault).toHaveBeenCalled();
   });
 
@@ -39,7 +39,7 @@ describe("handleKeyDown function", () => {
           max: "",
         },
       };
-      handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+      handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
       expect(event.preventDefault).not.toHaveBeenCalled();
     });
   });
@@ -53,7 +53,7 @@ describe("handleKeyDown function", () => {
         max: "3",
       },
     };
-    handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+    handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
     expect(event.preventDefault).toHaveBeenCalled();
   });
 
@@ -67,7 +67,7 @@ describe("handleKeyDown function", () => {
         max: "",
       },
     };
-    handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+    handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
     expect(event.preventDefault).toHaveBeenCalled();
   });
 
@@ -81,7 +81,7 @@ describe("handleKeyDown function", () => {
         max: "1",
       },
     };
-    handleKeyDown(event as React.KeyboardEvent<HTMLInputElement>);
+    handleKeyDown(event as unknown as React.KeyboardEvent<HTMLInputElement>);
     expect(event.preventDefault).not.toHaveBeenCalled();
   });
 });

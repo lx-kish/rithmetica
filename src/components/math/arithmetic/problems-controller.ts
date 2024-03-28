@@ -1,6 +1,6 @@
 import problemsFactory from "./problem-processing/problems-factory";
 
-import { ISettings, IProblem } from "../../../TS/interfaces/interfaces";
+import { IProblem, ISettings } from "../../../TS/interfaces/interfaces";
 
 /**
  *

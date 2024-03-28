@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom/extend-expect";
-import isNumeric from "./is-numeric"; // replace with the correct path
+import isNumeric from "./is-numeric";
 
 describe("isNumeric function", () => {
   test("should return true for numeric values", () => {

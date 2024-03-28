@@ -16,7 +16,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export default function Collapsible({
+function Collapsible({
   id,
   borderBottom = false,
   collapsibleClassName,
@@ -71,3 +71,5 @@ export default function Collapsible({
     </div>
   );
 }
+
+export default Collapsible;

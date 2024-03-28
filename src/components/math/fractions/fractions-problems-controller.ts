@@ -8,9 +8,8 @@ import { IProblem, ISettings } from "../../../TS/interfaces/interfaces";
 function fractionsProblemsController(
   problemDescriptions: ISettings[]
 ): IProblem[][] | undefined {
+  const problems: IProblem[][] = [];
   try {
-    const problems: IProblem[][] = [];
-
     problemDescriptions.forEach((type: ISettings) => {
       const problemsSet = problemsFactory(
         type.name,
