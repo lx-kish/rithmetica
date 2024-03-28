@@ -27,7 +27,7 @@
   &__input {
     font-family: inherit;
     width: $main-fraction-default-dimention;
-    line-height: 6rem;
+    line-height: 8rem;
     margin: 3px;
 
     background-color: transparent;
@@ -42,7 +42,7 @@
 
     @include respond(_640-680) {
       // @include respond(_600-640) {
-      width: 8.5rem;
+      width: 9.5rem;
       line-height: 8rem;
     }
 

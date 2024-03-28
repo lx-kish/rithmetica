@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.7.0 release notes
+
+- Add single digit different denominator improper fraction tasks;
+
+- Fix minor bugs.
+
 #### v8.6.1 release notes
 
 - Add mobile layout styling for fractions app;

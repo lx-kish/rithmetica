@@ -18,10 +18,10 @@
   margin: auto 1rem;
   font-size: 4.5rem;
 
-  @include respond(_1100-1200) {
-    // @include respond(_680-720) {
-    font-size: 5.5rem;
-  }
+  // @include respond(_1100-1200) {
+  //   // @include respond(_680-720) {
+  //   font-size: 5.5rem;
+  // }
 
   @include respond(_640-680) {
     // @include respond(_600-640) {
@@ -34,7 +34,7 @@
 
     @include respond(_640-680) {
       // @include respond(_600-640) {
-      font-size: 6rem;
+      font-size: 5rem;
     }
   }
 
@@ -52,6 +52,7 @@
   &__row {
     display: flex;
     justify-content: space-around;
+    margin: 0.5rem 0;
 
     @include respond(_640-680) {
       flex-direction: column;

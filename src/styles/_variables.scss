@@ -54,7 +54,6 @@ $color-background-85: rgba(238, 143, 102, 0.85);
 // $color-background: #3d004c;
 // $color-background: rgb(245, 190, 77);
 
-
 $color-red: #ff0000;
 
 $color-black: #000000;
@@ -63,14 +62,12 @@ $color-black-50: rgba($color-black, 0.5);
 
 $color-white: #ffffff;
 
-
-
 $main-cell-dimention: 9rem;
 $main-digit-dimention: 9rem;
 $main-fraction-slim-dimention: 5rem;
-$main-fraction-default-dimention: 7rem;
+$main-fraction-default-dimention: 9rem;
 $component-pad-horizontal: 1rem;
-$component-pad-vertical: .5rem;
+$component-pad-vertical: 0.5rem;
 
 $footer-font-size-main: 1.6rem;
 $footer-font-size-mobile: 3.5rem;

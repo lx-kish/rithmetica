@@ -3,6 +3,7 @@ import oneDigitsingleDigitSameDenominatorMixedFractions from "../operands-genera
 import singleDigitSameDenominatorMixedSimplifiedFractions from "../operands-generators/fractions/addition-subtraction/single-digit-same-denominator-mixed-simplified-fractions";
 import singleDigitDifferentDenominatorsFractions from "../operands-generators/fractions/addition-subtraction/single-digit-different-denominators-fractions";
 import singleDigitFractions from "../operands-generators/fractions/multitpication-division/single-digit-fractions";
+import singleDigitDifferentDenominatorsImproperFractions from "../operands-generators/fractions/addition-subtraction/single-digit-different-denominators-improper-fractions";
 // import differentDenominatorsMixedFractions from "../operands-generators/fractions/addition-subtraction/different-denominators-mixed-fractions";
 // import twoDigitPercentage from "../operands-generators/percentage/two-digit-percentage";
 
@@ -24,6 +25,8 @@ function operandsFactory(
       return singleDigitSameDenominatorMixedSimplifiedFractions;
     if (name === "1-digit different denominators fractions")
       return singleDigitDifferentDenominatorsFractions;
+    if (name === "1-digit different denominators improper fractions")
+      return singleDigitDifferentDenominatorsImproperFractions;
     if (name === "1-digit fractions") return singleDigitFractions;
     // if (name === "different denominators mixed fractions")
     //   return differentDenominatorsMixedFractions;
