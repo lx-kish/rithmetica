@@ -33,6 +33,12 @@ const TaskTypes: IProblemType[] = [
   // }, // 8 + 7 = 15; 9 - 3 = 6
   {
     section: "½",
+    operation: "+",
+    name: "1-digit different denominators improper fractions",
+    type: "fractionsAddSubtract",
+  }, // 2 + 3 = 5; 6 - 4 = 2
+  {
+    section: "½",
     operation: "-",
     name: "1-digit same denominator simple fractions",
     type: "fractionsAddSubtract",
@@ -55,6 +61,12 @@ const TaskTypes: IProblemType[] = [
   //   name: "different denominators mixed fractions",
   //   type: "fractionsAddSubtract",
   // }, // 8 + 7 = 15; 9 - 3 = 6
+  {
+    section: "½",
+    operation: "-",
+    name: "1-digit different denominators improper fractions",
+    type: "fractionsAddSubtract",
+  }, // 2 + 3 = 5; 6 - 4 = 2
   {
     section: "½",
     operation: "×",
