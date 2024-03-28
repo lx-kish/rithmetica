@@ -59,14 +59,3 @@ export interface IFractionProblemOperands {
   simplifiedNumerator: number;
   simplifiedDenominator: number;
 }
-
-export interface ITimer {
-  [key: Applications | string]: {
-    show: boolean;
-    pause: boolean;
-    days?: string;
-    houurs?: string;
-    minutes?: string;
-    seconds?: string;
-  };
-}
