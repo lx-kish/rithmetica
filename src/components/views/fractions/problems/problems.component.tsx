@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import { useAppSelector } from "../../../../redux/hooks";
 import { columns, problems } from "../../../../redux/fractions/fractionsSlice";
 
+// import Problem from "../problem/problem.component";
 import Problem from "../problem/problem.component";
 
 import { IProblem } from "../../../../TS/interfaces/interfaces";

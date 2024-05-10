@@ -1,31 +1,33 @@
 @font-face {
-    font-family: 'Lemonada';
-    font-weight: 700;
-    src: local('lemonada'), url('../fonts/Lemonada-Bold.ttf') format('truetype');
+  font-family: "Lemonada";
+  font-weight: 700;
+  src: local("lemonada"), url("../fonts/Lemonada-Bold.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Lemonada';
-    font-weight: 600;
-    src: local('lemonada'), url('../fonts/Lemonada-SemiBold.ttf') format('truetype');
+  font-family: "Lemonada";
+  font-weight: 600;
+  src: local("lemonada"),
+    url("../fonts/Lemonada-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Lemonada';
-    font-weight: 500;
-    src: local('lemonada'), url('../fonts/Lemonada-Medium.ttf') format('truetype');
+  font-family: "Lemonada";
+  font-weight: 500;
+  src: local("lemonada"), url("../fonts/Lemonada-Medium.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Lemonada';
-    font-weight: 400;
-    src: local('lemonada'), url('../fonts/Lemonada-Regular.ttf') format('truetype');
+  font-family: "Lemonada";
+  font-weight: 400;
+  src: local("lemonada"),
+    url("../fonts/Lemonada-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Lemonada';
-    font-weight: 300;
-    src: local('lemonada'), url('../fonts/Lemonada-Light.ttf') format('truetype');
+  font-family: "Lemonada";
+  font-weight: 300;
+  src: local("lemonada"), url("../fonts/Lemonada-Light.ttf") format("truetype");
 }
 
 *,
@@ -77,6 +79,8 @@
 
   //WHITE
   --color-white: #{$color-white};
+
+  --color-white-50: #{$color-white-50};
 }
 
 html {
@@ -192,9 +196,8 @@ section {
  * For putting footer to the bottom of the page despite of the height of content 
  */
 #root {
-
   overflow: hidden; //to prevent internal elements brake the design if they oversized 'page' container
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh; //to make height of the page 100% of viewport
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; //to make height of the page 100% of viewport
 }

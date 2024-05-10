@@ -1,82 +1,86 @@
 .component {
-    display: inline-block;
+  display: inline-block;
+  line-height: 100%;
+  vertical-align: middle;
+  padding: $component-pad-vertical $component-pad-horizontal;
+
+  &__input {
+    font-family: inherit;
+    width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
+    line-height: 6rem;
+
+    background-color: transparent;
+    outline: none;
+    border: 2px solid;
+    border-color: var(--color-white);
+    border-radius: 1rem;
+    text-align: center;
+    font-size: 4rem;
+    color: var(--color-white);
+
+    &:disabled {
+      border-color: var(--color-white-50);
+    }
+
+    @include respond(_360-400) {
+      border-width: 0.5px;
+    }
+
+    &--hundreed {
+      font-size: 3.5rem;
+
+      @include respond(_480-520) {
+        font-size: 2.8rem;
+      }
+    }
+
+    &[type="number"] {
+      -webkit-appearance: textfield;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
+    &[type="number"]::-webkit-inner-spin-button,
+    &[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    &:invalid {
+      color: var(--color-red);
+    }
+
+    &:not(:placeholder-shown),
+    &:-webkit-autofill {
+      border-color: transparent;
+    }
+
+    &-box {
+      width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
+    }
+  }
+
+  &__score {
+    display: block;
+    text-align: center;
+    padding: 0.6rem 0;
+  }
+
+  &__icon {
     line-height: 100%;
-    vertical-align: middle;
-    padding: $component-pad-vertical $component-pad-horizontal;
+    width: 1rem;
+    height: 1rem;
 
-    &__input {
-        font-family: inherit;
-        width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
-        line-height: 6rem;
-
-        background-color: transparent;
-        outline: none;
-        border: 2px solid;
-        border-color: var(--color-white);
-        border-radius: 1rem;
-        text-align: center;
-        font-size: 4rem;
-        color: var(--color-white);
-
-        @include respond(_360-400) {
-            border-width: .5px;
-        }
-
-        &--hundreed {
-            font-size: 3.5rem;
-
-            @include respond(_480-520) {
-                font-size: 2.8rem;
-            }
-        }
-
-        &[type="number"] {
-            -webkit-appearance: textfield;
-            -moz-appearance: textfield;
-            appearance: textfield;
-        }
-
-        &[type="number"]::-webkit-inner-spin-button,
-        &[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-        }
-
-        &:invalid {
-            color: var(--color-red);
-        }
-
-        &:not(:placeholder-shown),
-        &:-webkit-autofill {
-            border-color: transparent;
-        }
-
-        &-box {
-            width: calc(#{$main-cell-dimention} - (2 * #{$component-pad-horizontal}));
-        }
+    @include respond(_360-400) {
+      width: 0.5rem;
+      height: 0.5rem;
     }
 
-    &__score {
-        display: block;
-        text-align: center;
-        padding: 0.6rem 0;
+    &:not(:last-child) {
+      margin-right: 0.25rem;
+
+      @include respond(_360-400) {
+        margin-right: 0;
+      }
     }
-
-    &__icon {
-        line-height: 100%;
-        width: 1rem;
-        height: 1rem;
-
-        @include respond(_360-400) {
-            width: .5rem;
-            height: .5rem;
-        }
-
-        &:not(:last-child) {
-            margin-right: .25rem;
-
-            @include respond(_360-400) {
-                margin-right: 0;
-            }
-        }
-    }
+  }
 }

@@ -50,10 +50,10 @@ export const arithmeticSlice = createSlice({
   initialState,
   reducers: {
     // 1) set input value
-    setInputValue: (
+    setInputValue(
       state,
       action: PayloadAction<{ index: number; value: string }>
-    ) => {
+    ) {
       const { index, value } = action.payload;
       state.problems[index][state.problems[index].length - 1].value =
         "" + value;
@@ -70,7 +70,7 @@ export const arithmeticSlice = createSlice({
       getStorage()?.removeItem("arithmetic");
     },
     // 3) generate problems
-    generateProblems: (state) => {
+    generateProblems(state) {
       const currentValidSettings = validProblemSettings(state);
 
       const problems = problemsController(currentValidSettings) || [];
@@ -86,7 +86,7 @@ export const arithmeticSlice = createSlice({
       if (!problems.length) getStorage()?.removeItem("arithmetic");
     },
     // 4) insert setting
-    insertSetting: (state, action: PayloadAction<number>) => {
+    insertSetting(state, action: PayloadAction<number>) {
       const newProblemSettings: ISettings[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
@@ -103,7 +103,7 @@ export const arithmeticSlice = createSlice({
       state.settings = newProblemSettings;
     },
     // 5) delete setting
-    deleteSetting: (state, action: PayloadAction<number>) => {
+    deleteSetting(state, action: PayloadAction<number>) {
       const newProblemSettings = [
         ...state.settings.slice(0, action.payload),
         ...state.settings.slice(action.payload + 1),
@@ -122,10 +122,10 @@ export const arithmeticSlice = createSlice({
       state.settings = newProblemSettings;
     },
     // 6) set setting on change
-    changeSetting: (
+    changeSetting(
       state,
       action: PayloadAction<{ index: number; name: string; value: string }>
-    ) => {
+    ) {
       const newProblemSettings = [...state.settings];
       const { index, name, value } = action.payload;
 

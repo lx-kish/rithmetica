@@ -16,7 +16,7 @@
 
 .problem {
   margin: auto 1rem;
-  font-size: 4.5rem;
+  font-size: 4.4rem;
 
   // @include respond(_1100-1200) {
   //   // @include respond(_680-720) {
@@ -34,7 +34,7 @@
 
     @include respond(_640-680) {
       // @include respond(_600-640) {
-      font-size: 5rem;
+      font-size: 4.6rem;
     }
   }
 
@@ -76,6 +76,10 @@
     font-size: inherit;
     color: var(--color-white);
 
+    &:disabled {
+      border-color: var(--color-white-50);
+    }
+
     @include respond(_360-400) {
       border-width: 0.5px;
     }
@@ -98,6 +102,10 @@
     &:not(:placeholder-shown),
     &:-webkit-autofill {
       border-color: transparent;
+    }
+
+    &--invalid {
+      color: var(--color-red);
     }
   }
 }

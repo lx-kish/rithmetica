@@ -27,7 +27,7 @@
   &__input {
     font-family: inherit;
     width: $main-fraction-default-dimention;
-    line-height: 8rem;
+    line-height: 6.5rem;
     margin: 3px;
 
     background-color: transparent;
@@ -40,9 +40,13 @@
     font-size: inherit;
     color: var(--color-white);
 
+    &:disabled {
+      border-color: var(--color-white-50);
+    }
+
     @include respond(_640-680) {
       // @include respond(_600-640) {
-      width: 9.5rem;
+      width: 10rem;
       line-height: 8rem;
     }
 
