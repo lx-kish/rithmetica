@@ -1,12 +1,12 @@
-import React from 'react';
+import { ReactElement } from "react";
 
 interface IProps {
-	className: string;
-	sign: string | number | React.ReactNode;
-};
+  className: string;
+  sign: string | number | React.ReactNode;
+}
 
-const Sign: React.FC<IProps> = (props) => {
-	return <span className={props.className}>{props.sign}</span>;
-};
+function Sign({ className, sign }: IProps): ReactElement {
+  return <span className={className}>{sign}</span>;
+}
 
 export default Sign;

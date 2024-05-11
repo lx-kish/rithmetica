@@ -47,9 +47,14 @@ function TabCell({ line, col, value }: IProps): ReactElement {
    * @return {String} className for Input field
    */
   function getInputClassName() {
-    return value < 100
-      ? "component__input"
-      : "component__input component__input--hundreed";
+    const isValid =
+      value.toString() === stateValues[lineIndex][colIndex].toString();
+
+    const elemtnClasses = `component__input${
+      value < 100 ? "" : " component__input--hundreed"
+    }${isValid ? "" : " component__input--invalid"}`;
+
+    return elemtnClasses;
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {

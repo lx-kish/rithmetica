@@ -39,6 +39,7 @@
     text-align: center;
     font-size: inherit;
     color: var(--color-white);
+    caret-color: var(--color-white);
 
     &:disabled {
       border-color: var(--color-white-50);
@@ -48,6 +49,10 @@
       // @include respond(_600-640) {
       width: 10rem;
       line-height: 8rem;
+    }
+
+    &--invalid {
+      color: var(--color-red);
     }
 
     &-box {
@@ -72,10 +77,6 @@
     &[type="number"]::-webkit-inner-spin-button,
     &[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
-    }
-
-    &:invalid {
-      color: var(--color-red);
     }
 
     &:not(:placeholder-shown),

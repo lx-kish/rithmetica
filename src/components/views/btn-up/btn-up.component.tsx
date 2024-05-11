@@ -1,8 +1,8 @@
-import React from "react";
+import { ReactElement } from "react";
 
 import IconChevronUp from "../../icons-svg/icon-chevron-up.component";
 
-const BtnUp: React.FC = () => {
+function BtnUp(): ReactElement {
   return (
     <div
       className="btn-up"
@@ -18,6 +18,6 @@ const BtnUp: React.FC = () => {
       <IconChevronUp className="btn-up__icon" />
     </div>
   );
-};
+}
 
 export default BtnUp;

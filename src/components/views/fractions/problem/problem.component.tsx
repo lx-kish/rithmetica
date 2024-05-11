@@ -24,7 +24,24 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
 
   const dispatch = useAppDispatch();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function getInputClassName(
+    value: string | number,
+    answerAtr: string | number
+  ): string {
+    const isValid =
+      value.toString() ===
+      stateProblems[stateProblemIndex][
+        stateProblems[stateProblemIndex].length - 1
+      ][answerAtr]?.toString();
+
+    const elemtnClasses = `fraction__input${
+      isValid ? "" : " fraction__input--invalid"
+    }`;
+
+    return elemtnClasses;
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(
       setInputValue({
         index: stateProblemIndex,
@@ -32,17 +49,15 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
         value: e.currentTarget.value,
       })
     );
-  };
+  }
 
   function renderElements(operand: any, i: number): ReactElement | null {
-    const className = "fraction";
-
     switch (operand.type) {
       case fractionOperandTypes.fraction:
         return (
           <Fraction
             fraction={operand}
-            className={className}
+            className="fraction"
             key={`problem__fraction-${i}`}
           />
         );
@@ -51,7 +66,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
         return (
           <Sign
             sign={operand.value}
-            className={`${className}__sign`}
+            className="fraction__sign"
             key={`problem__sign-${operand.value}-${i}`}
           />
         );
@@ -62,7 +77,10 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
             <span className="fraction__interim">
               <Input
                 pattern="[0-9]*"
-                className={`${className}__input`}
+                className={getInputClassName(
+                  operand.numerator1,
+                  "interimNumerator1"
+                )}
                 step="1"
                 name="interimNumerator1"
                 result={operand.numerator1?.toString()}
@@ -77,11 +95,14 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
                     ? "×"
                     : operand.sign
                 }
-                className={`${className}__sign ${className}__sign--interim`}
+                className="fraction__sign fraction__sign--interim"
               />
               <Input
                 pattern="[0-9]*"
-                className={`${className}__input`}
+                className={getInputClassName(
+                  operand.numerator2,
+                  "interimNumerator2"
+                )}
                 step="1"
                 name="interimNumerator2"
                 result={operand.numerator2?.toString()}
@@ -95,7 +116,10 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
             <span className="fraction__interim">
               <Input
                 pattern="[0-9]*"
-                className={`${className}__input`}
+                className={getInputClassName(
+                  operand.denominator1,
+                  "interimDenominator1"
+                )}
                 step="1"
                 name="interimDenominator1"
                 result={operand.denominator1?.toString()}
@@ -112,7 +136,10 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
                   />
                   <Input
                     pattern="[0-9]*"
-                    className={`${className}__input`}
+                    className={getInputClassName(
+                      operand.denominator2,
+                      "interimDenominator2"
+                    )}
                     step="1"
                     name="interimDenominator2"
                     result={operand.denominator2?.toString()}
@@ -138,7 +165,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
             <Input
               pattern="[0-9]*"
               step="1"
-              className={`${className}__input`}
+              className={getInputClassName(operand.integer, operand.type)}
               name={operand.type}
               result={operand.integer?.toString()}
               value={stateProblems[stateProblemIndex][
@@ -156,12 +183,12 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
 
         return (
           <span
-            className={className}
+            className="fraction"
             key={`problem__fraction-${operand.type}-${i}`}
           >
             <Input
               pattern="[0-9]*"
-              className={`${className}__input`}
+              className={getInputClassName(operand.numerator, numeratorName)}
               step="1"
               name={numeratorName}
               result={operand.numerator?.toString()}
@@ -173,7 +200,10 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
             <span className="fraction__delimeter"></span>
             <Input
               pattern="[0-9]*"
-              className={`${className}__input`}
+              className={getInputClassName(
+                operand.denominator,
+                denominatorName
+              )}
               step="1"
               name={denominatorName}
               result={operand.denominator?.toString()}

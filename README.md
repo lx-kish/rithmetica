@@ -70,6 +70,14 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.8.0 release notes
+
+- Refactor input fields rendering throughtout the application;
+
+- Switch input fields validation from HTML validation to JavaScript;
+
+- Fix minor bugs.
+
 #### v8.7.0 release notes
 
 - Add single digit different denominator improper fraction tasks;

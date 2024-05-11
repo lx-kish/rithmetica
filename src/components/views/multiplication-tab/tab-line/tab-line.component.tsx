@@ -5,7 +5,7 @@ import { subtract } from "../../../../redux/multiplicationTable/multiplicationTa
 
 import content from "../../../../table.content";
 
-import TabCell from "../tab-cell/tab-cell-old.component";
+import TabCell from "../tab-cell/tab-cell.component";
 import TabEmptyCell from "../tab-empty-cell/tab-empty-cell.component";
 
 interface IProps {

@@ -54,9 +54,12 @@ function singleDigitDifferentDenominatorsImproperFractions(
 
     // factor
     while (!resultNumerator) {
-      firstDenominator = randomInteger(2, 9);
+      // make first and second denominators unequal
+      while (firstDenominator === secondDenominator) {
+        firstDenominator = randomInteger(2, 9);
 
-      secondDenominator = randomInteger(2, 9);
+        secondDenominator = randomInteger(2, 9);
+      }
 
       commonDenominator = [firstDenominator, secondDenominator].reduce(
         getLeastCommonMultiple

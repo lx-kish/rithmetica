@@ -23,6 +23,20 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
 
   const dispatch = useAppDispatch();
 
+  function getInputClassName(value: string | number): string {
+    const isValid =
+      value.toString() ===
+      stateProblems[stateProblemIndex][
+        stateProblems[stateProblemIndex].length - 1
+      ].value.toString();
+
+    const elemtnClasses = `problem__input${
+      isValid ? "" : " problem__input--invalid"
+    }`;
+
+    return elemtnClasses;
+  }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(
       setInputValue({
@@ -57,7 +71,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
           <Input
             key={`problem__input-${i}`}
             pattern="[0-9]*"
-            className="problem__input"
+            className={getInputClassName(operand.value)}
             step="1"
             result={operand.value.toString()}
             value={stateProblems[stateProblemIndex][

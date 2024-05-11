@@ -66,6 +66,7 @@
   &__input {
     font-family: inherit;
     line-height: 6rem;
+    width: $main-probnlem-input-default-width;
 
     background-color: transparent;
     border: none;
@@ -75,13 +76,18 @@
     text-align: center;
     font-size: inherit;
     color: var(--color-white);
+    caret-color: var(--color-white);
 
-    &:disabled {
-      border-color: var(--color-white-50);
+    @include respond(_640-680) {
+      width: $main-probnlem-input-small-width;
     }
 
     @include respond(_360-400) {
       border-width: 0.5px;
+    }
+
+    &:disabled {
+      border-color: var(--color-white-50);
     }
 
     &[type="number"] {
@@ -93,10 +99,6 @@
     &[type="number"]::-webkit-inner-spin-button,
     &[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
-    }
-
-    &:invalid {
-      color: var(--color-red);
     }
 
     &:not(:placeholder-shown),
