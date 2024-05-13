@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.8.1 release notes
+
+- Add fractions inputs disability until previous step fully answered.
+
+- Fix minor bugs.
+
 #### v8.8.0 release notes
 
 - Refactor input fields rendering throughtout the application;

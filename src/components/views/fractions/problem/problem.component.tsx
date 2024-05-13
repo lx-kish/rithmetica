@@ -41,6 +41,43 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
     return elemtnClasses;
   }
 
+  function isDisabled(field: string) {
+    // 1) Getting problem answers object
+    const answers = content.filter((val) => val.type === "answers")[0];
+
+    // 2) Getting list of types to check the field's position
+    const types = Object.values(content).map((val) => val.type);
+
+    // 3) Getting fields to verity based on field's position in the problem array - all inputs BEFORE current input
+    const verificationFields = Object.values(content).filter(
+      (val) =>
+        val.type !== "type" &&
+        val.type !== "fraction" &&
+        val.type !== "sign" &&
+        types.indexOf(val.type) < types.indexOf(field) - 1
+    );
+
+    // 4) Verification
+    const invalidFields = verificationFields.filter((field) => {
+      // Integer - no need to iterate
+      if (field.type.toString().includes("integer")) {
+        return answers[field.type.toString()] !== field.integer.toString();
+      }
+      const verified = Object.keys(field)
+        .filter((key) => key !== "type" && key !== "integer" && key !== "sign")
+        .filter((key) => {
+          const fieldName = `${field.type}${
+            key.charAt(0).toUpperCase() + key.slice(1)
+          }`;
+          return +answers[fieldName] !== +field[key];
+        });
+
+      return verified.length !== 0;
+    });
+
+    return invalidFields.length !== 0;
+  }
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(
       setInputValue({
@@ -168,6 +205,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
               className={getInputClassName(operand.integer, operand.type)}
               name={operand.type}
               result={operand.integer?.toString()}
+              disabled={isDisabled(operand.type)}
               value={stateProblems[stateProblemIndex][
                 stateProblems[stateProblemIndex].length - 1
               ][operand.type]?.toString()}
@@ -192,6 +230,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
               step="1"
               name={numeratorName}
               result={operand.numerator?.toString()}
+              disabled={isDisabled(operand.type)}
               value={stateProblems[stateProblemIndex][
                 stateProblems[stateProblemIndex].length - 1
               ][numeratorName]?.toString()}
@@ -207,6 +246,7 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
               step="1"
               name={denominatorName}
               result={operand.denominator?.toString()}
+              disabled={isDisabled(operand.type)}
               value={stateProblems[stateProblemIndex][
                 stateProblems[stateProblemIndex].length - 1
               ][denominatorName]?.toString()}
