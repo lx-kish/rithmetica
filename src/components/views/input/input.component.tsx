@@ -11,6 +11,7 @@ interface IProps {
   result?: string;
   value?: string;
   disabled?: boolean;
+  title?: string;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -22,6 +23,7 @@ function Input({
   result,
   value,
   disabled = false,
+  title = "",
   handleChange,
 }: IProps): ReactElement {
   const ref = useInputScrollRefCallback();
@@ -38,6 +40,7 @@ function Input({
       className={className}
       step={step}
       placeholder=" "
+      title={title} // removing tooltip displaying right answer on mouse hover input field when wrong number entered (html validation)
       name={name}
       min={result}
       max={result}
@@ -46,7 +49,7 @@ function Input({
       onKeyDown={processKeyDown}
       onChange={handleChange}
       ref={ref}
-      autoComplete="off" //for dropping the value when cached by browser />;
+      autoComplete="off" // for dropping the value when cached by browser
     />
   );
 }

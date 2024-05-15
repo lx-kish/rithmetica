@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v8.8.2 release notes
+
+- Remove tooltip displaying right answer on mouse hover input field when wrong number entered.
+
 #### v8.8.1 release notes
 
 - Add fractions inputs disability until previous step fully answered.
