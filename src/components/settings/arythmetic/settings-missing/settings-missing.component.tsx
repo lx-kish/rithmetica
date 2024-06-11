@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
+import { useLocation } from "react-router-dom";
 
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/arithmetic/arithmeticSlice";
 
-import types from "../../../views/arithmetic/types";
+import ProblemTypes from "../../../math/problem-types";
 
 import handleChangeArithmeticalSettings from "../../../../utils/handle-change-event/handle-change-arithmetical-settings-event";
 
@@ -17,14 +18,12 @@ interface IProps {
 
 function SettingsMissing({ index, setting }: IProps): ReactElement {
   const stateSettings = useAppSelector(settings);
+  const location = useLocation();
 
-  const getDisabled = (): boolean => {
-    const disabled =
-      types.find((type) => stateSettings[index].name === type.name)?.missing ===
-      arithmeticMissing.result;
-
-    return disabled;
-  };
+  const disabled =
+    ProblemTypes.filter((type) => type.page === location.pathname).find(
+      (type) => stateSettings[index].name === type.name
+    )?.missing === arithmeticMissing.result;
 
   return (
     <div className="settings__control settings__control--radio">
@@ -36,7 +35,7 @@ function SettingsMissing({ index, setting }: IProps): ReactElement {
         className="settings__input settings__input--radio"
         onChange={handleChangeArithmeticalSettings(index, stateSettings)}
         checked={setting.missing === arithmeticMissing.first}
-        disabled={getDisabled()}
+        disabled={disabled}
       />
       <label className="settings__radio-label" htmlFor={`first-${index}`}>
         first
@@ -49,7 +48,7 @@ function SettingsMissing({ index, setting }: IProps): ReactElement {
         className="settings__input settings__input--radio"
         onChange={handleChangeArithmeticalSettings(index, stateSettings)}
         checked={setting.missing === arithmeticMissing.last}
-        disabled={getDisabled()}
+        disabled={disabled}
       />
       <label className="settings__radio-label" htmlFor={`last-${index}`}>
         last
@@ -74,7 +73,7 @@ function SettingsMissing({ index, setting }: IProps): ReactElement {
         className="settings__input settings__input--radio"
         onChange={handleChangeArithmeticalSettings(index, stateSettings)}
         checked={setting.missing === arithmeticMissing.random}
-        disabled={getDisabled()}
+        disabled={disabled}
       />
       <label className="settings__radio-label" htmlFor={`random-${index}`}>
         random

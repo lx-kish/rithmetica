@@ -1,9 +1,11 @@
 import React, { ReactElement } from "react";
+// import { useLocation } from "react-router-dom";
 
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/fractions/fractionsSlice";
 
-import sections from "../../../views/fractions/sections";
+// import ProblemTypes from "../../../math/problem-types";
+import sections from "../../../math/fractions-operands-generators/sections";
 import handleChangeFractionsSettings from "../../../../utils/handle-change-event/handle-change-fractions-settings-event";
 
 import { ISettings } from "../../../../TS/interfaces/interfaces";
@@ -15,6 +17,16 @@ interface IProps {
 
 function SettingsSection({ index, setting }: IProps): ReactElement {
   const stateSettings = useAppSelector(settings);
+  // TODO - consider to use section name in ProblemTypes
+  // const location = useLocation();
+
+  // const sections1 = [
+  //   ...new Set(
+  //     ProblemTypes.filter((type) => type.page === location.pathname).map(
+  //       (type) => type.section
+  //     )
+  //   ),
+  // ];
 
   const getSections = () => {
     return sections.map((section, i) => (

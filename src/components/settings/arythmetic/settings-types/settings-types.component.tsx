@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
+import { useLocation } from "react-router-dom";
 
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/arithmetic/arithmeticSlice";
 
-import types from "../../../views/arithmetic/types";
+import ProblemTypes from "../../../math/problem-types";
 
 import handleChangeArithmeticalSettings from "../../../../utils/handle-change-event/handle-change-arithmetical-settings-event";
 
@@ -16,6 +17,9 @@ interface IProps {
 
 function SettingsTypes({ index, setting }: IProps): ReactElement {
   const stateSettings = useAppSelector(settings);
+  const location = useLocation();
+
+  const types = ProblemTypes.filter((type) => type.page === location.pathname);
 
   return (
     <div className="settings__control settings__control--types">

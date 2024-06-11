@@ -22,13 +22,28 @@ export interface IProblem {
   [key: string]: string | number;
 }
 
-export interface IProblemSet {
-  type: string;
-  value: string;
+export interface IArithmeticProcessor {
+  (operation: string, numberOfOperands: number): number[] | undefined;
+}
+
+export interface IFractionsProcessor {
+  (operation: string, numberOfOperands: number):
+    | IFractionProblemOperands
+    | undefined;
+}
+
+export interface IProblemTypeOld {
+  [key: string]: string;
 }
 
 export interface IProblemType {
-  [key: string]: string;
+  page: string;
+  section?: string;
+  operation: string;
+  name: string;
+  type: string;
+  missing?: string;
+  processor: IFractionsProcessor | IArithmeticProcessor;
 }
 
 export interface ISection {

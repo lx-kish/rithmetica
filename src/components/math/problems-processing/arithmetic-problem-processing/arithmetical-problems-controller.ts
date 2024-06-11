@@ -1,6 +1,6 @@
-import problemsFactory from "./problems-processing/arithmetic-problem-processing/problems-factory";
+import problemsFactory from "./problems-factory";
 
-import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
+import { IProblem, ISettings } from "../../../../TS/interfaces/interfaces";
 
 /**
  *
@@ -25,8 +25,6 @@ function problemsController(
       }
       problems.push(...problemsSet);
     });
-
-    return problems;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
@@ -34,6 +32,7 @@ function problemsController(
       throw new Error(e);
     }
   }
+  return problems;
 }
 
 export default problemsController;

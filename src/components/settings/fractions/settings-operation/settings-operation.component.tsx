@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/fractions/fractionsSlice";
 
-import operations from "../../../views/fractions/operations";
+import operations from "../../../math/fractions-operands-generators/operations";
 import handleChangeFractionsSettings from "../../../../utils/handle-change-event/handle-change-fractions-settings-event";
 
 import { ISettings } from "../../../../TS/interfaces/interfaces";

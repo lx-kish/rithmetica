@@ -1,11 +1,11 @@
-import problemsFactory from "./problems-processing/arithmetic-problem-processing/problems-factory";
+import problemsFactory from "./problems-factory";
 
-import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
+import { IProblem, ISettings } from "../../../../TS/interfaces/interfaces";
 
 /**
  *
  */
-function problemsController(
+function fractionsProblemsController(
   problemDescriptions: ISettings[]
 ): IProblem[][] | undefined {
   const problems: IProblem[][] = [];
@@ -16,13 +16,13 @@ function problemsController(
         type.type,
         type.operation,
         type.numberOfOperands,
-        type.missing,
         type.quantity
       );
 
       if (!problemsSet) {
         throw new Error("Wrong type of operands processor in the settings!");
       }
+
       problems.push(...problemsSet);
     });
 
@@ -36,4 +36,4 @@ function problemsController(
   }
 }
 
-export default problemsController;
+export default fractionsProblemsController;

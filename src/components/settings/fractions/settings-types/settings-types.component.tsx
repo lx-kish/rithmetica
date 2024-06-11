@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/fractions/fractionsSlice";
 
-import types from "../../../views/fractions/types";
+import ProblemTypes from "../../../math/problem-types";
 
 import handleChangeFractionsSettings from "../../../../utils/handle-change-event/handle-change-fractions-settings-event";
 
@@ -33,18 +33,16 @@ function SettingsTypes({ index, setting }: IProps): ReactElement {
         onChange={handleChangeFractionsSettings(index, stateSettings)}
       >
         <option>-- select --</option>
-        {types
-          .filter((type) => {
-            return (
-              type.operation === stateSettings[index].operation &&
-              type.section === stateSettings[index].section
-            );
-          })
-          .map((type, i) => (
-            <option key={i} value={type.name} className="settings__option">
-              {type.name}
-            </option>
-          ))}
+        {ProblemTypes.filter((type) => {
+          return (
+            type.operation === stateSettings[index].operation &&
+            type.section === stateSettings[index].section
+          );
+        }).map((type, i) => (
+          <option key={i} value={type.name} className="settings__option">
+            {type.name}
+          </option>
+        ))}
       </select>
     </div>
   );

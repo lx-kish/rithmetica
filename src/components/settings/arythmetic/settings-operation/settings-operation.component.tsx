@@ -1,12 +1,14 @@
 import React, { ReactElement } from "react";
+// import { useLocation } from "react-router-dom";
 
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/arithmetic/arithmeticSlice";
 
-import operations from "../../../views/arithmetic/operations";
+import operations from "../../../math/arithmetic-operands-generators/operations";
 import handleChangeArithmeticalSettings from "../../../../utils/handle-change-event/handle-change-arithmetical-settings-event";
 
 import { ISettings } from "../../../../TS/interfaces/interfaces";
+// import ProblemTypes from "../../../math/problem-types";
 
 interface IProps {
   index: number;
@@ -15,6 +17,17 @@ interface IProps {
 
 function SettingsOperation({ index, setting }: IProps): ReactElement {
   const stateSettings = useAppSelector(settings);
+  // TODO - consider to use operation name in ProblemTypes
+  // const location = useLocation();
+
+  // const operations1 = [
+  //   ...new Set(
+  //     ProblemTypes.filter((type) => type.page === location.pathname).map(
+  //       (type) => type.operation
+  //     )
+  //   ),
+  // ];
+  // console.log("SettingsOperation ===> operations ===> ", operations1);
 
   const getOperations = () => {
     return operations.map((operation, i) => (

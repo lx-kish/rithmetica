@@ -70,6 +70,14 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v9.0.0 release notes
+
+- Redesign architecture of the Arithmetic operations and Fractions applications;
+
+- Redesign of problem generation process of the Arithmetic operations and Fractions applications;
+
+- Fix errors and bugs.
+
 #### v8.8.2 release notes
 
 - Remove tooltip displaying right answer on mouse hover input field when wrong number entered.

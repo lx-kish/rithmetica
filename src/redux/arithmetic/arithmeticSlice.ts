@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-import problemsController from "../../components/math/arithmetic/problems-controller";
+import problemsController from "../../components/math/problems-processing/arithmetic-problem-processing/arithmetical-problems-controller";
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 

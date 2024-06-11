@@ -1,10 +1,10 @@
 import { store } from "../../redux/store";
 import { changeSetting } from "../../redux/arithmetic/arithmeticSlice";
 
-import types from "../../components/views/arithmetic/types";
+import ProblemTypes from "../../components/math/problem-types";
 
 import { ISettings, IProblemType } from "../../TS/interfaces/interfaces";
-import { arithmeticMissing } from "../../TS/constatnts/constants";
+import { arithmeticMissing, routes } from "../../TS/constatnts/constants";
 
 /**
  * Handles key-down event, runs key validation,
@@ -24,6 +24,9 @@ const handleChangeArithmeticalSettings =
     // 1) Set variables and values
     let currentTaskType: IProblemType | undefined;
 
+    const types = ProblemTypes.filter(
+      (type) => type.page === routes.arithmetic
+    );
     // 1) Define the type of the field fired the event
     let fieldType = "";
     if (e.target.type === "radio" && e.target.name.indexOf("operation") > -1)
