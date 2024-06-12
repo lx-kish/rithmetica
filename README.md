@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v9.1.0 release notes
+
+- Redesign Arithmetic and Fractions problems generation;
+
+- Fix errors and bugs.
+
 #### v9.0.0 release notes
 
 - Redesign architecture of the Arithmetic operations and Fractions applications;

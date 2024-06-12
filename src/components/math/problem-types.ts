@@ -1,3 +1,6 @@
+import arithmeticProblemsFactory from "./problems-processing/arithmetic-problem-processing/arithmetic-problems-factory";
+import fractionsProblemsFactory from "./problems-processing/fractions-problem-processing/fractions-problems-factory";
+
 // Arithmetic operands generators
 import upToTen from "./arithmetic-operands-generators/addition-subtraction/up-to-ten";
 import singleDigitOperandsAdditionSubtraction from "./arithmetic-operands-generators/addition-subtraction/single-digit-operands";
@@ -20,7 +23,7 @@ import singleDigitSameDenominatorMixedSimplifiedFractions from "./fractions-oper
 import singleDigitDifferentDenominatorsFractions from "./fractions-operands-generators/fractions/addition-subtraction/single-digit-different-denominators-fractions";
 import singleDigitDifferentDenominatorsImproperFractions from "./fractions-operands-generators/fractions/addition-subtraction/single-digit-different-denominators-improper-fractions";
 import singleDigitFractions from "./fractions-operands-generators/fractions/multitpication-division/single-digit-fractions";
-import singleDigitDecimals from "./fractions-operands-generators/decimals/addition-subtraction/single-digit-decimal";
+import tenthAddSubtract from "./fractions-operands-generators/decimals/addition-subtraction/tenth-add-subtract";
 import twoDigitPercentage from "./fractions-operands-generators/percentage/two-digit-percentage";
 
 import { arithmeticMissing, routes } from "../../TS/constatnts/constants";
@@ -35,6 +38,7 @@ const ProblemTypes: IProblemType[] = [
     name: "up to ten",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: upToTen,
   },
   {
@@ -43,6 +47,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitOperandsAdditionSubtraction,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -51,6 +56,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two- and single- digit",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoAndSingleDigits,
   }, // 23 + 9 = 32; 17 - 8 = 9
   {
@@ -59,6 +65,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit and tens",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitAndTens,
   }, // 23 + 10 = 33; 56 - 20 = 36
   {
@@ -67,6 +74,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitOperands,
   }, // 75 + 46 = 121; 85 - 37 = 48
   {
@@ -75,6 +83,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit tidying up",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitTidyngUp,
   }, // 89 + 93 = 182; 79 - 32 = 47
   {
@@ -83,6 +92,7 @@ const ProblemTypes: IProblemType[] = [
     name: "tens within thousand",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: tensWithinThousands,
   }, // 374 + 60 = 434; 347 - 60 = 287
   {
@@ -91,6 +101,7 @@ const ProblemTypes: IProblemType[] = [
     name: "hundreds within thousand",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: hundredsWithinThousands,
   }, // 374 + 200 = 574; 574 - 200 = 374
   {
@@ -100,6 +111,7 @@ const ProblemTypes: IProblemType[] = [
     name: "up to ten",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: upToTen,
   },
   {
@@ -108,6 +120,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitOperandsAdditionSubtraction,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -116,6 +129,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two- and single- digit",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoAndSingleDigits,
   }, // 23 + 9 = 32; 17 - 8 = 9
   {
@@ -124,6 +138,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit and tens",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitAndTens,
   }, // 23 + 10 = 33; 56 - 20 = 36
   {
@@ -132,6 +147,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitOperands,
   }, // 75 + 46 = 121; 85 - 37 = 48
   {
@@ -140,6 +156,7 @@ const ProblemTypes: IProblemType[] = [
     name: "two-digit tidying up",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: twoDigitTidyngUp,
   }, // 89 + 93 = 182; 79 - 32 = 47
   {
@@ -148,6 +165,7 @@ const ProblemTypes: IProblemType[] = [
     name: "tens within thousand",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: tensWithinThousands,
   }, // 374 + 60 = 434; 347 - 60 = 287
   {
@@ -156,6 +174,7 @@ const ProblemTypes: IProblemType[] = [
     name: "hundreds within thousand",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: hundredsWithinThousands,
   }, // 374 + 200 = 574; 574 - 200 = 374
   // "three-digit operands", // 374 + 782 = 1156; 774 - 382 = 392
@@ -188,6 +207,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitOperandsMultiplicationDivision,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -196,6 +216,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit and up to twenty",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitAndUpToTwenty,
   }, // 8 + 7 = 15; 9 - 3 = 6
   // {
@@ -225,6 +246,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit operands",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitOperandsMultiplicationDivision,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -233,6 +255,7 @@ const ProblemTypes: IProblemType[] = [
     name: "single digit and up to twenty",
     type: "equation",
     missing: arithmeticMissing.random,
+    factory: arithmeticProblemsFactory,
     processor: singleDigitAndUpToTwenty,
   }, // 8 + 7 = 15; 9 - 3 = 6
   // {
@@ -257,6 +280,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "1-digit same denominator simple fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitSameDenominatorSimpleFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   {
@@ -265,6 +289,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "1-digit same denominator mixed fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitsingleDigitSameDenominatorMixedFractions,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -273,6 +298,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "1-digit same denominator mixed simplified fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitSameDenominatorMixedSimplifiedFractions,
   }, // 8 + 7 = 15; 9 - 3 = 6
   {
@@ -281,6 +307,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "1-digit different denominators fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitDifferentDenominatorsFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   // {
@@ -296,6 +323,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "1-digit different denominators improper fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitDifferentDenominatorsImproperFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   {
@@ -304,6 +332,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "-",
     name: "1-digit same denominator simple fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitSameDenominatorSimpleFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   // {
@@ -319,6 +348,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "-",
     name: "1-digit different denominators fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitDifferentDenominatorsFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   // {
@@ -334,6 +364,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "-",
     name: "1-digit different denominators improper fractions",
     type: "fractionsAddSubtract",
+    factory: fractionsProblemsFactory,
     processor: singleDigitDifferentDenominatorsImproperFractions,
   }, // 2 + 3 = 5; 6 - 4 = 2
   {
@@ -342,6 +373,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "×",
     name: "1-digit fractions",
     type: "fractionsMultiplyDivide",
+    factory: fractionsProblemsFactory,
     processor: singleDigitFractions,
   }, // 5 + 5 + 5 = 15
   {
@@ -350,23 +382,26 @@ const ProblemTypes: IProblemType[] = [
     operation: "÷",
     name: "1-digit fractions",
     type: "fractionsMultiplyDivide",
+    factory: fractionsProblemsFactory,
     processor: singleDigitFractions,
   }, // 5 + 5 + 5 = 15
   {
     page: routes.fractions,
     section: ".1",
     operation: "+",
-    name: "1-digit decimals",
+    name: "tenth operations",
     type: "decimalsAddSubtract",
-    processor: singleDigitDecimals,
+    factory: arithmeticProblemsFactory,
+    processor: tenthAddSubtract,
   }, // 5 + 5 + 5 = 15
   {
     page: routes.fractions,
     section: ".1",
     operation: "-",
-    name: "1-digit decimals",
+    name: "tenth operations",
     type: "decimalsAddSubtract",
-    processor: singleDigitDecimals,
+    factory: arithmeticProblemsFactory,
+    processor: tenthAddSubtract,
   }, // 5 + 5 + 5 = 15
   {
     page: routes.fractions,
@@ -374,6 +409,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "+",
     name: "two-digit percentage",
     type: "percentageAddSubtract",
+    factory: arithmeticProblemsFactory,
     processor: twoDigitPercentage,
   }, // 17% of 36
   {
@@ -382,6 +418,7 @@ const ProblemTypes: IProblemType[] = [
     operation: "-",
     name: "two-digit percentage",
     type: "percentageAddSubtract",
+    factory: arithmeticProblemsFactory,
     processor: twoDigitPercentage,
   }, // 17% of 36
   // {

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-import problemsController from "../../components/math/problems-processing/arithmetic-problem-processing/arithmetical-problems-controller";
+import problemsController from "../../components/math/problems-processing/problems-controller";
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
@@ -19,14 +19,15 @@ export interface ArithmeticState {
   problems: IProblem[][];
 }
 
+const SLICE_NAME = "arithmetic";
+
 const initialState: ArithmeticState = {
   settings:
-    getStorage()?.getItem("arithmetic", true)?.settings ||
-    initialProblemSettings,
+    getStorage()?.getItem(SLICE_NAME, true)?.settings || initialProblemSettings,
   columns: numberOfColumns.two,
   problems:
-    getStorage()?.getItem("arithmetic", true)?.problems ||
-    problemsController(initialProblemSettings),
+    getStorage()?.getItem(SLICE_NAME, true)?.problems ||
+    problemsController(initialProblemSettings, SLICE_NAME),
 };
 
 function localStorageData(state: ArithmeticState, settings: ISettings[]) {
@@ -45,7 +46,7 @@ function validProblemSettings(state: ArithmeticState): ISettings[] {
 }
 
 export const arithmeticSlice = createSlice({
-  name: "arithmetic",
+  name: SLICE_NAME,
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
@@ -61,29 +62,30 @@ export const arithmeticSlice = createSlice({
       const currentValidSettings = validProblemSettings(state);
 
       getStorage()?.setItem(
-        "arithmetic",
+        SLICE_NAME,
         localStorageData(state, currentValidSettings)
       );
     },
     // 2) clear all locally saved problems and settings
     clearAllProblemsAndSettings: (state) => {
-      getStorage()?.removeItem("arithmetic");
+      getStorage()?.removeItem(SLICE_NAME);
     },
     // 3) generate problems
     generateProblems(state) {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems = problemsController(currentValidSettings) || [];
+      const problems =
+        problemsController(currentValidSettings, SLICE_NAME) || [];
 
       state.problems = problems;
 
       if (problems.length)
         getStorage()?.setItem(
-          "arithmetic",
+          SLICE_NAME,
           localStorageData(state, currentValidSettings)
         );
 
-      if (!problems.length) getStorage()?.removeItem("arithmetic");
+      if (!problems.length) getStorage()?.removeItem(SLICE_NAME);
     },
     // 4) insert setting
     insertSetting(state, action: PayloadAction<number>) {

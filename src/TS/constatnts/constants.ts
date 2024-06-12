@@ -38,4 +38,4 @@ export const arithmeticMissing = {
   first: "first",
   last: "last",
   result: "result",
-};
+} as const;
