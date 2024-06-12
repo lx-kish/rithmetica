@@ -7,33 +7,27 @@ import {
   IFractionProblemOperands,
 } from "../../../../TS/interfaces/interfaces";
 
-import ProblemTypes from "../../problem-types";
+import processorInjector from "../processor-injector";
 
 /**
  *
  */
-function problemsFactory(
+function fractionsProblemsFactory(
   name: string,
   type: string,
   operation: string,
   numberOfOperands = 2,
   quantity: number
-) {
+): IProblem[][] {
   let problems: IProblem[][] = [];
 
   try {
-    const processor = ProblemTypes.find(
-      (type) =>
-        type.name === name &&
-        type.operation === operation &&
-        type.page === routes.fractions
-    )?.processor;
+    const processor = processorInjector(name, operation, routes.fractions);
 
     if (!processor)
       throw new Error(
         `No processor for the task ${routes.fractions} - ${name} - ${operation}`
       );
-    // const processor = operandsFactory(name, operation);
 
     let problem: IProblem[] = [];
 
@@ -240,8 +234,6 @@ function problemsFactory(
 
       problems.push(problem);
     }
-
-    return problems;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
@@ -249,6 +241,7 @@ function problemsFactory(
       throw new Error(e);
     }
   }
+  return problems;
 }
 
-export default problemsFactory;
+export default fractionsProblemsFactory;

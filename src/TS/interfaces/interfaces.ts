@@ -22,6 +22,17 @@ export interface IProblem {
   [key: string]: string | number;
 }
 
+export interface IProblemsFactory {
+  (
+    name: string,
+    type: string,
+    operation: string,
+    numberOfOperands: number,
+    quantity: number,
+    missing?: TArithmeticMissing | undefined
+  ): IProblem[][];
+}
+
 export interface IArithmeticProcessor {
   (operation: string, numberOfOperands: number): number[] | undefined;
 }
@@ -32,10 +43,6 @@ export interface IFractionsProcessor {
     | undefined;
 }
 
-export interface IProblemTypeOld {
-  [key: string]: string;
-}
-
 export interface IProblemType {
   page: string;
   section?: string;
@@ -43,11 +50,14 @@ export interface IProblemType {
   name: string;
   type: string;
   missing?: string;
+  factory: IProblemsFactory;
   processor: IFractionsProcessor | IArithmeticProcessor;
 }
 
 export interface ISection {
-  [key: string]: string;
+  // [key: string]: string;
+  name: string;
+  symbol: string;
 }
 
 export interface ISectionsAttributes {

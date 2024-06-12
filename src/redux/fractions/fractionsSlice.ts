@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-import fractionsProblemsController from "../../components/math/problems-processing/fractions-problem-processing/fractions-problems-controller";
+import problemsController from "../../components/math/problems-processing/problems-controller";
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
@@ -16,14 +16,15 @@ export interface FractionsState {
   problems: IProblem[][];
 }
 
+const SLICE_NAME = "fractions";
+
 const initialState: FractionsState = {
   settings:
-    getStorage()?.getItem("fractions", true)?.settings ||
-    initialProblemSettings,
+    getStorage()?.getItem(SLICE_NAME, true)?.settings || initialProblemSettings,
   columns: numberOfColumns.one,
   problems:
-    getStorage()?.getItem("fractions", true)?.problems ||
-    fractionsProblemsController(initialProblemSettings),
+    getStorage()?.getItem(SLICE_NAME, true)?.problems ||
+    problemsController(initialProblemSettings, SLICE_NAME),
 };
 
 function localStorageData(state: FractionsState, settings: ISettings[]) {
@@ -42,7 +43,7 @@ function validProblemSettings(state: FractionsState): ISettings[] {
 }
 
 export const fractionsSlice = createSlice({
-  name: "fractions",
+  name: SLICE_NAME,
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
@@ -59,29 +60,30 @@ export const fractionsSlice = createSlice({
       const currentValidSettings = validProblemSettings(state);
 
       getStorage()?.setItem(
-        "fractions",
+        SLICE_NAME,
         localStorageData(state, currentValidSettings)
       );
     },
     // 2) clear all locally saved problems and settings
     clearAllProblemsAndSettings: (state) => {
-      getStorage()?.removeItem("fractions");
+      getStorage()?.removeItem(SLICE_NAME);
     },
     // 3) generate problems
     generateProblems: (state) => {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems = fractionsProblemsController(currentValidSettings) || [];
+      const problems =
+        problemsController(currentValidSettings, SLICE_NAME) || [];
 
       state.problems = problems;
 
       if (problems.length)
         getStorage()?.setItem(
-          "fractions",
+          SLICE_NAME,
           localStorageData(state, currentValidSettings)
         );
 
-      if (!problems.length) getStorage()?.removeItem("fractions");
+      if (!problems.length) getStorage()?.removeItem(SLICE_NAME);
     },
     // 4) insert setting
     insertSetting: (state, action: PayloadAction<number>) => {

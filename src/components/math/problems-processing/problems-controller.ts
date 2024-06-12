@@ -1,28 +1,43 @@
-import problemsFactory from "./problems-factory";
+import factoryInjector from "./factory-injector";
 
-import { IProblem, ISettings } from "../../../../TS/interfaces/interfaces";
+import { ISettings, IProblem } from "../../../TS/interfaces/interfaces";
 
 /**
  *
  */
 function problemsController(
-  problemDescriptions: ISettings[]
+  problemDescriptions: ISettings[],
+  sliceName: string
 ): IProblem[][] | undefined {
   const problems: IProblem[][] = [];
+
   try {
     problemDescriptions.forEach((type: ISettings) => {
+      const problemsFactory = factoryInjector(
+        type.name,
+        type.operation,
+        sliceName,
+        "factory"
+      );
+
+      if (!problemsFactory)
+        throw new Error(
+          `Controller failed to find problem factory with the signature: : name: ${type.name}, operation: ${type.operation}, sliceName: ${sliceName}`
+        );
+
       const problemsSet = problemsFactory(
         type.name,
         type.type,
         type.operation,
         type.numberOfOperands,
-        type.missing,
-        type.quantity
+        type.quantity,
+        type?.missing
       );
 
       if (!problemsSet) {
         throw new Error("Wrong type of operands processor in the settings!");
       }
+
       problems.push(...problemsSet);
     });
   } catch (e) {

@@ -6,32 +6,28 @@ import {
   arithmeticOperandTypes,
   routes,
 } from "../../../../TS/constatnts/constants";
-import ProblemTypes from "../../problem-types";
+
+import processorInjector from "../processor-injector";
 
 /**
  *
  */
-function problemsFactory(
+function arithmeticProblemsFactory(
   name: string,
   type: string,
   operation: string,
   numberOfOperands = 2,
-  missing: TArithmeticMissing | undefined,
-  quantity: number
+  quantity: number,
+  missing: TArithmeticMissing | undefined
 ): IProblem[][] {
   let problems: IProblem[][] = [];
 
   try {
-    const processor = ProblemTypes.find(
-      (type) =>
-        type.name === name &&
-        type.operation === operation &&
-        type.page === routes.arithmetic
-    )?.processor;
+    const processor = processorInjector(name, operation, routes.arithmetic);
 
     if (!processor)
       throw new Error(
-        `No processor for the task ${routes.fractions} - ${name} - ${operation}`
+        `No processor for the task ${routes.arithmetic} - ${name} - ${operation}`
       );
 
     for (let q = 0; q < quantity; q++) {
@@ -92,4 +88,4 @@ function problemsFactory(
   return problems;
 }
 
-export default problemsFactory;
+export default arithmeticProblemsFactory;
