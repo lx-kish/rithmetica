@@ -14,10 +14,6 @@ import SettingsTypes from "./settings-types/settings-types.component";
 import SettingsControlButtons from "./settings-control-btns/settings-control-btns.component";
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
 
-// import TimerControl from './timer-control/timer-control.component';
-
-// import { Applications } from '../../../TS/types/enumApplications';
-
 function ProblemSettings(): ReactElement {
   const stateSettings = useAppSelector(settings);
 
@@ -66,7 +62,6 @@ function ProblemSettings(): ReactElement {
             </div>
           </div>
         ))}
-        {/* <TimerControl appName={Applications.fractions} /> */}
       </div>
     );
   };
