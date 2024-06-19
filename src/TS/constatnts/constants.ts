@@ -6,7 +6,7 @@ export const routes = {
   fractions: "/fractions",
 } as const;
 
-export const numberOfColumns = {
+export const columnsPerRow = {
   one: 1,
   two: 2,
 } as const;
@@ -17,6 +17,26 @@ export const arithmeticOperandTypes = {
   sign: "sign",
   operand: "operand",
   result: "result",
+} as const;
+
+export const sections = {
+  fractions: "½",
+  decimals: ".1",
+  percentages: "%",
+} as const;
+
+export const operations = {
+  addition: "+",
+  subtraction: "-",
+  multiplication: "×",
+  division: "÷",
+} as const;
+
+export const uiType = {
+  arithmetic: "arithmetic",
+  fractions: "fractions",
+  decimals: "decimals",
+  percentages: "percentages",
 } as const;
 
 export const fractionOperandTypes = {

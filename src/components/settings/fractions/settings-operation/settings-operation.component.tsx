@@ -3,9 +3,9 @@ import React, { ReactElement } from "react";
 import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/fractions/fractionsSlice";
 
-import operations from "../../../math/fractions-operands-generators/operations";
 import handleChangeFractionsSettings from "../../../../utils/handle-change-event/handle-change-fractions-settings-event";
 
+import { operations } from "../../../../TS/constatnts/constants";
 import { ISettings } from "../../../../TS/interfaces/interfaces";
 
 interface IProps {
@@ -17,24 +17,27 @@ function SettingsOperation({ index, setting }: IProps): ReactElement {
   const stateSettings = useAppSelector(settings);
 
   const getOperations = () => {
-    return operations.map((operation, i) => (
+    return Object.keys(operations).map((operation, i) => (
       <React.Fragment key={`operation-${index}-${i}`}>
         <input
           type="radio"
-          id={`${operation.name}-${index}`}
+          id={`${operation}-${index}`}
           name={`operation-${index}`}
-          value={operation.symbol}
+          value={operations[operation as keyof typeof operations]}
           className="settings__input settings__input--radio"
           onChange={handleChangeFractionsSettings(index, stateSettings)}
-          checked={stateSettings[index].operation === operation.symbol}
-          disabled={operation.symbol === "½" || operation.symbol === "%"}
+          checked={
+            stateSettings[index].operation ===
+            operations[operation as keyof typeof operations]
+          }
+          disabled={operation === "½" || operation === "%"}
         />
         <label
           className="settings__radio-label settings__radio-label--operation"
-          htmlFor={`${operation.name}-${index}`}
-          title={operation.name}
+          htmlFor={`${operation}-${index}`}
+          title={operation}
         >
-          {operation.symbol}
+          {operations[operation as keyof typeof operations]}
         </label>
       </React.Fragment>
     ));

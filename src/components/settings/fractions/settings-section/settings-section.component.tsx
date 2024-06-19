@@ -5,9 +5,10 @@ import { useAppSelector } from "../../../../redux/hooks";
 import { settings } from "../../../../redux/fractions/fractionsSlice";
 
 // import ProblemTypes from "../../../math/problem-types";
-import sections from "../../../math/fractions-operands-generators/sections";
+
 import handleChangeFractionsSettings from "../../../../utils/handle-change-event/handle-change-fractions-settings-event";
 
+import { sections } from "../../../../TS/constatnts/constants";
 import { ISettings } from "../../../../TS/interfaces/interfaces";
 
 interface IProps {
@@ -29,23 +30,26 @@ function SettingsSection({ index, setting }: IProps): ReactElement {
   // ];
 
   const getSections = () => {
-    return sections.map((section, i) => (
+    return Object.keys(sections).map((section, i) => (
       <React.Fragment key={`section-${index}-${i}`}>
         <input
           type="radio"
-          id={`${section.name}-${index}`}
+          id={`${section}-${index}`}
           name={`section-${index}`}
-          value={section.symbol}
+          value={sections[section as keyof typeof sections]}
           className="settings__input settings__input--radio"
           onChange={handleChangeFractionsSettings(index, stateSettings)}
-          checked={stateSettings[index].section === section.symbol}
+          checked={
+            stateSettings[index].section ===
+            sections[section as keyof typeof sections]
+          }
         />
         <label
           className="settings__radio-label settings__radio-label--section"
-          htmlFor={`${section.name}-${index}`}
-          title={section.name}
+          htmlFor={`${section}-${index}`}
+          title={section}
         >
-          {section.symbol}
+          {sections[section as keyof typeof sections]}
         </label>
       </React.Fragment>
     ));

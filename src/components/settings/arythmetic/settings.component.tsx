@@ -8,15 +8,10 @@ import {
 } from "../../../redux/arithmetic/arithmeticSlice";
 
 import Collapsible from "../../collapsible/collapsible.component";
-
 import SettingsMissing from "./settings-missing/settings-missing.component";
-
 import SettingsOperation from "./settings-operation/settings-operation.component";
-
 import SettingsTypes from "./settings-types/settings-types.component";
-
 import SettingsControlButtons from "./settings-control-btns/settings-control-btns.component";
-
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
 
 interface IProps {}

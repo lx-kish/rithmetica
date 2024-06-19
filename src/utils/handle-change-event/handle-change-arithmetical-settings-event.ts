@@ -50,13 +50,6 @@ const handleChangeArithmeticalSettings =
           })
         );
 
-        store.dispatch(
-          changeSetting({
-            index: index,
-            name: "type",
-            value: currentTaskType?.type || "",
-          })
-        );
         if (!currentTaskType) {
           store.dispatch(
             changeSetting({ index: index, name: "name", value: "" })
@@ -94,13 +87,6 @@ const handleChangeArithmeticalSettings =
         const name = e.target.value === "-- select --" ? "" : e.target.value;
         store.dispatch(
           changeSetting({ index: index, name: "name", value: name })
-        );
-        store.dispatch(
-          changeSetting({
-            index: index,
-            name: "type",
-            value: currentTaskType?.type || "",
-          })
         );
 
         if (currentTaskType?.missing === arithmeticMissing.result) {

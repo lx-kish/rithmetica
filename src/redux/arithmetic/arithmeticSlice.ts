@@ -5,32 +5,30 @@ import problemsController from "../../components/math/problems-processing/proble
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
-import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
+import { ISettings, IProblemsState } from "../../TS/interfaces/interfaces";
 
-import initialProblemSettings from "../../pages/arithmetic/initial-problem-settings";
 import {
-  arithmeticMissing,
-  numberOfColumns,
-} from "../../TS/constatnts/constants";
-
-export interface ArithmeticState {
-  settings: ISettings[];
-  columns: number;
-  problems: IProblem[][];
-}
+  DEFAULT_ARITHMETIC_ROUTE,
+  DEFAULT_MISSING,
+  DEFAULT_NUMBER_OF_OPERANDS,
+  DEFAULT_OPERATION,
+  defaultArithmeticProblemSettings,
+} from "../default-problem-settings";
+import { columnsPerRow } from "../../TS/constatnts/constants";
 
 const SLICE_NAME = "arithmetic";
 
-const initialState: ArithmeticState = {
+const initialState: IProblemsState = {
   settings:
-    getStorage()?.getItem(SLICE_NAME, true)?.settings || initialProblemSettings,
-  columns: numberOfColumns.two,
+    getStorage()?.getItem(SLICE_NAME, true)?.settings ||
+    defaultArithmeticProblemSettings,
+  columns: columnsPerRow.two,
   problems:
     getStorage()?.getItem(SLICE_NAME, true)?.problems ||
-    problemsController(initialProblemSettings, SLICE_NAME),
+    problemsController(defaultArithmeticProblemSettings),
 };
 
-function localStorageData(state: ArithmeticState, settings: ISettings[]) {
+function localStorageData(state: IProblemsState, settings: ISettings[]) {
   return {
     settings,
     columns: state.columns,
@@ -38,10 +36,10 @@ function localStorageData(state: ArithmeticState, settings: ISettings[]) {
   };
 }
 
-function validProblemSettings(state: ArithmeticState): ISettings[] {
+function validProblemSettings(state: IProblemsState): ISettings[] {
   return state.settings.filter(
     (setting: ISettings) =>
-      setting.operation && setting.type && setting.missing && setting.quantity
+      setting.operation && setting.missing && setting.quantity
   );
 }
 
@@ -74,8 +72,7 @@ export const arithmeticSlice = createSlice({
     generateProblems(state) {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems =
-        problemsController(currentValidSettings, SLICE_NAME) || [];
+      const problems = problemsController(currentValidSettings) || [];
 
       state.problems = problems;
 
@@ -92,11 +89,12 @@ export const arithmeticSlice = createSlice({
       const newProblemSettings: ISettings[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
-          operation: "+",
+          page: DEFAULT_ARITHMETIC_ROUTE,
+          operation: DEFAULT_OPERATION,
           name: "",
-          type: "",
-          missing: arithmeticMissing.random,
-          numberOfOperands: 2,
+          // type: "",
+          missing: DEFAULT_MISSING,
+          numberOfOperands: DEFAULT_NUMBER_OF_OPERANDS,
           quantity: 0,
         },
         ...state.settings.slice(action.payload + 1),
@@ -113,11 +111,11 @@ export const arithmeticSlice = createSlice({
 
       if (!newProblemSettings.length)
         newProblemSettings.push({
-          operation: "+",
+          page: DEFAULT_ARITHMETIC_ROUTE,
+          operation: DEFAULT_OPERATION,
           name: "",
-          type: "",
-          missing: arithmeticMissing.random,
-          numberOfOperands: 2,
+          missing: DEFAULT_MISSING,
+          numberOfOperands: DEFAULT_NUMBER_OF_OPERANDS,
           quantity: 0,
         });
 
@@ -126,9 +124,13 @@ export const arithmeticSlice = createSlice({
     // 6) set setting on change
     changeSetting(
       state,
-      action: PayloadAction<{ index: number; name: string; value: string }>
+      action: PayloadAction<{
+        index: number;
+        name: string;
+        value: string | number;
+      }>
     ) {
-      const newProblemSettings = [...state.settings];
+      const newProblemSettings = JSON.parse(JSON.stringify(state.settings));
       const { index, name, value } = action.payload;
 
       const newSettings = Object.assign({}, newProblemSettings[index], {
