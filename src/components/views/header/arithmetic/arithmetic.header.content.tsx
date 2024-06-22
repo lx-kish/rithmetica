@@ -1,11 +1,15 @@
 import React, { ReactElement } from "react";
 
 import Collapsible from "../../../collapsible/collapsible.component";
-import Settings from "../../../settings/arythmetic/settings.component";
+import Settings from "../../settings/settings.component";
 import Math from "../../../descriptions/addition-subtraction/math.component";
 import HowAdditionSubtractionWorks from "../../../descriptions/addition-subtraction/how-addition-subtraction-works.component";
 
-export default function ArithmeticHeaderContent(): ReactElement {
+interface IProps {
+  pageName: string;
+}
+
+function ArithmeticHeaderContent({ pageName }: IProps): ReactElement {
   return (
     <>
       <Collapsible
@@ -46,7 +50,9 @@ export default function ArithmeticHeaderContent(): ReactElement {
           <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
       </Collapsible>
-      <Settings />
+      <Settings pageName={pageName} />
     </>
   );
 }
+
+export default ArithmeticHeaderContent;

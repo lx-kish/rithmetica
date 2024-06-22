@@ -1,11 +1,15 @@
 import React, { ReactElement } from "react";
 
 import Collapsible from "../../../collapsible/collapsible.component";
-import Settings from "../../../settings/fractions/settings.component";
+import Settings from "../../settings/settings.component";
 import Math from "../../../descriptions/fractions/math.component";
 import HowAdditionSubtractionWorks from "../../../descriptions/fractions/how-fractions-work.component";
 
-export default function FractionsHeaderContent(): ReactElement {
+interface IProps {
+  pageName: string;
+}
+
+function FractionsHeaderContent({ pageName }: IProps): ReactElement {
   return (
     <>
       <Collapsible
@@ -46,7 +50,9 @@ export default function FractionsHeaderContent(): ReactElement {
           <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
       </Collapsible>
-      <Settings />
+      <Settings pageName={pageName} />
     </>
   );
 }
+
+export default FractionsHeaderContent;

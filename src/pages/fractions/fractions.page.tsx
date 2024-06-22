@@ -9,6 +9,8 @@ import Footer from "../../components/views/footer/footer.component";
 
 import useRenderScrollUpBtn from "../../hooks/use-render-scroll-up-btn/use-render-scroll-up-btn";
 
+import { routes } from "../../TS/constatnts/constants";
+
 function Fractions(): ReactElement {
   /**
    * Single state hook useState for all the state properties
@@ -26,8 +28,8 @@ function Fractions(): ReactElement {
     <>
       <NavigationBar />
       <main className="problem__main main">
-        <Header>
-          <FractionsHeaderContent />
+        <Header pageName={routes.fractions}>
+          <FractionsHeaderContent pageName={routes.fractions} />
         </Header>
         <Problems />
         {renderScrollUpBtn && <BtnUp />}
