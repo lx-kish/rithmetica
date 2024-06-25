@@ -70,6 +70,16 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v9.4.0 release notes
+
+- Redesign problems settings selection with compound components;
+
+- Redesign settings components data flow;
+
+- Redesign arithmetic and fractions headers content components;
+
+- Fix errors and bugs.
+
 #### v9.3.0 release notes
 
 - Redesign problems settings selection and processing;

@@ -54,8 +54,8 @@ export const fractionOperandTypes = {
 };
 
 export const arithmeticMissing = {
-  random: "random",
   first: "first",
   last: "last",
   result: "result",
+  random: "random",
 } as const;

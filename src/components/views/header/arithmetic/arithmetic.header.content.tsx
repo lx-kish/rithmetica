@@ -1,15 +1,57 @@
 import React, { ReactElement } from "react";
 
 import Collapsible from "../../../collapsible/collapsible.component";
-import Settings from "../../settings/settings.component";
 import Math from "../../../descriptions/addition-subtraction/math.component";
 import HowAdditionSubtractionWorks from "../../../descriptions/addition-subtraction/how-addition-subtraction-works.component";
+
+import Settings from "../../settings/settings.compound.component";
+
+import ProblemTypes from "../../../math/problem-types";
+
+import {
+  generateProblems,
+  insertSetting,
+  deleteSetting,
+  changeSetting,
+  settings,
+} from "../../../../redux/arithmetic/arithmeticSlice";
+import { useAppSelector } from "../../../../redux/hooks";
+
+import { IProblemType, ISettings } from "../../../../TS/interfaces/interfaces";
 
 interface IProps {
   pageName: string;
 }
 
 function ArithmeticHeaderContent({ pageName }: IProps): ReactElement {
+  const types = ProblemTypes.filter((type) => type.page === pageName);
+
+  function RenderRow({
+    index,
+    setting,
+  }: {
+    index: number;
+    setting: ISettings;
+  }) {
+    function typesFilter(type: IProblemType): boolean {
+      return type.operation === setting?.operation;
+    }
+
+    return (
+      <Settings.Row index={index} setting={setting} typesFilter={typesFilter}>
+        <Settings.Container className="settings__col settings__col--controls">
+          <Settings.Operations />
+          <Settings.Missing />
+          <Settings.Types />
+        </Settings.Container>
+        <Settings.Container className="settings__col settings__col--qty-btns">
+          <Settings.Quantity />
+          <Settings.ControlBtns />
+        </Settings.Container>
+      </Settings.Row>
+    );
+  }
+
   return (
     <>
       <Collapsible
@@ -50,7 +92,23 @@ function ArithmeticHeaderContent({ pageName }: IProps): ReactElement {
           <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
       </Collapsible>
-      <Settings pageName={pageName} />
+      <Settings
+        types={types}
+        generateProblems={generateProblems}
+        insertSetting={insertSetting}
+        deleteSetting={deleteSetting}
+        changeSetting={changeSetting}
+        settingsState={settings}
+      >
+        <Settings.Body>
+          <Settings.Group
+            data={useAppSelector(settings)}
+            render={(setting: ISettings, index: number) => (
+              <RenderRow key={index} index={index} setting={setting} />
+            )}
+          />
+        </Settings.Body>
+      </Settings>
     </>
   );
 }
