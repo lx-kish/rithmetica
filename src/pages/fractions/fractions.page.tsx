@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
 import Header from "../../components/views/header/header.component";
 import FractionsHeaderContent from "../../components/views/header/fractions/fractions.header.content";
-import Problems from "../../components/views/fractions/problems/problems.component";
+import Problems from "../../components/views/problems/problems.component";
 import BtnUp from "../../components/views/btn-up/btn-up.component";
 import Footer from "../../components/views/footer/footer.component";
 
@@ -31,7 +31,7 @@ function Fractions(): ReactElement {
         <Header pageName={routes.fractions}>
           <FractionsHeaderContent pageName={routes.fractions} />
         </Header>
-        <Problems />
+        <Problems pageName={routes.fractions} />
         {renderScrollUpBtn && <BtnUp />}
       </main>
       <Footer />

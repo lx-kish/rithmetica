@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
 import Header from "../../components/views/header/header.component";
 import ArithmeticHeaderContent from "../../components/views/header/arithmetic/arithmetic.header.content";
-import Problems from "../../components/views/arithmetic/problems/problems.component";
+import Problems from "../../components/views/problems/problems.component";
 import BtnUp from "../../components/views/btn-up/btn-up.component";
 import Footer from "../../components/views/footer/footer.component";
 
@@ -31,7 +31,7 @@ function Arithmetic(): ReactElement {
         <Header pageName={routes.arithmetic}>
           <ArithmeticHeaderContent pageName={routes.arithmetic} />
         </Header>
-        <Problems />
+        <Problems pageName={routes.arithmetic} />
         {renderScrollUpBtn && <BtnUp />}
       </main>
       <Footer />
