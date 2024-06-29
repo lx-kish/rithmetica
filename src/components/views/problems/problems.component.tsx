@@ -6,6 +6,7 @@ import { problems as fractionsProblems } from "../../../redux/fractions/fraction
 
 import ArithmeticProblem from "../arithmetic/problem/problem.component";
 import FractionsProblem from "../fractions/problem/problem.component";
+import DecimalsProblem from "../decimals/problem/problem.component";
 
 import { IProblem, IProblemType } from "../../../TS/interfaces/interfaces";
 import { TRoutes, TSections } from "../../../TS/types/types";
@@ -107,6 +108,13 @@ function Problems({ pageName }: IProps): ReactElement {
                   )) ||
                   (problemType.problemType.uiType === uiType.fractions && (
                     <FractionsProblem
+                      key={j}
+                      content={problem}
+                      stateProblemIndex={problemType.problems.indexOf(problem)}
+                    />
+                  )) ||
+                  (problemType.problemType.uiType === uiType.decimals && (
+                    <DecimalsProblem
                       key={j}
                       content={problem}
                       stateProblemIndex={problemType.problems.indexOf(problem)}

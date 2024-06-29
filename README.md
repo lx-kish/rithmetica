@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v9.6.0 release notes
+
+- Add tenth add and subtruct problems to the fractions application;
+
+- Fix errors and bugs.
+
 #### v9.5.0 release notes
 
 - Redesign problems component to display problems of different structures on different pages;

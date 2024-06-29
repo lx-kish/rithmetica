@@ -1,4 +1,5 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
+import { getRoundedToFixed } from "../../../../../utils/get-rounded-to-fixed/get-rounded-to-fixed";
 
 /**
  *
@@ -6,7 +7,6 @@ import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 const tenthAddSubtract = (operation: string, numberOfOperands: number) => {
   const operands: number[] = [];
 
-  // [ ...Array(N).keys() ]
   try {
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     let problemMaximum = 0;
@@ -24,7 +24,11 @@ const tenthAddSubtract = (operation: string, numberOfOperands: number) => {
     }
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
-    operands.splice(operation === "+" ? operands.length : 0, 0, problemMaximum);
+    operands.splice(
+      operation === "+" ? operands.length : 0,
+      0,
+      getRoundedToFixed(problemMaximum, 1)
+    );
 
     // console.log(operands);
 
