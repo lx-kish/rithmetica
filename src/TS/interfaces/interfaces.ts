@@ -1,13 +1,24 @@
-import { TArithmeticMissing } from "../types/types";
+import {
+  TArithmeticMissing,
+  TRoutes,
+  TSections,
+  TUIType,
+} from "../types/types";
 
 export interface ISettings {
+  page: TRoutes;
   section?: string;
   name: string;
-  type: string;
   operation: string;
   numberOfOperands: number;
   missing?: TArithmeticMissing | undefined;
   quantity: number;
+}
+
+export interface IProblemsState {
+  settings: ISettings[];
+  columns: number;
+  problems: IProblem[][];
 }
 
 export interface ICollapsibleProps {
@@ -24,12 +35,13 @@ export interface IProblem {
 
 export interface IProblemsFactory {
   (
+    route: TRoutes,
     name: string,
-    type: string,
     operation: string,
     numberOfOperands: number,
     quantity: number,
-    missing?: TArithmeticMissing | undefined
+    missing?: TArithmeticMissing | undefined,
+    section?: TSections | undefined
   ): IProblem[][];
 }
 
@@ -48,16 +60,11 @@ export interface IProblemType {
   section?: string;
   operation: string;
   name: string;
-  type: string;
+  colPerRow: number;
   missing?: string;
+  uiType: TUIType;
   factory: IProblemsFactory;
   processor: IFractionsProcessor | IArithmeticProcessor;
-}
-
-export interface ISection {
-  // [key: string]: string;
-  name: string;
-  symbol: string;
 }
 
 export interface ISectionsAttributes {

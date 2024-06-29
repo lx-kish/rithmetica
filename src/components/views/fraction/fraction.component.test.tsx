@@ -2,6 +2,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect"; // for additional matchers
+import "@testing-library/jest-dom";
 
 import Fraction from "./fraction.component"; // Update the import path accordingly
 import { IProblem } from "../../../TS/interfaces/interfaces";

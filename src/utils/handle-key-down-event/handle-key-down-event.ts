@@ -37,6 +37,17 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       return false;
     }
 
+    /** enable . (decimal sign) only in case of decimals and not in case of whole numbers
+     */
+    if (
+      e.currentTarget.getAttribute("pattern")!.indexOf(".") > 0 &&
+      (keyCode === 110 || //. on keypad
+        keyCode === 190) //. on keyboard
+    ) {
+      console.log(e.currentTarget.getAttribute("pattern")!.indexOf(".") > 0);
+      return false;
+    }
+
     /** more than 2 digits in a 2-digits fields,
      * more than 3 digits in a 3-digits field
      * instant return to prevent overflowing

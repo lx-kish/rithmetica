@@ -1,33 +1,48 @@
 import getInputPosition from "./get-input-position";
 
 import { IProblem } from "../../../../TS/interfaces/interfaces";
-import { TArithmeticMissing } from "../../../../TS/types/types";
 import {
+  TArithmeticMissing,
+  TRoutes,
+  TSections,
+} from "../../../../TS/types/types";
+import {
+  arithmeticMissing,
   arithmeticOperandTypes,
-  routes,
 } from "../../../../TS/constatnts/constants";
 
-import processorInjector from "../processor-injector";
+import getProblemTypeBySignature from "../../../../utils/get-problem-type/get-problem-type";
 
 /**
  *
  */
 function arithmeticProblemsFactory(
+  route: TRoutes,
   name: string,
-  type: string,
   operation: string,
   numberOfOperands = 2,
   quantity: number,
-  missing: TArithmeticMissing | undefined
+  missing = arithmeticMissing.result as TArithmeticMissing,
+  section?: TSections
 ): IProblem[][] {
   let problems: IProblem[][] = [];
 
   try {
-    const processor = processorInjector(name, operation, routes.arithmetic);
+    const problemType = getProblemTypeBySignature({
+      name,
+      operation,
+      route,
+    });
+
+    if (!problemType)
+      throw new Error(
+        `Controller failed to find ptoblem type with signature: name: ${name}, operation: ${operation}, route: ${route}`
+      );
+    const processor = problemType.processor;
 
     if (!processor)
       throw new Error(
-        `No processor for the task ${routes.arithmetic} - ${name} - ${operation}`
+        `No processor for the task ${route} - ${name} - ${operation}`
       );
 
     for (let q = 0; q < quantity; q++) {
@@ -38,7 +53,7 @@ function arithmeticProblemsFactory(
 
       if (!operands) {
         throw new Error(
-          `Wrong type of operands processor for the task ${routes.fractions} - ${name} - ${operation}`
+          `Wrong type of operands processor for the task ${route} - ${name} - ${operation}`
         );
       }
 
@@ -46,35 +61,35 @@ function arithmeticProblemsFactory(
 
       problem.push({
         type: arithmeticOperandTypes.type,
-        value: type,
+        route: route as string,
+        name,
+        operation,
       });
 
-      if (type === "equation") {
-        // 6. Identify missing. Only in case of equation
-        let input = getInputPosition(numberOfOperands, missing);
+      // 6. Identify missing. Only in case of equation
+      let input = getInputPosition(numberOfOperands, missing);
 
-        // 7. Formatting the problem with the defined operands and operator.
-        for (let i = 0; i < operands.length; i++) {
-          if (i > 0) {
-            problem.push({
-              type: arithmeticOperandTypes.sign,
-              value: i === operands.length - 1 ? "=" : operation,
-            });
-          }
+      // 7. Formatting the problem with the defined operands and operator.
+      for (let i = 0; i < operands.length; i++) {
+        if (i > 0) {
           problem.push({
-            type:
-              input === i
-                ? arithmeticOperandTypes.input
-                : arithmeticOperandTypes.operand,
-            value: operands[i].toString(),
+            type: arithmeticOperandTypes.sign,
+            value: i === operands.length - 1 ? "=" : operation,
           });
         }
-
         problem.push({
-          type: arithmeticOperandTypes.result,
-          value: "",
+          type:
+            input === i
+              ? arithmeticOperandTypes.input
+              : arithmeticOperandTypes.operand,
+          value: operands[i].toString(),
         });
       }
+
+      problem.push({
+        type: arithmeticOperandTypes.result,
+        value: "",
+      });
 
       problems.push(problem);
     }

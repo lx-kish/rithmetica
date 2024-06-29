@@ -70,6 +70,48 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v9.6.0 release notes
+
+- Add tenth add and subtruct problems to the fractions application;
+
+- Fix errors and bugs.
+
+#### v9.5.0 release notes
+
+- Redesign problems component to display problems of different structures on different pages;
+
+- Fix errors and bugs.
+
+#### v9.4.0 release notes
+
+- Redesign problems settings selection with compound components;
+
+- Redesign settings components data flow;
+
+- Redesign arithmetic and fractions headers content components;
+
+- Fix errors and bugs.
+
+#### v9.3.0 release notes
+
+- Redesign problems settings selection and processing;
+
+- Redesign settings components hierarchy and data flow;
+
+- Fix errors and bugs.
+
+#### v9.2.0 release notes
+
+- Redesign Arithmetic and Fractions problems generation;
+
+- Redesign problem types object structure;
+
+- Redesign interfaces and types;
+
+- Redesign Aritymetic and Fractions initial problems settings;
+
+- Fix errors and bugs.
+
 #### v9.1.0 release notes
 
 - Redesign Arithmetic and Fractions problems generation;

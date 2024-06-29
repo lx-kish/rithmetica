@@ -1,17 +1,14 @@
 import { ReactElement } from "react";
 
-import { useLocation } from "react-router-dom";
-
 import sections from "../../../sections";
-import { routes } from "../../../TS/constatnts/constants";
 
-function Header({ children }: any): ReactElement {
-  const location = useLocation();
+interface IProps {
+  pageName: string;
+  children: ReactElement;
+}
 
-  const sectionName =
-    location.pathname !== routes.root ? location.pathname : routes.arithmetic;
-
-  const sectionSettings = sections.find((el) => el.link === sectionName);
+function Header({ pageName, children }: IProps): ReactElement {
+  const sectionSettings = sections.find((el) => el.link === pageName);
 
   return (
     <header className="header header--multiplication-tab">

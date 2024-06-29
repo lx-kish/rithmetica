@@ -1,15 +1,17 @@
 import {
-  numberOfColumns,
+  columnsPerRow,
   routes,
   arithmeticOperandTypes,
   fractionOperandTypes,
   arithmeticMissing,
+  sections,
+  operations,
+  uiType,
 } from "../constatnts/constants";
 
 export type TRoutes = (typeof routes)[keyof typeof routes];
 
-export type TNumberOfColumns =
-  (typeof numberOfColumns)[keyof typeof numberOfColumns];
+export type TcolumnsPerRow = (typeof columnsPerRow)[keyof typeof columnsPerRow];
 
 export type TArithmeticOperandTypes =
   (typeof arithmeticOperandTypes)[keyof typeof arithmeticOperandTypes];
@@ -19,3 +21,9 @@ export type TArithmeticMissing =
 
 export type TFractionOperandTypes =
   (typeof fractionOperandTypes)[keyof typeof fractionOperandTypes];
+
+export type TSections = (typeof sections)[keyof typeof sections];
+
+export type TOperations = (typeof operations)[keyof typeof operations];
+
+export type TUIType = (typeof uiType)[keyof typeof uiType];

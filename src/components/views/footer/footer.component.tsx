@@ -1,14 +1,14 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import IconHeart from "../../icons-svg/icon-heart.component";
 import IconLxKish from "../../icons-svg/icon-lx-kish.component";
 
-const Footer: React.FC = () => {
+function Footer(): ReactElement {
   return (
     <footer className="footer">
-      <p className="footer__version">v9.1.0</p>
+      <p className="footer__version">v9.6.0</p>
       <p className="footer__credentials">
-        &#169; 2020 - 2024. Built with
+        &#169; 2024. Built with
         <span className="footer__icon-box">
           <IconHeart className="footer__icon red" />
         </span>
@@ -27,6 +27,6 @@ const Footer: React.FC = () => {
       </p>
     </footer>
   );
-};
+}
 
 export default Footer;

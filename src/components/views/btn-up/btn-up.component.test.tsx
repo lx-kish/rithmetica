@@ -1,6 +1,7 @@
 // BtnUp.test.tsx
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import BtnUp from "./btn-up.component";
 
 describe("BtnUp Component", () => {

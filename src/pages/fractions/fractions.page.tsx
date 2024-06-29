@@ -3,11 +3,13 @@ import React, { ReactElement } from "react";
 import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
 import Header from "../../components/views/header/header.component";
 import FractionsHeaderContent from "../../components/views/header/fractions/fractions.header.content";
-import Problems from "../../components/views/fractions/problems/problems.component";
+import Problems from "../../components/views/problems/problems.component";
 import BtnUp from "../../components/views/btn-up/btn-up.component";
 import Footer from "../../components/views/footer/footer.component";
 
 import useRenderScrollUpBtn from "../../hooks/use-render-scroll-up-btn/use-render-scroll-up-btn";
+
+import { routes } from "../../TS/constatnts/constants";
 
 function Fractions(): ReactElement {
   /**
@@ -26,10 +28,10 @@ function Fractions(): ReactElement {
     <>
       <NavigationBar />
       <main className="problem__main main">
-        <Header>
-          <FractionsHeaderContent />
+        <Header pageName={routes.fractions}>
+          <FractionsHeaderContent pageName={routes.fractions} />
         </Header>
-        <Problems />
+        <Problems pageName={routes.fractions} />
         {renderScrollUpBtn && <BtnUp />}
       </main>
       <Footer />

@@ -19,7 +19,10 @@ interface IProps {
   content: IProblem[];
 }
 
-function Problem({ stateProblemIndex, content }: IProps): ReactElement {
+function FractionsProblem({
+  stateProblemIndex,
+  content,
+}: IProps): ReactElement {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
@@ -270,4 +273,4 @@ function Problem({ stateProblemIndex, content }: IProps): ReactElement {
   );
 }
 
-export default Problem;
+export default FractionsProblem;

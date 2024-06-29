@@ -5,29 +5,30 @@ import problemsController from "../../components/math/problems-processing/proble
 
 import { getStorage } from "../../utils/process-local-storage/process-local-storage";
 
-import { ISettings, IProblem } from "../../TS/interfaces/interfaces";
+import { ISettings, IProblemsState } from "../../TS/interfaces/interfaces";
 
-import initialProblemSettings from "../../pages/fractions/initial-problem-settings";
-import { numberOfColumns } from "../../TS/constatnts/constants";
-
-export interface FractionsState {
-  settings: ISettings[];
-  columns: number;
-  problems: IProblem[][];
-}
+import {
+  DEFAULT_FRACTIONS_ROUTE,
+  DEFAULT_FRACTIONS_SECTION,
+  DEFAULT_NUMBER_OF_OPERANDS,
+  DEFAULT_OPERATION,
+  defaultFractionsProblemSettings,
+} from "../default-problem-settings";
+import { columnsPerRow } from "../../TS/constatnts/constants";
 
 const SLICE_NAME = "fractions";
 
-const initialState: FractionsState = {
+const initialState: IProblemsState = {
   settings:
-    getStorage()?.getItem(SLICE_NAME, true)?.settings || initialProblemSettings,
-  columns: numberOfColumns.one,
+    getStorage()?.getItem(SLICE_NAME, true)?.settings ||
+    defaultFractionsProblemSettings,
+  columns: columnsPerRow.one,
   problems:
     getStorage()?.getItem(SLICE_NAME, true)?.problems ||
-    problemsController(initialProblemSettings, SLICE_NAME),
+    problemsController(defaultFractionsProblemSettings),
 };
 
-function localStorageData(state: FractionsState, settings: ISettings[]) {
+function localStorageData(state: IProblemsState, settings: ISettings[]) {
   return {
     settings,
     columns: state.columns,
@@ -35,11 +36,12 @@ function localStorageData(state: FractionsState, settings: ISettings[]) {
   };
 }
 
-function validProblemSettings(state: FractionsState): ISettings[] {
-  return state.settings.filter(
+function validProblemSettings(state: IProblemsState): ISettings[] {
+  const settings = state.settings.filter(
     (setting: ISettings) =>
-      setting.section && setting.operation && setting.type && setting.quantity
+      setting.section && setting.operation && setting.quantity
   );
+  return settings;
 }
 
 export const fractionsSlice = createSlice({
@@ -54,8 +56,6 @@ export const fractionsSlice = createSlice({
     ) => {
       const { index, name, value } = action.payload;
       state.problems[index][state.problems[index].length - 1][name] = value;
-
-      // const problems = {...state.problems, state.problems[index][state.problems[index].length - 1][name]: value};
 
       const currentValidSettings = validProblemSettings(state);
 
@@ -72,8 +72,7 @@ export const fractionsSlice = createSlice({
     generateProblems: (state) => {
       const currentValidSettings = validProblemSettings(state);
 
-      const problems =
-        problemsController(currentValidSettings, SLICE_NAME) || [];
+      const problems = problemsController(currentValidSettings) || [];
 
       state.problems = problems;
 
@@ -90,11 +89,11 @@ export const fractionsSlice = createSlice({
       const newProblemSettings: ISettings[] = [
         ...state.settings.slice(0, action.payload + 1),
         {
-          section: "½",
-          operation: "+",
+          page: DEFAULT_FRACTIONS_ROUTE,
+          section: DEFAULT_FRACTIONS_SECTION,
+          operation: DEFAULT_OPERATION,
           name: "",
-          type: "",
-          numberOfOperands: 2,
+          numberOfOperands: DEFAULT_NUMBER_OF_OPERANDS,
           quantity: 0,
         },
         ...state.settings.slice(action.payload + 1),
@@ -111,11 +110,11 @@ export const fractionsSlice = createSlice({
 
       if (!newProblemSettings.length)
         newProblemSettings.push({
-          section: "½",
-          operation: "+",
+          page: DEFAULT_FRACTIONS_ROUTE,
+          section: DEFAULT_FRACTIONS_SECTION,
+          operation: DEFAULT_OPERATION,
           name: "",
-          type: "",
-          numberOfOperands: 2,
+          numberOfOperands: DEFAULT_NUMBER_OF_OPERANDS,
           quantity: 0,
         });
 
@@ -124,9 +123,14 @@ export const fractionsSlice = createSlice({
     // 6) set setting on change
     changeSetting: (
       state,
-      action: PayloadAction<{ index: number; name: string; value: string }>
+      action: PayloadAction<{
+        index: number;
+        name: string;
+        value: string | number;
+      }>
     ) => {
-      const newProblemSettings = [...state.settings];
+      const newProblemSettings = JSON.parse(JSON.stringify(state.settings));
+
       const { index, name, value } = action.payload;
 
       const newSettings = Object.assign({}, newProblemSettings[index], {

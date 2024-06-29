@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import {
   setInputValue,
   problems,
-} from "../../../../redux/arithmetic/arithmeticSlice";
+} from "../../../../redux/fractions/fractionsSlice";
 
 import Number from "../../number/number.component";
 import Sign from "../../sign/sign.component";
@@ -18,10 +18,7 @@ interface IProps {
   content: IProblem[];
 }
 
-function ArithmeticProblem({
-  stateProblemIndex,
-  content,
-}: IProps): ReactElement {
+function DecimalsProblem({ stateProblemIndex, content }: IProps): ReactElement {
   const stateProblems = useAppSelector(problems);
 
   const dispatch = useAppDispatch();
@@ -44,6 +41,7 @@ function ArithmeticProblem({
     dispatch(
       setInputValue({
         index: stateProblemIndex,
+        name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
     );
@@ -73,9 +71,11 @@ function ArithmeticProblem({
         return (
           <Input
             key={`problem__input-${i}`}
-            pattern="[0-9]*"
+            pattern="[0-9]+([,\.][0-9]+)?"
             className={getInputClassName(operand.value)}
-            step="1"
+            // step="1"
+            step="0.1"
+            name="value"
             result={operand.value.toString()}
             value={stateProblems[stateProblemIndex][
               stateProblems[stateProblemIndex].length - 1
@@ -100,4 +100,4 @@ function ArithmeticProblem({
   );
 }
 
-export default ArithmeticProblem;
+export default DecimalsProblem;
