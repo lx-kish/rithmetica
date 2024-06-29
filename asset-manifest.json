@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/rithmetica/static/css/main.c73d67de.css",
-    "main.js": "/rithmetica/static/js/main.6b4ca2a6.js",
+    "main.css": "/rithmetica/static/css/main.498a485d.css",
+    "main.js": "/rithmetica/static/js/main.33a75f7e.js",
     "static/media/Lemonada-Medium.ttf": "/rithmetica/static/media/Lemonada-Medium.1c128110eb2f11bbc2ac.ttf",
     "static/media/Lemonada-SemiBold.ttf": "/rithmetica/static/media/Lemonada-SemiBold.ee2c4d26ee3bc6cef941.ttf",
     "static/media/Lemonada-Regular.ttf": "/rithmetica/static/media/Lemonada-Regular.31001e9c4719136f8846.ttf",
@@ -10,11 +10,11 @@
     "static/media/schema-arrows--small.png": "/rithmetica/static/media/schema-arrows--small.3dd42adf1298c02ab088.png",
     "static/media/shcema-arrows--big.png": "/rithmetica/static/media/shcema-arrows--big.ef03c2b2a8ca93aa49d5.png",
     "index.html": "/rithmetica/index.html",
-    "main.c73d67de.css.map": "/rithmetica/static/css/main.c73d67de.css.map",
-    "main.6b4ca2a6.js.map": "/rithmetica/static/js/main.6b4ca2a6.js.map"
+    "main.498a485d.css.map": "/rithmetica/static/css/main.498a485d.css.map",
+    "main.33a75f7e.js.map": "/rithmetica/static/js/main.33a75f7e.js.map"
   },
   "entrypoints": [
-    "static/css/main.c73d67de.css",
-    "static/js/main.6b4ca2a6.js"
+    "static/css/main.498a485d.css",
+    "static/js/main.33a75f7e.js"
   ]
 }
