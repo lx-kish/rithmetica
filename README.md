@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v10.0.0 release notes
+
+- Migrate project to vite development environment.
+
 #### v9.6.1 release notes
 
 - Fix loosing focus after entering values of quantity field of settings block;
@@ -78,7 +82,7 @@ The application is a React JS Single Page Application, based on create-react-app
 
 #### v9.6.0 release notes
 
-- Add tenth add and subtruct problems to the fractions application;
+- Add tenth add and subtruct decimals problems to the fractions application;
 
 - Fix errors and bugs.
 

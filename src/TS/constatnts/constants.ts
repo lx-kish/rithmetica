@@ -1,9 +1,9 @@
 export const routes = {
-  root: "/",
-  default: "/arithmetic",
-  multiplicationTab: "/multiplication-tab",
-  arithmetic: "/arithmetic",
-  fractions: "/fractions",
+  root: "/rithmetica",
+  default: "/rithmetica/arithmetic",
+  multiplicationTab: "/rithmetica/multiplication-tab",
+  arithmetic: "/rithmetica/arithmetic",
+  fractions: "/rithmetica/fractions",
 } as const;
 
 export const columnsPerRow = {
