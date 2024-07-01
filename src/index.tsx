@@ -14,7 +14,7 @@ const rootContainer = createRoot(container as HTMLElement); // createRoot(contai
 rootContainer.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={import.meta.env.VITE_PUBLIC_URL}>
         <AppRoutes />
       </BrowserRouter>
     </Provider>
