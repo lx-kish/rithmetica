@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v10.0.1 release notes
+
+- Fix displaying empty rows inside problems section.
+
 #### v10.0.0 release notes
 
 - Migrate project to vite development environment.
