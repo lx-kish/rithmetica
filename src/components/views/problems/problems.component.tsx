@@ -93,7 +93,7 @@ function Problems({ pageName }: IProps): ReactElement {
         (problemType) =>
           problemType.problemType.page === pageName &&
           contentRows(
-            problemType.problems,
+            problemType.problems.filter((problem) => problem),
             Number(problemType.problemType.colPerRow)
           ).map((row, i) => (
             <div key={i} className="problem__row">
