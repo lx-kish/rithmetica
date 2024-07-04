@@ -3,6 +3,7 @@ import React, {
   ReactElement,
   createContext,
   useContext,
+  useState,
 } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../redux/hooks";
@@ -386,8 +387,10 @@ function Quantity(): ReactElement {
   const { handleChangeSetting } = useContext(SettingsContext);
   const { index, setting } = useContext(RowContext);
 
+  const [value, setValue] = useState(setting?.quantity.toString()); // to not loose focus on changing input field, change redux value onBlur only
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    handleChangeSetting(index, "quantity", e.currentTarget.value);
+    handleChangeSetting(index, "quantity", Number(e.currentTarget.value));
   }
 
   return (
@@ -406,8 +409,9 @@ function Quantity(): ReactElement {
         min="1"
         max="100"
         className="settings__input"
-        value={setting?.quantity}
-        onChange={handleChange}
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+        onBlur={handleChange}
         onKeyDown={handleKeyDown}
       />
     </div>
