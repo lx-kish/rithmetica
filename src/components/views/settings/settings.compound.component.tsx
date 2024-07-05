@@ -5,6 +5,11 @@ import React, {
   useContext,
   useState,
 } from "react";
+import {
+  Action,
+  PayloadAction,
+  ActionCreatorWithPayload,
+} from "@reduxjs/toolkit";
 
 import { useAppSelector, useAppDispatch } from "../../../redux/hooks";
 import { AppDispatch, RootState } from "../../../redux/store";
@@ -20,26 +25,18 @@ import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TArithmeticMissing } from "../../../TS/types/types";
 
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
-import {
-  Action,
-  PayloadAction,
-  UnknownAction,
-  ActionCreatorWithPayload,
-} from "@reduxjs/toolkit";
 
 interface ISettingsContext {
   types: IProblemType[];
-  settings: ISettings[];
+  settingsState: ISettings[];
   dispatch: Dispatch<Action>;
   handleChangeSetting: (
-    index: number,
+    id: string,
     name: string,
     value: number | string
   ) => void;
-  handleInsertSetting: (
-    index: number
-  ) => ActionCreatorWithPayload<number, string>;
-  handleDeleteSetting: (index: number) => PayloadAction<number>;
+  handleInsertSetting: (id: string) => ActionCreatorWithPayload<number, string>;
+  handleDeleteSetting: (id: string) => PayloadAction<number>;
   handleGenerate: () => AppDispatch;
 }
 
@@ -47,13 +44,14 @@ const SettingsContext = createContext({} as ISettingsContext);
 
 const RowContext = createContext(
   {} as {
-    index: number;
-    setting: ISettings;
+    id: string;
+    settings: ISettings;
     typesFilter: (type: IProblemType) => boolean;
   }
 );
 
 function Settings({
+  route,
   types,
   generateProblems,
   insertSetting,
@@ -62,38 +60,39 @@ function Settings({
   settingsState,
   children,
 }: {
+  route: string;
   types: IProblemType[];
-  generateProblems: () => UnknownAction;
-  insertSetting: ActionCreatorWithPayload<number, string>;
-  deleteSetting: (index: number) => PayloadAction<number>;
-  changeSetting: ({
-    index,
-    name,
-    value,
-  }: {
-    index: number;
-    name: string;
-    value: string | number;
-  }) => PayloadAction<{
-    index: number;
-    name: string;
-    value: number | string;
-  }>;
-  settingsState: (state: RootState) => ISettings[];
+  generateProblems: ActionCreatorWithPayload<
+    { route: string },
+    "problems/generateProblems"
+  >;
+  insertSetting: ActionCreatorWithPayload<
+    { id: string; route: string },
+    "problems/insertSetting"
+  >;
+  deleteSetting: ActionCreatorWithPayload<
+    { id: string; route: string },
+    "problems/deleteSetting"
+  >;
+  changeSetting: ActionCreatorWithPayload<
+    { id: string; name: string; value: string | number },
+    "problems/changeSetting"
+  >;
+  settingsState: ISettings[];
   children: ReactElement;
 }) {
   const dispatch = useAppDispatch();
 
-  const settings = useAppSelector(settingsState);
+  // const settings = useAppSelector(problemsState);
 
   function handleChangeSetting(
-    index: number,
+    id: string,
     name: string,
     value: string | number
   ) {
     dispatch(
       changeSetting({
-        index,
+        id,
         name,
         value,
       })
@@ -101,22 +100,36 @@ function Settings({
   }
 
   function handleGenerate(): any {
-    dispatch(generateProblems());
+    dispatch(
+      generateProblems({
+        route,
+      })
+    );
   }
 
-  function handleInsertSetting(index: number): any {
-    dispatch(insertSetting(index));
+  function handleInsertSetting(id: string): any {
+    dispatch(
+      insertSetting({
+        id,
+        route,
+      })
+    );
   }
 
-  function handleDeleteSetting(index: number): any {
-    dispatch(deleteSetting(index));
+  function handleDeleteSetting(id: string): any {
+    dispatch(
+      deleteSetting({
+        id,
+        route,
+      })
+    );
   }
 
   return (
     <SettingsContext.Provider
       value={{
         types,
-        settings,
+        settingsState,
         dispatch,
         handleChangeSetting,
         handleInsertSetting,
@@ -160,24 +173,25 @@ function Group({
   render,
 }: {
   data: ISettings[];
-  render: (setting: ISettings, index: number) => ReactElement;
+
+  render: (settings: ISettings, index: number) => ReactElement;
 }) {
   return <div className="settings__settings-group">{data?.map(render)}</div>;
 }
 
 function Row({
-  index,
-  setting,
+  id,
+  settings,
   typesFilter,
   children,
 }: {
-  index: number;
-  setting: ISettings;
+  id: string;
+  settings: ISettings;
   typesFilter: (type: IProblemType) => boolean;
   children: ReactElement | ReactElement[];
 }) {
   return (
-    <RowContext.Provider value={{ index, setting, typesFilter }}>
+    <RowContext.Provider value={{ id, settings, typesFilter }}>
       <div className="settings__row">{children}</div>
     </RowContext.Provider>
   );
@@ -195,39 +209,39 @@ function Container({
 
 function Sections(): ReactElement {
   const { handleChangeSetting, types } = useContext(SettingsContext);
-  const { index, setting } = useContext(RowContext);
+  const { id, settings } = useContext(RowContext);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const currentTaskType = types
       .filter((type) => type.section === e.currentTarget.value)
-      .find((type) => type.name === setting.name);
+      .find((type) => type.name === settings.name);
 
-    handleChangeSetting(index, "section", e.currentTarget.value);
+    handleChangeSetting(id, "section", e.currentTarget.value);
 
-    handleChangeSetting(index, "colPerRow", currentTaskType?.colPerRow || 1);
+    handleChangeSetting(id, "colPerRow", currentTaskType?.colPerRow || 1);
 
     if (!currentTaskType) {
-      handleChangeSetting(index, "name", "");
-      handleChangeSetting(index, "colPerRow", 1);
+      handleChangeSetting(id, "name", "");
+      handleChangeSetting(id, "colPerRow", 1);
     }
   }
 
   const sectionElements = Object.keys(sections).map((section, i) => (
-    <React.Fragment key={`section-${index}-${i}`}>
+    <React.Fragment key={`section-${id}-${i}`}>
       <input
         type="radio"
-        id={`${section}-${index}`}
-        name={`section-${index}`}
+        id={`${section}-${id}`}
+        name={`section-${id}`}
         value={sections[section as keyof typeof sections]}
         className="settings__input settings__input--radio"
         onChange={handleChange}
         checked={
-          setting?.section === sections[section as keyof typeof sections]
+          settings?.section === sections[section as keyof typeof sections]
         }
       />
       <label
         className="settings__radio-label settings__radio-label--section"
-        htmlFor={`${section}-${index}`}
+        htmlFor={`${section}-${id}`}
         title={section}
       >
         {sections[section as keyof typeof sections]}
@@ -244,45 +258,45 @@ function Sections(): ReactElement {
 
 function Operations(): ReactElement {
   const { handleChangeSetting, types } = useContext(SettingsContext);
-  const { index, setting } = useContext(RowContext);
+  const { id, settings } = useContext(RowContext);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const currentTaskType = types
       .filter((type) => type.operation === e.currentTarget.value)
-      .find((type) => type.name === setting.name);
+      .find((type) => type.name === settings.name);
 
-    handleChangeSetting(index, "operation", e.currentTarget.value);
+    handleChangeSetting(id, "operation", e.currentTarget.value);
 
-    handleChangeSetting(index, "colPerRow", currentTaskType?.colPerRow || 2);
+    handleChangeSetting(id, "colPerRow", currentTaskType?.colPerRow || 2);
 
     if (!currentTaskType) {
-      handleChangeSetting(index, "name", "");
-      handleChangeSetting(index, "type", "");
+      handleChangeSetting(id, "name", "");
+      handleChangeSetting(id, "type", "");
     }
 
-    if (currentTaskType?.missing && !setting.missing) {
-      handleChangeSetting(index, "missing", currentTaskType.missing);
+    if (currentTaskType?.missing && !settings.missing) {
+      handleChangeSetting(id, "missing", currentTaskType.missing);
     }
   }
 
   const operationElements = Object.keys(operations).map((operation, i) => (
-    <React.Fragment key={`operation-${index}-${i}`}>
+    <React.Fragment key={`operation-${id}-${i}`}>
       <input
         type="radio"
-        id={`${operation}-${index}`}
-        name={`operation-${index}`}
+        id={`${operation}-${id}`}
+        name={`operation-${id}`}
         value={operations[operation as keyof typeof operations]}
         className="settings__input settings__input--radio"
         onChange={handleChange}
         checked={
-          setting?.operation ===
+          settings?.operation ===
           operations[operation as keyof typeof operations]
         }
         disabled={operation === "½" || operation === "%"}
       />
       <label
         className="settings__radio-label settings__radio-label--operation"
-        htmlFor={`${operation}-${index}`}
+        htmlFor={`${operation}-${id}`}
         title={operation}
       >
         {operations[operation as keyof typeof operations]}
@@ -299,33 +313,33 @@ function Operations(): ReactElement {
 
 function Missing(): ReactElement {
   const { types, handleChangeSetting } = useContext(SettingsContext);
-  const { index, setting } = useContext(RowContext);
+  const { id, settings } = useContext(RowContext);
 
   const disabled =
     types.find(
       (type) =>
-        setting?.name === type.name && setting?.operation === type.operation
+        settings?.name === type.name && settings?.operation === type.operation
     )?.missing === arithmeticMissing.result;
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    handleChangeSetting(index, "missing", e.currentTarget.value);
+    handleChangeSetting(id, "missing", e.currentTarget.value);
   }
 
   const missings = Object.keys(arithmeticMissing).map((missing, i) => (
-    <React.Fragment key={`missing-${index}-${i}`}>
+    <React.Fragment key={`missing-${id}-${i}`}>
       <input
         type="radio"
-        id={`${missing}-${index}`}
-        name={`missing-${index}`}
+        id={`${missing}-${id}`}
+        name={`missing-${id}`}
         value={missing}
         className="settings__input settings__input--radio"
         onChange={handleChange}
         checked={
-          setting?.missing === arithmeticMissing[missing as TArithmeticMissing]
+          settings?.missing === arithmeticMissing[missing as TArithmeticMissing]
         }
         disabled={disabled}
       />
-      <label className="settings__radio-label" htmlFor={`${missing}-${index}`}>
+      <label className="settings__radio-label" htmlFor={`${missing}-${id}`}>
         {missing}
       </label>
     </React.Fragment>
@@ -338,22 +352,22 @@ function Missing(): ReactElement {
 
 function Types(): ReactElement {
   const { types, handleChangeSetting } = useContext(SettingsContext);
-  const { index, setting, typesFilter } = useContext(RowContext);
+  const { id, settings, typesFilter } = useContext(RowContext);
 
   const filteredTypes = types.filter(typesFilter);
 
   function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
     const currentTaskType = filteredTypes
-      .filter((type) => type.operation === setting.operation)
+      .filter((type) => type.operation === settings.operation)
       .find((type) => type.name === e.currentTarget.value);
 
     const name =
       e.currentTarget.value === "-- select --" ? "" : e.currentTarget.value;
-    handleChangeSetting(index, "name", name);
-    handleChangeSetting(index, "colPerRow", currentTaskType?.colPerRow || 2);
+    handleChangeSetting(id, "name", name);
+    handleChangeSetting(id, "colPerRow", currentTaskType?.colPerRow || 2);
 
     if (currentTaskType?.missing === arithmeticMissing.result) {
-      handleChangeSetting(index, "missing", arithmeticMissing.result);
+      handleChangeSetting(id, "missing", arithmeticMissing.result);
     }
   }
 
@@ -369,7 +383,7 @@ function Types(): ReactElement {
         name="type"
         id="settings-type"
         className="settings__select"
-        value={setting?.name}
+        value={settings?.name}
         onChange={handleChange}
       >
         <option>-- select --</option>
@@ -385,12 +399,12 @@ function Types(): ReactElement {
 
 function Quantity(): ReactElement {
   const { handleChangeSetting } = useContext(SettingsContext);
-  const { index, setting } = useContext(RowContext);
+  const { id, settings } = useContext(RowContext);
 
-  const [value, setValue] = useState(setting?.quantity.toString()); // to not loose focus on changing input field, change redux value onBlur only
+  const [value, setValue] = useState(settings?.quantity.toString()); // to not loose focus on changing input field, change redux value onBlur only
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    handleChangeSetting(index, "quantity", Number(e.currentTarget.value));
+    handleChangeSetting(id, "quantity", Number(e.currentTarget.value));
   }
 
   return (
@@ -421,14 +435,14 @@ function Quantity(): ReactElement {
 function ControlBtns(): ReactElement {
   const { handleInsertSetting, handleDeleteSetting } =
     useContext(SettingsContext);
-  const { index } = useContext(RowContext);
+  const { id } = useContext(RowContext);
 
   function handleInsert() {
-    handleInsertSetting(index);
+    handleInsertSetting(id);
   }
 
   function handleDelete() {
-    handleDeleteSetting(index);
+    handleDeleteSetting(id);
   }
 
   return (

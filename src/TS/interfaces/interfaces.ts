@@ -6,6 +6,7 @@ import {
 } from "../types/types";
 
 export interface ISettings {
+  id?: string;
   page: TRoutes;
   section?: string;
   name: string;
@@ -13,12 +14,6 @@ export interface ISettings {
   numberOfOperands: number;
   missing?: TArithmeticMissing | undefined;
   quantity: number;
-}
-
-export interface IProblemsState {
-  settings: ISettings[];
-  columns: number;
-  problems: IProblem[][];
 }
 
 export interface ICollapsibleProps {
@@ -89,4 +84,15 @@ export interface IFractionProblemOperands {
   remainedDenominator: number;
   simplifiedNumerator: number;
   simplifiedDenominator: number;
+}
+
+export interface IProblems {
+  problems: IProblem[][];
+}
+
+export interface IProblemState extends ISettings, IProblems {}
+
+export interface IProblemsState {
+  settings: ISettings[];
+  problems: IProblemState[];
 }

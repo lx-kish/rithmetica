@@ -1,29 +1,32 @@
 import React, { ReactElement } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 
-import {
-  setInputValue,
-  problems,
-} from "../../../../redux/fractions/fractionsSlice";
+import { setInputValue, problems } from "../../../redux/problems/problemsSlice";
 
-import Fraction from "../../fraction/fraction.component";
+import Fraction from "../fraction/fraction.component";
 
-import Sign from "../../sign/sign.component";
-import Input from "../../input/input.component";
+import Sign from "../sign/sign.component";
+import Input from "../input/input.component";
 
-import { IProblem } from "../../../../TS/interfaces/interfaces";
-import { fractionOperandTypes } from "../../../../TS/constatnts/constants";
+import { IProblem } from "../../../TS/interfaces/interfaces";
+import { fractionOperandTypes } from "../../../TS/constatnts/constants";
 
 interface IProps {
+  problemStateId: string;
   stateProblemIndex: number;
   content: IProblem[];
 }
 
 function FractionsProblem({
+  problemStateId,
   stateProblemIndex,
   content,
 }: IProps): ReactElement {
-  const stateProblems = useAppSelector(problems);
+  const state = useAppSelector(problems);
+
+  const stateProblems = state.find(
+    (problem) => problem.id === problemStateId
+  )!.problems;
 
   const dispatch = useAppDispatch();
 
@@ -84,7 +87,8 @@ function FractionsProblem({
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(
       setInputValue({
-        index: stateProblemIndex,
+        id: problemStateId,
+        problemIndex: stateProblemIndex,
         name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
@@ -124,9 +128,12 @@ function FractionsProblem({
                 step="1"
                 name="interimNumerator1"
                 result={operand.numerator1?.toString()}
-                value={stateProblems[stateProblemIndex][
-                  stateProblems[stateProblemIndex].length - 1
+                value={content[
+                  content.length - 1
                 ].interimNumerator1?.toString()}
+                // value={stateProblems[stateProblemIndex][
+                //   stateProblems[stateProblemIndex].length - 1
+                // ].interimNumerator1?.toString()}
                 handleChange={handleChange}
               />
               <Sign
@@ -146,9 +153,12 @@ function FractionsProblem({
                 step="1"
                 name="interimNumerator2"
                 result={operand.numerator2?.toString()}
-                value={stateProblems[stateProblemIndex][
-                  stateProblems[stateProblemIndex].length - 1
+                value={content[
+                  content.length - 1
                 ].interimNumerator2?.toString()}
+                // value={stateProblems[stateProblemIndex][
+                //   stateProblems[stateProblemIndex].length - 1
+                // ].interimNumerator2?.toString()}
                 handleChange={handleChange}
               />
             </span>
@@ -163,9 +173,12 @@ function FractionsProblem({
                 step="1"
                 name="interimDenominator1"
                 result={operand.denominator1?.toString()}
-                value={stateProblems[stateProblemIndex][
-                  stateProblems[stateProblemIndex].length - 1
+                value={content[
+                  content.length - 1
                 ].interimDenominator1?.toString()}
+                // value={stateProblems[stateProblemIndex][
+                //   stateProblems[stateProblemIndex].length - 1
+                // ].interimDenominator1?.toString()}
                 handleChange={handleChange}
               />
               {operand.sign === "×" || operand.sign === "÷" ? (
@@ -183,9 +196,12 @@ function FractionsProblem({
                     step="1"
                     name="interimDenominator2"
                     result={operand.denominator2?.toString()}
-                    value={stateProblems[stateProblemIndex][
-                      stateProblems[stateProblemIndex].length - 1
+                    value={content[
+                      content.length - 1
                     ].interimDenominator2?.toString()}
+                    // value={stateProblems[stateProblemIndex][
+                    //   stateProblems[stateProblemIndex].length - 1
+                    // ].interimDenominator2?.toString()}
                     handleChange={handleChange}
                   />
                 </>
@@ -209,9 +225,10 @@ function FractionsProblem({
               name={operand.type}
               result={operand.integer?.toString()}
               disabled={isDisabled(operand.type)}
-              value={stateProblems[stateProblemIndex][
-                stateProblems[stateProblemIndex].length - 1
-              ][operand.type]?.toString()}
+              value={content[content.length - 1][operand.type]?.toString()}
+              // value={stateProblems[stateProblemIndex][
+              //   stateProblems[stateProblemIndex].length - 1
+              // ][operand.type]?.toString()}
               handleChange={handleChange}
             />
           </span>
@@ -234,9 +251,10 @@ function FractionsProblem({
               name={numeratorName}
               result={operand.numerator?.toString()}
               disabled={isDisabled(operand.type)}
-              value={stateProblems[stateProblemIndex][
-                stateProblems[stateProblemIndex].length - 1
-              ][numeratorName]?.toString()}
+              value={content[content.length - 1][numeratorName]?.toString()}
+              // value={stateProblems[stateProblemIndex][
+              //   stateProblems[stateProblemIndex].length - 1
+              // ][numeratorName]?.toString()}
               handleChange={handleChange}
             />
             <span className="fraction__delimeter"></span>
@@ -250,9 +268,10 @@ function FractionsProblem({
               name={denominatorName}
               result={operand.denominator?.toString()}
               disabled={isDisabled(operand.type)}
-              value={stateProblems[stateProblemIndex][
-                stateProblems[stateProblemIndex].length - 1
-              ][denominatorName]?.toString()}
+              value={content[content.length - 1][denominatorName]?.toString()}
+              // value={stateProblems[stateProblemIndex][
+              //   stateProblems[stateProblemIndex].length - 1
+              // ][denominatorName]?.toString()}
               handleChange={handleChange}
             />
           </span>

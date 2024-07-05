@@ -14,7 +14,7 @@ import {
   deleteSetting,
   changeSetting,
   settings,
-} from "../../../../redux/fractions/fractionsSlice";
+} from "../../../../redux/problems/problemsSlice";
 import { useAppSelector } from "../../../../redux/hooks";
 
 import { IProblemType, ISettings } from "../../../../TS/interfaces/interfaces";
@@ -24,24 +24,24 @@ interface IProps {
 }
 
 function FractionsHeaderContent({ pageName }: IProps): ReactElement {
+  const settingsState = useAppSelector(settings);
+
   const types = ProblemTypes.filter((type) => type.page === pageName);
 
-  function RenderRow({
-    index,
-    setting,
-  }: {
-    index: number;
-    setting: ISettings;
-  }) {
+  const pageSettingsState = settingsState.filter(
+    (problemType) => problemType.page === pageName
+  );
+
+  function RenderRow({ id, settings }: { id: string; settings: ISettings }) {
     function typesFilter(type: IProblemType): boolean {
       return (
-        type.section === setting?.section &&
-        type.operation === setting?.operation
+        type.section === settings?.section &&
+        type.operation === settings?.operation
       );
     }
 
     return (
-      <Settings.Row index={index} setting={setting} typesFilter={typesFilter}>
+      <Settings.Row id={id} settings={settings} typesFilter={typesFilter}>
         <Settings.Container className="settings__col settings__col--controls">
           <Settings.Sections />
           <Settings.Operations />
@@ -96,18 +96,23 @@ function FractionsHeaderContent({ pageName }: IProps): ReactElement {
         </Collapsible>
       </Collapsible>
       <Settings
+        route={pageName}
         types={types}
         generateProblems={generateProblems}
         insertSetting={insertSetting}
         deleteSetting={deleteSetting}
         changeSetting={changeSetting}
-        settingsState={settings}
+        settingsState={pageSettingsState}
       >
         <Settings.Body>
           <Settings.Group
-            data={useAppSelector(settings)}
-            render={(setting: ISettings, index: number) => (
-              <RenderRow key={index} index={index} setting={setting} />
+            data={pageSettingsState}
+            render={(settings: ISettings, index: number) => (
+              <RenderRow
+                key={settings.id}
+                id={settings.id as string}
+                settings={settings}
+              />
             )}
           />
         </Settings.Body>
