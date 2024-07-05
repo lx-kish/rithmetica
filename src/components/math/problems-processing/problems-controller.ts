@@ -6,46 +6,42 @@ import getProblemTypeBySignature from "../../../utils/get-problem-type/get-probl
 /**
  *
  */
-function problemsController(settings: ISettings[]): IProblem[][] {
-  const problems: IProblem[][] = [];
+function problemsController(stateProblemType: ISettings): IProblem[][] {
+  let problemsSet: IProblem[][] = [];
 
   try {
-    settings.forEach((type: ISettings) => {
-      const problemType = getProblemTypeBySignature({
-        name: type.name,
-        operation: type.operation,
-        route: type.page,
-        section: type?.section,
-      });
+    const problemType = getProblemTypeBySignature({
+      name: stateProblemType.name,
+      operation: stateProblemType.operation,
+      route: stateProblemType.page,
+      section: stateProblemType?.section,
+    });
 
-      if (!problemType)
-        throw new Error(
-          `Controller failed to find ptoblem type with signature: name: ${type.name}, operation: ${type.operation}, pageName: ${type.page}`
-        );
-
-      const problemsFactory = problemType.factory;
-
-      if (!problemsFactory)
-        throw new Error(
-          `Controller failed to find problem factory with the signature: : name: ${type.name}, operation: ${type.operation}, page: ${type.page}`
-        );
-
-      const problemsSet = problemsFactory(
-        type.page,
-        type.name,
-        type.operation,
-        type.numberOfOperands,
-        type.quantity,
-        type?.missing,
-        type?.section as TSections
+    if (!problemType)
+      throw new Error(
+        `Controller failed to find ptoblem type with signature: name: ${stateProblemType.name}, operation: ${stateProblemType.operation}, pageName: ${stateProblemType.page}`
       );
 
-      if (!problemsSet) {
-        throw new Error("Wrong type of operands processor in the settings!");
-      }
+    const problemsFactory = problemType.factory;
 
-      problems!.push(...problemsSet);
-    });
+    if (!problemsFactory)
+      throw new Error(
+        `Controller failed to find problem factory with the signature: : name: ${stateProblemType.name}, operation: ${stateProblemType.operation}, page: ${stateProblemType.page}`
+      );
+
+    problemsSet = problemsFactory(
+      stateProblemType.page,
+      stateProblemType.name,
+      stateProblemType.operation,
+      stateProblemType.numberOfOperands,
+      stateProblemType.quantity,
+      stateProblemType?.missing,
+      stateProblemType?.section as TSections
+    );
+
+    if (!problemsSet) {
+      throw new Error("Wrong type of operands processor in the settings!");
+    }
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
@@ -53,7 +49,7 @@ function problemsController(settings: ISettings[]): IProblem[][] {
       throw new Error(e);
     }
   }
-  return problems;
+  return problemsSet;
 }
 
 export default problemsController;

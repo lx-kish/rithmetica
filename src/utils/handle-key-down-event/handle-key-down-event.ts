@@ -42,9 +42,9 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
       e.currentTarget.getAttribute("pattern")!.indexOf(".") > 0 &&
       (keyCode === 110 || //. on keypad
-        keyCode === 190) //. on keyboard
+        keyCode === 190 || //. on keyboard
+        e.key === ".") // . on non-English keyboard
     ) {
-      console.log(e.currentTarget.getAttribute("pattern")!.indexOf(".") > 0);
       return false;
     }
 

@@ -1,28 +1,31 @@
 import React, { ReactElement } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
-import {
-  setInputValue,
-  problems,
-} from "../../../../redux/arithmetic/arithmeticSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { setInputValue, problems } from "../../../redux/problems/problemsSlice";
 
-import Number from "../../number/number.component";
-import Sign from "../../sign/sign.component";
-import Input from "../../input/input.component";
+import Number from "../number/number.component";
+import Sign from "../sign/sign.component";
+import Input from "../input/input.component";
 
-import { IProblem } from "../../../../TS/interfaces/interfaces";
-import { arithmeticOperandTypes } from "../../../../TS/constatnts/constants";
+import { IProblem, IProblemState } from "../../../TS/interfaces/interfaces";
+import { arithmeticOperandTypes } from "../../../TS/constatnts/constants";
 
 interface IProps {
+  problemStateId: string;
   stateProblemIndex: number;
   content: IProblem[];
 }
 
-function ArithmeticProblem({
+function DecimalsProblem({
+  problemStateId,
   stateProblemIndex,
   content,
 }: IProps): ReactElement {
-  const stateProblems = useAppSelector(problems);
+  const state = useAppSelector(problems);
+
+  const stateProblems = state.find(
+    (problem: IProblemState) => problem.id === problemStateId
+  )!.problems;
 
   const dispatch = useAppDispatch();
 
@@ -43,7 +46,9 @@ function ArithmeticProblem({
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     dispatch(
       setInputValue({
-        index: stateProblemIndex,
+        id: problemStateId,
+        problemIndex: stateProblemIndex,
+        name: e.currentTarget.name,
         value: e.currentTarget.value,
       })
     );
@@ -73,13 +78,13 @@ function ArithmeticProblem({
         return (
           <Input
             key={`problem__input-${i}`}
-            pattern="[0-9]*"
+            pattern="[0-9]+([,\.][0-9]+)?"
             className={getInputClassName(operand.value)}
-            step="1"
+            // step="1"
+            step="0.1"
+            name="value"
             result={operand.value.toString()}
-            value={stateProblems[stateProblemIndex][
-              stateProblems[stateProblemIndex].length - 1
-            ].value.toString()}
+            value={content[content.length - 1].value.toString()}
             handleChange={handleChange}
           />
         );
@@ -100,4 +105,4 @@ function ArithmeticProblem({
   );
 }
 
-export default ArithmeticProblem;
+export default DecimalsProblem;
