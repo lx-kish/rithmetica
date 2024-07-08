@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.1.0 release notes
+
+- Add 1-digit decimals addition and subtraction problems;
+
+- Fix bugs.
+
 #### v11.0.0 release notes
 
 - Redesign state management of the arithmetic and fractions applications;
