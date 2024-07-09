@@ -25,6 +25,7 @@ import singleDigitDifferentDenominatorsImproperFractions from "./fractions-opera
 import singleDigitFractions from "./fractions-operands-generators/fractions/multitpication-division/single-digit-fractions";
 import tenthAddSubtract from "./fractions-operands-generators/decimals/addition-subtraction/tenth-add-subtract";
 import oneDigitDecimalsAddSubtract from "./fractions-operands-generators/decimals/addition-subtraction/one-digit-decimals-add-subtract";
+import twoDigitDecimalsAddSubtract from "./fractions-operands-generators/decimals/addition-subtraction/two-digit-decimals-add-subtract";
 import twoDigitPercentage from "./fractions-operands-generators/percentage/two-digit-percentage";
 
 import {
@@ -463,6 +464,26 @@ const ProblemTypes: IProblemType[] = [
     uiType: uiType.decimals,
     factory: arithmeticProblemsFactory,
     processor: oneDigitDecimalsAddSubtract,
+  }, // 5 + 5 + 5 = 15
+  {
+    page: routes.fractions,
+    section: sections.decimals,
+    operation: operations.addition,
+    name: "2-digit decimals",
+    colPerRow: 2,
+    uiType: uiType.decimals,
+    factory: arithmeticProblemsFactory,
+    processor: twoDigitDecimalsAddSubtract,
+  }, // 5 + 5 + 5 = 15
+  {
+    page: routes.fractions,
+    section: sections.decimals,
+    operation: operations.subtraction,
+    name: "2-digit decimals",
+    colPerRow: 2,
+    uiType: uiType.decimals,
+    factory: arithmeticProblemsFactory,
+    processor: twoDigitDecimalsAddSubtract,
   }, // 5 + 5 + 5 = 15
   {
     page: routes.fractions,
