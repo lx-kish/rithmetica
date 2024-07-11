@@ -70,6 +70,16 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.3.0 release notes
+
+- Add jsdom environment for running vitest testing framework;
+
+- Update vitest version to 2.0;
+
+- Update TypeScript version to 5.5;
+
+- Configure vite and typescript for using vitest testing framework.
+
 #### v11.2.0 release notes
 
 - Add 2-digit decimals addition and subtraction problems;
