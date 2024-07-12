@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.4.0 release notes
+
+- Redesign core modules of the applications for better tests running.
+
 #### v11.3.0 release notes
 
 - Add jsdom environment for running vitest testing framework;
