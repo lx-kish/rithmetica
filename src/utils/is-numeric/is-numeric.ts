@@ -7,7 +7,7 @@
  *
  * @return {boolean}
  */
-const isNumeric = (val: any): boolean => {
+function isNumeric(val: any): boolean {
   try {
     return isFinite(Number(String(val).trim() || NaN));
   } catch (e) {
@@ -19,6 +19,6 @@ const isNumeric = (val: any): boolean => {
   }
 
   return false;
-};
+}
 
 export default isNumeric;

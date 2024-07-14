@@ -3,40 +3,22 @@ import React, { useState, useEffect } from "react";
 import getNodeOffsetTop from "../../utils/get-node-offset-top/get-node-offset-top";
 import useWindowSize from "../use-window-size/use-window-size";
 
-export default function useStickHeaderOnScroll() {
-  /**
-   * Single state hook useState for all the state properties
-   */
+function useStickHeaderOnScroll(boxId: string, elementId: string) {
   const [displayTabHeader, setDisplayTabHeader] = useState(false);
 
   const dimensions = useWindowSize();
 
-  /**
-   *
-   * @param {Boolean} display - passing parameter from the settings component
-   *
-   * For details see:
-   * https://stackoverflow.com/questions/40722382/how-to-pass-state-back-to-parent-in-react
-   */
-  function getDisplayTabHeader(display: boolean): void {
-    setDisplayTabHeader(display);
-  }
-
-  /**
-   * React hook useEffect for stick header on scrolling
-   */
   useEffect(() => {
-    const tab: HTMLElement | null = document.getElementById("tab");
-    const headerTab: HTMLElement | null =
-      document.getElementById("header-stick");
+    const tab: HTMLElement | null = document.getElementById(boxId);
+    const headerTab: HTMLElement | null = document.getElementById(elementId);
 
     let tabOffsetTop: number;
 
-    (document as any).fonts.ready.then(() => {
+    document.fonts?.ready.then(() => {
       tabOffsetTop = getNodeOffsetTop(tab);
     });
 
-    function handler(): any {
+    function handler(): void {
       if (tab && headerTab) {
         const scrolledDown = window.pageYOffset >= tabOffsetTop;
 
@@ -54,5 +36,7 @@ export default function useStickHeaderOnScroll() {
     };
   }, [displayTabHeader, dimensions]);
 
-  return { displayTabHeader, getDisplayTabHeader, setDisplayTabHeader };
+  return { displayTabHeader, setDisplayTabHeader };
 }
+
+export default useStickHeaderOnScroll;

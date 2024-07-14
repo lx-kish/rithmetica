@@ -57,7 +57,8 @@ export default function MultiplicationTabHeaderContent(): ReactElement {
         titleClassName="collapsible__title collapsible__title--level-one"
         iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
         iconClassName="collapsible__icon--level-one"
-        useStickHeader={true}
+        stickyBoxId="tab"
+        stickyElementId="header-stick"
         borderBottom={false}
       >
         <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />

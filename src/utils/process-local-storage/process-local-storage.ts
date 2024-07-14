@@ -1,6 +1,5 @@
-export const getStorage = () => {
+export function getStorage() {
   if (typeof Storage !== "undefined") {
-
     return {
       setItem: (key: string, value: string | Object): void => {
         const v = typeof value === "string" ? value : JSON.stringify(value);
@@ -16,10 +15,6 @@ export const getStorage = () => {
       removeItem: (key: string): void => {
         localStorage.removeItem(key);
       },
-      // clear: () => {
-      //   localStorage.clear();
-      // }
     };
   }
-  // return {}
 }
