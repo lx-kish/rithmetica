@@ -12,7 +12,8 @@ interface IProps {
   title?: string;
   iconBoxClassName?: string;
   iconClassName: string;
-  useStickHeader?: boolean;
+  stickyBoxId?: string;
+  stickyElementId?: string;
   children: React.ReactNode;
 }
 
@@ -24,18 +25,19 @@ function Collapsible({
   title = "",
   iconBoxClassName = "",
   iconClassName,
-  useStickHeader = false,
+  stickyBoxId = "",
+  stickyElementId = "",
   children,
 }: IProps): ReactElement {
-  const { setDisplayTabHeader } = useStickHeaderOnScroll();
+  const { setDisplayTabHeader } = useStickHeaderOnScroll(
+    stickyBoxId,
+    stickyElementId
+  );
   const [display, setDisplay] = useState(false);
 
-  /**
-   * React hook useEffect for sending up the state in case it is needed
-   */
   useEffect(() => {
-    if (useStickHeader) setDisplayTabHeader(display);
-  }, [display, useStickHeader, setDisplayTabHeader]);
+    if (stickyBoxId) setDisplayTabHeader(display);
+  }, [display, stickyBoxId, stickyElementId, setDisplayTabHeader]);
 
   const handleChange = () => {
     setDisplay((currDisplay) => !currDisplay);

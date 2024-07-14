@@ -70,6 +70,12 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.4.1 release notes
+
+- Fix and refactor sticky header functionality;
+
+- fix minor bugs.
+
 #### v11.4.0 release notes
 
 - Redesign core modules of the applications for better tests running.
