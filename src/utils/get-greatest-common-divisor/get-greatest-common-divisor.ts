@@ -9,7 +9,7 @@ import isNumeric from "../is-numeric/is-numeric";
  *
  * @return {number} greatest common divisor
  */
-const getGreatestCommonDivisor = (a: number, b: number): number => {
+function getGreatestCommonDivisor(a: number, b: number): number {
   let greatestCommonDivisor = 0;
 
   try {
@@ -26,7 +26,7 @@ const getGreatestCommonDivisor = (a: number, b: number): number => {
     }
   }
 
-  return greatestCommonDivisor;
-};
+  return Math.abs(greatestCommonDivisor); // GCD is always positive by definition
+}
 
 export default getGreatestCommonDivisor;

@@ -10,7 +10,7 @@ import isNumeric from "../is-numeric/is-numeric";
  *
  * @return {number} greatest common divisor
  */
-const getLeastCommonMultiple = (a: number, b: number): number => {
+function getLeastCommonMultiple(a: number, b: number): number {
   let leastCommonMultiple = 0;
 
   try {
@@ -27,7 +27,7 @@ const getLeastCommonMultiple = (a: number, b: number): number => {
     }
   }
 
-  return leastCommonMultiple;
-};
+  return Math.abs(leastCommonMultiple); // LCM is always positive by definition
+}
 
 export default getLeastCommonMultiple;
