@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.4.3 release notes
+
+- Fix minor bugs.
+
 #### v11.4.2 release notes
 
 - Fix returning negative values in the functions calculating GCD and LCM.
