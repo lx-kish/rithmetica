@@ -5,7 +5,7 @@
  *
  * @return {Array} array of numbers - factors of a num
  */
-const getFactors = (num: number): number[] => {
+function getFactors(num: number): number[] {
   let argument = num;
   let result: number[] = [];
 
@@ -48,6 +48,6 @@ const getFactors = (num: number): number[] => {
   } finally {
     return result;
   }
-};
+}
 
 export default getFactors;
