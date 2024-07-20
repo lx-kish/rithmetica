@@ -13,12 +13,12 @@ import ProblemTypes from "../../components/math/problem-types";
  *
  * @return {IProblemType}
  */
-const getProblemTypeBySignature = (signature: {
+function getProblemTypeBySignature(signature: {
   name: string;
   operation: string;
   route: TRoutes;
   section?: string;
-}): IProblemType => {
+}): IProblemType {
   const { name, operation, route, section } = signature;
   let problemType!: IProblemType;
 
@@ -45,9 +45,9 @@ const getProblemTypeBySignature = (signature: {
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return problemType;
   }
-
-  return problemType;
-};
+}
 
 export default getProblemTypeBySignature;
