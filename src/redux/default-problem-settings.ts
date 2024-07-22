@@ -4,7 +4,7 @@ import {
   sections,
 } from "../TS/constatnts/constants";
 import { ISettings } from "../TS/interfaces/interfaces";
-import getRandomStringValue from "../utils/get-random-string-value/get-random-string-value";
+import getRandomString from "../utils/get-random-string/get-random-string";
 
 // default common settings
 export const DEFAULT_OPERATION = "+";
@@ -26,7 +26,7 @@ export const DEFAULT_FRACTIONS_COLUMNS_PER_ROW = 1;
 
 export const defaultSettings: ISettings[] = [
   {
-    id: getRandomStringValue(),
+    id: getRandomString(),
     page: DEFAULT_ARITHMETIC_ROUTE,
     operation: DEFAULT_OPERATION,
     missing: DEFAULT_MISSING,
@@ -35,7 +35,7 @@ export const defaultSettings: ISettings[] = [
     quantity: DEFAULT_QUANTITY,
   },
   {
-    id: getRandomStringValue(),
+    id: getRandomString(),
     page: DEFAULT_FRACTIONS_ROUTE,
     section: DEFAULT_SECTION,
     operation: DEFAULT_OPERATION,

@@ -25,7 +25,7 @@ import {
 import { routes } from "../../TS/constatnts/constants";
 import { TRoutes } from "../../TS/types/types";
 
-import getRandomStringValue from "../../utils/get-random-string-value/get-random-string-value";
+import getRandomString from "../../utils/get-random-string/get-random-string";
 
 const SLICE_NAME = "problems";
 
@@ -182,7 +182,7 @@ export const problemsSlice = createSlice({
       );
 
       const newProblemSetting: ISettings = {
-        id: getRandomStringValue(),
+        id: getRandomString(),
         page: route as TRoutes,
         operation: DEFAULT_OPERATION,
         name: "",
@@ -242,7 +242,7 @@ export const problemsSlice = createSlice({
       if (pageSettings.length === 1 && index === 0) {
         newState.settings = [
           {
-            id: getRandomStringValue(),
+            id: getRandomString(),
             page: DEFAULT_ARITHMETIC_ROUTE,
             operation: DEFAULT_OPERATION,
             missing: DEFAULT_MISSING,
@@ -259,7 +259,7 @@ export const problemsSlice = createSlice({
         newState.settings = [
           ...previousState.slice(0, index + 1),
           {
-            id: getRandomStringValue(),
+            id: getRandomString(),
             page: DEFAULT_FRACTIONS_ROUTE,
             section: DEFAULT_SECTION,
             operation: DEFAULT_OPERATION,
