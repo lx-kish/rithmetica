@@ -46,10 +46,12 @@ describe("getRoundedToFixed function tests", () => {
   });
 
   it("throws an error when one of the arguments has not been provided", () => {
+    // @ts-ignore
     expect(() => getRoundedToFixed(1).toThrow());
   });
 
   it("throws an error when no arguments has been provided", () => {
+    // @ts-ignore
     expect(() => getRoundedToFixed()).toThrow();
   });
 
