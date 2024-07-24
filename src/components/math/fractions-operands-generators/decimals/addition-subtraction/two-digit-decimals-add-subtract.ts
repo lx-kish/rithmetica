@@ -1,5 +1,5 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
-import { getRoundedToFixed } from "../../../../../utils/get-rounded-to-fixed/get-rounded-to-fixed";
+import getRoundedToFixed from "../../../../../utils/get-rounded-to-fixed/get-rounded-to-fixed";
 
 /**
  *
