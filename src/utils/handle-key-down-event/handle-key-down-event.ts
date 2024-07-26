@@ -5,13 +5,14 @@
  *
  * @return {void}
  */
-const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
   /**
    * Validate a key down event for the range of criteria
    * @param  {event} e a key down event
    * @return {boolean} validation state
    */
-  const applyKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  function applyKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (!e.currentTarget) return true;
     /**
      * define key code
      */
@@ -40,7 +41,7 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     /** enable . (decimal sign) only in case of decimals and not in case of whole numbers
      */
     if (
-      e.currentTarget.getAttribute("pattern")!.indexOf(".") > 0 &&
+      (e.currentTarget.getAttribute("pattern")?.indexOf(".") || -1) > 0 && // || -1 for the case when e.currentTarget is undefined
       (keyCode === 110 || //. on keypad
         keyCode === 190 || //. on keyboard
         e.key === ".") // . on non-English keyboard
@@ -69,11 +70,11 @@ const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     }
 
     return false;
-  };
+  }
 
   if (applyKeyDown(e)) {
     e.preventDefault();
   }
-};
+}
 
 export default handleKeyDown;
