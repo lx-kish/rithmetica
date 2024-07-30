@@ -70,7 +70,7 @@ function Problems({ pageName }: IProps): ReactElement {
   }
 
   return (
-    <div className="problems">
+    <section className="problems">
       {derivedProblems.map(
         (problemType) =>
           problemType.problemType.page === pageName &&
@@ -109,7 +109,7 @@ function Problems({ pageName }: IProps): ReactElement {
             </div>
           ))
       )}
-    </div>
+    </section>
   );
 }
 
