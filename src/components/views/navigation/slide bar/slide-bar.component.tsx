@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
 import { ISectionsAttributes } from "../../../../TS/interfaces/interfaces";
@@ -10,21 +10,23 @@ interface IProps {
 }
 
 function SlideBar({ open, hideSliderMenu }: IProps): ReactElement {
-  const element = (link: ISectionsAttributes, i: number) => (
-    <Link
-      key={i}
-      to={{ pathname: link.link }}
-      className={`slide-bar__item ${link.className}`}
-      onClick={() => hideSliderMenu()}
-    >
-      {link.name}
-    </Link>
-  );
-
-  const showLinks = () => sections.map((link, i) => element(link, i));
+  function element(link: ISectionsAttributes, i: number) {
+    return (
+      <Link
+        key={i}
+        to={{ pathname: link.link }}
+        className={`slide-bar__item ${link.className}`}
+        onClick={hideSliderMenu}
+      >
+        {link.name}
+      </Link>
+    );
+  }
 
   return (
-    <nav className={`slide-bar${open ? " is-active" : ""}`}>{showLinks()}</nav>
+    <nav className={`slide-bar${open ? " is-active" : ""}`}>
+      {sections.map((link, i) => element(link, i))}
+    </nav>
   );
 }
 
