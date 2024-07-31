@@ -52,14 +52,19 @@ function Collapsible({
       >
         <h3 className={titleClassName}>{title}</h3>
         <input
-          type="checkbox"
+          type="button"
           className="collapsible__btn"
           id={id}
-          checked={display}
-          onChange={handleChange}
+          onClick={handleChange}
           autoComplete="off" //for dropping the value when cached by browser
         />
-        <label htmlFor={id} className={iconBoxClassName}>
+        <label
+          htmlFor={id}
+          className={`${iconBoxClassName}${
+            display ? " collapsible__icon-box--expanded" : ""
+          }`}
+          data-testid="icon-box"
+        >
           <IconChevronDown className={iconClassName} />
         </label>
       </div>

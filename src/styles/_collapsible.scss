@@ -71,10 +71,6 @@
 
   &__btn {
     display: none;
-
-    &:checked ~ .collapsible__icon-box {
-      transform: rotate(180deg);
-    }
   }
 
   &__icon {
@@ -124,6 +120,10 @@
       cursor: pointer;
 
       transition: all 0.4s ease;
+
+      &--expanded {
+        transform: rotate(180deg);
+      }
 
       &--level-one {
         height: 3rem;
