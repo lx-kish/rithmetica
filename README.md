@@ -70,6 +70,10 @@ The application is a React JS Single Page Application, based on create-react-app
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.4.8 release notes
+
+- Redesign collapsible component.
+
 #### v11.4.7 release notes
 
 - Fix minor bugs.
