@@ -1,82 +1,135 @@
-export {}
-// import React from 'react';
+import React from "react";
 
-// import { BrowserRouter } from 'react-router-dom';
-// import { render, fireEvent, cleanup } from '@testing-library/react';
+import { BrowserRouter } from "react-router-dom";
+import { render, fireEvent, cleanup, screen } from "@testing-library/react";
+import { within } from "@testing-library/dom";
 
-// import Collapsible from './collapsible.component';
+import Collapsible from "./collapsible.component";
+import userEvent from "@testing-library/user-event";
 
-// describe('Addition and Subtraction component test suit', () => {
+describe("Collapsible component test suit", () => {
+  beforeEach(() => {
+    render(
+      // const { container } = render(
+      <BrowserRouter>
+        <Collapsible
+          title={`Testing component`}
+          id={`unit-test-purposes`}
+          collapsibleClassName={`collapsible`}
+          titleClassName={`collapsible__title collapsible__title--level-one`}
+          iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
+          iconClassName={`collapsible__icon--level-one`}
+          borderBottom={true}
+        >
+          {`I'm collapsible`}
+        </Collapsible>
+      </BrowserRouter>
+    );
+  });
 
-//     afterEach(cleanup);
+  afterEach(cleanup);
 
-//     /**
-//      * - @DONE - collapsible component should expand/collapse on every click on the chevron icon
-//      *           (probably unit test and should be moved into collapsible.test.js)
-//      */
-//     it('collapsible component should expand/collapse on every click on the chevron icon', () => {
+  // render button
+  it("collapsible component should have expand button", () => {
+    const button = screen.getByRole("button");
 
-//         const { container } = render(
-//             <BrowserRouter>
-//                 <Collapsible
-//                     title={`Testing component`}
-//                     id={`unit-test-purposes`}
-//                     content={`I'm collapsible`}
-//                     collapsibleClassName={`collapsible`}
-//                     titleClassName={`collapsible__title collapsible__title--level-one`}
-//                     iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
-//                     iconClassName={`collapsible__icon--level-one`}
-//                     borderBottom={true}
-//                 />
-//             </BrowserRouter>
-//         );
+    expect(button).toBeInTheDocument();
+  });
 
-//         const icon = container.querySelector('.collapsible__icon-box');
+  // render icom
+  it("collapsible component should have chevron icon within expand button", () => {
+    const icon = screen.getByTestId("icon-box");
 
-//         const button = container.querySelector('.collapsible__btn');
+    expect(icon).toBeInTheDocument();
+  });
 
-//         expect(button.checked).toBe(false);
+  // child (content) has collapsible--collapsed CSS class
+  it("collapsible component's content block should have CSS class 'collapsible--collapsed'", () => {
+    const content = screen.queryByText(/^I'm collapsible$/i);
+    expect(content?.classList.contains("collapsible--collapsed")).toBe(true);
+  });
 
-//         fireEvent.click(icon);
+  // no child (content)
+  it("collapsible component's content block should have CSS class 'collapsible--expanded' after pressing button", async () => {
+    const button = screen.getByRole("button");
+    const content = screen.queryByText(/^I'm collapsible$/i);
 
-//         expect(button.checked).toBe(true);
+    if (!button) {
+      throw new Error("The button wasn't found");
+    }
 
-//         fireEvent.click(icon);
+    if (!content) {
+      throw new Error("The content wasn't found");
+    }
 
-//         expect(button.checked).toBe(false);
-//     })
+    const user = userEvent.setup();
 
-//     /**
-//      * - @DONE - collapsible component expanded should contain test text
-//      */
-//     it('collapsible component expanded should contain test text', () => {
+    await user.click(button);
 
-//         const { container, queryByText } = render(
-//             <BrowserRouter>
-//                 <Collapsible
-//                     title={`Testing component`}
-//                     id={`unit-test-purposes`}
-//                     content={`I'm collapsible`}
-//                     collapsibleClassName={`collapsible`}
-//                     titleClassName={`collapsible__title collapsible__title--level-one`}
-//                     iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
-//                     iconClassName={`collapsible__icon--level-one`}
-//                     borderBottom={true}
-//                 />
-//             </BrowserRouter>
-//         );
+    expect(content.classList.contains("collapsible--expanded")).toBe(true);
+  });
 
-//         const icon = container.querySelector('.collapsible__icon-box');
+  // no child (content)
+  it("collapsible component's content block should NOT have CSS class 'collapsible--collapsed' after pressing button", async () => {
+    const button = screen.getByRole("button");
+    const content = screen.queryByText(/^I'm collapsible$/i);
 
-//         expect(queryByText(`I'm collapsible`)).not.toBeInTheDocument();
-        
-//         fireEvent.click(icon);
-        
-//         expect(queryByText(`I'm collapsible`)).toBeInTheDocument();
-        
-//         fireEvent.click(icon);
-        
-//         expect(queryByText(`I'm collapsible`)).not.toBeInTheDocument();
-//     })
+    if (!button) {
+      throw new Error("The button wasn't found");
+    }
 
-// })
+    if (!content) {
+      throw new Error("The content wasn't found");
+    }
+
+    const user = userEvent.setup();
+
+    await user.click(button);
+
+    expect(content.classList.contains("collapsible--collapsed")).toBe(false);
+  });
+
+  // no child (content)
+  it("collapsible component's content block should have CSS class 'collapsible--collapsed' after pressing button 2 times", async () => {
+    const button = screen.getByRole("button");
+    const content = screen.queryByText(/^I'm collapsible$/i);
+
+    if (!button) {
+      throw new Error("The button wasn't found");
+    }
+
+    if (!content) {
+      throw new Error("The content wasn't found");
+    }
+
+    const user = userEvent.setup();
+
+    await user.click(button);
+
+    await user.click(button);
+
+    expect(content.classList.contains("collapsible--collapsed")).toBe(true);
+  });
+
+  // no child (content)
+  it("collapsible component's content block should NOT have CSS class 'collapsible--expanded' after pressing button 2 times", async () => {
+    const button = screen.getByRole("button");
+    const content = screen.queryByText(/^I'm collapsible$/i);
+
+    if (!button) {
+      throw new Error("The button wasn't found");
+    }
+
+    if (!content) {
+      throw new Error("The content wasn't found");
+    }
+
+    const user = userEvent.setup();
+
+    await user.click(button);
+
+    await user.click(button);
+
+    expect(content.classList.contains("collapsible--expanded")).toBe(false);
+  });
+});
