@@ -66,11 +66,10 @@ export interface ISectionsAttributes {
   [key: string]: string;
 }
 
-export interface IFractionProblemOperands {
+export interface IFractionGeneratedOperands {
   operation: string;
   firstDenominator: number;
   secondDenominator: number;
-  commonDenominator: number;
   resultDenominator: number;
   firstNumerator: number;
   secondNumerator: number;
@@ -79,6 +78,10 @@ export interface IFractionProblemOperands {
   interimDenominator1: number;
   interimDenominator2: number;
   resultNumerator: number;
+}
+
+export interface IFractionProblemOperands extends IFractionGeneratedOperands {
+  commonDenominator: number;
   integer: number;
   remainedNumerator: number;
   remainedDenominator: number;

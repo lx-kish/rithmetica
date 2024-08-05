@@ -1,6 +1,6 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 
-import processFractionOperands from "../process-fractions-operands";
+import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
 
@@ -9,7 +9,7 @@ import { IFractionProblemOperands } from "../../../../../TS/interfaces/interface
  */
 function singleDigitFractions(operation: string, numberOfOperands: number) {
   let operands: IFractionProblemOperands = {
-    operation: "",
+    operation,
     firstDenominator: 0,
     secondDenominator: 0,
     resultDenominator: 0,
@@ -69,7 +69,7 @@ function singleDigitFractions(operation: string, numberOfOperands: number) {
 
     resultNumerator = interimNumerator1 * interimNumerator2;
 
-    operands = processFractionOperands(
+    operands = processFractionsOperands({
       operation,
       firstDenominator,
       secondDenominator,
@@ -80,8 +80,8 @@ function singleDigitFractions(operation: string, numberOfOperands: number) {
       interimNumerator2,
       interimDenominator1,
       interimDenominator2,
-      resultNumerator
-    );
+      resultNumerator,
+    });
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);

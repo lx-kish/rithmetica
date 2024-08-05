@@ -1,24 +1,31 @@
 import getGreatestCommonDivisor from "../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
-import { IFractionProblemOperands } from "../../../../TS/interfaces/interfaces";
+import {
+  IFractionGeneratedOperands,
+  IFractionProblemOperands,
+} from "../../../../TS/interfaces/interfaces";
 /**
  *
  */
 function processFractionsOperands(
-  operation: string,
-  firstDenominator: number,
-  secondDenominator: number,
-  resultDenominator: number,
-  firstNumerator: number,
-  secondNumerator: number,
-  interimNumerator1: number,
-  interimNumerator2: number,
-  interimDenominator1: number,
-  interimDenominator2: number,
-  resultNumerator: number
+  generatedOperands: IFractionGeneratedOperands
 ): IFractionProblemOperands {
+  const {
+    operation,
+    firstDenominator,
+    secondDenominator,
+    resultDenominator,
+    firstNumerator,
+    secondNumerator,
+    interimNumerator1,
+    interimNumerator2,
+    interimDenominator1,
+    interimDenominator2,
+    resultNumerator,
+  } = generatedOperands;
+
   const operands: IFractionProblemOperands = {
-    operation: "",
+    operation,
     firstDenominator: 0,
     secondDenominator: 0,
     resultDenominator: 0,

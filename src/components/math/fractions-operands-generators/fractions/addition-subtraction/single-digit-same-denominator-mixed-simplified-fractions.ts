@@ -1,6 +1,6 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 
-import processFractionOperands from "../process-fractions-operands";
+import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
 
@@ -12,7 +12,7 @@ function singleDigitSameDenominatorMixedSimplifiedFractions(
   numberOfOperands: number
 ) {
   let operands: IFractionProblemOperands = {
-    operation: "",
+    operation,
     firstDenominator: 0,
     secondDenominator: 0,
     resultDenominator: 0,
@@ -82,19 +82,19 @@ function singleDigitSameDenominatorMixedSimplifiedFractions(
 
     secondNumerator = resultNumerator - firstNumerator;
 
-    operands = processFractionOperands(
+    operands = processFractionsOperands({
       operation,
       firstDenominator,
       secondDenominator,
       resultDenominator,
       firstNumerator,
       secondNumerator,
-      firstNumerator,
-      secondNumerator,
+      interimNumerator1: firstNumerator,
+      interimNumerator2: secondNumerator,
       interimDenominator1,
       interimDenominator2,
-      resultNumerator
-    );
+      resultNumerator,
+    });
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
