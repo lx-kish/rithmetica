@@ -1,7 +1,7 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import getLeastCommonMultiple from "../../../../../utils/get-least-common-multiple/get-least-common-multiple";
 
-import processFractionOperands from "../process-fractions-operands";
+import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
 
@@ -13,7 +13,7 @@ function singleDigitDifferentDenominatorsImproperFractions(
   numberOfOperands: number
 ) {
   let operands: IFractionProblemOperands = {
-    operation: "",
+    operation,
     firstDenominator: 0,
     secondDenominator: 0,
     resultDenominator: 0,
@@ -114,7 +114,7 @@ function singleDigitDifferentDenominatorsImproperFractions(
       }
     }
 
-    operands = processFractionOperands(
+    operands = processFractionsOperands({
       operation,
       firstDenominator,
       secondDenominator,
@@ -125,8 +125,8 @@ function singleDigitDifferentDenominatorsImproperFractions(
       interimNumerator2,
       interimDenominator1,
       interimDenominator2,
-      resultNumerator
-    );
+      resultNumerator,
+    });
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
