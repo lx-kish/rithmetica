@@ -1,5 +1,7 @@
 import randomInteger from "../../randoms/get-random-integer-in-a-range";
 
+import { operations } from "../../../../TS/constatnts/constants";
+
 /**
  *
  */
@@ -10,6 +12,19 @@ const hundredsWithinThousand = (
   const operands: number[] = [];
 
   try {
+    if (
+      operation !== operations.addition &&
+      operation !== operations.subtraction
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "Hundreds within thousand" generator!`
+      );
+
+    if (typeof numberOfOperands !== "number" || numberOfOperands < 2)
+      throw new Error(
+        `Not applicable number of operands ${numberOfOperands} has been passed to the "Hundreds within thousand" generator!`
+      );
+
     let hundredsMax = 0;
     let hundredsLowest = 0;
     let hundredsHighest = 0;
@@ -58,14 +73,14 @@ const hundredsWithinThousand = (
 
     // 5. Push the problem maximum value to the appropriate place depend on operation (addition/subtraction)
     operands.splice(0, 0, operation === "+" ? problemMin : problemMax);
-
-    return operands;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
 };
 
