@@ -1,6 +1,8 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import getRoundedToFixed from "../../../../../utils/get-rounded-to-fixed/get-rounded-to-fixed";
 
+import { operations } from "../../../../../TS/constatnts/constants";
+
 /**
  *
  */
@@ -8,6 +10,19 @@ const tenthAddSubtract = (operation: string, numberOfOperands: number) => {
   const operands: number[] = [];
 
   try {
+    if (
+      operation !== operations.addition &&
+      operation !== operations.subtraction
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "Tenth add subtract" generator!`
+      );
+
+    if (typeof numberOfOperands !== "number" || numberOfOperands < 2)
+      throw new Error(
+        `Not applicable number of operands ${numberOfOperands} has been passed to the "Tenth add subtract" generator!`
+      );
+
     // 1. Generate problem maximum with limits min=0+numberOfOperands, max=10
     let problemMaximum = 0;
 
@@ -29,16 +44,14 @@ const tenthAddSubtract = (operation: string, numberOfOperands: number) => {
       0,
       getRoundedToFixed(problemMaximum, 1)
     );
-
-    // console.log(operands);
-
-    return operands;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
 };
 
