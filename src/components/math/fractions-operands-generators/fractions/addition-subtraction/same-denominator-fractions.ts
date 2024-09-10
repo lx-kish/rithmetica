@@ -1,6 +1,8 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import getGreatestCommonDivisor from "../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
+import { operations } from "../../../../../TS/constatnts/constants";
+
 /**
  *
  */
@@ -11,9 +13,18 @@ const sameDenominatorFractions = (
   const operands: number[] = [];
 
   try {
-    /**
-     *
-     */
+    if (
+      operation !== operations.addition &&
+      operation !== operations.subtraction
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "Same denominator fractions" generator!`
+      );
+
+    if (typeof numberOfOperands !== "number" || numberOfOperands !== 2)
+      throw new Error(
+        `Not applicable number of operands ${numberOfOperands} has been passed to the "Same denominator fractions" generator!`
+      );
 
     // denominators
     const firstDenominator = randomInteger(3, 9);
@@ -124,14 +135,14 @@ const sameDenominatorFractions = (
     operands.push(simplifiedDenominator ? integer : simplifiedDenominator); // [12] // if whole, then 0
     operands.push(simplifiedNumerator); // [13]
     operands.push(simplifiedDenominator); // [14]
-
-    return operands;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
 };
 
