@@ -56,8 +56,6 @@ function processFractionsOperands(
     if (operation === "-" && !(interimNumerator1 - interimNumerator2)) {
       // 1
       integer = 0;
-      resultNumerator = 0;
-      resultDenominator = 0;
       remainedNumerator = 0;
       remainedDenominator = 0;
     }
@@ -140,9 +138,9 @@ function processFractionsOperands(
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
-
-  return operands;
 }
 
 export default processFractionsOperands;
