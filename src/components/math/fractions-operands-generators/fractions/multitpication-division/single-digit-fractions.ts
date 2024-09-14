@@ -3,6 +3,7 @@ import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
+import { operations } from "../../../../../TS/constatnts/constants";
 
 /**
  *
@@ -30,9 +31,13 @@ function singleDigitFractions(operation: string, numberOfOperands: number) {
   // let operands: IFractionProblemOperands = {};
 
   try {
-    /**
-     *
-     */
+    if (
+      operation !== operations.multiplication &&
+      operation !== operations.division
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "1-digit different denominators fractions" generator!`
+      );
 
     // denominators
     let firstDenominator = 0,
@@ -88,9 +93,9 @@ function singleDigitFractions(operation: string, numberOfOperands: number) {
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
-
-  return operands;
 }
 
 export default singleDigitFractions;
