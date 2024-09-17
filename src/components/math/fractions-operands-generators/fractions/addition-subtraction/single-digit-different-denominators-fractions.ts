@@ -4,6 +4,7 @@ import getLeastCommonMultiple from "../../../../../utils/get-least-common-multip
 import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
+import { operations } from "../../../../../TS/constatnts/constants";
 
 /**
  *
@@ -34,9 +35,13 @@ function singleDigitDifferentDenominatorsFractions(
   // let operands: IFractionProblemOperands = {};
 
   try {
-    /**
-     *
-     */
+    if (
+      operation !== operations.addition &&
+      operation !== operations.subtraction
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "1-digit different denominators fractions" generator!`
+      );
 
     // denominators
     let firstDenominator = 0,
@@ -124,9 +129,9 @@ function singleDigitDifferentDenominatorsFractions(
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
-
-  return operands;
 }
 
 export default singleDigitDifferentDenominatorsFractions;
