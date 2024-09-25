@@ -3,6 +3,7 @@ import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
+import { operations } from "../../../../../TS/constatnts/constants";
 
 /**
  *
@@ -33,6 +34,14 @@ function singleDigitSameDenominatorMixedSimplifiedFractions(
   // let operands: IFractionProblemOperands = {};
 
   try {
+    if (
+      operation !== operations.addition &&
+      operation !== operations.subtraction
+    )
+      throw new Error(
+        `Unsupported operation ${operation} passed to the "1-digit different denominators fractions" generator!`
+      );
+
     /**
      * 1. define denominator (from 2 to 9).
      * 2. define 2 numerators (a) less, than denominator; b) if subtraction, the last less than the first)
@@ -101,9 +110,9 @@ function singleDigitSameDenominatorMixedSimplifiedFractions(
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return operands;
   }
-
-  return operands;
 }
 
 export default singleDigitSameDenominatorMixedSimplifiedFractions;
