@@ -20,14 +20,14 @@ function getInputPosition(
     } else if (missing === arithmeticMissing.result) {
       input = numberOfOperands;
     }
-
-    return input;
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message);
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return input;
   }
 }
 
