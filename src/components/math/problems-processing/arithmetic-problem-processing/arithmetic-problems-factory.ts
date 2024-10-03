@@ -99,8 +99,9 @@ function arithmeticProblemsFactory(
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return problems;
   }
-  return problems;
 }
 
 export default arithmeticProblemsFactory;
