@@ -48,8 +48,9 @@ function problemsController(stateProblemType: ISettings): IProblem[][] {
     } else if (typeof e === "string") {
       throw new Error(e);
     }
+  } finally {
+    return problemsSet;
   }
-  return problemsSet;
 }
 
 export default problemsController;
