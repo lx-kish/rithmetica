@@ -1,31 +1,31 @@
-import React from "react";
-
 import { BrowserRouter } from "react-router-dom";
-import { render, fireEvent, cleanup, screen } from "@testing-library/react";
-import { within } from "@testing-library/dom";
+import { render, cleanup, screen } from "@testing-library/react";
 
 import Collapsible from "./collapsible.component";
 import userEvent from "@testing-library/user-event";
 
+function renderUI() {
+  return render(
+    <BrowserRouter>
+      <Collapsible
+        title={`Testing component`}
+        id={`unit-test-purposes`}
+        collapsibleClassName={`collapsible`}
+        titleClassName={`collapsible__title collapsible__title--level-one`}
+        btnClassName={`collapsible__box--level-one`}
+        iconClassName={`collapsible__icon--level-one`}
+        borderBottom={true}
+      >
+        {`I'm collapsible`}
+      </Collapsible>
+    </BrowserRouter>
+  );
+}
+
 describe("Collapsible component test suit", () => {
-  beforeEach(() => {
-    render(
-      // const { container } = render(
-      <BrowserRouter>
-        <Collapsible
-          title={`Testing component`}
-          id={`unit-test-purposes`}
-          collapsibleClassName={`collapsible`}
-          titleClassName={`collapsible__title collapsible__title--level-one`}
-          iconBoxClassName={`collapsible__icon-box collapsible__icon-box--level-one`}
-          iconClassName={`collapsible__icon--level-one`}
-          borderBottom={true}
-        >
-          {`I'm collapsible`}
-        </Collapsible>
-      </BrowserRouter>
-    );
-  });
+  // beforeEach(renderUI);
+
+  beforeEach(renderUI);
 
   afterEach(cleanup);
 
@@ -38,7 +38,8 @@ describe("Collapsible component test suit", () => {
 
   // render icom
   it("collapsible component should have chevron icon within expand button", () => {
-    const icon = screen.getByTestId("icon-box");
+    const { container } = renderUI();
+    const icon = container.querySelector("[data-icon='chevron-down']");
 
     expect(icon).toBeInTheDocument();
   });

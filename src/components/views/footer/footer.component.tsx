@@ -6,18 +6,13 @@ import IconLxKish from "../../icons-svg/icon-lx-kish.component";
 function Footer(): ReactElement {
   return (
     <footer className="footer">
-      <p className="footer__version">v11.4.9</p>
+      <p className="footer__version">v11.5.0</p>
       <p className="footer__credentials">
         &#169; 2020 - 2024. Built with
-        <span className="footer__icon-box">
-          <IconHeart className="footer__icon red" />
-        </span>
+        <IconHeart className="footer__icon red" />
         by
-        <span className="footer__icon-box">
-          <IconLxKish className="footer__icon seven" />
-        </span>
+        <IconLxKish className="footer__icon seven" />
         Alexander Kish
-        {/* </a> */}
       </p>
     </footer>
   );

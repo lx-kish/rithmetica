@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import {
   TArithmeticMissing,
   TRoutes,
@@ -98,4 +99,8 @@ export interface IProblemState extends ISettings, IProblems {}
 export interface IProblemsState {
   settings: ISettings[];
   problems: IProblemState[];
+}
+
+export interface IBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode;
 }
