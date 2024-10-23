@@ -17,13 +17,16 @@
     right: 4%;
     bottom: 5rem;
     z-index: 10;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid var(--color-white);
     border-radius: 0.5rem;
     padding: 0.65rem;
     height: 6rem;
     width: 6rem;
     cursor: pointer;
+    background-color: var(--color-background);
 
     @include transition(0.2s);
 
@@ -53,8 +56,8 @@
       fill: var(--color-white);
       cursor: pointer;
       transition: all 0.4s ease;
-      height: 6rem;
-      width: 6rem;
+      height: 4rem;
+      width: 4rem;
 
       @include respond(_720-880) {
         height: 85%;

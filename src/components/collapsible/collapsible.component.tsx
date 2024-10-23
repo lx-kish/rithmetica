@@ -3,6 +3,7 @@ import { useState, useEffect, ReactElement } from "react";
 import IconChevronDown from "../icons-svg/icon-chevron-down.component";
 
 import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
+import Btn from "../views/btn/btn.component";
 
 interface IProps {
   id: string;
@@ -10,7 +11,7 @@ interface IProps {
   collapsibleClassName: string;
   titleClassName?: string;
   title?: string;
-  iconBoxClassName?: string;
+  btnClassName?: string;
   iconClassName: string;
   stickyBoxId?: string;
   stickyElementId?: string;
@@ -23,7 +24,7 @@ function Collapsible({
   collapsibleClassName,
   titleClassName = "",
   title = "",
-  iconBoxClassName = "",
+  btnClassName = "",
   iconClassName,
   stickyBoxId = "",
   stickyElementId = "",
@@ -39,39 +40,32 @@ function Collapsible({
     if (stickyBoxId) setDisplayTabHeader(display);
   }, [display, stickyBoxId, stickyElementId, setDisplayTabHeader]);
 
-  const handleChange = () => {
+  const handleClick = () => {
     setDisplay((currDisplay) => !currDisplay);
   };
 
   return (
     <div className={collapsibleClassName} key={id}>
       <div
-        className={`collapsible__line${
+        className={`collapsible__header${
           borderBottom ? " collapsible__border-bottom" : ""
         }`}
       >
-        <h3 className={titleClassName}>{title}</h3>
-        <input
-          type="button"
-          className="collapsible__btn"
-          id={id}
-          onClick={handleChange}
-          autoComplete="off" //for dropping the value when cached by browser
-        />
-        <label
-          htmlFor={id}
-          className={`${iconBoxClassName}${
-            display ? " collapsible__icon-box--expanded" : ""
-          }`}
-          data-testid="icon-box"
-        >
-          <IconChevronDown className={iconClassName} />
-        </label>
+        <h3 className={`collapsible__title ${titleClassName}`}>{title}</h3>
+        <div className="collapsible__btn-box">
+          <Btn
+            className={`collapsible__btn ${btnClassName}${
+              display ? " collapsible__btn--expanded" : ""
+            }`}
+            id={id}
+            onClick={handleClick}
+          >
+            <IconChevronDown className={iconClassName} />
+          </Btn>
+        </div>
       </div>
       <div
-        className={`description ${
-          display ? "collapsible--expanded" : "collapsible--collapsed"
-        }`}
+        className={display ? "collapsible--expanded" : "collapsible--collapsed"}
       >
         {children}
       </div>

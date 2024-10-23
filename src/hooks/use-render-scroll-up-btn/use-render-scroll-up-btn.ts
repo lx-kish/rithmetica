@@ -1,18 +1,16 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-export default function useRenderScrollUpBtn() {
-  const [renderUpBtn, setRenderUpBtn] = React.useState(false);
+function useRenderScrollUpBtn() {
+  const [renderUpBtn, setRenderUpBtn] = useState(false);
 
-  /**
-   * React hook useEffect for rendering up button on scrolling
-   */
-  React.useEffect(() => {
-    const scrollCallBack: any = window.addEventListener("scroll", () => {
-      const scrolledDown = window.pageYOffset >= 50;
+  useEffect(() => {
+    // initial rendering in case page re-renders lower than 50px
+    setRenderUpBtn(document.documentElement.scrollTop >= 50);
 
-      if (scrolledDown) setRenderUpBtn(true);
-      if (!scrolledDown) setRenderUpBtn(false);
-    });
+    const scrollCallBack = () =>
+      setRenderUpBtn(document.documentElement.scrollTop >= 50);
+
+    window.addEventListener("scroll", scrollCallBack);
 
     return () => {
       window.removeEventListener("scroll", scrollCallBack);
@@ -21,3 +19,5 @@ export default function useRenderScrollUpBtn() {
 
   return renderUpBtn;
 }
+
+export default useRenderScrollUpBtn;

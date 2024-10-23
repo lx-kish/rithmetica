@@ -11,8 +11,8 @@ import {
   ActionCreatorWithPayload,
 } from "@reduxjs/toolkit";
 
-import { useAppSelector, useAppDispatch } from "../../../redux/hooks";
-import { AppDispatch, RootState } from "../../../redux/store";
+import { useAppDispatch } from "../../../redux/hooks";
+import { AppDispatch } from "../../../redux/store";
 
 import Collapsible from "../../collapsible/collapsible.component";
 
@@ -25,6 +25,7 @@ import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TArithmeticMissing } from "../../../TS/types/types";
 
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
+import Btn from "../btn/btn.component";
 
 interface ISettingsContext {
   types: IProblemType[];
@@ -82,8 +83,6 @@ function Settings({
   children: ReactElement;
 }) {
   const dispatch = useAppDispatch();
-
-  // const settings = useAppSelector(problemsState);
 
   function handleChangeSetting(
     id: string,
@@ -152,18 +151,15 @@ function Body({ children }: { children: ReactElement }): ReactElement {
         id="settings"
         collapsibleClassName="collapsible collapsible__border-bottom"
         titleClassName="collapsible__title collapsible__title--level-one"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
+        btnClassName="collapsible__btn--level-one"
         iconClassName="collapsible__icon--level-one"
         borderBottom={false}
       >
         {children}
       </Collapsible>
-      <input
-        type="button"
-        className="btn settings__go-btn"
-        value="Generate"
-        onClick={handleGenerate}
-      />
+      <Btn className="btn settings__go-btn" onClick={handleGenerate}>
+        Generate
+      </Btn>
     </div>
   );
 }
@@ -447,20 +443,21 @@ function ControlBtns(): ReactElement {
 
   return (
     <div className="settings__control settings__control--btns">
-      <input
-        type="button"
-        value="+"
+      <Btn
         className="btn settings__control-btn"
         onClick={handleInsert}
         title="add line"
-      />
-      <input
-        type="button"
-        value="&times;"
+      >
+        +
+      </Btn>
+
+      <Btn
         className="btn settings__control-btn"
         onClick={handleDelete}
         title="remove line"
-      />
+      >
+        &times;
+      </Btn>
     </div>
   );
 }
