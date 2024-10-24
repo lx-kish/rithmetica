@@ -7,24 +7,12 @@ import userEvent from "@testing-library/user-event";
 function renderUI() {
   return render(
     <BrowserRouter>
-      <Collapsible
-        title={`Testing component`}
-        id={`unit-test-purposes`}
-        collapsibleClassName={`collapsible`}
-        titleClassName={`collapsible__title collapsible__title--level-one`}
-        btnClassName={`collapsible__box--level-one`}
-        iconClassName={`collapsible__icon--level-one`}
-        borderBottom={true}
-      >
-        {`I'm collapsible`}
-      </Collapsible>
+      <Collapsible title={`Testing component`}>I'm collapsible</Collapsible>
     </BrowserRouter>
   );
 }
 
 describe("Collapsible component test suit", () => {
-  // beforeEach(renderUI);
-
   beforeEach(renderUI);
 
   afterEach(cleanup);

@@ -43,9 +43,8 @@ function HowFractionsWorks({
 				title="Up To Ten"
 				id="up-to-ten"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<UpToTen
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -57,9 +56,8 @@ function HowFractionsWorks({
 				title="Single Digit Operands"
 				id="single-digit-operands"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<SingleDigitOperands
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -71,9 +69,8 @@ function HowFractionsWorks({
 				title="Two and Single Digits"
 				id="two-and-single-digits"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<TwoAndSingleDigits
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -85,9 +82,8 @@ function HowFractionsWorks({
 				title="Two Digits and Tens"
 				id="two-digits-and-tens"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<TwoDigitsAndTens
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -99,9 +95,8 @@ function HowFractionsWorks({
 				title="Two Digits Operands"
 				id="two-digits-operands"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<TwoDigitsOperands
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -113,9 +108,8 @@ function HowFractionsWorks({
 				title="Two Digits Tiding Up"
 				id="two-digits-tiding-up"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<TwoDigitsTidingUp
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -127,9 +121,8 @@ function HowFractionsWorks({
 				title="Tens Within Thousand"
 				id="tens-within-thousand"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<TensWithinThousand
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -141,9 +134,8 @@ function HowFractionsWorks({
 				title="Hundreds Within Thousand"
 				id="hundreds-within-thousand"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<HundredsWithinThousand
 						paragraphClassName="description__paragraph description__paragraph--level-two"

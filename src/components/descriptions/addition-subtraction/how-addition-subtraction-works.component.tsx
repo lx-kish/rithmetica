@@ -75,92 +75,28 @@ function HowAdditionSubtractionWorks({
         application:
         <br />
       </p>
-      <Collapsible
-        title="Up To Ten"
-        id="up-to-ten"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Up To Ten" level="three">
         <UpToTen paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Single Digit Operands"
-        id="single-digit-operands"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Single Digit Operands" level="three">
         <SingleDigitOperands paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Two and Single Digits"
-        id="two-and-single-digits"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Two and Single Digits" level="three">
         <TwoAndSingleDigits paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Two Digits and Tens"
-        id="two-digits-and-tens"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Two Digits and Tens" level="three">
         <TwoDigitsAndTens paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Two Digits Operands"
-        id="two-digits-operands"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Two Digits Operands" level="three">
         <TwoDigitsOperands paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Two Digits Tiding Up"
-        id="two-digits-tiding-up"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Two Digits Tiding Up" level="three">
         <TwoDigitsTidingUp paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Tens Within Thousand"
-        id="tens-within-thousand"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Tens Within Thousand" level="three">
         <TensWithinThousand paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Hundreds Within Thousand"
-        id="hundreds-within-thousand"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Hundreds Within Thousand" level="three">
         <HundredsWithinThousand paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
     </>

@@ -57,41 +57,17 @@ function FractionsHeaderContent({ pageName }: IProps): ReactElement {
 
   return (
     <>
-      <Collapsible
-        title="About"
-        id="about"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-one"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
-        iconClassName="collapsible__icon--level-one"
-        borderBottom={false}
-      >
+      <Collapsible title="About">
         <p className="description__paragraph description__paragraph--level-one">
           The application is dedicated to developing and enhance skills of
           operations on fractions, which achieves via solving problems with
           different levels of complexity.
           <br />
         </p>
-        <Collapsible
-          title="Math Theory"
-          id="math"
-          collapsibleClassName="collapsible"
-          titleClassName="collapsible__title collapsible__title--level-two"
-          iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-two"
-          iconClassName="collapsible__icon--level-two"
-          borderBottom={false}
-        >
+        <Collapsible title="Math Theory" level="two">
           <Math paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
-        <Collapsible
-          title="How it works"
-          id="how-it-works"
-          collapsibleClassName="collapsible"
-          titleClassName="collapsible__title collapsible__title--level-two"
-          iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-two"
-          iconClassName="collapsible__icon--level-two"
-          borderBottom={false}
-        >
+        <Collapsible title="How it works" level="two">
           <HowAdditionSubtractionWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
         </Collapsible>
       </Collapsible>

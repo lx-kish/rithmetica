@@ -18,9 +18,8 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
 				title="Counting On"
 				id="counting-on"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<CountingOn
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -32,9 +31,8 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
 				title="Make A Ten"
 				id="make-a-ten"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<MakeATen
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -46,9 +44,8 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
 				title="Decomposing"
 				id="decomposing"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<Decomposing
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -60,9 +57,8 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
 				title="Equal Addition"
 				id="equal-addition"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<EqualAddition
 						paragraphClassName="description__paragraph description__paragraph--level-two"
@@ -74,9 +70,8 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
 				title="Compensation"
 				id="compensation"
 				collapsibleClassName="collapsible"
-				titleClassName="collapsible__title collapsible__title--level-four"
-				iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-				iconClassName="collapsible__icon--level-four"
+				titleClassName="collapsible__title--level-three"
+				iconClassName="collapsible__icon--level-three"
 				content={
 					<Compensation
 						paragraphClassName="description__paragraph description__paragraph--level-two"
