@@ -1,49 +1,44 @@
-/////////////////////////////////////////////////////////
-//GENERAL SETTINGS FOR A DARK-MODE TOGGLER INPUT
 .toggler {
-    margin: 0 2rem;
+  margin: 0 2rem;
 
-    &__box {
-        padding: 1.5rem 0;
-        border-bottom: 1px solid var(--color-white);
+  &__box {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  &__input {
+    position: relative;
+    top: 0.5rem;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4.4rem;
+    height: 2.55rem;
+    border-radius: 1.5rem;
+    background: transparent;
+    cursor: pointer;
+    border: 0.2rem solid var(--color-white);
+
+    @include transition(0.4s);
+
+    &::before {
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      content: "";
+      position: absolute;
+      top: 0.3rem;
+      left: 7%;
+      background-color: var(--color-white);
+
+      @include transition(0.4s);
     }
 
-    &__input {
-        position: relative;
-        top: .5rem;
-
-        -webkit-appearance: none;
-        appearance: none;
-        width: 4.4rem;
-        height: 2.4rem;
-        border-radius: 1.5rem;
-        background: transparent;
-        cursor: pointer;
-
-        border: 0.2rem solid var(--color-white);
-
-        @include transition(0.4s);
-
-        &::before {
-            width: 1.6rem;
-            height: 1.6rem;
-            border-radius: 50%;
-            content: "";
-            position: absolute;
-            top: .2rem;
-            left: 7%;
-
-            @include transition(0.4s);
-
-            background-color: var(--color-white);
-        }
-
-        &:checked::before {
-            left: 55%;
-        }
-
-        &:focus {
-            outline: none;
-        }
+    &:checked::before {
+      left: 55%;
     }
+
+    &:focus {
+      outline: none;
+    }
+  }
 }

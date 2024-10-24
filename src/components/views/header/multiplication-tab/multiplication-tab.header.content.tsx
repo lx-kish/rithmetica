@@ -7,7 +7,7 @@ import {
   subtract,
 } from "../../../../redux/multiplicationTable/multiplicationTabSlice";
 
-import Collapsible from "../../../collapsible/collapsible.component";
+import CollapsibleSticky from "../../../collapsible/collapsible-sticky.component";
 import HowMultitabWorks from "../../../descriptions/multiplication-table/how-multitab-works.component";
 import Toggler from "../../toggler/toggler.component";
 
@@ -50,19 +50,15 @@ export default function MultiplicationTabHeaderContent(): ReactElement {
   };
   return (
     <>
-      <Collapsible
+      <CollapsibleSticky
         title="How it works"
-        id="multitable-usage"
-        collapsibleClassName="collapsible collapsible__border-bottom"
-        titleClassName="collapsible__title collapsible__title--level-one"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-one"
-        iconClassName="collapsible__icon--level-one"
+        level="one"
         stickyBoxId="tab"
         stickyElementId="header-stick"
-        borderBottom={false}
+        borderBottom={true}
       >
         <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
-      </Collapsible>
+      </CollapsibleSticky>
       <Toggler
         {...togglerContent().togglerAddSubtract}
         checked={subtractState}

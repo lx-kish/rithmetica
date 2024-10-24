@@ -146,15 +146,7 @@ function Body({ children }: { children: ReactElement }): ReactElement {
 
   return (
     <div className="settings">
-      <Collapsible
-        title="Settings"
-        id="settings"
-        collapsibleClassName="collapsible collapsible__border-bottom"
-        titleClassName="collapsible__title collapsible__title--level-one"
-        btnClassName="collapsible__btn--level-one"
-        iconClassName="collapsible__icon--level-one"
-        borderBottom={false}
-      >
+      <Collapsible title="Settings" level="one" borderBottom={true}>
         {children}
       </Collapsible>
       <Btn className="btn settings__go-btn" onClick={handleGenerate}>

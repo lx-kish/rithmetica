@@ -18,59 +18,19 @@ function Math({ paragraphClassName }: ICollapsibleProps): ReactElement {
         subtraction:
         <br />
       </p>
-      <Collapsible
-        title="Counting On"
-        id="counting-on"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Counting On" level="three">
         <CountingOn paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Make A Ten"
-        id="make-a-ten"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Make A Ten" level="three">
         <MakeATen paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Decomposing"
-        id="decomposing"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Decomposing" level="three">
         <Decomposing paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Equal Addition"
-        id="equal-addition"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Equal Addition" level="three">
         <EqualAddition paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
-      <Collapsible
-        title="Compensation"
-        id="compensation"
-        collapsibleClassName="collapsible"
-        titleClassName="collapsible__title collapsible__title--level-four"
-        iconBoxClassName="collapsible__icon-box collapsible__icon-box--level-four"
-        iconClassName="collapsible__icon--level-four"
-        borderBottom={false}
-      >
+      <Collapsible title="Compensation" level="three">
         <Compensation paragraphClassName="description__paragraph description__paragraph--level-two" />
       </Collapsible>
     </>

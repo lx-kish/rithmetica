@@ -20,7 +20,7 @@ function useStickHeaderOnScroll(boxId: string, elementId: string) {
 
     function handler(): void {
       if (tab && headerTab) {
-        const scrolledDown = window.pageYOffset >= tabOffsetTop;
+        const scrolledDown = document.documentElement.scrollTop >= tabOffsetTop;
 
         if (scrolledDown) headerTab.classList.add("sticky");
         if (!scrolledDown) headerTab.classList.remove("sticky");

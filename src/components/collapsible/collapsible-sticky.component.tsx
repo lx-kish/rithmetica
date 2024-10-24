@@ -1,4 +1,6 @@
-import { useState, ReactElement } from "react";
+import { useState, useEffect, ReactElement } from "react";
+
+import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
 
 import CollapsibleFrame from "./collapsible-frame.component";
 
@@ -6,16 +8,29 @@ interface IProps {
   level?: string;
   borderBottom?: boolean;
   title?: string;
+  stickyBoxId?: string;
+  stickyElementId?: string;
   children?: React.ReactNode;
 }
 
-function Collapsible({
+function CollapsibleSticky({
   level = "one",
   borderBottom = false,
   title = "",
+  stickyBoxId = "",
+  stickyElementId = "",
   children,
 }: IProps): ReactElement {
   const [display, setDisplay] = useState(false);
+
+  const { setDisplayTabHeader } = useStickHeaderOnScroll(
+    stickyBoxId,
+    stickyElementId
+  );
+
+  useEffect(() => {
+    if (stickyBoxId) setDisplayTabHeader(display);
+  }, [display, stickyBoxId, stickyElementId, setDisplayTabHeader]);
 
   const handleClick = () => {
     setDisplay((currDisplay) => !currDisplay);
@@ -42,4 +57,4 @@ function Collapsible({
   );
 }
 
-export default Collapsible;
+export default CollapsibleSticky;
