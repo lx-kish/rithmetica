@@ -1,7 +1,10 @@
 import fractionsProblemsFactory from "./fractions-problems-factory";
 
-import { routes, sections } from "../../../../TS/constatnts/constants";
-import { operations } from "../../../../TS/constatnts/constants";
+import {
+  routes,
+  sections,
+  operations,
+} from "../../../../TS/constants/constants";
 
 describe("fractions problems factory test suit", () => {
   it("should return array", () => {

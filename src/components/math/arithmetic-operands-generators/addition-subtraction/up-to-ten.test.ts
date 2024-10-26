@@ -1,6 +1,6 @@
 import upToTen from "./up-to-ten";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - addition/subtraction - up to ten test suit", () => {
   const numberOfOperands = 2;

@@ -22,7 +22,7 @@ import {
   DEFAULT_SECTION,
   defaultSettings,
 } from "../default-problem-settings";
-import { routes } from "../../TS/constatnts/constants";
+import { routes } from "../../TS/constants/constants";
 import { TRoutes } from "../../TS/types/types";
 
 import getRandomString from "../../utils/get-random-string/get-random-string";

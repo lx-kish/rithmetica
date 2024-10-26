@@ -4,7 +4,7 @@ import getLeastCommonMultiple from "../../../../../utils/get-least-common-multip
 import processFractionsOperands from "../process-fractions-operands";
 
 import { IFractionProblemOperands } from "../../../../../TS/interfaces/interfaces";
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 /**
  *

@@ -1,6 +1,6 @@
 import twoDigitOperands from "./two-digit-operands";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - addition/subtraction - two-digit operands test suit", () => {
   const numberOfOperands = 2;

@@ -9,7 +9,7 @@ import Footer from "../../components/views/footer/footer.component";
 
 import useRenderScrollUpBtn from "../../hooks/use-render-scroll-up-btn/use-render-scroll-up-btn";
 
-import { routes } from "../../TS/constatnts/constants";
+import { routes } from "../../TS/constants/constants";
 
 function Arithmetic(): ReactElement {
   /**

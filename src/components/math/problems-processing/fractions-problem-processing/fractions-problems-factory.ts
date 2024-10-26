@@ -1,4 +1,4 @@
-import { fractionOperandTypes } from "../../../../TS/constatnts/constants";
+import { fractionOperandTypes } from "../../../../TS/constants/constants";
 import {
   IProblem,
   IFractionProblemOperands,

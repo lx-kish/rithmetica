@@ -1,6 +1,6 @@
 import singleDigitDifferentDenominatorsFractions from "./single-digit-different-denominators-fractions";
 
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 describe("fractions - addition/subtraction - 1-digit different denominators fractions test suit", () => {
   const numberOfOperands = 2;

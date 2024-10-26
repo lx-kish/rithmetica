@@ -1,6 +1,6 @@
 import sameDenominatorFractions from "./same-denominator-fractions";
 
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 describe("fractions - addition/subtraction - same denominator fractions test suit", () => {
   it("should return array", () => {

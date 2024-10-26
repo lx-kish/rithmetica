@@ -1,6 +1,6 @@
 import singleDigitAndUpToTwenty from "./single-digit-and-up-to-twenty";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - multiplication/division - single digit and up to twenty test suit", () => {
   const numberOfOperands = 2;

@@ -1,6 +1,6 @@
 import singleDigitOperands from "./single-digit-operands";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - addition/subtraction - single-digit operands test suit", () => {
   const numberOfOperands = 2;

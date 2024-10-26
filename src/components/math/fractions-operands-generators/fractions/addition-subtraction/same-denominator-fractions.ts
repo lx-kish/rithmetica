@@ -1,7 +1,7 @@
 import randomInteger from "../../../randoms/get-random-integer-in-a-range";
 import getGreatestCommonDivisor from "../../../../../utils/get-greatest-common-divisor/get-greatest-common-divisor";
 
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 /**
  *

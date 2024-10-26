@@ -1,6 +1,6 @@
 import twoDigitTidingUp from "./two-digit-tidying-up";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - addition/subtraction - two-digit tidying up test suit", () => {
   const numberOfOperands = 2;

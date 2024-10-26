@@ -64,11 +64,15 @@ There are several problem types for addition or subtraction in the application:
 
 ## About the project
 
-The application is a React JS Single Page Application, based on create-react-app.
+This is a React JS Single Page Application.
 
 ## Releas notes <sup>\*</sup>
 
 ##### <sup>\*</sup> - starts from v2.3.3
+
+#### v11.6.1 release notes
+
+- Fix bugs.
 
 #### v11.6.0 release notes
 

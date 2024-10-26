@@ -7,7 +7,7 @@ import {
   sections,
   operations,
   uiType,
-} from "../constatnts/constants";
+} from "../constants/constants";
 
 export type TRoutes = (typeof routes)[keyof typeof routes];
 

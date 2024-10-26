@@ -1,8 +1,10 @@
 import arithmeticProblemsFactory from "./arithmetic-problems-factory";
 
-import { routes } from "../../../../TS/constatnts/constants";
-import { operations } from "../../../../TS/constatnts/constants";
-import { arithmeticMissing } from "../../../../TS/constatnts/constants";
+import {
+  routes,
+  operations,
+  arithmeticMissing,
+} from "../../../../TS/constants/constants";
 
 describe("arithmetic problems factory test suit", () => {
   it("should return an array", () => {

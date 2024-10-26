@@ -1,6 +1,6 @@
 import hundredsWithinThousand from "./hundreds-within-thousand";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("arythmetic - addition/subtraction - hundreds within thousand test suit", () => {
   const numberOfOperands = 2;

@@ -34,7 +34,7 @@ import {
   routes,
   sections,
   uiType,
-} from "../../TS/constatnts/constants";
+} from "../../TS/constants/constants";
 import { IProblemType } from "../../TS/interfaces/interfaces";
 
 const ProblemTypes: IProblemType[] = [

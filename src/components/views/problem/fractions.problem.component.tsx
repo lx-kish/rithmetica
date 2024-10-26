@@ -9,7 +9,7 @@ import Sign from "../sign/sign.component";
 import Input from "../input/input.component";
 
 import { IProblem } from "../../../TS/interfaces/interfaces";
-import { fractionOperandTypes } from "../../../TS/constatnts/constants";
+import { fractionOperandTypes } from "../../../TS/constants/constants";
 
 interface IProps {
   problemStateId: string;
