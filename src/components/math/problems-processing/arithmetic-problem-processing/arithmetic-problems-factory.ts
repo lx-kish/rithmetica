@@ -9,7 +9,7 @@ import {
 import {
   arithmeticMissing,
   arithmeticOperandTypes,
-} from "../../../../TS/constatnts/constants";
+} from "../../../../TS/constants/constants";
 
 import getProblemTypeBySignature from "../../../../utils/get-problem-type/get-problem-type";
 

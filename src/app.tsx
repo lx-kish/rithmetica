@@ -7,7 +7,7 @@ import { store } from "./redux/store";
 import MultiplicationTab from "./pages/multiplication-tab/multiplication-tab.page";
 import Arithmetic from "./pages/arithmetic/arithmetic.page";
 import Fractions from "./pages/fractions/fractions.page";
-import { routes } from "./TS/constatnts/constants";
+import { routes } from "./TS/constants/constants";
 
 /**
  * router adapted for github pages, see detailed eplanations at:

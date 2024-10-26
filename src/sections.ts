@@ -1,4 +1,4 @@
-import { routes } from "./TS/constatnts/constants";
+import { routes } from "./TS/constants/constants";
 import { ISectionsAttributes } from "./TS/interfaces/interfaces";
 
 const sections: ISectionsAttributes[] = [

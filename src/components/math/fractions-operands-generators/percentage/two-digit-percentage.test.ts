@@ -1,6 +1,6 @@
 import twoDigitPercentage from "./two-digit-percentage";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 describe("fractions - percentage - addition/subtraction - two digit percentage test suit", () => {
   const numberOfOperands = 2;

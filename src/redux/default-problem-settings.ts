@@ -1,8 +1,4 @@
-import {
-  arithmeticMissing,
-  routes,
-  sections,
-} from "../TS/constatnts/constants";
+import { arithmeticMissing, routes, sections } from "../TS/constants/constants";
 import { ISettings } from "../TS/interfaces/interfaces";
 import getRandomString from "../utils/get-random-string/get-random-string";
 

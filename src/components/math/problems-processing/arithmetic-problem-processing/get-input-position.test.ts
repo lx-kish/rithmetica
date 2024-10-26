@@ -1,5 +1,5 @@
 import getInputPosition from "./get-input-position";
-import { arithmeticMissing } from "../../../../TS/constatnts/constants";
+import { arithmeticMissing } from "../../../../TS/constants/constants";
 
 describe("getInputPosition test suit", () => {
   it("should return 0 in case of second parameter is 'first'", () => {

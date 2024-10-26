@@ -11,7 +11,7 @@ import { IProblem, IProblemType } from "../../../TS/interfaces/interfaces";
 import { TRoutes, TSections } from "../../../TS/types/types";
 
 import getProblemTypeBySignature from "../../../utils/get-problem-type/get-problem-type";
-import { uiType } from "../../../TS/constatnts/constants";
+import { uiType } from "../../../TS/constants/constants";
 
 interface IDerivedProblemsState {
   problemsId: string;

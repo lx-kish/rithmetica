@@ -1,6 +1,6 @@
 import singleDigitSameDenominatorSimpleFractions from "./single-digit-fractions";
 
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 describe("fractions - multiplication/division - 1-digit fractions test suit", () => {
   const numberOfOperands = 2;

@@ -6,7 +6,7 @@ import Footer from "../../components/views/footer/footer.component";
 import Tab from "../../components/views/multiplication-tab/table/tab.component";
 import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
 
-import { routes } from "../../TS/constatnts/constants";
+import { routes } from "../../TS/constants/constants";
 
 function MultiplicationTab(): ReactElement {
   return (

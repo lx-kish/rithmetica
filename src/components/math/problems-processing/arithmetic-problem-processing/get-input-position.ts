@@ -1,4 +1,4 @@
-import { arithmeticMissing } from "../../../../TS/constatnts/constants";
+import { arithmeticMissing } from "../../../../TS/constants/constants";
 import randomInteger from "../../randoms/get-random-integer-in-a-range";
 
 /**

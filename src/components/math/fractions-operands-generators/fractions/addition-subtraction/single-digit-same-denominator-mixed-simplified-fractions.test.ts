@@ -1,6 +1,6 @@
 import singleDigitSameDenominatorMixedSimplifiedFractions from "./single-digit-same-denominator-mixed-simplified-fractions";
 
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 describe("fractions - addition/subtraction - 1-digit same denominator mixed simplified fractions test suit", () => {
   const numberOfOperands = 2;

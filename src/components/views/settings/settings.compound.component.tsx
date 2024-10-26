@@ -20,7 +20,7 @@ import {
   arithmeticMissing,
   operations,
   sections,
-} from "../../../TS/constatnts/constants";
+} from "../../../TS/constants/constants";
 import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TArithmeticMissing } from "../../../TS/types/types";
 

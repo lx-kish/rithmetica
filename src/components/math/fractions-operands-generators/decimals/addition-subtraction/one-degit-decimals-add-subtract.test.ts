@@ -1,7 +1,7 @@
 import oneDigitDecimalsAddSubtract from "./one-digit-decimals-add-subtract";
 
 import getRoundedToFixed from "../../../../../utils/get-rounded-to-fixed/get-rounded-to-fixed";
-import { operations } from "../../../../../TS/constatnts/constants";
+import { operations } from "../../../../../TS/constants/constants";
 
 describe("fractions - decimals - addition/subtraction - one digit decimals add subtract test suit", () => {
   it("should return array", () => {

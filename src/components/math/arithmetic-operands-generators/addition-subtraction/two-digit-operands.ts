@@ -1,6 +1,6 @@
 import randomInteger from "../../randoms/get-random-integer-in-a-range";
 
-import { operations } from "../../../../TS/constatnts/constants";
+import { operations } from "../../../../TS/constants/constants";
 
 /**
  *
