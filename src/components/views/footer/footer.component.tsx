@@ -6,7 +6,7 @@ import IconLxKish from "../../icons-svg/icon-lx-kish.component";
 function Footer(): ReactElement {
   return (
     <footer className="footer">
-      <p className="footer__version">v11.6.1</p>
+      <p className="footer__version">v11.6.2</p>
       <p className="footer__credentials">
         &#169; 2020 - 2024. Built with
         <IconHeart className="footer__icon red" />
