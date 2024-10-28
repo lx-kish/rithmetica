@@ -70,6 +70,10 @@ This is a React JS Single Page Application.
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.6.2 release notes
+
+- Fix bugs.
+
 #### v11.6.1 release notes
 
 - Fix bugs.

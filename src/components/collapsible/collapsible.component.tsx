@@ -1,4 +1,4 @@
-import { useState, ReactElement } from "react";
+import { useState, ReactElement, ReactNode } from "react";
 
 import CollapsibleFrame from "./collapsible-frame.component";
 
@@ -6,7 +6,7 @@ interface IProps {
   level?: string;
   borderBottom?: boolean;
   title?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 function Collapsible({

@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 
 import IconChevronDown from "../icons-svg/icon-chevron-down.component";
 
@@ -14,7 +14,7 @@ interface IProps {
   iconClassName?: string;
   collapsedClassName?: string;
   handleClick?: () => void;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 function CollapsibleFrame({

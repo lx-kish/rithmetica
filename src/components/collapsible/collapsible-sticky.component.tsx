@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactElement } from "react";
+import { useState, useEffect, ReactElement, ReactNode } from "react";
 
 import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
 
@@ -10,7 +10,7 @@ interface IProps {
   title?: string;
   stickyBoxId?: string;
   stickyElementId?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 function CollapsibleSticky({
