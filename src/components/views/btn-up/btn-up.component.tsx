@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import Btn from "../btn/btn.component";
+import Btn from "../elements/btn.component";
 import IconChevronUp from "../../icons-svg/icon-chevron-up.component";
 
 function BtnUp(): ReactElement {
