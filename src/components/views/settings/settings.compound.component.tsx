@@ -25,7 +25,7 @@ import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TArithmeticMissing } from "../../../TS/types/types";
 
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
-import Btn from "../btn/btn.component";
+import Btn from "../elements/btn.component";
 
 interface ISettingsContext {
   types: IProblemType[];
