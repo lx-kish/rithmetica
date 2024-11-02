@@ -1,6 +1,6 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
-import Collapsible from "../../../collapsible/collapsible.component";
+import Collapsible from "../../collapsible/collapsible.component";
 import Math from "../../../descriptions/addition-subtraction/math.component";
 import HowAdditionSubtractionWorks from "../../../descriptions/addition-subtraction/how-addition-subtraction-works.component";
 

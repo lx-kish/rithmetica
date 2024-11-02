@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import getNodeOffsetTop from "../../utils/get-node-offset-top/get-node-offset-top";
 import useWindowSize from "../use-window-size/use-window-size";

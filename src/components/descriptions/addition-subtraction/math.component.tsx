@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import Collapsible from "../../collapsible/collapsible.component";
+import Collapsible from "../../views/collapsible/collapsible.component";
 
 import CountingOn from "../math-theory/strategies/counting-on.component";
 import MakeATen from "../math-theory/strategies/make-a-ten.component";

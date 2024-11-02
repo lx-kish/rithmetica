@@ -1,6 +1,6 @@
 import { useState, useEffect, ReactElement, ReactNode } from "react";
 
-import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
+import useStickHeaderOnScroll from "../../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
 
 import CollapsibleFrame from "./collapsible-frame.component";
 

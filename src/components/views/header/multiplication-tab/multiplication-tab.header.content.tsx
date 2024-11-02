@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../../redux/hooks";
 import {
@@ -7,7 +7,7 @@ import {
   subtract,
 } from "../../../../redux/multiplicationTable/multiplicationTabSlice";
 
-import CollapsibleSticky from "../../../collapsible/collapsible-sticky.component";
+import CollapsibleSticky from "../../collapsible/collapsible-sticky.component";
 import HowMultitabWorks from "../../../descriptions/multiplication-table/how-multitab-works.component";
 import Toggler from "../../toggler/toggler.component";
 

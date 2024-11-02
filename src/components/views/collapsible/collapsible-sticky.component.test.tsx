@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 
 import CollapsibleSticky from "./collapsible-sticky.component";
-import useStickHeaderOnScroll from "../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
+import useStickHeaderOnScroll from "../../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
 
 // Mock the custom hook
 vi.mock("../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll");
