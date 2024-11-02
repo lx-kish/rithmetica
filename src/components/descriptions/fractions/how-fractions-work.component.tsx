@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import Collapsible from "../../collapsible/collapsible.component";
+import Collapsible from "../../views/collapsible/collapsible.component";
 
 import UpToTen from "./problem-types/up-to-ten.component";
 import SingleDigitOperands from "./problem-types/single-digit-operands.component";

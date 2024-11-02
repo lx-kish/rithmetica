@@ -1,8 +1,8 @@
 import { ReactElement, ReactNode } from "react";
 
-import IconChevronDown from "../icons-svg/icon-chevron-down.component";
+import IconChevronDown from "../../icons-svg/icon-chevron-down.component";
 
-import Btn from "../views/elements/btn.component";
+import Btn from "../elements/btn.component";
 
 interface IProps {
   lmntClassName?: string;

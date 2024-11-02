@@ -14,7 +14,7 @@ import {
 import { useAppDispatch } from "../../../redux/hooks";
 import { AppDispatch } from "../../../redux/store";
 
-import Collapsible from "../../collapsible/collapsible.component";
+import Collapsible from "../collapsible/collapsible.component";
 
 import {
   arithmeticMissing,
