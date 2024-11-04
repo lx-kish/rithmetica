@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 
 import Number from "../number/number.component";
 import { IProblem } from "../../../TS/interfaces/interfaces";
+import FractionDelimeter from "./fraction-delimeter/fraction-delimeter.component";
 
 interface IProps {
   className: string;
@@ -15,7 +16,7 @@ function Fraction({ className, fraction }: IProps): ReactElement {
         number={fraction.numerator?.toString() || ""}
         className="problem__digit"
       />
-      <span className="fraction__delimeter"></span>
+      <FractionDelimeter className="fraction__delimeter" />
       <Number
         number={fraction.denominator?.toString() || ""}
         className="problem__digit"

@@ -10,6 +10,7 @@ import Input from "../input/input.component";
 
 import { IProblem } from "../../../TS/interfaces/interfaces";
 import { fractionOperandTypes } from "../../../TS/constants/constants";
+import FractionDelimeter from "../fraction/fraction-delimeter/fraction-delimeter.component";
 
 interface IProps {
   problemStateId: string;
@@ -95,7 +96,10 @@ function FractionsProblem({
     );
   }
 
-  function renderElements(operand: any, i: number): ReactElement | null {
+  function renderElements(
+    operand: Record<string, any>,
+    i: number
+  ): ReactElement | null {
     switch (operand.type) {
       case fractionOperandTypes.fraction:
         return (
@@ -156,13 +160,10 @@ function FractionsProblem({
                 value={content[
                   content.length - 1
                 ].interimNumerator2?.toString()}
-                // value={stateProblems[stateProblemIndex][
-                //   stateProblems[stateProblemIndex].length - 1
-                // ].interimNumerator2?.toString()}
                 handleChange={handleChange}
               />
             </span>
-            <span className="fraction__delimeter"></span>
+            <FractionDelimeter className="fraction__delimeter" />
             <span className="fraction__interim">
               <Input
                 pattern="[0-9]*"
@@ -199,9 +200,6 @@ function FractionsProblem({
                     value={content[
                       content.length - 1
                     ].interimDenominator2?.toString()}
-                    // value={stateProblems[stateProblemIndex][
-                    //   stateProblems[stateProblemIndex].length - 1
-                    // ].interimDenominator2?.toString()}
                     handleChange={handleChange}
                   />
                 </>
@@ -226,9 +224,6 @@ function FractionsProblem({
               result={operand.integer?.toString()}
               disabled={isDisabled(operand.type)}
               value={content[content.length - 1][operand.type]?.toString()}
-              // value={stateProblems[stateProblemIndex][
-              //   stateProblems[stateProblemIndex].length - 1
-              // ][operand.type]?.toString()}
               handleChange={handleChange}
             />
           </span>
@@ -252,12 +247,9 @@ function FractionsProblem({
               result={operand.numerator?.toString()}
               disabled={isDisabled(operand.type)}
               value={content[content.length - 1][numeratorName]?.toString()}
-              // value={stateProblems[stateProblemIndex][
-              //   stateProblems[stateProblemIndex].length - 1
-              // ][numeratorName]?.toString()}
               handleChange={handleChange}
             />
-            <span className="fraction__delimeter"></span>
+            <FractionDelimeter className="fraction__delimeter" />
             <Input
               pattern="[0-9]*"
               className={getInputClassName(
@@ -269,9 +261,6 @@ function FractionsProblem({
               result={operand.denominator?.toString()}
               disabled={isDisabled(operand.type)}
               value={content[content.length - 1][denominatorName]?.toString()}
-              // value={stateProblems[stateProblemIndex][
-              //   stateProblems[stateProblemIndex].length - 1
-              // ][denominatorName]?.toString()}
               handleChange={handleChange}
             />
           </span>
