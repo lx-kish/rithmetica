@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import Header from "../../components/views/header/header.component";
 import MultiplicationTabHeaderContent from "../../components/views/header/multiplication-tab/multiplication-tab.header.content";

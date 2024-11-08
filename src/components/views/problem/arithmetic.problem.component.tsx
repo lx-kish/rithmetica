@@ -67,11 +67,9 @@ function ArithmeticProblem({
 
       case arithmeticOperandTypes.sign:
         return (
-          <Sign
-            sign={operand.value}
-            className="problem__sign"
-            key={`problem__sign-${i}`}
-          />
+          <Sign className="problem__sign" key={`problem__sign-${i}`}>
+            {operand.value}
+          </Sign>
         );
 
       case arithmeticOperandTypes.input:

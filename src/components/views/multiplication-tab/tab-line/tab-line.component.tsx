@@ -7,6 +7,7 @@ import content from "../../../../table.content";
 
 import TabCell from "../tab-cell/tab-cell.component";
 import TabEmptyCell from "../tab-empty-cell/tab-empty-cell.component";
+import Sign from "../../sign/sign.component";
 
 interface IProps {
   className: string;
@@ -40,10 +41,9 @@ const TabLine: React.FC<IProps> = (props) => {
         if (j > 1) {
           return (
             <React.Fragment key={j}>
-              <TabEmptyCell
-                className="tab__empty-cell"
-                sign={i >= 1 ? getSign() : ""}
-              />
+              <TabEmptyCell className="tab__empty-cell">
+                <Sign>{i >= 1 ? getSign() : ""}</Sign>
+              </TabEmptyCell>
               <TabCell line={props.value} col={j} value={j * props.value} />
             </React.Fragment>
           );
