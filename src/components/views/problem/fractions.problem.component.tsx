@@ -113,10 +113,11 @@ function FractionsProblem({
       case fractionOperandTypes.sign:
         return (
           <Sign
-            sign={operand.value}
             className="fraction__sign"
             key={`problem__sign-${operand.value}-${i}`}
-          />
+          >
+            {operand.value}
+          </Sign>
         );
 
       case fractionOperandTypes.interim:
@@ -135,19 +136,13 @@ function FractionsProblem({
                 value={content[
                   content.length - 1
                 ].interimNumerator1?.toString()}
-                // value={stateProblems[stateProblemIndex][
-                //   stateProblems[stateProblemIndex].length - 1
-                // ].interimNumerator1?.toString()}
                 handleChange={handleChange}
               />
-              <Sign
-                sign={
-                  operand.sign === "×" || operand.sign === "÷"
-                    ? "×"
-                    : operand.sign
-                }
-                className="fraction__sign fraction__sign--interim"
-              />
+              <Sign className="fraction__sign fraction__sign--interim">
+                {operand.sign === "×" || operand.sign === "÷"
+                  ? "×"
+                  : operand.sign}
+              </Sign>
               <Input
                 pattern="[0-9]*"
                 className={getInputClassName(
@@ -177,17 +172,13 @@ function FractionsProblem({
                 value={content[
                   content.length - 1
                 ].interimDenominator1?.toString()}
-                // value={stateProblems[stateProblemIndex][
-                //   stateProblems[stateProblemIndex].length - 1
-                // ].interimDenominator1?.toString()}
                 handleChange={handleChange}
               />
               {operand.sign === "×" || operand.sign === "÷" ? (
                 <>
-                  <Sign
-                    sign={"×"}
-                    className="fraction__sign fraction__sign--interim"
-                  />
+                  <Sign className="fraction__sign fraction__sign--interim">
+                    ×
+                  </Sign>
                   <Input
                     pattern="[0-9]*"
                     className={getInputClassName(

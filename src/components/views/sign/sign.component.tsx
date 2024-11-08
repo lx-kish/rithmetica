@@ -1,12 +1,9 @@
 import { ReactElement } from "react";
 
-interface IProps {
-  className: string;
-  sign: string | number | React.ReactNode;
-}
+import StyledSpan from "../elements/styled-span.component";
 
-function Sign({ className, sign }: IProps): ReactElement {
-  return <span className={className}>{sign}</span>;
+function Sign({ ...props }): ReactElement {
+  return <StyledSpan {...props}>{props.children}</StyledSpan>;
 }
 
 export default Sign;

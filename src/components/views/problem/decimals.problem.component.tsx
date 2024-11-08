@@ -67,11 +67,9 @@ function DecimalsProblem({
 
       case arithmeticOperandTypes.sign:
         return (
-          <Sign
-            sign={operand.value}
-            className="problem__sign"
-            key={`problem__sign-${i}`}
-          />
+          <Sign className="problem__sign" key={`problem__sign-${i}`}>
+            {operand.value}
+          </Sign>
         );
 
       case arithmeticOperandTypes.input:
@@ -80,7 +78,6 @@ function DecimalsProblem({
             key={`problem__input-${i}`}
             pattern="[0-9]+([,\.][0-9]+)?"
             className={getInputClassName(operand.value)}
-            // step="1"
             step="0.1"
             name="value"
             result={operand.value.toString()}

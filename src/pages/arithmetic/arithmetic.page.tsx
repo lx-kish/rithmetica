@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import NavigationBar from "../../components/views/navigation/navigation-bar/navigation-bar.component";
 import Header from "../../components/views/header/header.component";

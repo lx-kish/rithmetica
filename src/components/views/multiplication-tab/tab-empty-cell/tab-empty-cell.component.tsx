@@ -1,15 +1,8 @@
-import React from 'react';
+import { ReactElement } from "react";
+import { IDivProps } from "../../../../TS/interfaces/interfaces";
 
-interface IProps {
-    className: string;
-    sign?: Element | any;
-};
-
-const TabEmptyCell: React.FC<IProps> = props => {
-
-    return (
-        <div className={props.className}>{props?.sign}</div>
-    )
-};
+function TabEmptyCell({ children, ...rest }: IDivProps): ReactElement {
+  return <div {...rest}>{children}</div>;
+}
 
 export default TabEmptyCell;
