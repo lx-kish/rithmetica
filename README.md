@@ -70,6 +70,12 @@ This is a React JS Single Page Application.
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.7.2 release notes
+
+- Redesign fractions problem component architecture;
+
+- Fix bugs.
+
 #### v11.7.1 release notes
 
 - Redesign sign component;
