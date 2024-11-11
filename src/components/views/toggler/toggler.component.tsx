@@ -1,4 +1,7 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
+
+import Input from "../elements/input.component";
+import StyledSpan from "../elements/styled-span.component";
 
 interface IProps {
   checked: boolean;
@@ -26,17 +29,17 @@ function Toggler(props: IProps): ReactElement<any, any> {
   return (
     <div className={props.toggleBox.className}>
       <label htmlFor={props.label.htmlFor}>
-        <span className={props.label.span.left.className}>
+        <StyledSpan className={props.label.span.left.className}>
           {props.label.span.left.text}
-        </span>
-        <input
+        </StyledSpan>
+        <Input
           {...props.input}
           checked={props.checked}
           onChange={props.onChange}
         />
-        <span className={props.label.span.right.className}>
+        <StyledSpan className={props.label.span.right.className}>
           {props.label.span.right.text}
-        </span>
+        </StyledSpan>
       </label>
     </div>
   );

@@ -1,5 +1,7 @@
-import React, {
+import {
+  ChangeEvent,
   Dispatch,
+  Fragment,
   ReactElement,
   createContext,
   useContext,
@@ -26,6 +28,7 @@ import { TArithmeticMissing } from "../../../TS/types/types";
 
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
 import Btn from "../elements/btn.component";
+import Input from "../elements/input.component";
 
 interface ISettingsContext {
   types: IProblemType[];
@@ -199,7 +202,7 @@ function Sections(): ReactElement {
   const { handleChangeSetting, types } = useContext(SettingsContext);
   const { id, settings } = useContext(RowContext);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const currentTaskType = types
       .filter((type) => type.section === e.currentTarget.value)
       .find((type) => type.name === settings.name);
@@ -215,10 +218,10 @@ function Sections(): ReactElement {
   }
 
   const sectionElements = Object.keys(sections).map((section, i) => (
-    <React.Fragment key={`section-${id}-${i}`}>
-      <input
+    <Fragment key={`${id}-${i}-section`}>
+      <Input
         type="radio"
-        id={`${section}-${id}`}
+        id={`${id}-${section}`}
         name={`section-${id}`}
         value={sections[section as keyof typeof sections]}
         className="settings__input settings__input--radio"
@@ -229,12 +232,12 @@ function Sections(): ReactElement {
       />
       <label
         className="settings__radio-label settings__radio-label--section"
-        htmlFor={`${section}-${id}`}
+        htmlFor={`${id}-${section}`}
         title={section}
       >
         {sections[section as keyof typeof sections]}
       </label>
-    </React.Fragment>
+    </Fragment>
   ));
 
   return (
@@ -248,7 +251,7 @@ function Operations(): ReactElement {
   const { handleChangeSetting, types } = useContext(SettingsContext);
   const { id, settings } = useContext(RowContext);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     const currentTaskType = types
       .filter((type) => type.operation === e.currentTarget.value)
       .find((type) => type.name === settings.name);
@@ -268,10 +271,10 @@ function Operations(): ReactElement {
   }
 
   const operationElements = Object.keys(operations).map((operation, i) => (
-    <React.Fragment key={`operation-${id}-${i}`}>
-      <input
+    <Fragment key={`${id}-${i}-operation`}>
+      <Input
         type="radio"
-        id={`${operation}-${id}`}
+        id={`${id}-${operation}`}
         name={`operation-${id}`}
         value={operations[operation as keyof typeof operations]}
         className="settings__input settings__input--radio"
@@ -284,12 +287,12 @@ function Operations(): ReactElement {
       />
       <label
         className="settings__radio-label settings__radio-label--operation"
-        htmlFor={`${operation}-${id}`}
+        htmlFor={`${id}-${operation}`}
         title={operation}
       >
         {operations[operation as keyof typeof operations]}
       </label>
-    </React.Fragment>
+    </Fragment>
   ));
 
   return (
@@ -309,15 +312,15 @@ function Missing(): ReactElement {
         settings?.name === type.name && settings?.operation === type.operation
     )?.missing === arithmeticMissing.result;
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     handleChangeSetting(id, "missing", e.currentTarget.value);
   }
 
   const missings = Object.keys(arithmeticMissing).map((missing, i) => (
-    <React.Fragment key={`missing-${id}-${i}`}>
-      <input
+    <Fragment key={`${id}-${i}-missing`}>
+      <Input
         type="radio"
-        id={`${missing}-${id}`}
+        id={`${id}-${missing}`}
         name={`missing-${id}`}
         value={missing}
         className="settings__input settings__input--radio"
@@ -327,10 +330,10 @@ function Missing(): ReactElement {
         }
         disabled={disabled}
       />
-      <label className="settings__radio-label" htmlFor={`${missing}-${id}`}>
+      <label className="settings__radio-label" htmlFor={`${id}-${missing}`}>
         {missing}
       </label>
-    </React.Fragment>
+    </Fragment>
   ));
 
   return (
@@ -344,7 +347,7 @@ function Types(): ReactElement {
 
   const filteredTypes = types.filter(typesFilter);
 
-  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+  function handleChange(e: ChangeEvent<HTMLSelectElement>) {
     const currentTaskType = filteredTypes
       .filter((type) => type.operation === settings.operation)
       .find((type) => type.name === e.currentTarget.value);
@@ -362,14 +365,14 @@ function Types(): ReactElement {
   return (
     <div className="settings__control settings__control--types">
       <label
-        htmlFor="settings-type"
+        htmlFor={`${id}=settings-type`}
         className="settings__label settings__label--types"
       >
         Type:
       </label>
       <select
         name="type"
-        id="settings-type"
+        id={`${id}-settings-type`}
         className="settings__select"
         value={settings?.name}
         onChange={handleChange}
@@ -391,16 +394,17 @@ function Quantity(): ReactElement {
 
   const [value, setValue] = useState(settings?.quantity.toString()); // to not loose focus on changing input field, change redux value onBlur only
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
     handleChangeSetting(id, "quantity", Number(e.currentTarget.value));
   }
 
   return (
     <div className="settings__control">
-      <label htmlFor="settings-quantity" className="settings__label">
+      <label htmlFor={`${id}-quantity`} className="settings__label">
         Qty:
       </label>
-      <input
+      <Input
+        id={`${id}-quantity`}
         type="number"
         pattern="[0-9]*"
         inputMode="numeric"

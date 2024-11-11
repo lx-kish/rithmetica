@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import { useAppSelector, useAppDispatch } from "../../../../redux/hooks";
 import {
@@ -9,7 +9,7 @@ import {
 import IconCircle from "../../../icons-svg/icon-circle.component";
 
 import content from "../../../../table.content";
-import Input from "../../input/input.component";
+import InputNumeric from "../../input-numeric/input-numeric.component";
 
 interface IProps {
   line: number;
@@ -70,7 +70,7 @@ function TabCell({ line, col, value }: IProps): ReactElement {
   return (
     <div className="component">
       <div className="component__input-box">
-        <Input
+        <InputNumeric
           pattern="[0-9]*"
           step="1"
           result={value.toString()}

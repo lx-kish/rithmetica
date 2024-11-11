@@ -1,4 +1,6 @@
-import React, { ReactElement } from "react";
+import { ChangeEvent, KeyboardEvent, ReactElement } from "react";
+
+import Input from "../elements/input.component";
 
 import handleKeyDown from "../../../utils/handle-key-down-event/handle-key-down-event";
 import { useInputScrollRefCallback } from "../../../hooks/use-input-scroll-ref-callback/use-input-scroll-ref-callback";
@@ -7,18 +9,29 @@ interface IProps {
   name?: string;
   className?: string;
   pattern?: string;
+  inputMode?:
+    | "none"
+    | "text"
+    | "tel"
+    | "url"
+    | "email"
+    | "numeric"
+    | "decimal"
+    | "search"
+    | undefined;
   step?: string;
   result?: string;
   value?: string;
   disabled?: boolean;
   title?: string;
-  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({
+function InputNumeric({
   name,
   className,
   pattern,
+  inputMode = "numeric",
   step,
   result,
   value,
@@ -28,15 +41,15 @@ function Input({
 }: IProps): ReactElement {
   const ref = useInputScrollRefCallback();
 
-  const processKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const processKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     handleKeyDown(e);
   };
 
   return (
-    <input
+    <Input
       type="number"
       pattern={pattern}
-      inputMode="numeric"
+      inputMode={inputMode}
       className={className}
       step={step}
       placeholder=" "
@@ -48,10 +61,10 @@ function Input({
       disabled={disabled}
       onKeyDown={processKeyDown}
       onChange={handleChange}
-      ref={ref}
+      passingRef={ref}
       autoComplete="off" // for dropping the value when cached by browser
     />
   );
 }
 
-export default Input;
+export default InputNumeric;
