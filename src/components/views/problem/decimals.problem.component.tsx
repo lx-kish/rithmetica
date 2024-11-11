@@ -1,11 +1,11 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { setInputValue, problems } from "../../../redux/problems/problemsSlice";
 
 import Number from "../number/number.component";
 import Sign from "../sign/sign.component";
-import Input from "../input/input.component";
+import InputNumeric from "../input-numeric/input-numeric.component";
 
 import { IProblem, IProblemState } from "../../../TS/interfaces/interfaces";
 import { arithmeticOperandTypes } from "../../../TS/constants/constants";
@@ -61,21 +61,21 @@ function DecimalsProblem({
           <Number
             number={operand.value.toString()}
             className="problem__digit"
-            key={`problem__digit-${i}`}
+            key={`${i}-problem__digit`}
           />
         );
 
       case arithmeticOperandTypes.sign:
         return (
-          <Sign className="problem__sign" key={`problem__sign-${i}`}>
+          <Sign className="problem__sign" key={`${i}-problem__sign`}>
             {operand.value}
           </Sign>
         );
 
       case arithmeticOperandTypes.input:
         return (
-          <Input
-            key={`problem__input-${i}`}
+          <InputNumeric
+            key={`${i}-problem__input`}
             pattern="[0-9]+([,\.][0-9]+)?"
             className={getInputClassName(operand.value)}
             step="0.1"

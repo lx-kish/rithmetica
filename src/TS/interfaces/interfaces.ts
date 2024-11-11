@@ -1,4 +1,11 @@
-import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  InputHTMLAttributes,
+  LegacyRef,
+  ReactNode,
+} from "react";
+
 import {
   TArithmeticMissing,
   TRoutes,
@@ -107,4 +114,8 @@ export interface ISpanProps extends HTMLAttributes<HTMLSpanElement> {
 
 export interface IBtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
+}
+
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  passingRef?: LegacyRef<HTMLInputElement> | undefined;
 }

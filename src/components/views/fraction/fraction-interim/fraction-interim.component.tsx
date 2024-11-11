@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement } from "react";
 
-import Input from "../../input/input.component";
+import InputNumeric from "../../input-numeric/input-numeric.component";
 import Sign from "../../sign/sign.component";
 import FractionDelimeter from "../fraction-delimeter/fraction-delimeter.component";
 import StyledSpan from "../../elements/styled-span.component";
@@ -26,7 +26,7 @@ function FractionInterim({
   return (
     <StyledSpan className="fraction">
       <StyledSpan className="fraction__interim">
-        <Input
+        <InputNumeric
           pattern="[0-9]*"
           className={getInputClassName(operand.numerator1, "interimNumerator1")}
           step="1"
@@ -38,7 +38,7 @@ function FractionInterim({
         <Sign className="fraction__sign fraction__sign--interim">
           {operand.sign === "×" || operand.sign === "÷" ? "×" : operand.sign}
         </Sign>
-        <Input
+        <InputNumeric
           pattern="[0-9]*"
           className={getInputClassName(operand.numerator2, "interimNumerator2")}
           step="1"
@@ -50,7 +50,7 @@ function FractionInterim({
       </StyledSpan>
       <FractionDelimeter className="fraction__delimeter" />
       <StyledSpan className="fraction__interim">
-        <Input
+        <InputNumeric
           pattern="[0-9]*"
           className={getInputClassName(
             operand.denominator1,
@@ -65,7 +65,7 @@ function FractionInterim({
         {operand.sign === "×" || operand.sign === "÷" ? (
           <>
             <Sign className="fraction__sign fraction__sign--interim">×</Sign>
-            <Input
+            <InputNumeric
               pattern="[0-9]*"
               className={getInputClassName(
                 operand.denominator2,

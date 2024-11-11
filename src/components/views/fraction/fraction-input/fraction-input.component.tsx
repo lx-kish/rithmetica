@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement } from "react";
 
-import Input from "../../input/input.component";
+import InputNumeric from "../../input-numeric/input-numeric.component";
 import FractionDelimeter from "../fraction-delimeter/fraction-delimeter.component";
 import StyledSpan from "../../elements/styled-span.component";
 
@@ -29,7 +29,7 @@ function FractionInput({
 
   return (
     <StyledSpan className="fraction">
-      <Input
+      <InputNumeric
         pattern="[0-9]*"
         className={getInputClassName(operand.numerator, numeratorName)}
         step="1"
@@ -40,7 +40,7 @@ function FractionInput({
         handleChange={handleChange}
       />
       <FractionDelimeter className="fraction__delimeter" />
-      <Input
+      <InputNumeric
         pattern="[0-9]*"
         className={getInputClassName(operand.denominator, denominatorName)}
         step="1"

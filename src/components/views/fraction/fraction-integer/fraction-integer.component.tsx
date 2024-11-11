@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement } from "react";
 
-import Input from "../../input/input.component";
+import InputNumeric from "../../input-numeric/input-numeric.component";
 import StyledSpan from "../../elements/styled-span.component";
 
 import { IProblem } from "../../../../TS/interfaces/interfaces";
@@ -25,7 +25,7 @@ function FractionInteger({
 }: IProps): ReactElement {
   return (
     <StyledSpan className="fraction__input-box">
-      <Input
+      <InputNumeric
         pattern="[0-9]*"
         step="1"
         className={getInputClassName(operand.integer, operand.type)}
