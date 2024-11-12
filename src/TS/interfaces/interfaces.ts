@@ -108,6 +108,10 @@ export interface IProblemsState {
   problems: IProblemState[];
 }
 
+export interface IDivProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode;
+}
+
 export interface ISpanProps extends HTMLAttributes<HTMLSpanElement> {
   children?: ReactNode;
 }
