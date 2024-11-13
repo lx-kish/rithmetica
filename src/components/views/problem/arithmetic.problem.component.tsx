@@ -78,6 +78,7 @@ function ArithmeticProblem({
             key={`${i}-problem__input`}
             pattern="[0-9]*"
             className={getInputClassName(operand.value)}
+            name="value"
             step="1"
             result={operand.value.toString()}
             value={content[content.length - 1].value.toString()}
