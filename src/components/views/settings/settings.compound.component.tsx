@@ -365,7 +365,7 @@ function Types(): ReactElement {
   return (
     <div className="settings__control settings__control--types">
       <label
-        htmlFor={`${id}=settings-type`}
+        htmlFor={`${id}-settings-type`}
         className="settings__label settings__label--types"
       >
         Type:
