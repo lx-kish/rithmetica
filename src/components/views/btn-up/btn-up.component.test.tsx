@@ -1,35 +1,42 @@
-// // BtnUp.test.tsx
-// import React from "react";
-// import { render, fireEvent } from "@testing-library/react";
-// import "@testing-library/jest-dom";
-// import BtnUp from "./btn-up.component";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, expect, vi } from "vitest";
 
-// describe("BtnUp Component", () => {
-//   test("renders BtnUp component", () => {
-//     const { getByTestId } = render(<BtnUp />);
-//     const btnUpElement = getByTestId("btn-up");
-//     expect(btnUpElement).toBeInTheDocument();
-//   });
+import BtnUp from "./btn-up.component";
 
-//   test("clicking BtnUp scrolls to the top", () => {
-//     const { getByTestId } = render(<BtnUp />);
-//     const btnUpElement = getByTestId("btn-up");
+describe("button up component test suit", () => {
+  beforeEach(() => {
+    // Mock window.scrollTo
+    vi.spyOn(window, "scrollTo").mockImplementation(() => {});
+  });
 
-//     // Mock the scrollTo function
-//     const originalScrollTo = window.scrollTo;
-//     window.scrollTo = jest.fn();
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
-//     // Trigger a click event on the button
-//     fireEvent.click(btnUpElement);
+  it("renders the button with the correct class", () => {
+    render(<BtnUp />);
 
-//     // Check if scrollTo was called with the expected arguments
-//     expect(window.scrollTo).toHaveBeenCalledWith({
-//       top: 0,
-//       left: 0,
-//       behavior: "smooth",
-//     });
+    const button = screen.getByRole("button");
+    expect(button).toHaveClass("btn-up");
+  });
 
-//     // Restore the original scrollTo function
-//     window.scrollTo = originalScrollTo;
-//   });
-// });
+  it("renders the icon with the correct class", () => {
+    const { container } = render(<BtnUp />);
+
+    const icon = container.querySelector("button > svg");
+    expect(icon).toHaveClass("btn-up__icon");
+  });
+
+  it("calls window.scrollTo with correct parameters on click", () => {
+    render(<BtnUp />);
+    const button = screen.getByRole("button");
+
+    fireEvent.click(button);
+
+    expect(window.scrollTo).toHaveBeenCalledWith({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  });
+});
