@@ -13,7 +13,7 @@ interface IProps {
 
 function Fraction({ className, fraction }: IProps): ReactElement {
   return (
-    <StyledSpan className={className} data-testid="fraction-span">
+    <StyledSpan className={className}>
       <Number
         number={fraction.numerator?.toString() || ""}
         className="problem__digit"
