@@ -1,44 +1,80 @@
-// // Fraction.test.tsx
-// import React from "react";
-// import { render, screen } from "@testing-library/react";
-// import "@testing-library/jest-dom/extend-expect"; // for additional matchers
-// import "@testing-library/jest-dom";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { describe, it, vi } from "vitest";
 
-// import Fraction from "./fraction.component"; // Update the import path accordingly
-// import { IProblem } from "../../../TS/interfaces/interfaces";
+import Fraction from "./fraction.component";
 
-// const mockFraction: IProblem = {
-//   numerator: 3,
-//   denominator: 4,
-// };
+const mockFraction = {
+  type: "fraction",
+  numerator: NaN,
+  denominator: NaN,
+};
 
-// describe("Fraction Component", () => {
-//   it("renders Fraction component with numerator and denominator", () => {
-//     render(<Fraction className="test" fraction={mockFraction} />);
+describe("fraction component test suit", () => {
+  afterEach(cleanup);
 
-//     // Assert that numerator and denominator are rendered
-//     expect(screen.getByText("3")).toBeInTheDocument();
-//     expect(screen.getByText("4")).toBeInTheDocument();
-//   });
+  it("should render 1 element with passed class name", () => {
+    const { container } = render(
+      <Fraction fraction={mockFraction} className="testClassName" />
+    );
 
-//   it("renders Fraction component with empty numerator and denominator", () => {
-//     const emptyFraction: IProblem = {
-//       numerator: "",
-//       denominator: "",
-//     };
+    expect(container.querySelectorAll(".testClassName")).toHaveLength(1);
+  });
 
-//     render(<Fraction className="test" fraction={emptyFraction} />);
+  it("should render fraction correclty", () => {
+    const numerator = 1;
+    const denominator = 2;
+    mockFraction.numerator = numerator;
+    mockFraction.denominator = denominator;
+    const { container } = render(
+      <Fraction fraction={mockFraction} className="testClassName" />
+    );
 
-//     // Assert that numerator and denominator are not rendered
-//     expect(screen.queryByDisplayValue("")).toBeNull();
-//   });
+    expect(container.querySelectorAll(".problem__digit")).toHaveLength(2);
+    mockFraction.numerator = NaN;
+    mockFraction.denominator = NaN;
+  });
 
-//   it("renders Fraction component with custom class name", () => {
-//     render(<Fraction className="custom-class" fraction={mockFraction} />);
+  it("should render numerator correclty", () => {
+    const numerator = 1;
+    mockFraction.numerator = numerator;
+    render(<Fraction fraction={mockFraction} className="testClassName" />);
 
-//     // Assert that the custom class name is present in the rendered component
-//     expect(screen.getByTestId("fraction-span")).toHaveClass("custom-class");
-//   });
+    expect(screen.getByText(numerator.toString())).toBeInTheDocument();
+    mockFraction.numerator = NaN;
+  });
 
-//   // Add more tests as needed based on your component behavior
-// });
+  it("should render 2-digit numerator correclty", () => {
+    const numerator = 12;
+    mockFraction.numerator = numerator;
+    render(<Fraction fraction={mockFraction} className="testClassName" />);
+
+    expect(screen.getByText((numerator % 10).toString())).toBeInTheDocument();
+    mockFraction.numerator = NaN;
+  });
+
+  it("should render denominator correclty", () => {
+    const denominator = 3;
+    mockFraction.denominator = denominator;
+    render(<Fraction fraction={mockFraction} className="testClassName" />);
+
+    expect(screen.getByText(denominator.toString())).toBeInTheDocument();
+    mockFraction.denominator = NaN;
+  });
+
+  it("should render second digit of denominator correclty", () => {
+    const denominator = 34;
+    mockFraction.denominator = denominator;
+    render(<Fraction fraction={mockFraction} className="testClassName" />);
+
+    expect(screen.getByText((denominator % 10).toString())).toBeInTheDocument();
+    mockFraction.denominator = NaN;
+  });
+
+  it("renders delimeter element correctly", () => {
+    const { container } = render(
+      <Fraction fraction={mockFraction} className="testClassName" />
+    );
+
+    expect(container.querySelector(".fraction__delimeter")).toBeInTheDocument();
+  });
+});
