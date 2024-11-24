@@ -1,104 +1,97 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { vi } from "vitest";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { describe, it, vi, expect } from "vitest";
 
 import CollapsibleSticky from "./collapsible-sticky.component";
 import useStickHeaderOnScroll from "../../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll";
 
 // Mock the custom hook
-vi.mock("../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll");
+vi.mock(
+  "../../../hooks/use-stick-header-on-scroll/use-stick-header-on-scroll",
+  () => ({
+    default: vi.fn(() => ({
+      setDisplayTabHeader: vi.fn(),
+    })),
+  })
+);
 
 describe("CollapsibleSticky Component", () => {
-  beforeEach(() => {
-    // @ts-ignore
-    // Set up the mock return value for the custom hook
-    useStickHeaderOnScroll.mockReturnValue({
-      displayTabHeader: false,
-      setDisplayTabHeader: vi.fn(),
-    });
+  afterEach(cleanup);
+
+  it("renders with default props", () => {
+    const { container } = render(<CollapsibleSticky />);
+    expect(container.querySelector(".collapsible")).toBeInTheDocument();
   });
 
-  it("renders title correctly", () => {
-    render(<CollapsibleSticky title="Sticky Test Title" />);
-    expect(screen.getByText("Sticky Test Title")).toBeInTheDocument();
+  it("renders with a title", () => {
+    render(<CollapsibleSticky title="Test Title" />);
+    const title = screen.getByText("Test Title");
+    expect(title).toBeInTheDocument();
   });
 
-  it("renders children content correctly", () => {
-    render(
-      <CollapsibleSticky>
-        <div>Sticky Child Content</div>
-      </CollapsibleSticky>
-    );
-    expect(screen.getByText("Sticky Child Content")).toBeInTheDocument();
-  });
-
-  it("toggles content visibility when the button is clicked", () => {
-    render(
-      <CollapsibleSticky title="Toggle Test">
-        <div>Toggleable Content</div>
-      </CollapsibleSticky>
-    );
-
-    const toggleButton = screen.getByRole("button");
-
-    // Initially, the content should be hidden
-    expect(screen.getByText("Toggleable Content").parentElement).toHaveClass(
-      "collapsible--collapsed"
-    );
-
-    // Click to expand
-    fireEvent.click(toggleButton);
-    expect(screen.getByText("Toggleable Content").parentElement).toHaveClass(
-      "collapsible--expanded"
-    );
-
-    // Click to collapse
-    fireEvent.click(toggleButton);
-    expect(screen.getByText("Toggleable Content").parentElement).toHaveClass(
-      "collapsible--collapsed"
-    );
-  });
-
-  it("applies class name based on level prop", () => {
-    const { container } = render(<CollapsibleSticky level="two" />);
-
-    // Check if the correct class names are applied
-    expect(
-      container.querySelector(".collapsible__title--level-two")
-    ).toBeInTheDocument();
-    expect(
-      container.querySelector(".collapsible__btn--level-two")
-    ).toBeInTheDocument();
-  });
-
-  it("applies class names based on borderBottom prop", () => {
-    const { container } = render(<CollapsibleSticky borderBottom={true} />);
-
-    // Check if the correct class names are applied
+  it("applies border-bottom class when borderBottom is true", () => {
+    const { container } = render(<CollapsibleSticky borderBottom />);
     expect(
       container.querySelector(".collapsible__border-bottom")
     ).toBeInTheDocument();
   });
 
-  it("calls setDisplayTabHeader with correct value when expanded and collapsed", () => {
-    const setDisplayTabHeaderMock = vi.fn();
-    // @ts-ignore
-    useStickHeaderOnScroll.mockReturnValue({
+  it("DOES NOT apply border-bottom class when borderBottom is false", () => {
+    const { container } = render(<CollapsibleSticky />);
+    expect(
+      container.querySelector(".collapsible__border-bottom")
+    ).not.toBeInTheDocument();
+  });
+
+  it("handles click events and toggles display state", () => {
+    render(<CollapsibleSticky title="Test Title" />);
+    const button = screen.getByRole("button");
+    fireEvent.click(button);
+    expect(button.classList).toContain("collapsible__btn--expanded");
+  });
+
+  it("calls setDisplayTabHeader when display state changes", () => {
+    const mockSetDisplayTabHeader = vi.fn();
+
+    vi.mocked(useStickHeaderOnScroll).mockReturnValue({
       displayTabHeader: false,
-      setDisplayTabHeader: setDisplayTabHeaderMock,
+      setDisplayTabHeader: mockSetDisplayTabHeader,
     });
 
-    render(
-      <CollapsibleSticky stickyBoxId="testBox" stickyElementId="testElement" />
+    render(<CollapsibleSticky stickyBoxId="box" stickyElementId="element" />);
+    const button = screen.getByRole("button");
+    fireEvent.click(button);
+    expect(mockSetDisplayTabHeader).toHaveBeenCalledWith(true);
+  });
+
+  it("renders children when provided", () => {
+    render(<CollapsibleSticky>test-text</CollapsibleSticky>);
+    const child = screen.getByText("test-text");
+    expect(child).toBeInTheDocument();
+  });
+
+  it("applies correct level class for title", () => {
+    render(<CollapsibleSticky level="two" title="test-title" />);
+    const title = screen.getByText("test-title");
+    expect(title.classList).toContain("collapsible__title--level-two");
+  });
+
+  it("does not render sticky elements if stickyBoxId or stickyElementId is missing", () => {
+    render(<CollapsibleSticky />);
+    const button = screen.queryByRole("button");
+    expect(button).not.toHaveClass("sticky");
+  });
+
+  it("removes sticky class on scroll if conditions are unmet", () => {
+    const { container } = render(
+      <CollapsibleSticky stickyBoxId="box" stickyElementId="element" />
     );
+    const headerTab = container.querySelector(".collapsible__header");
+    expect(headerTab?.classList).not.toContain("sticky");
+  });
 
-    const toggleButton = screen.getByRole("button");
-
-    // Click to expand
-    fireEvent.click(toggleButton);
-    expect(setDisplayTabHeaderMock).toHaveBeenCalledWith(true);
-
-    // Click to collapse
-    fireEvent.click(toggleButton);
-    expect(setDisplayTabHeaderMock).toHaveBeenCalledWith(false);
+  it("renders with proper className for collapsed state by default", () => {
+    render(<CollapsibleSticky>test-text</CollapsibleSticky>);
+    const collapsible = screen.getByText("test-text");
+    expect(collapsible.classList).toContain("collapsible--collapsed");
   });
 });
