@@ -70,6 +70,10 @@ This is a React JS Single Page Application.
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.7.5 release notes
+
+- Redesign Settings Group component.
+
 #### v11.7.4 release notes
 
 - Fix bugs.

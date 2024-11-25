@@ -81,16 +81,15 @@ function FractionsHeaderContent({ pageName }: IProps): ReactElement {
         settingsState={pageSettingsState}
       >
         <Settings.Body>
-          <Settings.Group
-            data={pageSettingsState}
-            render={(settings: ISettings, index: number) => (
+          <Settings.Group>
+            {(settings: ISettings, index: number) => (
               <RenderRow
                 key={settings.id}
                 id={settings.id as string}
                 settings={settings}
               />
             )}
-          />
+          </Settings.Group>
         </Settings.Body>
       </Settings>
     </>

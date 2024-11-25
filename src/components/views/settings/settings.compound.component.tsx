@@ -160,14 +160,16 @@ function Body({ children }: { children: ReactElement }): ReactElement {
 }
 
 function Group({
-  data,
-  render,
+  children,
 }: {
-  data: ISettings[];
-
-  render: (settings: ISettings, index: number) => ReactElement;
+  children: (settings: ISettings, index: number) => ReactElement;
 }) {
-  return <div className="settings__settings-group">{data?.map(render)}</div>;
+  const { settingsState } = useContext(SettingsContext);
+  return (
+    <div className="settings__settings-group">
+      {settingsState?.map(children)}
+    </div>
+  );
 }
 
 function Row({
