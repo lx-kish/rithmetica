@@ -185,7 +185,7 @@ function Row({
 }) {
   return (
     <RowContext.Provider value={{ id, settings, typesFilter }}>
-      <div className="settings__row">{children}</div>
+      {children && <div className="settings__row">{children}</div>}
     </RowContext.Provider>
   );
 }
