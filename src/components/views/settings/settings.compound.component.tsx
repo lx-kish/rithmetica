@@ -83,7 +83,7 @@ function Settings({
     "problems/changeSetting"
   >;
   settingsState: ISettings[];
-  children: ReactElement;
+  children?: ReactElement | undefined | null;
 }) {
   const dispatch = useAppDispatch();
 
@@ -144,7 +144,11 @@ function Settings({
   );
 }
 
-function Body({ children }: { children: ReactElement }): ReactElement {
+function Body({
+  children,
+}: {
+  children?: ReactElement | undefined | null;
+}): ReactElement {
   const { handleGenerate } = useContext(SettingsContext);
 
   return (
@@ -181,7 +185,7 @@ function Row({
   id: string;
   settings: ISettings;
   typesFilter: (type: IProblemType) => boolean;
-  children: ReactElement | ReactElement[];
+  children?: ReactElement | ReactElement[] | undefined | null;
 }) {
   return (
     <RowContext.Provider value={{ id, settings, typesFilter }}>
@@ -195,7 +199,7 @@ function Container({
   children,
 }: {
   className: string;
-  children: ReactElement | ReactElement[];
+  children?: ReactElement | ReactElement[] | undefined | null;
 }): ReactElement {
   return <div className={className}>{children}</div>;
 }
