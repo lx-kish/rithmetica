@@ -10,7 +10,7 @@ import Settings from "./settings.compound.component";
 
 import { useAppDispatch } from "../../../redux/hooks";
 import problemsReducer from "../../../redux/problems/problemsSlice";
-import { ISettings } from "../../../TS/interfaces/interfaces";
+import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TRoutes, TUIType } from "../../../TS/types/types";
 
 const mockTypes = [
@@ -367,6 +367,141 @@ describe("Settings compound component test suit", () => {
 
       const groupElement = container.querySelector(".settings__settings-group");
       expect(groupElement?.children.length).toBe(0);
+    });
+  });
+
+  describe("Row component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    const mockSettings = mockSettingsState[0];
+
+    const mockTypesFilter = vi.fn(
+      (type: IProblemType) => type.section === "Math"
+    );
+
+    it("renders without crashing", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        >
+          <div>Test Child</div>
+        </Settings.Row>
+      );
+
+      expect(screen.getByText("Test Child")).toBeInTheDocument();
+    });
+
+    it("renders children correctly", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        >
+          <div>Test Child</div>
+        </Settings.Row>
+      );
+      const childElement = screen.getByText("Test Child");
+      expect(childElement).toBeInTheDocument();
+    });
+
+    it("applies the correct class name to the row element", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        >
+          <div>Test Child</div>
+        </Settings.Row>
+      );
+      const rowElement = screen.getByText("Test Child");
+      expect(rowElement.parentElement).toHaveClass("settings__row");
+    });
+
+    it("renders multiple children correctly", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        >
+          <div>Test Child</div>
+          <div>Test Child</div>
+        </Settings.Row>
+      );
+
+      const childElements = screen.getAllByText("Test Child");
+      expect(childElements).toHaveLength(2);
+    });
+
+    it("handles empty children gracefully", () => {
+      const { container } = render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        />
+      );
+      const rowElement = container.querySelector(".settings__row");
+      expect(rowElement).not.toBeInTheDocument();
+    });
+
+    it("renders unique id for each Row component", () => {
+      render(
+        <>
+          <Settings.Row
+            id="row1"
+            settings={mockSettings}
+            typesFilter={mockTypesFilter}
+          >
+            <div>Row 1 Child</div>
+          </Settings.Row>
+          <Settings.Row
+            id="row2"
+            settings={mockSettings}
+            typesFilter={mockTypesFilter}
+          >
+            <div>Row 2 Child</div>
+          </Settings.Row>
+        </>
+      );
+      const firstRowChild = screen.getByText("Row 1 Child");
+      const secondRowChild = screen.getByText("Row 2 Child");
+      expect(firstRowChild).not.toEqual(secondRowChild);
+    });
+
+    it("does not crash when settings or typesFilter are missing", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={null as any}
+          typesFilter={null as any}
+        >
+          <div>Test Child</div>
+        </Settings.Row>
+      );
+      const rowElement = screen.getByText("Test Child");
+      expect(rowElement).toBeInTheDocument();
+    });
+
+    it("handles null or undefined children gracefully", () => {
+      render(
+        <Settings.Row
+          id="row1"
+          settings={mockSettings}
+          typesFilter={mockTypesFilter}
+        >
+          {null}
+        </Settings.Row>
+      );
+      const rowElement = screen.getByRole("generic", { hidden: true });
+      expect(rowElement.children).toHaveLength(0);
     });
   });
 });
