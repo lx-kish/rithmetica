@@ -254,4 +254,119 @@ describe("Settings compound component test suit", () => {
       expect(mockDispatch).not.toHaveBeenCalled();
     });
   });
+
+  describe("Group component test suit", () => {
+    const mockRender = vi.fn((settings: ISettings, index: number) => (
+      <div key={settings.id} data-testid={`setting-${index}`}>
+        {settings.name}: {settings.quantity}
+      </div>
+    ));
+
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders without crashing", () => {
+      const { container } = renderWithProvider(
+        <RenderWithSettingsContext>
+          <Settings.Group>{mockRender}</Settings.Group>
+        </RenderWithSettingsContext>
+      );
+
+      expect(
+        container.querySelector(".settings__settings-group")
+      ).toBeInTheDocument();
+    });
+
+    it("renders the correct number of items", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <Settings.Group>{mockRender}</Settings.Group>
+        </RenderWithSettingsContext>
+      );
+
+      const items = screen.getAllByTestId(/setting-/);
+      expect(items).toHaveLength(mockSettingsState.length);
+    });
+
+    it("calls the render function for each item in data", () => {
+      const mockRender = vi.fn((settings: ISettings, index: number) => (
+        <div key={settings.id} data-testid={`setting-${index}`}>
+          {settings.name}: {settings.quantity}
+        </div>
+      ));
+
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <Settings.Group>{mockRender}</Settings.Group>
+        </RenderWithSettingsContext>
+      );
+
+      expect(mockRender).toHaveBeenCalledTimes(mockSettingsState.length);
+    });
+
+    it("renders children with correct text content", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <Settings.Group>{mockRender}</Settings.Group>
+        </RenderWithSettingsContext>
+      );
+
+      const firstItem = screen.getByText("Type 1: 10");
+      const secondItem = screen.getByText("Type 2: 20");
+
+      expect(firstItem).toBeInTheDocument();
+      expect(secondItem).toBeInTheDocument();
+    });
+
+    it("renders an empty group if data is an empty array", () => {
+      const { container } = renderWithProvider(
+        <Settings
+          route="testRoute"
+          types={mockTypes}
+          generateProblems={mockGenerateProblem}
+          insertSetting={mockInsertSetting}
+          deleteSetting={mockDeleteSetting}
+          changeSetting={mockChangeSetting}
+          settingsState={[]}
+        >
+          <Settings.Group>{mockRender}</Settings.Group>
+        </Settings>
+      );
+
+      const groupElement = container.querySelector(".settings__settings-group");
+      expect(groupElement?.children.length).toBe(0);
+    });
+
+    it("does not crash when data is null or undefined", () => {
+      const { container } = renderWithProvider(
+        <RenderWithSettingsContext>
+          <Settings.Group>{mockRender}</Settings.Group>
+        </RenderWithSettingsContext>
+      );
+
+      const groupElement = container.querySelector(".settings__settings-group");
+      expect(groupElement).toBeInTheDocument();
+    });
+
+    it("handles null or undefined render function gracefully", () => {
+      const { container } = renderWithProvider(
+        <Settings
+          route="testRoute"
+          types={mockTypes}
+          generateProblems={mockGenerateProblem}
+          insertSetting={mockInsertSetting}
+          deleteSetting={mockDeleteSetting}
+          changeSetting={mockChangeSetting}
+          settingsState={[]}
+        >
+          <Settings.Group>{mockRender}</Settings.Group>
+        </Settings>
+      );
+
+      const groupElement = container.querySelector(".settings__settings-group");
+      expect(groupElement?.children.length).toBe(0);
+    });
+  });
 });
