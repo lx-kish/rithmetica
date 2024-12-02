@@ -504,4 +504,128 @@ describe("Settings compound component test suit", () => {
       expect(rowElement.children).toHaveLength(0);
     });
   });
+
+  describe("Container component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders without crashing", () => {
+      render(
+        <Settings.Container className="test-class">
+          <div>Test Content</div>
+        </Settings.Container>
+      );
+
+      const childElement = screen.getByText("Test Content");
+      expect(childElement.parentElement).toBeInTheDocument();
+    });
+
+    it("applies the given className", () => {
+      render(
+        <Settings.Container className="test-class">
+          <div>Test Content</div>
+        </Settings.Container>
+      );
+
+      const childElement = screen.getByText("Test Content");
+      expect(childElement.parentElement).toHaveClass("test-class");
+    });
+
+    it("renders the correct children", () => {
+      render(
+        <Settings.Container className="test-class">
+          <div>Test Content</div>
+        </Settings.Container>
+      );
+
+      const childElement = screen.getByText("Test Content");
+      expect(childElement).toBeInTheDocument();
+    });
+
+    it("renders multiple children correctly", () => {
+      render(
+        <Settings.Container className="test-class">
+          <div>Test Child 1</div>
+          <div>Test Child 2</div>
+        </Settings.Container>
+      );
+
+      const childElements = screen.getAllByText("Test Child", { exact: false });
+      expect(childElements).toHaveLength(2); // The container + 2 children
+    });
+
+    it("handles no children gracefully", () => {
+      const { container } = render(
+        <Settings.Container className="test-class" />
+      );
+
+      const containerElement = container.querySelector(".test-class");
+      expect(containerElement?.children).toHaveLength(0);
+    });
+
+    it("allows className to be empty", () => {
+      render(
+        <Settings.Container className="">
+          <div>Test Content</div>
+        </Settings.Container>
+      );
+
+      const childElement = screen.getByText("Test Content");
+      expect(childElement.parentElement?.className).toMatch(/^$/);
+    });
+
+    it("does not crash when children is null", () => {
+      const { container } = render(
+        <Settings.Container className="test-class">{null}</Settings.Container>
+      );
+
+      const containerElement = container.querySelector(".test-class");
+      expect(containerElement?.children).toHaveLength(0);
+    });
+
+    it("supports nested containers", () => {
+      render(
+        <Settings.Container className="outer-class">
+          <Settings.Container className="inner-class">
+            <div>Test Content</div>
+          </Settings.Container>
+        </Settings.Container>
+      );
+
+      const innerContainer = screen.getByText("Test Content");
+      expect(innerContainer.parentElement).toHaveClass("inner-class");
+      expect(innerContainer.parentElement?.parentElement).toHaveClass(
+        "outer-class"
+      );
+    });
+
+    it("renders React fragments as children correctly", () => {
+      render(
+        <Settings.Container className="test-class">
+          <>
+            <div>Fragment Child 1</div>
+            <div>Fragment Child 2</div>
+          </>
+        </Settings.Container>
+      );
+
+      const fragmentChildren = screen.getAllByText("Fragment Child", {
+        exact: false,
+      });
+      expect(fragmentChildren).toHaveLength(2);
+    });
+
+    it("handles undefined className gracefully", () => {
+      render(
+        <Settings.Container className={undefined as any}>
+          <div>Test Content</div>
+        </Settings.Container>
+      );
+
+      const containerElement = screen.getByText("Test Content");
+      expect(containerElement.parentElement).not.toHaveAttribute("class");
+    });
+  });
 });
