@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { ActionCreatorWithPayload, configureStore } from "@reduxjs/toolkit";
 
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, vi, expect } from "vitest";
 
@@ -12,6 +12,49 @@ import { useAppDispatch } from "../../../redux/hooks";
 import problemsReducer from "../../../redux/problems/problemsSlice";
 import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
 import { TRoutes, TUIType } from "../../../TS/types/types";
+
+const mockSections = vi.hoisted(() => {
+  return {
+    Section1: "Section 1",
+    Section2: "Section 2",
+    Section3: "Section 3",
+  };
+});
+
+const mockOperations = vi.hoisted(() => {
+  return {
+    Addition: "Add",
+    Subtraction: "Subtract",
+    Multiplication: "Multiply",
+    Division: "Divide",
+    "½": "Half",
+    "%": "Percent",
+  };
+});
+
+const mockArithmeticMissing = vi.hoisted(() => {
+  return { operand: "operand", result: "result" };
+});
+
+const mockRoutes = vi.hoisted(() => {
+  return { arithmetic: "arithmetic", fractions: "fractions" };
+});
+
+const mockUiType = vi.hoisted(() => {
+  return {
+    arithmetic: "arithmetic",
+    fractions: "fractions",
+    decimals: "decimals",
+  };
+});
+
+vi.mock("../../../TS/constants/constants", async () => ({
+  sections: mockSections,
+  operations: mockOperations,
+  arithmeticMissing: mockArithmeticMissing,
+  routes: mockRoutes,
+  uiType: mockUiType,
+}));
 
 const mockTypes = [
   {
@@ -130,6 +173,24 @@ const RenderWithSettingsContext = ({
     >
       {children}
     </Settings>
+  );
+};
+
+const RenderWithRowContext = ({
+  id,
+  settings,
+  typesFilter,
+  children,
+}: {
+  id: string;
+  settings: ISettings;
+  typesFilter: (type: IProblemType) => boolean;
+  children?: ReactElement | ReactElement[] | null | undefined;
+}) => {
+  return (
+    <Settings.Row id={id} settings={settings} typesFilter={typesFilter}>
+      {children}
+    </Settings.Row>
   );
 };
 
@@ -626,6 +687,76 @@ describe("Settings compound component test suit", () => {
 
       const containerElement = screen.getByText("Test Content");
       expect(containerElement.parentElement).not.toHaveAttribute("class");
+    });
+  });
+
+  describe("Sections component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders all sections as radio inputs", () => {
+      render(<Settings.Sections />);
+
+      const radioInputs = screen.getAllByRole("radio");
+      expect(radioInputs).toHaveLength(Object.keys(mockSections).length);
+    });
+
+    it("renders the correct labels for sections", () => {
+      render(<Settings.Sections />);
+
+      const label = screen.getByLabelText("Section 1");
+      expect(label).toBeInTheDocument();
+    });
+
+    it("selects the correct radio input based on context settings", () => {
+      mockSettingsState[1].section = mockSections.Section2;
+      render(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Sections />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const selectedInput = screen.getByDisplayValue(mockSections.Section2);
+      expect(selectedInput).toBeChecked();
+      mockSettingsState[1].section = ""; // clean up
+    });
+
+    it("calls handleChangeSetting when a radio input is changed", () => {
+      mockSettingsState[1].section = mockSections.Section1;
+      render(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Sections />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const radioInput = screen.getByDisplayValue("Section 2");
+      fireEvent.click(radioInput);
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "section",
+        value: mockSections.Section2,
+      });
+      mockSettingsState[1].section = ""; // clean up
+    });
+
+    it("displays tooltips on labels correctly", () => {
+      render(<Settings.Sections />);
+      const label = screen.getByTitle("Section1");
+      expect(label).toHaveAttribute("title", "Section1");
     });
   });
 });
