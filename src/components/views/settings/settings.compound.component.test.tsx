@@ -759,4 +759,104 @@ describe("Settings compound component test suit", () => {
       expect(label).toHaveAttribute("title", "Section1");
     });
   });
+
+  describe("Operations component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders all operation options", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Operations />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      expect(screen.getByTitle("Addition")).toBeInTheDocument();
+      expect(screen.getByTitle("Subtraction")).toBeInTheDocument();
+      expect(screen.getByTitle("Multiplication")).toBeInTheDocument();
+      expect(screen.getByTitle("Division")).toBeInTheDocument();
+      expect(screen.getByTitle("½")).toBeInTheDocument();
+      expect(screen.getByTitle("%")).toBeInTheDocument();
+    });
+
+    it("renders all operation radio inputs", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Operations />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const radioInputs = screen.getAllByRole("radio");
+      expect(radioInputs).toHaveLength(Object.keys(mockOperations).length);
+    });
+
+    it("renders the correct labels for operations", () => {
+      render(<Settings.Operations />);
+
+      const label = screen.getByLabelText("Add");
+      expect(label).toBeInTheDocument();
+    });
+
+    it("selects the correct radio input based on context settings", () => {
+      mockSettingsState[1].operation = mockOperations.Addition;
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Operations />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+      const selectedInput = screen.getByDisplayValue("Add");
+      expect(selectedInput).toBeChecked();
+      mockSettingsState[1].operation = ""; // clean up
+    });
+
+    it("calls handleChangeSetting when a radio input is changed", () => {
+      mockSettingsState[1].operation = mockOperations.Addition;
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Operations />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const radioInput = screen.getByDisplayValue("Subtract");
+      fireEvent.click(radioInput);
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "operation",
+        value: mockOperations.Subtraction,
+      });
+      mockSettingsState[1].operation = ""; // clean up
+    });
+
+    it("displays tooltips on labels correctly", () => {
+      render(<Settings.Operations />);
+      const label = screen.getByTitle("Addition");
+      expect(label).toHaveAttribute("title", "Addition");
+    });
+  });
 });
