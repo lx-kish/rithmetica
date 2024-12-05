@@ -11,7 +11,7 @@ import Settings from "./settings.compound.component";
 import { useAppDispatch } from "../../../redux/hooks";
 import problemsReducer from "../../../redux/problems/problemsSlice";
 import { IProblemType, ISettings } from "../../../TS/interfaces/interfaces";
-import { TRoutes, TUIType } from "../../../TS/types/types";
+import { TArithmeticMissing, TRoutes, TUIType } from "../../../TS/types/types";
 
 const mockSections = vi.hoisted(() => {
   return {
@@ -857,6 +857,110 @@ describe("Settings compound component test suit", () => {
       render(<Settings.Operations />);
       const label = screen.getByTitle("Addition");
       expect(label).toHaveAttribute("title", "Addition");
+    });
+  });
+
+  describe("Missing component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders all missing options", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Missing />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      expect(screen.getByLabelText("operand")).toBeInTheDocument();
+      expect(screen.getByLabelText("result")).toBeInTheDocument();
+    });
+
+    it("renders all missing radio inputs", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Missing />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const radioInputs = screen.getAllByRole("radio");
+      expect(radioInputs).toHaveLength(
+        Object.keys(mockArithmeticMissing).length
+      );
+    });
+
+    it("renders the correct labels for missing", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Missing />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const label = screen.getByLabelText("operand");
+      expect(label).toBeInTheDocument();
+    });
+
+    it("selects the correct radio input based on context settings", () => {
+      mockSettingsState[1].missing =
+        mockArithmeticMissing.operand as TArithmeticMissing;
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Missing />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+      const selectedInput = screen.getByDisplayValue("operand");
+      expect(selectedInput).toBeChecked();
+      mockSettingsState[1].missing = undefined; // clean up
+    });
+
+    it("calls handleChangeSetting when a radio input is changed", () => {
+      mockSettingsState[1].missing =
+        mockArithmeticMissing.operand as TArithmeticMissing;
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={vi.fn()}
+          >
+            <Settings.Missing />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const radioInput = screen.getByDisplayValue("result");
+      fireEvent.click(radioInput);
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "missing",
+        value: mockArithmeticMissing.result,
+      });
+      mockSettingsState[1].missing = undefined; // clean up
     });
   });
 });
