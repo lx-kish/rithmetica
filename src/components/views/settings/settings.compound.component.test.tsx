@@ -146,6 +146,10 @@ const mockChangeSetting = vi.fn() as unknown as ActionCreatorWithPayload<
   "problems/changeSetting"
 >;
 
+const mockTypesFilter = (type: IProblemType) => {
+  return true;
+};
+
 const mockReduxStore = configureStore({
   reducer: {
     problems: problemsReducer.reducer,
@@ -961,6 +965,206 @@ describe("Settings compound component test suit", () => {
         value: mockArithmeticMissing.result,
       });
       mockSettingsState[1].missing = undefined; // clean up
+    });
+  });
+
+  describe("Types component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders the label and select element", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const label = screen.getByLabelText("Type:");
+      const select = screen.getByRole("combobox");
+      expect(label).toBeInTheDocument();
+      expect(select).toBeInTheDocument();
+    });
+
+    it('renders the default "-- select --" option', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const defaultOption = screen.getByText("-- select --");
+      expect(defaultOption).toBeInTheDocument();
+    });
+
+    it("renders filtered options based on the typesFilter function", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const options = screen.getAllByRole("option");
+      expect(options.map((o) => o.textContent)).toEqual([
+        "-- select --",
+        "Type 1",
+        "Type 2",
+        "Type 3",
+      ]);
+    });
+
+    it("selects the correct option based on context settings", () => {
+      const { container } = renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            // typesFilter={mockTypesFilter}
+            typesFilter={(type: IProblemType) => {
+              return type.name === "Type 2";
+            }}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const selectedOption = container.querySelector(".settings__select");
+      expect(selectedOption).toHaveValue("Type 2");
+    });
+
+    it('updates "name" setting when a new option is selected', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const select = screen.getByRole("combobox");
+      fireEvent.change(select, { target: { value: "Type 2" } });
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "name",
+        value: "Type 2",
+      });
+    });
+
+    it('updates "colPerRow" setting when a new option is selected', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const select = screen.getByRole("combobox");
+      fireEvent.change(select, { target: { value: "Type 2" } });
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "colPerRow",
+        value: 2,
+      });
+    });
+
+    it('resets "name" to an empty string when "-- select --" is chosen', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const select = screen.getByRole("combobox");
+      fireEvent.change(select, { target: { value: "-- select --" } });
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "name",
+        value: "",
+      });
+    });
+
+    it("handles missing field when the selected type requires it", () => {
+      mockSettingsState[1].missing =
+        mockArithmeticMissing.result as TArithmeticMissing;
+
+      mockTypes[1].missing = mockArithmeticMissing.result as TArithmeticMissing;
+
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const select = screen.getByRole("combobox");
+      fireEvent.change(select, { target: { value: "Type 2" } });
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "missing",
+        value: mockArithmeticMissing.result,
+      });
+
+      // clean up
+      mockSettingsState[1].missing = undefined;
+      mockTypes[1].missing = "";
+    });
+
+    it("renders no options if types array is empty", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={(type: IProblemType) => {
+              return false;
+            }}
+          >
+            <Settings.Types />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+      const options = screen.queryAllByRole("option");
+      expect(options).toHaveLength(1); // Only "-- select --" option should be present
     });
   });
 });
