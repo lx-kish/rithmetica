@@ -1167,4 +1167,83 @@ describe("Settings compound component test suit", () => {
       expect(options).toHaveLength(1); // Only "-- select --" option should be present
     });
   });
+
+  describe("Quantity component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it("renders the label element", () => {
+      render(<Settings.Quantity />);
+      const label = screen.getByLabelText("Qty:");
+
+      expect(label).toBeInTheDocument();
+    });
+
+    it("renders the input element", () => {
+      render(<Settings.Quantity />);
+      const input = screen.getByRole("spinbutton");
+
+      expect(input).toBeInTheDocument();
+    });
+
+    it("sets the initial value from settings context", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={(type: IProblemType) => {
+              return false;
+            }}
+          >
+            <Settings.Quantity />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const input = screen.getByRole("spinbutton");
+      expect(input).toHaveValue(20);
+    });
+
+    it("updates the input value on user input", () => {
+      render(<Settings.Quantity />);
+      const input = screen.getByRole("spinbutton");
+      fireEvent.change(input, { target: { value: "10" } });
+      expect(input).toHaveValue(10);
+    });
+
+    it("calls handleChangeSetting with the correct quantity on blur", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={(type: IProblemType) => {
+              return false;
+            }}
+          >
+            <Settings.Quantity />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const input = screen.getByRole("spinbutton");
+      fireEvent.change(input, { target: { value: "10" } });
+      fireEvent.blur(input);
+      expect(mockChangeSetting).toHaveBeenCalledWith({
+        id: "2",
+        name: "quantity",
+        value: 10,
+      });
+    });
+
+    it("does not call handleChangeSetting during input changes", () => {
+      render(<Settings.Quantity />);
+      const input = screen.getByRole("spinbutton");
+      fireEvent.change(input, { target: { value: "15" } });
+      expect(mockChangeSetting).not.toHaveBeenCalled();
+    });
+  });
 });
