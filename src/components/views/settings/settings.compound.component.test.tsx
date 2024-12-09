@@ -1246,4 +1246,121 @@ describe("Settings compound component test suit", () => {
       expect(mockChangeSetting).not.toHaveBeenCalled();
     });
   });
+
+  describe("ControlBtns component test suit", () => {
+    afterEach(() => {
+      vi.clearAllMocks();
+      cleanup();
+    });
+
+    it('renders the "add line" button', () => {
+      render(<Settings.ControlBtns />);
+      const addButton = screen.getByTitle("add line");
+      expect(addButton).toBeInTheDocument();
+    });
+
+    it('renders the "remove line" button', () => {
+      render(<Settings.ControlBtns />);
+      const removeButton = screen.getByTitle("remove line");
+      expect(removeButton).toBeInTheDocument();
+    });
+
+    it('calls handleInsertSetting when the "add line" button is clicked', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.ControlBtns />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const addButton = screen.getByTitle("add line");
+      fireEvent.click(addButton);
+      expect(mockInsertSetting).toHaveBeenCalledWith({
+        id: "2",
+        route: "testRoute",
+      });
+    });
+
+    it('calls handleDeleteSetting when the "remove line" button is clicked', () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.ControlBtns />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const removeButton = screen.getByTitle("remove line");
+      fireEvent.click(removeButton);
+      expect(mockDeleteSetting).toHaveBeenCalledWith({
+        id: "2",
+        route: "testRoute",
+      });
+    });
+
+    it("ensures both buttons have the correct classes", () => {
+      render(<Settings.ControlBtns />);
+      const addButton = screen.getByTitle("add line");
+      const removeButton = screen.getByTitle("remove line");
+      expect(addButton).toHaveClass("btn settings__control-btn");
+      expect(removeButton).toHaveClass("btn settings__control-btn");
+    });
+
+    it('ensures the "add line" button displays the correct text', () => {
+      render(<Settings.ControlBtns />);
+      const addButton = screen.getByTitle("add line");
+      expect(addButton).toHaveTextContent("+");
+    });
+
+    it('ensures the "remove line" button displays the correct text', () => {
+      render(<Settings.ControlBtns />);
+      const removeButton = screen.getByTitle("remove line");
+      expect(removeButton).toHaveTextContent("×");
+    });
+
+    it("calls handleInsertSetting when the add button is clicked", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.ControlBtns />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const addButton = screen.getByTitle("add line");
+      fireEvent.click(addButton);
+      expect(mockInsertSetting).toHaveBeenCalled();
+    });
+
+    it("calls handleDeleteSetting when the delete button is clicked", () => {
+      renderWithProvider(
+        <RenderWithSettingsContext>
+          <RenderWithRowContext
+            id={"2"}
+            settings={mockSettingsState[1]}
+            typesFilter={mockTypesFilter}
+          >
+            <Settings.ControlBtns />
+          </RenderWithRowContext>
+        </RenderWithSettingsContext>
+      );
+
+      const deleteButton = screen.getByTitle("remove line");
+      fireEvent.click(deleteButton);
+      expect(mockDeleteSetting).toHaveBeenCalled();
+    });
+  });
 });
