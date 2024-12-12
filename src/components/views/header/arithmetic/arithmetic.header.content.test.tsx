@@ -6,13 +6,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { settings } from "../../../../redux/problems/problemsSlice";
 import ArithmeticHeaderContent from "./arithmetic.header.content";
 
-import problemsReducer from "../../../../redux/problems/problemsSlice";
+import problemsSlice from "../../../../redux/problems/problemsSlice";
 import { TRoutes, TUIType } from "../../../../TS/types/types";
 import { ISettings } from "../../../../TS/interfaces/interfaces";
 
 const mockRealStore = configureStore({
   reducer: {
-    problems: problemsReducer.reducer,
+    problems: problemsSlice.reducer,
   },
 });
 
