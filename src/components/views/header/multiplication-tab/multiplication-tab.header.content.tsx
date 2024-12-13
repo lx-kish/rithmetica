@@ -11,33 +11,24 @@ import CollapsibleSticky from "../../collapsible/collapsible-sticky.component";
 import HowMultitabWorks from "../../../descriptions/multiplication-table/how-multitab-works.component";
 import Toggler from "../../toggler/toggler.component";
 
-function togglerContent() {
-  return {
-    togglerAddSubtract: {
-      toggleBox: {
-        className: "toggler__box",
-      },
-      label: {
-        htmlFor: "addition-subtraction",
-        span: {
-          left: {
-            className: "toggler description__paragraph--level-three",
-            text: "addition",
-          },
-          right: {
-            className: "toggler description__paragraph--level-two",
-            text: "subtraction",
-          },
-        },
-      },
-      input: {
-        type: "checkbox",
-        className: "toggler__input",
-        id: "addition-subtraction",
-      },
-    },
-  };
-}
+const togglerAddSubtract = {
+  toggleBox: {
+    className: "toggler__box",
+  },
+  togglerLeft: {
+    className: "toggler description__paragraph--level-three",
+    text: "addition",
+  },
+  togglerRight: {
+    className: "toggler description__paragraph--level-two",
+    text: "subtraction",
+  },
+  input: {
+    type: "checkbox",
+    className: "toggler__input",
+    id: "addition-subtraction",
+  },
+};
 
 export default function MultiplicationTabHeaderContent(): ReactElement {
   const subtractState = useAppSelector(subtract);
@@ -60,7 +51,7 @@ export default function MultiplicationTabHeaderContent(): ReactElement {
         <HowMultitabWorks paragraphClassName="description__paragraph description__paragraph--level-two" />
       </CollapsibleSticky>
       <Toggler
-        {...togglerContent().togglerAddSubtract}
+        {...togglerAddSubtract}
         checked={subtractState}
         onChange={handleChange}
       />

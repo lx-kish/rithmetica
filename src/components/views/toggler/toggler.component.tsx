@@ -6,39 +6,37 @@ import StyledSpan from "../elements/styled-span.component";
 interface IProps {
   checked: boolean;
   onChange: () => void;
-  toggleBox: {
-    className: string;
+  toggleBox?: {
+    [key: string]: string | undefined;
   };
-  label: {
-    htmlFor: string;
-    span: {
-      left: {
-        className: string;
-        text: string;
-      };
-      right: {
-        className: string;
-        text: string;
-      };
-    };
+  togglerLeft?: {
+    [key: string]: string | undefined;
   };
-  input: {};
+  togglerRight?: {
+    [key: string]: string | undefined;
+  };
+  input?: {
+    [key: string]: string | undefined;
+  };
 }
 
-function Toggler(props: IProps): ReactElement<any, any> {
+function Toggler({
+  checked,
+  onChange,
+  toggleBox,
+  togglerLeft,
+  togglerRight,
+  input,
+}: IProps): ReactElement<any, any> {
   return (
-    <div className={props.toggleBox.className}>
-      <label htmlFor={props.label.htmlFor}>
-        <StyledSpan className={props.label.span.left.className}>
-          {props.label.span.left.text}
+    <div className={toggleBox?.className}>
+      <label htmlFor={input?.id}>
+        <StyledSpan className={togglerLeft?.className}>
+          {togglerLeft?.text}
         </StyledSpan>
-        <Input
-          {...props.input}
-          checked={props.checked}
-          onChange={props.onChange}
-        />
-        <StyledSpan className={props.label.span.right.className}>
-          {props.label.span.right.text}
+        <Input {...input} checked={checked} onChange={onChange} />
+        <StyledSpan className={togglerRight?.className}>
+          {togglerRight?.text}
         </StyledSpan>
       </label>
     </div>
