@@ -38,6 +38,7 @@ function InputNumeric({
   disabled = false,
   title = "",
   handleChange,
+  ...props
 }: IProps): ReactElement {
   const ref = useInputScrollRefCallback();
 
@@ -63,6 +64,7 @@ function InputNumeric({
       onChange={handleChange}
       passingRef={ref}
       autoComplete="off" // for dropping the value when cached by browser
+      {...props}
     />
   );
 }
