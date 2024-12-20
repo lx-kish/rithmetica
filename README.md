@@ -70,6 +70,10 @@ This is a React JS Single Page Application.
 
 ##### <sup>\*</sup> - starts from v2.3.3
 
+#### v11.7.8 release notes
+
+- Redesign Multiplication Table Cell component.
+
 #### v11.7.7 release notes
 
 - Fix bugs.
