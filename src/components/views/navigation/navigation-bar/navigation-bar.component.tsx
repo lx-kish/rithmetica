@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import BurgerIcon from "../burger icon/icon-burger.component";
 import SlideBar from "../slide bar/slide-bar.component";
