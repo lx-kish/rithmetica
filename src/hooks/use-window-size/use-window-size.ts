@@ -1,5 +1,5 @@
-import React, { useLayoutEffect, useState } from "react";
-import useDebounce from "../useDebounce/useDebounce";
+import { useLayoutEffect, useState } from "react";
+import debounce from "../../utils/debounce/debounce";
 
 /**
  *
@@ -17,9 +17,9 @@ function useWindowSize(): number[] {
 
   useLayoutEffect(() => {
     const resizeHandler = () => {
-      useDebounce(
+      debounce(
         () => setDimensions([window.innerWidth, window.innerHeight]),
-        100 // 100ms
+        100 // 100ms)
       );
     };
     window.addEventListener("resize", resizeHandler);
