@@ -4,8 +4,8 @@
  * https://stackoverflow.com/questions/59104425/typescript-debounce-function-not-calling-function-passed-as-parameter/59104590#59104590
  *
  */
-function debounce<Params extends any[]>(
-  func: (...args: Params) => any,
+function debounce<Params extends unknown[]>(
+  func: (...args: Params) => unknown,
   timeout: number
 ): (...args: Params) => void {
   let timer: ReturnType<typeof setTimeout>;
